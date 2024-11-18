@@ -1,17 +1,5 @@
 extends lib/base.pug
-include lib/lightburst.pug
 include lib/scripture.pug
-
-append head
-  style: include:scss index.scss
-
-append intro
-  .judgement
-    include judgment-intro.pug
 
 append main
   include gospel.pug
-
-append outro
-  .judgement
-    include judgment-outro.pug
