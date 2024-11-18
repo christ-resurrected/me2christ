@@ -1,13 +1,7 @@
 .card {
-  background: #fff;
-  border: solid #000 4px;
+  border: solid 4px;
   border-radius: 8px;
   padding: 0.5em;
-}
-
-.card.dark {
-  background: #000;
-  color: #fff
 }
 
 .cards {
@@ -16,12 +10,27 @@
   margin-bottom: 1rem;
 }
 
+.cards.dark {
+  .card {
+    background: #000;
+    border: #000;
+    color: #fff
+  }
+}
+
+.cards.light {
+  .card {
+    background: #fff;
+    color: #000
+  }
+}
+
 @media (min-width: 600px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .card:nth-child(3) {
+  .card:nth-child(1) {
     grid-column: span 2;
   }
 }
@@ -31,7 +40,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .card:nth-child(3) {
+  .card:nth-child(1) {
     grid-column: span 1;
   }
 }
