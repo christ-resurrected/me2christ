@@ -1,9 +1,6 @@
 body {
+  background: #ddd;
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
-
-  section {
-    padding: 0 0.5em;
-  }
 
   h1 {
     font-size: 2em; // override section>h1 default of 1.5em
@@ -21,5 +18,13 @@ body {
   p,
   footer {
     clear: both;
+  }
+
+  .card {
+    background: white;
+    border: solid #888 4px;
+    border-radius: 8px;
+    padding: 0.5em;
+    margin-bottom: 1em;
   }
 }
