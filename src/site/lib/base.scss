@@ -1,9 +1,11 @@
 body {
-  background: #ddd;
+  background: #888;
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
 
   h1 {
-    font-size: 2em; // override section>h1 default of 1.5em
+    color: #fff;
+    font-size: 3em; // override section>h1 default of 1.5em
+    margin: 0.25em 0;
   }
 
   h1,
@@ -22,9 +24,9 @@ body {
 
   .card {
     background: white;
-    border: solid #888 4px;
+    border: solid #000 4px;
     border-radius: 8px;
-    padding: 0.5em;
     margin-bottom: 1em;
+    padding: 0.5em;
   }
 }
