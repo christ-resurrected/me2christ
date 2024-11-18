@@ -1,6 +1,9 @@
 body {
   background-image: linear-gradient(black, black, white, white, white);
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.4;
+  text-align: justify;
+  text-justify: inter-word;
 
   h1 {
     color: #fff;

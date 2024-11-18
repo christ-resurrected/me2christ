@@ -17,22 +17,28 @@ cite:before {
 
 .main {
   blockquote {
-    border-left: 4px solid #f00;
-    padding-left: 0.5em;
+    // border-left: 4px solid #f00;
+    // padding: 0.5rem;
   }
 
   cite {
     color: #666;
   }
-
-  q.Jesus {
-    color: red;
-  }
 }
 
-.judgement {
+mark {
+  padding: 0.2rem;
+}
+
+.dark {
+  mark {
+    background: #780606;
+    color: white;
+  }
+
   blockquote {
-    color: #f33;
+    // background: red;
+    color: #fff;
 
     b {
       color: orange;
@@ -49,5 +55,16 @@ cite:before {
 
   cite {
     color: #aaa;
+  }
+}
+
+.light {
+  mark {
+    background: red;
+    color: white;
+  }
+
+  q.Jesus {
+    color: white;
   }
 }
