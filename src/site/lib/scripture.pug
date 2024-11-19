@@ -3,6 +3,8 @@ append head
 
 mixin see(refs, label='See')
   - if (!refs) return
+  - refs = refs.replace('Mat.', 'Matthew')
+  - refs = refs.replace('Rev.', 'Revelation')
   - var refarr = refs.split(';')
   span.see  (
   span= label
