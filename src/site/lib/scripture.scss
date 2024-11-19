@@ -23,13 +23,9 @@ mark {
       background-clip: text;
       background-image: linear-gradient(to top, red, yellow);
       color: transparent;
-      text-shadow: 1px 1px 4px white;
+      text-shadow: 1px 1px 0px #ffc;
     }
   }
-
-  // span.body:after {
-  //   content: '\a0\2013\a0' // long dash then non breaking space;
-  // }
 }
 
 q.Jesus {
