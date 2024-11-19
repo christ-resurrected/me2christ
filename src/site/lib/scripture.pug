@@ -1,7 +1,10 @@
 append head
   style: include:scss scripture.scss
 
-mixin verse(ref)
-  mark
-    block
-  mark= ref
+mixin verse(ref, pretext)
+  .verse
+    span.pre= pretext
+    span.body
+      block
+    span  &ndash;
+    mark= ref

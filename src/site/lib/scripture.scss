@@ -1,44 +1,18 @@
-blockquote {
-  clear: both;
-  margin-block-end: 0;
-  margin-block-start: 0;
-  margin-inline-end: 0;
-  margin-inline-start: 0;
-}
-
-cite {
-  float: right;
-  margin-bottom: 1em;
-}
-
-cite:before {
-  content: '\a0\2013\a0' // long dash then non breaking space;
-}
-
-.main {
-  blockquote {
-    // border-left: 4px solid #f00;
-    // padding: 0.5rem;
-  }
-
-  cite {
-    color: #666;
-  }
-}
-
 mark {
-  padding: 0.2rem;
+  margin: 0.5rem;
 }
 
-.dark {
-  mark {
-    background: #780606;
-    color: white;
+.verse {
+  margin-bottom: 1rem;
+
+  span.pre:not(:empty) {
+    margin-right: 0.25rem;
   }
 
-  blockquote {
-    // background: red;
-    color: #fff;
+  span.body {
+    background: #780606;
+    color: #fed;
+    padding: 0.15rem;
 
     b {
       color: orange;
@@ -53,18 +27,32 @@ mark {
     }
   }
 
-  cite {
-    color: #aaa;
+  // span.body:after {
+  //   content: '\a0\2013\a0' // long dash then non breaking space;
+  // }
+}
+
+q.Jesus {
+  font-weight: bold;
+}
+
+.dark {
+  mark {
+    background: #204080;
+    color: white;
   }
 }
 
 .light {
-  mark {
-    background: red;
-    color: white;
+  .verse {
+    span.body {
+      background: #248;
+      color: #fff;
+    }
   }
 
   q.Jesus {
-    color: white;
+    color: #7ff;
+    font-weight: bold;
   }
 }

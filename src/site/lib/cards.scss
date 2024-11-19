@@ -1,7 +1,7 @@
 .card {
   border: solid 4px;
   border-radius: 8px;
-  padding: 0.5em;
+  padding: 0.5rem;
 }
 
 .cards {
@@ -13,7 +13,7 @@
 .cards.dark {
   .card {
     background: #000;
-    border: #000;
+    border-color: red; // #780606;
 
     color: #fff;
 

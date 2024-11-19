@@ -1,4 +1,5 @@
 body {
+  background: black;
   background-image: linear-gradient(black, black, white, white, white);
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
@@ -9,6 +10,10 @@ body {
     color: #fff;
     font-size: 3em;
     margin: 1rem 0;
+  }
+
+  h2 {
+    margin: 0 0 1rem 0;
   }
 
   h1,
