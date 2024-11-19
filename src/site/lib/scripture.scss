@@ -1,5 +1,5 @@
 mark {
-  margin: 0.5rem;
+  padding: 0 0.2rem;
 }
 
 .verse {
@@ -10,21 +10,11 @@ mark {
   }
 
   span.body {
-    background: #780606;
-    color: #fed;
     padding: 0.15rem;
+  }
 
-    b {
-      color: orange;
-    }
-
-    strong {
-      -webkit-background-clip: text;
-      background-clip: text;
-      background-image: linear-gradient(to top, red, yellow);
-      color: transparent;
-      text-shadow: 1px 1px 0px #ffc;
-    }
+  span.see {
+    margin-left: 0.5rem;
   }
 }
 
@@ -33,9 +23,40 @@ q.Jesus {
 }
 
 .dark {
+  .verse {
+    p {
+      display: inline;
+    }
+
+    span.body {
+      background: #780606;
+      color: #fcc;
+
+      // b {
+      //   color: orange;
+      // }
+
+      // * in markdown
+      em {
+        color: orange;
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      strong {
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: linear-gradient(to top, red, yellow);
+        color: transparent;
+        text-shadow: 1px 1px 0px #ffc;
+      }
+    }
+
+  }
+
   mark {
-    background: #204080;
-    color: white;
+    background: #248;
+    color: #8ff;
   }
 }
 
@@ -43,7 +64,7 @@ q.Jesus {
   .verse {
     span.body {
       background: #248;
-      color: #fff;
+      color: #cff;
     }
   }
 
