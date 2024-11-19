@@ -17,6 +17,8 @@ mixin seeAlso(refs)
   +see(refs, 'See also')
 
 mixin verse(ref)
+  - ref = ref.replace('Mat.', 'Matthew')
+  - ref = ref.replace('Rev.', 'Revelation')
   .verse
     span.pre= attributes.pre
     span.body
