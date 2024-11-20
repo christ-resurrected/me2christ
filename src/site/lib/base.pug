@@ -14,9 +14,12 @@ html(lang='en')
         script: include livereload.js
       style: include:scss base.scss
       style: include:scss cards.scss
+      style: include:scss utility.scss
   body.noscript
     section.main
       block main
-
     footer
-      block footer
+      :markdown-it
+        Verses on this website are quoted from the New King James Version (NKJV) of the English Bible.
+
+      // Please contact me by email at [andrew@me2christ.com](mailto:andrew@me2christ.com).
