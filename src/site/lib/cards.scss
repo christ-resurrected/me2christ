@@ -2,6 +2,11 @@
   border: solid 4px;
   border-radius: 8px;
   padding: 0.5rem;
+
+  &.light {
+    background: #fff;
+    color: #000
+  }
 }
 
 .cards {
