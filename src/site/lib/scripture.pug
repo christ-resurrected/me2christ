@@ -13,7 +13,8 @@ mixin ref(ref)
   - ref = ref.replaceAll('Heb.', 'Hebrews ')
   - ref = ref.replaceAll('Pet.', 'Peter ')
   - ref = ref.replaceAll('Rev.', 'Revelation ')
-  mark= ref
+  - ref = ref.replace(/-(\d+)/, '&ndash;$1')
+  mark!= ref
 
 mixin see(refs, label='See')
   - if (!refs) return
