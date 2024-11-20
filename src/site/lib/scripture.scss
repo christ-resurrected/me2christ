@@ -1,9 +1,15 @@
+// * in markdown
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
 mark {
   padding: 0 0.2rem;
 }
 
 .verse {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 
   span.pre:not(:empty) {
     margin-right: 0.25rem;
@@ -11,6 +17,7 @@ mark {
 
   span.body {
     padding: 0.15rem;
+
   }
 
   span.see {
@@ -23,6 +30,10 @@ q.Jesus {
 }
 
 .dark {
+  em {
+    color: orange;
+  }
+
   .verse {
     p {
       display: inline;
@@ -31,13 +42,6 @@ q.Jesus {
     span.body {
       background: #780606;
       color: #fcc;
-
-      // * in markdown
-      em {
-        color: orange;
-        font-style: normal;
-        font-weight: bold;
-      }
 
       strong {
         -webkit-background-clip: text;
@@ -57,10 +61,15 @@ q.Jesus {
 }
 
 .light {
+  em {
+    color: green;
+  }
+
   .verse {
     span.body {
       background: #248;
       color: #cff;
+
     }
   }
 
