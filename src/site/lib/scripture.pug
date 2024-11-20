@@ -1,28 +1,36 @@
 append head
   style: include:scss scripture.scss
 
+mixin ref(ref)
+  - if (!ref) return
+  - ref = ref.replaceAll('Mat.', 'Matthew ')
+  - ref = ref.replaceAll('Rom.', 'Romans ')
+  - ref = ref.replaceAll('Cor.', 'Corinthians ')
+  - ref = ref.replaceAll('Gal.', 'Galatians ')
+  - ref = ref.replaceAll('Eph.', 'Ephesians ')
+  - ref = ref.replaceAll('Col.', 'Colossians ')
+  - ref = ref.replaceAll('Tim.', 'Timothy ')
+  - ref = ref.replaceAll('Rev.', 'Revelation ')
+  mark= ref
+
 mixin see(refs, label='See')
   - if (!refs) return
-  - refs = refs.replace('Mat.', 'Matthew')
-  - refs = refs.replace('Rev.', 'Revelation')
   - var refarr = refs.split(';')
   span.see  (
   span= label
   each ref in refarr
     | 
-    mark= ref
+    +ref(ref)
   span )
 
 mixin seeAlso(refs)
   +see(refs, 'See also')
 
 mixin verse(ref)
-  - ref = ref.replace('Mat.', 'Matthew')
-  - ref = ref.replace('Rev.', 'Revelation')
   .verse
     span.pre= attributes.pre
     span.body
       block
     span  &ndash;
-    mark= ref
+    +ref(ref)
     +seeAlso(attributes.seeAlso)
