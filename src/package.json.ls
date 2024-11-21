@@ -2,13 +2,13 @@ name       : \me2christ
 version    : \3.0.0
 description: 'me2christ.com source code'
 private    : true
-homepage   : \https://github.com/dizzib/me2christ
-bugs       : \https://github.com/dizzib/me2christ/issues
+homepage   : \https://github.com/christ-resurrected/me2christ
+bugs       : \https://github.com/christ-resurrected/me2christ/issues
 license:   : \MIT
 author     : \andrew
 repository:
   type: \git
-  url : \https://github.com/dizzib/me2christ
+  url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'cd .. && node build/task/yarn/build.js'
   start: 'cd .. && node --watch-path=build/task build/task/repl.js'
