@@ -1,5 +1,7 @@
 # me2christ
 
+Source code for [me2christ.com](https://me2christ.com)
+
 ## to build and run locally
 
 Install [node.js 20][nodejs] and [yarn classic 1.22][yarn] then:
