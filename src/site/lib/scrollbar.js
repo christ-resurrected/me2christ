@@ -1,5 +1,9 @@
-// fix ipad safari invisible scrollbar
+// ensure iOS overlay scrollbar stays visible when bg color goes from black to white
 addEventListener("DOMContentLoaded", () => {
+  const UA = navigator.userAgent
+  var isIOS = UA.includes('iPad') || UA.includes('iPhone') || UA.includes('iPod')
+  if (!isIOS) return
+
   const B = document.body
   const D = document.documentElement
   const W = window
