@@ -8,8 +8,6 @@ mark {
 }
 
 .verse {
-  margin-top: 1rem;
-
   span.pre:not(:empty) {
     margin-right: 0.25rem;
   }
@@ -32,7 +30,6 @@ mark {
   .verse {
     flex-basis: 300px;
     flex-grow: 1;
-    margin-top: 0rem;
   }
 }
 
