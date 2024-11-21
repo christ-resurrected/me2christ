@@ -24,12 +24,20 @@ mark {
   }
 }
 
-@media (min-width:600px) and (max-width: 900px) {
-  .verses {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
+.verses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .verse {
+    flex-basis: 300px;
+    flex-grow: 1;
+    margin-top: 0rem;
   }
+}
+
+.verses~.verses {
+  margin-top: 1rem;
 }
 
 q.Jesus {
