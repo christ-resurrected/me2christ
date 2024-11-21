@@ -1,7 +1,5 @@
 doctype html
 
-include noscript.pug
-
 html(lang='en')
   head
     block head
@@ -15,7 +13,7 @@ html(lang='en')
       style: include:scss base.scss
       style: include:scss cards.scss
       style: include:scss utility.scss
-  body.noscript
+  body
     section.main
       block main
     footer
