@@ -38,18 +38,27 @@ body {
     clear: both;
   }
 
-  section.main {
-    margin: 0.5rem;
-  }
-
+  header,
   footer {
-    a {
-      color: cyan;
-    }
+    // a {
+    //   color: cyan;
+    // }
 
     padding: 1rem;
     text-align: center;
+  }
+
+  header {
+    // background: #333;
+    color: #fff;
+  }
+
+  footer {
     background: #333;
     color: #fff;
+  }
+
+  section.main {
+    margin: 0.5rem;
   }
 }

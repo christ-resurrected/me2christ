@@ -1,0 +1,14 @@
+append head
+  style: include:scss nav.scss
+
+  - locals.NAV_PAGES = [{'id':'gospel','href':'index','title':'The Gospel'},{'id':'tract','href':'gospel-tracts','title':'Tracts'}];
+
+mixin nav()
+  nav
+    each page in locals.NAV_PAGES
+      if PAGE_ID === page.id
+        a(class='active')
+          span= page.title
+      else
+        a(href=page.href + '.html')
+          span= page.title

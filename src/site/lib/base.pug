@@ -1,5 +1,6 @@
-doctype html
+include nav.pug
 
+doctype html
 html(lang='en')
   head
     block head
@@ -14,9 +15,12 @@ html(lang='en')
       style: include:scss cards.scss
       style: include:scss utility.scss
   body
+    header
+      +nav
     section.main
       block main
     footer
+      +nav
       :markdown-it
         Verses are from the New King James Version (NKJV).
 

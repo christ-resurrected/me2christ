@@ -1,0 +1,38 @@
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  a {
+    color: #aaa;
+    font-size: 1.3rem;
+    text-decoration: none;
+
+    &.active {
+      color: #0ff;
+      font-weight: bold;
+    }
+  }
+
+}
+
+header {
+  nav {
+    a.active {
+      border-bottom: 4px solid;
+    }
+  }
+}
+
+footer {
+  nav {
+    a {
+      border-top: 4px solid transparent;
+    }
+
+    a.active {
+      border-top: 4px solid;
+    }
+  }
+}
