@@ -38,7 +38,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
 Build.on \built ->
   rl.prompt!
 
-Lint.start!
+# Lint.start!
 Build.start!
 Site.start!
 
