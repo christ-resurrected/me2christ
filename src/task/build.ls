@@ -26,7 +26,7 @@ tasks =
     oxt: \html
   site_pug_include:
     pat: "#{Dirname.SITE}/include/*"
-    ixt: \pug
+    ixt: '{pug,scss}'
     tid: \site_pug # task id to run
   site_pug_lib:
     pat: "#{Dirname.SITE}/lib/*"
