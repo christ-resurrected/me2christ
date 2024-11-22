@@ -27,22 +27,17 @@ h3 {
 
 header,
 footer {
-  // a {
-  //   color: cyan;
-  // }
-
   padding: 1rem;
   text-align: center;
 }
 
-header {
-  // background: #333;
-  color: #fff;
-}
-
 footer {
+  a {
+    color: #ccc;
+  }
+
   background: #333;
-  color: #fff;
+  color: #ccc;
 }
 
 section {
