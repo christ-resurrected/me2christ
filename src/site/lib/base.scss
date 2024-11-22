@@ -34,6 +34,10 @@ footer {
 footer {
   a {
     color: #ccc;
+
+    &:hover {
+      color: cyan;
+    }
   }
 
   background: #333;
