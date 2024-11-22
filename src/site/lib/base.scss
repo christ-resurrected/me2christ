@@ -1,12 +1,14 @@
 body {
-  background: black;
-  background-image: linear-gradient(black, black, white, white);
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
   margin: 0;
   hyphens: auto; // fix large gaps between words
   text-align: justify;
   text-justify: inter-word;
+}
+
+a:hover {
+  color: red;
 }
 
 h1 {
@@ -25,23 +27,22 @@ h3 {
   text-align: center;
 }
 
+$text-off-white: #aaa;
+
 header,
 footer {
+  background: #333;
+  color: $text-off-white;
   padding: 1rem;
   text-align: center;
-}
 
-footer {
   a {
-    color: #ccc;
+    color: $text-off-white;
 
     &:hover {
       color: cyan;
     }
   }
-
-  background: #333;
-  color: #ccc;
 }
 
 section {
