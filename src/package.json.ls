@@ -18,7 +18,7 @@ engines:
 devDependencies:
   # task
   chalk                       : \~0.4.0
-  chokidar                    : \~3.2.2
+  chokidar                    : \~3.6.0
   growly                      : \~1.3.0
   'jstransformer-markdown-it' : \~3.0.0
   'jstransformer-scss'        : \~2.0.0
