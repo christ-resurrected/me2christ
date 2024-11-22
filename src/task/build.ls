@@ -14,27 +14,33 @@ G       = require \./growl
 const BIN = "#{Dir.BUILD}/node_modules/.bin"
 
 tasks =
-  json_ls:
+  package_json_ls:
+    pat: \package
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \json.ls
     oxt: \json
-  ls:
+  site_pug:
+    pat: "#{Dirname.SITE}/*"
+    cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
+    ixt: \pug
+    oxt: \html
+  site_pug_include:
+    pat: "#{Dirname.SITE}/include/*"
+    ixt: \pug
+    tid: \site_pug # task id to run
+  site_pug_lib:
+    pat: "#{Dirname.SITE}/lib/*"
+    ixt: '{js,pug,scss}'
+    tid: \site_pug # task id to run
+  task_ls:
+    pat: "#{Dirname.TASK}/**/*"
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \ls
     oxt: \js
-  site_pug:
-    dir: Dirname.SITE
-    cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
-    pat: \index.pug
-    oxt: \html
-  site_pug_includes:
-    dir: Dirname.SITE
-    ign: '**/index.pug'
-    ixt: '{js,md,pug,scss}'
-    tid: \site_pug # task id to run
-  static:
+  task_static:
+    pat: "#{Dirname.TASK}/**/*"
     cmd: "cp --target-directory $OUT $IN"
-    ixt: '{json,lson,png}'
+    ixt: '{json,lson}'
 
 module.exports = me = (new Emitter!) with
   all: ->
@@ -85,12 +91,10 @@ function get-opath t, ipath
 
 function start-watching tid
   Assert.equal pwd!, Dir.SRC
-  t = tasks[tid]; pat = ''
-  pat += "#{t.dir}/" if t.dir
-  pat += "**/"
-  pat += t.pat or "*.#{t.ixt}"
+  t = tasks[tid]
+  pat = t.pat + ".#{t.ixt}"
   log "start watching #tid: #pat"
-  w = t.watcher = Choki.watch pat, {cwd:Dir.SRC, ignoreInitial:true, ignored:t.ign}
+  w = t.watcher = Choki.watch pat, {cwd:Dir.SRC, ignoreInitial:true}
   w.on \all (act, path) ->
     ipath = Path.join(Dir.SRC, path)
     log Chalk.yellow(\build), act, tid, ipath
