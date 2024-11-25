@@ -4,6 +4,10 @@ mark {
 }
 
 .verse {
+  em {
+    font-weight: bold;
+  }
+
   span.pre:not(:empty) {
     margin-right: 0.25rem;
   }
@@ -76,19 +80,5 @@ q.Jesus {
   q.Jesus {
     color: #8ff;
     font-weight: bold;
-  }
-}
-
-.gospel {
-  em {
-    font-weight: bold;
-  }
-
-  .dark em {
-    color: orange;
-  }
-
-  .light em {
-    color: green;
   }
 }
