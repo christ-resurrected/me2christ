@@ -20,7 +20,7 @@ tasks =
     ixt: \json.ls
     oxt: \json
   site_asset:
-    pat: "#{Dirname.SITE}/asset/**/*"
+    pat: "#{Dirname.SITE}/asset/tract/*"
     cmd: "cp --target-directory $OUT $IN"
     ixt: \png
   site_pug:
