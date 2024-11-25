@@ -1,8 +1,4 @@
 // * in markdown
-em {
-  font-weight: bold;
-}
-
 mark {
   padding: 0 0.2rem;
 }
@@ -42,10 +38,6 @@ q.Jesus {
 }
 
 .dark {
-  em {
-    color: orange;
-  }
-
   .verse {
     p {
       display: inline;
@@ -73,10 +65,6 @@ q.Jesus {
 }
 
 .light {
-  em {
-    color: green;
-  }
-
   .verse {
     span.body {
       background: #248;
@@ -88,5 +76,19 @@ q.Jesus {
   q.Jesus {
     color: #8ff;
     font-weight: bold;
+  }
+}
+
+.gospel {
+  em {
+    font-weight: bold;
+  }
+
+  .dark em {
+    color: orange;
+  }
+
+  .light em {
+    color: green;
   }
 }
