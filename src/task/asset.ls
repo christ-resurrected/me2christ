@@ -15,6 +15,6 @@ module.exports =
         basename = f.replace \.pdf ''
         log Chalk.blue convert = "convert -density 144 #basename.pdf /tmp/#basename-%02d.png"
         Cp.execSync convert # convert pdf to pngs, 1 per page
-        Cp.execSync "optipng /tmp/*.png" # reduce file sizes for productionn
-        Sh.mv "/tmp/*.png", "#{Dir.SRC}/#{Dirname.SITE}/asset/tract/"
+        Cp.execSync 'optipng /tmp/*.png' # reduce file sizes for productionn
+        Sh.mv '/tmp/*.png' "#{Dir.SRC}/#{Dirname.SITE}/asset/tract/"
     finally popd!
