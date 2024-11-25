@@ -1,5 +1,9 @@
 extends lib/base.pug
 
+mixin tract-image(basename, width='50%')
+  a(href=`asset/tract/${basename}.png`)
+    img(src=`asset/tract/${basename}.png` width=width)
+
 append head
   style: include:scss lib/light-to-dark.scss
 
@@ -28,6 +32,10 @@ append main
       :markdown-it
         Inspired by Adam's [Gospel Tract #1](https://abideintheword.com/evangelism) at [AbideInTheWord.com](https://abideintheword.com).
 
+      +tract-image('tract_A6_2s-00')
+      +tract-image('tract_A6_2s-01')
+
+      :markdown-it
         For printing in the UK I recommend [Mixam Leaflets & Flyers](https://mixam.co.uk/flyers) with the following options:
 
         - Orientation: portrait
@@ -44,7 +52,10 @@ append main
       :markdown-it
         Inspired by Thomas Albin Holmes' [Poland Gospel Tract](https://docs.google.com/document/d/1nw98_2VB3hayzH0XHPzGlwBWH2TvXYnWT5TD-7Ep8bc).
 
-        This tract folds into a compact 72mm x 140mm.
+      +tract-image('tract_pocket_trifold-00', '100%')
+      +tract-image('tract_pocket_trifold-01', '100%')
+
+      p This tract folds into a compact 72mm x 140mm.
 
   .cards.dark
     .card

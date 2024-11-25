@@ -4,6 +4,7 @@ Chalk  = require \chalk
 _      = require \lodash
 Rl     = require \readline
 Shell  = require \shelljs/global
+Asset  = require \./asset
 Build  = require \./build
 Consts = require \./constants
 Dir    = require \./constants .dir
@@ -14,6 +15,7 @@ Site   = require \./site
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'h ' level:0 desc:'help (show commands)' fn:show-help
+  * cmd:'a ' level:0 desc:'asset.tract'          fn:Asset.tract
   * cmd:'b ' level:0 desc:'build all'            fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'             fn:Lint.all
   * cmd:'q ' level:0 desc:'QUIT'                 fn:process.exit

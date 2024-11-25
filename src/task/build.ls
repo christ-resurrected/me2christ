@@ -19,6 +19,10 @@ tasks =
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \json.ls
     oxt: \json
+  site_asset:
+    pat: "#{Dirname.SITE}/asset/**/*"
+    cmd: "cp --target-directory $OUT $IN"
+    ixt: \png
   site_pug:
     pat: "#{Dirname.SITE}/*"
     cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
