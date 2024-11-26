@@ -3,7 +3,6 @@ global.log = console.log
 Chalk  = require \chalk
 _      = require \lodash
 Rl     = require \readline
-Shell  = require \shelljs/global
 Asset  = require \./asset
 Build  = require \./build
 Consts = require \./constants
