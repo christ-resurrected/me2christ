@@ -1,8 +1,10 @@
+_       = require \lodash
 Assert  = require \assert
 Chalk   = require \chalk
-Choki   = require \chokidar
+Glob    = require \glob .globSync
 Emitter = require \events .EventEmitter
 Fs      = require \fs
+Match   = require \minimatch
 P       = require \child_process
 Path    = require \path
 Sh      = require \shelljs
@@ -14,40 +16,50 @@ const BIN = "#{Dir.BUILD}/node_modules/.bin"
 
 tasks =
   json_ls:
-    pat: \*
+    dir: \.
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \json.ls
     oxt: \json
   site_asset:
-    pat: "#{Dirname.SITE}/asset/tract/*"
+    dir: "#{Dirname.SITE}/asset/tract"
     cmd: "cp --target-directory $OUT $IN"
     ixt: \png
   site_pug:
-    pat: "#{Dirname.SITE}/*"
+    dir: Dirname.SITE
     cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
     ixt: \pug
     oxt: \html
+  # site_pug_embed:
+  #   dir: Dirname.SITE
+  #   ixt: '{js,pug,scss}'
+  #   pat: \*/*
+  #   tid: \site_pug # task id to run
   site_pug_include:
-    pat: "#{Dirname.SITE}/include/*"
+    dir: "#{Dirname.SITE}/include"
     ixt: '{pug,scss}'
     tid: \site_pug # task id to run
   site_pug_lib:
-    pat: "#{Dirname.SITE}/lib/*"
+    dir: "#{Dirname.SITE}/lib"
     ixt: '{js,pug,scss}'
     tid: \site_pug # task id to run
+  task_lint:
+    dir: "#{Dirname.TASK}/lint"
+    cmd: "cp --target-directory $OUT $IN"
+    ixt: '{js,json,lson}'
   task_ls:
-    pat: "#{Dirname.TASK}/**/*"
+    dir: Dirname.TASK
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \ls
     oxt: \js
-  task_static:
-    pat: "#{Dirname.TASK}/**/*"
-    cmd: "cp --target-directory $OUT $IN"
-    ixt: '{json,lson}'
+  task_ls_yarn:
+    dir: "#{Dirname.TASK}/yarn"
+    cmd: "#BIN/lsc --output $OUT $IN"
+    ixt: \ls
+    oxt: \js
 
 module.exports = me = (new Emitter!) with
   all: ->
-    for tid of tasks then compile-batch tid
+    for tid of tasks then compile-batch-b tid
     me.emit \built
 
   start: ->
@@ -72,31 +84,33 @@ function compile t, ipath
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
   G.ok opath
 
-function compile-batch tid
+function compile-batch-b tid
   t = tasks[tid]
-  w = t.watcher.getWatched!
-  files = [f for path, names of w for name in names
-    when test \-f f = Path.resolve Dir.SRC, path, name]
+  files = Glob t.glob
   info = "#{files.length} #tid files"
   G.say "compiling #info..."
   for f in files then compile t, f
   G.ok "...done #info!"
 
 function get-opath t, ipath
-  rx = new RegExp("^#{Dir.SRC}/")
-  ipath.replace(rx, '').replace t.ixt, t.oxt
+  ipath.replace t.ixt, t.oxt if t.oxt
+  Path.relative Dir.SRC, ipath
 
 function start-watching tid
   Assert.equal pwd!, Dir.SRC
-  t = tasks[tid]
-  pat = t.pat + ".#{t.ixt}"
-  log "start watching #tid: #pat"
-  w = t.watcher = Choki.watch pat, {cwd:Dir.SRC, ignoreInitial:true}
-  w.on \all (act, path) ->
-    ipath = Path.join(Dir.SRC, path)
-    log Chalk.yellow(\build), act, tid, ipath
-    try
-      if t?tid then compile-batch t.tid
-      else if act in [\add \change] then opath = compile t, ipath
-    catch e then return G.err e
-    me.emit \built
+  dir = Path.resolve Dir.SRC, (t = tasks[tid]).dir
+  t.glob = Path.resolve dir, pat = "*.#{t.ixt}"
+  log "start watching #tid: #pat in #dir"
+  watch-once!
+
+  function watch-once
+    w = t.watcher = Fs.watch dir, { recursive:false }, (e, path) ->
+      return unless Match path, pat
+      w.close!
+      setTimeout process, 50ms # wait for events to settle
+
+      function process
+        if t?tid then compile-batch-b t.tid
+        else if Fs.existsSync ipath = Path.resolve dir, path then compile t, ipath
+        setTimeout watch-once, 10ms
+        me.emit \built
