@@ -6,7 +6,7 @@ Emitter = require \events .EventEmitter
 Fs      = require \fs
 _       = require \lodash
 Path    = require \path
-Shell   = require \shelljs/global
+Sh      = require \shelljs
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 G       = require \./growl
@@ -54,9 +54,9 @@ module.exports = me = (new Emitter!) with
   start: ->
     log Chalk.green 'start build'
     try
-      pushd Dir.SRC
+      Sh.pushd Dir.SRC
       for tid of tasks then start-watching tid
-    finally popd!
+    finally Sh.popd!
 
   stop: ->
     log Chalk.red 'stop build'
@@ -66,8 +66,8 @@ module.exports = me = (new Emitter!) with
 
 function compile t, ipath
   return unless t.cmd or t.run
-  Assert.equal pwd!, Dir.BUILD
-  mkdir \-p odir = Path.dirname opath = get-opath t, ipath
+  Assert.equal Sh.pwd!, Dir.BUILD
+  Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
   if t.cmd
     cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
     log Chalk.blue cmd
