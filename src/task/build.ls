@@ -82,7 +82,6 @@ function compile t, ipath
   cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   log Chalk.blue cmd
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
-  G.ok opath
 
 function compile-batch-b tid
   t = tasks[tid]
@@ -104,7 +103,7 @@ function start-watching tid
   watch-once!
 
   function watch-once
-    w = t.watcher = Fs.watch dir, { recursive:false }, (e, path) ->
+    w = t.watcher = Fs.watch dir, {recursive:false}, (e, path) ->
       return unless Match path, pat
       w.close!
       setTimeout process, 50ms # wait for events to settle
