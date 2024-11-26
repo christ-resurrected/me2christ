@@ -14,8 +14,8 @@ G       = require \./growl
 const BIN = "#{Dir.BUILD}/node_modules/.bin"
 
 tasks =
-  package_json_ls:
-    pat: \package
+  json_ls:
+    pat: \*
     cmd: "#BIN/lsc --output $OUT $IN"
     ixt: \json.ls
     oxt: \json
