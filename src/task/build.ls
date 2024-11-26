@@ -98,6 +98,5 @@ function start-watching tid
     try
       if t?tid then compile-batch t.tid
       else if act in [\add \change] then opath = compile t, ipath
-      else return
     catch e then return G.err e
     me.emit \built
