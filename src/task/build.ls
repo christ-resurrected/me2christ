@@ -57,6 +57,11 @@ tasks =
     ixt: \ls
     oxt: \js
 
+for , t of tasks then
+  t.pat = "*.#{t.ixt}"
+  t.srcdir = Path.resolve Dir.SRC, t.dir
+  t.glob = Path.resolve t.srcdir, t.pat
+
 module.exports = me = (new Emitter!) with
   all: ->
     for tid of tasks then compile-batch-b tid
@@ -97,19 +102,16 @@ function get-opath t, ipath
 
 function start-watching tid
   Assert.equal pwd!, Dir.SRC
-  dir = Path.resolve Dir.SRC, (t = tasks[tid]).dir
-  t.glob = Path.resolve dir, pat = "*.#{t.ixt}"
-  log "start watching #tid: #pat in #dir"
+  t = tasks[tid]
+  log "start watching #tid: #{t.pat} in #{t.srcdir}"
   watch-once!
-
   function watch-once
-    w = t.watcher = Fs.watch dir, {recursive:false}, (e, path) ->
-      return unless Match path, pat
+    w = t.watcher = Fs.watch t.srcdir, {recursive:false}, (e, path) ->
+      return unless Match path, t.pat
       w.close!
       setTimeout process, 50ms # wait for events to settle
-
       function process
         if t?tid then compile-batch-b t.tid
-        else if Fs.existsSync ipath = Path.resolve dir, path then compile t, ipath
+        else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
         setTimeout watch-once, 10ms
         me.emit \built
