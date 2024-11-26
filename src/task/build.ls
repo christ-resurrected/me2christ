@@ -68,16 +68,10 @@ function compile t, ipath
   return unless t.cmd or t.run
   Assert.equal Sh.pwd!, Dir.BUILD
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
-  if t.cmd
-    cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-    log Chalk.blue cmd
-    Cp.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
-    G.ok opath
-  if t.run
-    mod = "../#{t.dir}/#{t.run}"
-    log Chalk.blue 'run module:' mod
-    delete require.cache[require.resolve(mod)]; # invalidate cache
-    (require mod)(ipath, opath)
+  cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
+  log Chalk.blue cmd
+  Cp.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
+  G.ok opath
 
 function compile-batch tid
   t = tasks[tid]
