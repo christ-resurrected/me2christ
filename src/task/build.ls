@@ -1,10 +1,9 @@
 Assert  = require \assert
 Chalk   = require \chalk
 Choki   = require \chokidar
-Cp      = require \child_process
 Emitter = require \events .EventEmitter
 Fs      = require \fs
-_       = require \lodash
+P       = require \child_process
 Path    = require \path
 Sh      = require \shelljs
 Dirname = require \./constants .dirname
@@ -70,7 +69,7 @@ function compile t, ipath
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
   cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   log Chalk.blue cmd
-  Cp.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
+  P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
   G.ok opath
 
 function compile-batch tid
