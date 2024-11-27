@@ -52,7 +52,7 @@ for , t of tasks then
 
 module.exports = me = (new Emitter!) with
   all: ->
-    for tid of tasks then compile-batch-b tid
+    for tid of tasks then compile-batch tid
     me.emit \built
 
   start: ->
@@ -76,7 +76,7 @@ function compile t, ipath
   log Chalk.blue cmd
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
-function compile-batch-b tid
+function compile-batch tid
   t = tasks[tid]
   files = Glob t.glob
   info = "#{files.length} #tid files"
@@ -99,7 +99,7 @@ function start-watching tid
       w.close!
       setTimeout process, 50ms # wait for events to settle
       function process
-        if t?tid then compile-batch-b t.tid
+        if t?tid then compile-batch t.tid
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
         setTimeout watch-once, 10ms
         me.emit \built
