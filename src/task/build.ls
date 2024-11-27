@@ -32,7 +32,7 @@ tasks =
   site_pug_embed:
     dir: Dirname.SITE
     ixt: '{js,pug,scss}'
-    pat: '*/'
+    pat: '*/' # subdir 1-level deep
     tid: \site_pug # task id to run
   task_lint:
     dir: "#{Dirname.TASK}/lint"
@@ -41,11 +41,7 @@ tasks =
   task_ls:
     dir: Dirname.TASK
     cmd: "#BIN/lsc --output $OUT $IN"
-    ixt: \ls
-    oxt: \js
-  task_ls_yarn:
-    dir: "#{Dirname.TASK}/yarn"
-    cmd: "#BIN/lsc --output $OUT $IN"
+    pat: '**/'
     ixt: \ls
     oxt: \js
 
