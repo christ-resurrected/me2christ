@@ -1,6 +1,5 @@
 Chalk = require \chalk
 G     = require \growly
-Util  = require \util
 Const = require \./constants
 
 const CHALKS = error:Chalk.yellow, info:Chalk.stripColor, success:Chalk.green
@@ -8,7 +7,7 @@ enabled = (growl-at = process.env.growl-at)?
 
 function send label, item, opts = {}
   text = Chalk.stripColor if item instanceof Error then item.message else item
-  Util.log CHALKS[label] text unless opts.nolog
+  log CHALKS[label] text unless opts.nolog
   return unless enabled
   title = "#{Const.APPNAME} #label".toUpperCase!
   # for some reason a '::' causes the growl to fail !?
