@@ -9,7 +9,6 @@ Build   = require \./build
 Consts  = require \./constants
 Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
-G       = require \./growl
 Lint    = require \./lint
 LiveRl  = require \./livereload
 Site    = require \./site
