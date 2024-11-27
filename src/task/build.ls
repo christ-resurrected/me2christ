@@ -51,6 +51,7 @@ for , t of tasks then
 
 module.exports = me = (new Emitter!) with
   all: ->
+    Sh.rm \-rf Dir.build.SITE
     for tid of tasks then compile-batch tid
     me.emit \built
 
