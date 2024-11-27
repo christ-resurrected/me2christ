@@ -71,8 +71,7 @@ function compile t, ipath
   return unless t.cmd or t.run
   Assert.equal Sh.pwd!, Dir.BUILD
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
-  cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-  log Chalk.blue cmd
+  log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
 function compile-batch tid
