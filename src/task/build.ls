@@ -11,11 +11,9 @@ Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 G       = require \./growl
 
-const BIN = "#{Dir.BUILD}/node_modules/.bin"
-
 tasks =
   json_ls:
-    cmd: "#BIN/lsc --output $OUT $IN"
+    cmd: "lsc --output $OUT $IN"
     dir: \.
     ixt: \json.ls
     oxt: \json
@@ -24,7 +22,7 @@ tasks =
     dir: "#{Dirname.SITE}/asset/tract"
     ixt: \png
   site_pug:
-    cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
+    cmd: "pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
     dir: Dirname.SITE
     ixt: \pug
     oxt: \html
@@ -38,7 +36,7 @@ tasks =
     dir: "#{Dirname.TASK}/lint"
     ixt: '{js,json,lson}'
   task_ls:
-    cmd: "#BIN/lsc --output $OUT $IN"
+    cmd: "lsc --output $OUT $IN"
     dir: Dirname.TASK
     ixt: \ls
     oxt: \js
@@ -73,7 +71,7 @@ function compile t, ipath
   Assert.equal Sh.pwd!, Dir.BUILD
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-  P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
+  P.execSync "yarn #cmd", {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
 function compile-batch tid
   files = Glob (t = tasks[tid]).glob
