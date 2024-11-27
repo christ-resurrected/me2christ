@@ -17,16 +17,16 @@ const MOD = "#{Dir.BUILD}/node_modules"
 
 tasks =
   # site_pug:
-  #   bin : \pug-lint
+  #   cmd : \pug-lint
   #   cfg : \.pug-lintrc.js
   #   ixt : \pug
   site_scss:
-    bin : \stylelint
+    cmd : \stylelint
     cfg : \.stylelintrc.json
     ixt : \scss
     opts: "--config-basedir #MOD --custom-syntax #MOD/postcss-scss"
   task_ls:
-    bin : \ls-lint
+    cmd : \ls-lint
     cfg : \ls-lint.lson
     ixt : \ls
 
@@ -52,7 +52,7 @@ module.exports = me = (new Emitter!) with
 ## helpers
 
 function lint t, ipath
-  log Chalk.gray cmd = "#MOD/.bin/#{t.bin} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
+  cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
   try P.execSync cmd, stdio:\inherit catch err
 
 function lint-batch t
