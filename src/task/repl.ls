@@ -1,7 +1,7 @@
 global.log = console.log
 
-Chalk  = require \chalk
 _      = require \lodash
+Chalk  = require \chalk
 Rl     = require \readline
 Asset  = require \./asset
 Build  = require \./build
