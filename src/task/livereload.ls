@@ -6,7 +6,7 @@ sockets = []
 
 module.exports =
   notify: ->
-    log "reloading #{sockets.length} clients"
+    # log "reloading #{sockets.length} clients"
     for ws in sockets then ws.send \reload
     sockets := [] # should reconnect on reload
 
