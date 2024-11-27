@@ -1,4 +1,3 @@
-_       = require \lodash
 Assert  = require \assert
 Chalk   = require \chalk
 Emitter = require \events .EventEmitter

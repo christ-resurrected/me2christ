@@ -1,4 +1,3 @@
-_       = require \lodash
 Assert  = require \assert
 Chalk   = require \chalk
 Glob    = require \glob .globSync
@@ -77,8 +76,7 @@ function compile t, ipath
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
 function compile-batch tid
-  t = tasks[tid]
-  files = Glob t.glob
+  files = Glob (t = tasks[tid]).glob
   info = "#{files.length} #tid files"
   G.say "compiling #info..."
   for f in files then compile t, f
