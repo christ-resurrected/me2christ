@@ -1,6 +1,6 @@
 Assert = require \assert
 Path   = require \path
-Shell  = require \shelljs/global
+Sh     = require \shelljs
 
 const DIRNAME =
   BUILD: \build
@@ -9,12 +9,13 @@ const DIRNAME =
   TASK : \task
   TEST : \test
 
-root = process.env.PWD
+Assert DIRNAME.BUILD, Path.basename cwd = process.cwd!
+root = Path.resolve cwd, \..
 
 dir =
-  BUILD: Path.resolve root, DIRNAME.BUILD
+  BUILD: cwd
   build:
-    SITE: Path.resolve root, DIRNAME.BUILD, DIRNAME.SITE
+    SITE: Path.resolve cwd, DIRNAME.SITE
   ROOT : root
   SRC  : Path.resolve root, DIRNAME.SRC
 
@@ -24,5 +25,5 @@ module.exports =
   dir    : dir
   PORT   : 7777
 
-Assert test \-e dir.BUILD
-Assert test \-e dir.SRC
+Assert Sh.test \-e dir.BUILD
+Assert Sh.test \-e dir.SRC

@@ -41,6 +41,7 @@ tasks =
     ixt: \ls
     oxt: \js
     pat: '**/'
+    rsn: true # restart node
 
 for , t of tasks then
   t.pat = (t.pat || '') + "*.#{t.ixt}"
@@ -51,7 +52,7 @@ module.exports = me = (new Emitter!) with
   all: ->
     Sh.rm \-rf Dir.build.SITE
     for tid, t of tasks when t.cmd then compile-batch tid
-    me.emit \built
+    me.emit \restart
   start: ->
     log Chalk.green 'start build'
     for tid of tasks then start-watching tid
@@ -91,4 +92,4 @@ function start-watching tid
         if t?tid then compile-batch t.tid
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
         setTimeout watch-once, 10ms
-        me.emit \built
+        me.emit if t.rsn then \restart else \built

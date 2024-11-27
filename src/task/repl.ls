@@ -1,15 +1,17 @@
 global.log = console.log
 
-_      = require \lodash
-Chalk  = require \chalk
-Rl     = require \readline
-Asset  = require \./asset
-Build  = require \./build
-Consts = require \./constants
-Dir    = require \./constants .dir
-G      = require \./growl
-Lint   = require \./lint
-Site   = require \./site
+_       = require \lodash
+Chalk   = require \chalk
+Sh      = require \shelljs
+Rl      = require \readline
+Asset   = require \./asset
+Build   = require \./build
+Consts  = require \./constants
+Dir     = require \./constants .dir
+Dirname = require \./constants .dirname
+G       = require \./growl
+Lint    = require \./lint
+Site    = require \./site
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
@@ -19,10 +21,10 @@ const COMMANDS =
   * cmd:'l ' level:0 desc:'lint all'             fn:Lint.all
   * cmd:'q ' level:0 desc:'QUIT'                 fn:process.exit
 
-config.fatal  = true # shelljs doesn't raise exceptions, so set this process to die on error
+Sh.config.fatal  = true # shelljs doesn't raise exceptions, so set this process to die on error
 #config.silent = true # otherwise too much noise
 
-cd Dir.BUILD # for safety, set working directory to build
+Sh.cd Dir.BUILD # for safety, set working directory to build
 
 for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
@@ -37,6 +39,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.prompt!
 
 Build.on \built -> rl.prompt!
+Build.on \restart -> Sh.touch \.restart-node
 Build.start!
 
 # Lint.on \done -> rl.prompt!
