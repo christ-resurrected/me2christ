@@ -1,8 +1,8 @@
 body {
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
+  hyphens: auto; // fix large gaps between words
   line-height: 1.4;
   margin: 0;
-  hyphens: auto; // fix large gaps between words
   text-align: justify;
   text-justify: inter-word;
 }
