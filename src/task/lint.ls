@@ -6,7 +6,7 @@ Glob    = require \glob .globSync
 Match   = require \minimatch
 P       = require \child_process
 Path    = require \path
-Shell   = require \shelljs/global
+Sh      = require \shelljs
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 G       = require \./growl
@@ -40,10 +40,10 @@ module.exports = me = (new Emitter!) with
   start: ->
     log Chalk.green 'start lint'
     try
-      pushd Dir.SRC
+      Sh.pushd Dir.SRC
       for tid of tasks then start-watching tid
     finally
-      popd!
+      Sh.popd!
   stop: ->
     log Chalk.red 'stop lint'
     for , t of tasks then t.watcher?close!
