@@ -18,7 +18,6 @@ engines:
 devDependencies:
   chalk                       : \~0.4.0
   glob                        : \~11.0.0
-  growly                      : \~1.3.0
   'jstransformer-markdown-it' : \~3.0.0
   'jstransformer-scss'        : \~2.0.0
   livescript                  : \~1.6.0

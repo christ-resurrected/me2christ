@@ -7,7 +7,6 @@ P       = require \child_process
 Path    = require \path
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
-G       = require \./growl
 
 const CFG = "#{Dir.SRC}/task/lint"
 const MOD = "#{Dir.BUILD}/node_modules"
@@ -51,9 +50,9 @@ function lint t, ipath
 function lint-batch t
   files = Glob t.glob
   info = "#{files.length} #{t.ixt} files"
-  G.say "linting #info..."
+  log Chalk.stripColor "linting #info..."
   for f in files then lint t, f
-  G.ok "...done #info!"
+  log Chalk.green "...done #info!"
 
 function start-watching tid
   t = tasks[tid]

@@ -9,7 +9,6 @@ Path    = require \path
 Sh      = require \shelljs
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
-G       = require \./growl
 
 tasks =
   json_ls:
@@ -70,9 +69,9 @@ function compile t, ipath
 function compile-batch tid
   files = Glob (t = tasks[tid]).glob
   info = "#{files.length} #tid files"
-  G.say "compiling #info..."
+  log Chalk.stripColor "compiling #info..."
   for f in files then compile t, f
-  G.ok "...done #info!"
+  log Chalk.green "...done #info!"
 
 function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
