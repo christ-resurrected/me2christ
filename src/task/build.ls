@@ -63,7 +63,6 @@ module.exports = me = (new Emitter!) with
 ## helpers
 
 function compile t, ipath
-  Assert.equal Sh.pwd!, Dir.BUILD
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
@@ -77,7 +76,7 @@ function compile-batch tid
 
 function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
-  Path.relative Dir.SRC, ipath
+  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
 
 function start-watching tid
   t = tasks[tid]
