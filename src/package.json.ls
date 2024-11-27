@@ -11,7 +11,7 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'cd .. && node build/task/yarn/build.js'
-  start: 'cd .. && node --watch-path=build/task build/task/repl.js'
+  start: 'cd .. && node --watch-path=build/task --watch-preserve-output build/task/repl.js'
 engines:
   node: '22'
   yarn: '1.22'
