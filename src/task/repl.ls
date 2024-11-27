@@ -11,6 +11,7 @@ Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
 G       = require \./growl
 Lint    = require \./lint
+LiveRl  = require \./livereload
 Site    = require \./site
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
@@ -38,7 +39,9 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.resume!
     rl.prompt!
 
-Build.on \built -> rl.prompt!
+Build.on \built ->
+  LiveRl.notify!
+  rl.prompt!
 Build.on \restart -> Sh.touch \.restart-node
 Build.start!
 
@@ -46,6 +49,7 @@ Build.start!
 # Lint.start!
 
 Site.start!
+LiveRl.start!
 
 _.delay show-help, 500ms
 _.delay (-> rl.prompt!), 750ms
