@@ -1,4 +1,3 @@
-Assert  = require \assert
 Chalk   = require \chalk
 Emitter = require \events .EventEmitter
 Fs      = require \fs
@@ -6,7 +5,6 @@ Glob    = require \glob .globSync
 Match   = require \minimatch
 P       = require \child_process
 Path    = require \path
-Sh      = require \shelljs
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 G       = require \./growl
@@ -39,11 +37,7 @@ module.exports = me = (new Emitter!) with
     me.emit \done
   start: ->
     log Chalk.green 'start lint'
-    try
-      Sh.pushd Dir.SRC
-      for tid of tasks then start-watching tid
-    finally
-      Sh.popd!
+    for tid of tasks then start-watching tid
   stop: ->
     log Chalk.red 'stop lint'
     for , t of tasks then t.watcher?close!
@@ -62,7 +56,6 @@ function lint-batch t
   G.ok "...done #info!"
 
 function start-watching tid
-  Assert.equal pwd!, Dir.SRC
   t = tasks[tid]
   log "start watching #tid: #{t.pat}"
   watch-once!
