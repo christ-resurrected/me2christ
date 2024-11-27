@@ -1,10 +1,11 @@
+_       = require \lodash
 Assert  = require \assert
 Chalk   = require \chalk
-Choki   = require \chokidar
-Cp      = require \child_process
 Emitter = require \events .EventEmitter
 Fs      = require \fs
-_       = require \lodash
+Glob    = require \glob .globSync
+Match   = require \minimatch
+P       = require \child_process
 Path    = require \path
 Shell   = require \shelljs/global
 Dirname = require \./constants .dirname
@@ -15,31 +16,28 @@ const CFG = "#{Dir.SRC}/task/lint"
 const MOD = "#{Dir.BUILD}/node_modules"
 
 tasks =
-  livescript:
-    bin : \ls-lint
-    cfg : \ls-lint.lson
-    glob: true
-    ixt : \ls
-    opts: ''
-  pug:
-    bin : \pug-lint
-    cfg : \.pug-lintrc.js
-    glob: false
-    ixt : \pug
-    opts: ''
-  scss:
+  # site_pug:
+  #   bin : \pug-lint
+  #   cfg : \.pug-lintrc.js
+  #   ixt : \pug
+  site_scss:
     bin : \stylelint
     cfg : \.stylelintrc.json
-    glob: true
     ixt : \scss
     opts: "--config-basedir #MOD --custom-syntax #MOD/postcss-scss"
+  task_ls:
+    bin : \ls-lint
+    cfg : \ls-lint.lson
+    ixt : \ls
+
+for , t of tasks then
+  t.pat = "**/*.#{t.ixt}"
+  t.glob = Path.resolve Dir.SRC, t.pat
 
 module.exports = me = (new Emitter!) with
   all: ->
-    for tid of tasks then
-      t = tasks[tid]
-      if t.glob then lint-glob t else lint-batch t
-
+    for , t of tasks then lint-batch t
+    me.emit \done
   start: ->
     log Chalk.green 'start lint'
     try
@@ -47,54 +45,34 @@ module.exports = me = (new Emitter!) with
       for tid of tasks then start-watching tid
     finally
       popd!
-
   stop: ->
     log Chalk.red 'stop lint'
     for , t of tasks then t.watcher?close!
 
 ## helpers
 
-function get-cmd t, ipath
-  "#MOD/.bin/#{t.bin} --config #CFG/#{t.cfg} #{t.opts} '#{ipath}'"  # must quote for glob
-
 function lint t, ipath
-  cmd = get-cmd t, ipath
-  log Chalk.gray cmd
-  try Cp.execSync cmd, stdio:\inherit catch err
+  log Chalk.gray cmd = "#MOD/.bin/#{t.bin} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
+  try P.execSync cmd, stdio:\inherit catch err
 
 function lint-batch t
-  w = t.watcher.getWatched!
-  files = [f for path, names of w for name in names
-    when test \-f f = Path.resolve Dir.SRC, path, name]
+  files = Glob t.glob
   info = "#{files.length} #{t.ixt} files"
   G.say "linting #info..."
   for f in files then lint t, f
   G.ok "...done #info!"
 
-function lint-glob t
-  cmd = get-cmd t, "#{Dir.SRC}/**/*.#{t.ixt}"
-  log Chalk.gray cmd
-  try Cp.execSync cmd, stdio:\inherit catch err
-
 function start-watching tid
-  log "start watching #tid"
   Assert.equal pwd!, Dir.SRC
-  pat = (t = tasks[tid]).pat or "*.#{t.ixt}"
-  dirs = "#{Dirname.SITE},#{Dirname.TASK}"
-  w = t.watcher = Choki.watch ["{#dirs}/**/#pat" pat],
-    cwd:Dir.SRC
-    ignoreInitial:true
-    ignored:t.ignore
-    persistent: false
-  # workaround chokidar issue #1084 by using 'raw' rather than 'add'
-  w.on \raw _.debounce process, 50ms, leading:false trailing:true
-
-  function process act, fname, details
-    return unless _.endsWith fname, ".#{t.ixt}"
-    ipath = Path.resolve(details.watchedPath, fname)
-    # log Chalk.yellow(\lint), act, tid, ipath
-    switch act
-    | \add \change
-      try lint t, ipath
-      catch e then return G.err ipath
-      G.ok
+  t = tasks[tid]
+  log "start watching #tid: #{t.pat}"
+  watch-once!
+  function watch-once
+    w = t.watcher = Fs.watch Dir.SRC, {recursive:true}, (e, path) ->
+      return unless Match path, t.pat
+      w.close!
+      setTimeout process, 50ms # wait for events to settle
+      function process
+        if Fs.existsSync ipath = Path.resolve Dir.SRC, path then lint t, ipath
+        setTimeout watch-once, 10ms
+        me.emit \done

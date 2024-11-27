@@ -36,11 +36,12 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.resume!
     rl.prompt!
 
-Build.on \built ->
-  rl.prompt!
-
-# Lint.start!
+Build.on \built -> rl.prompt!
 Build.start!
+
+Lint.on \done -> rl.prompt!
+Lint.start!
+
 Site.start!
 
 _.delay show-help, 500ms
