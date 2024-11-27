@@ -16,19 +16,18 @@ engines:
   node: '22'
   yarn: '1.22'
 devDependencies:
-  # task
   chalk                       : \~0.4.0
   glob                        : \~11.0.0
   growly                      : \~1.3.0
   'jstransformer-markdown-it' : \~3.0.0
   'jstransformer-scss'        : \~2.0.0
-  livereload                  : \~0.9.3
   livescript                  : \~1.6.0
   lodash                      : \~4.17.21
   'node-static'               : \~0.7.11
   '@anduh/pug-cli'            : \~1.0.0-alpha8
   shelljs                     : \~0.8.5
-  # task lint
+  ws                          : \~8.18.0
+  # lint
   'ls-lint'                   : \~0.1.2
   'postcss-scss'              : \~4.0.9
   'pug-lint'                  : \~2.6.0

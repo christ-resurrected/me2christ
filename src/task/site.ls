@@ -1,6 +1,5 @@
 C    = require \./constants
 Http = require \http
-L    = require \livereload
 Ns   = require \node-static
 
 module.exports =
@@ -10,4 +9,3 @@ module.exports =
       l = req.addListener \end -> ns.serve req, resp
       l.resume!
     s.listen C.PORT, -> log "Http server listening on port #{C.PORT}"
-    L.createServer!watch C.dir.build.SITE
