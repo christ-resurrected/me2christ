@@ -29,18 +29,10 @@ tasks =
     cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
     ixt: \pug
     oxt: \html
-  # site_pug_embed:
-  #   dir: Dirname.SITE
-  #   ixt: '{js,pug,scss}'
-  #   pat: \*/*
-  #   tid: \site_pug # task id to run
-  site_pug_include:
-    dir: "#{Dirname.SITE}/include"
-    ixt: '{pug,scss}'
-    tid: \site_pug # task id to run
-  site_pug_lib:
-    dir: "#{Dirname.SITE}/lib"
+  site_pug_embed:
+    dir: Dirname.SITE
     ixt: '{js,pug,scss}'
+    pat: '*/'
     tid: \site_pug # task id to run
   task_lint:
     dir: "#{Dirname.TASK}/lint"
@@ -58,7 +50,7 @@ tasks =
     oxt: \js
 
 for , t of tasks then
-  t.pat = "*.#{t.ixt}"
+  t.pat = (t.pat || '') + "*.#{t.ixt}"
   t.srcdir = Path.resolve Dir.SRC, t.dir
   t.glob = Path.resolve t.srcdir, t.pat
 
@@ -106,7 +98,7 @@ function start-watching tid
   log "start watching #tid: #{t.pat} in #{t.srcdir}"
   watch-once!
   function watch-once
-    w = t.watcher = Fs.watch t.srcdir, {recursive:false}, (e, path) ->
+    w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (e, path) ->
       return unless Match path, t.pat
       w.close!
       setTimeout process, 50ms # wait for events to settle

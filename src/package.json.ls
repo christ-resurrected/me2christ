@@ -13,7 +13,7 @@ scripts:
   build: 'cd .. && node build/task/yarn/build.js'
   start: 'cd .. && node --watch-path=build/task build/task/repl.js'
 engines:
-  node: '20'
+  node: '22'
   yarn: '1.22'
 devDependencies:
   # task
