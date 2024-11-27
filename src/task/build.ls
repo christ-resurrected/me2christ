@@ -26,7 +26,7 @@ tasks =
     dir: Dirname.SITE
     ixt: \pug
     oxt: \html
-  site_pug_embed:
+  site_pug_includes:
     dir: Dirname.SITE
     ixt: '{js,pug,scss}'
     pat: '*/' # subdir 1-level deep
