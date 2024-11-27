@@ -16,17 +16,17 @@ const BIN = "#{Dir.BUILD}/node_modules/.bin"
 
 tasks =
   json_ls:
-    dir: \.
     cmd: "#BIN/lsc --output $OUT $IN"
+    dir: \.
     ixt: \json.ls
     oxt: \json
   site_asset:
-    dir: "#{Dirname.SITE}/asset/tract"
     cmd: "cp --target-directory $OUT $IN"
+    dir: "#{Dirname.SITE}/asset/tract"
     ixt: \png
   site_pug:
-    dir: Dirname.SITE
     cmd: "#BIN/pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
+    dir: Dirname.SITE
     ixt: \pug
     oxt: \html
   site_pug_embed:
@@ -35,15 +35,15 @@ tasks =
     pat: '*/' # subdir 1-level deep
     tid: \site_pug # task id to run
   task_lint:
-    dir: "#{Dirname.TASK}/lint"
     cmd: "cp --target-directory $OUT $IN"
+    dir: "#{Dirname.TASK}/lint"
     ixt: '{js,json,lson}'
   task_ls:
-    dir: Dirname.TASK
     cmd: "#BIN/lsc --output $OUT $IN"
-    pat: '**/'
+    dir: Dirname.TASK
     ixt: \ls
     oxt: \js
+    pat: '**/'
 
 for , t of tasks then
   t.pat = (t.pat || '') + "*.#{t.ixt}"
