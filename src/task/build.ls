@@ -29,7 +29,7 @@ tasks =
     dir: Dirname.SITE
     ixt: '{js,pug,scss}'
     pat: '*/' # subdir 1-level deep
-    tid: \site_pug # task id to run
+    pid: \site_pug # parent task id to run
   task_lint:
     cmd: "cp --target-directory $OUT $IN"
     dir: "#{Dirname.TASK}/lint"
@@ -42,7 +42,8 @@ tasks =
     pat: '**/'
     rsn: true # restart node
 
-for , t of tasks then
+for tid, t of tasks then
+  t.tid = tid
   t.pat = (t.pat || '') + "*.#{t.ixt}"
   t.srcdir = Path.resolve Dir.SRC, t.dir
   t.glob = Path.resolve t.srcdir, t.pat
@@ -50,11 +51,11 @@ for , t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->
     Sh.rm \-rf Dir.build.SITE
-    for tid, t of tasks when t.cmd then compile-batch t, tid
+    for , t of tasks when t.cmd then compile-batch t
     me.emit \restart
   start: ->
     log Chalk.green 'start build'
-    for tid, t of tasks then start-watching t, tid
+    for , t of tasks then start-watching t
   stop: ->
     log Chalk.red 'stop build'
     for , t of tasks then t.watcher?close!
@@ -66,9 +67,9 @@ function compile t, ipath
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
-function compile-batch t, tid
+function compile-batch t
   files = Glob t.glob
-  info = "#{files.length} #tid files"
+  info = "#{files.length} #{t.tid} files"
   log Chalk.stripColor "compiling #info..."
   for f in files then compile t, f
   log Chalk.green "...done #info!"
@@ -77,16 +78,16 @@ function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
   Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
 
-function start-watching t, tid
-  log "start watching #tid: #{t.pat} in #{t.srcdir}"
+function start-watching t
+  log "start watching #{t.tid}: #{t.srcdir}/#{t.pat}"
   watch-once!
   function watch-once
     w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (e, path) ->
       return unless Match path, t.pat
       w.close!
-      setTimeout process, 50ms # wait for background file updates to complete
+      setTimeout process, 50ms # wait for background file updates to settle
       function process
-        if t.tid then compile-batch t, t.tid
+        if t.pid then compile-batch tasks[t.pid]
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
         me.emit if t.rsn then \restart else \built
         setTimeout watch-once, 10ms
