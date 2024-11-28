@@ -15,7 +15,7 @@ scripts:
 engines:
   node: '22'
   yarn: '1.22'
-devDependencies:
+dependencies:
   chalk                       : \~0.4.0
   glob                        : \~11.0.0
   'jstransformer-markdown-it' : \~3.0.0
@@ -26,7 +26,7 @@ devDependencies:
   '@anduh/pug-cli'            : \~1.0.0-alpha8
   shelljs                     : \~0.8.5
   ws                          : \~8.18.0
-  # lint
+devDependencies:
   'ls-lint'                   : \~0.1.2
   'postcss-scss'              : \~4.0.9
   'pug-lint'                  : \~2.6.0
