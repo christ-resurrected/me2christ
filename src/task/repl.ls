@@ -1,6 +1,5 @@
 global.log = console.log
 
-_       = require \lodash
 Chalk   = require \chalk
 Sh      = require \shelljs
 Rl      = require \readline
@@ -26,6 +25,7 @@ Sh.config.fatal  = true # shelljs doesn't raise exceptions, so set this process 
 
 Sh.cd Dir.BUILD # for safety, set working directory to build
 
+function show-help then for c in COMMANDS then log c.display
 for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
@@ -46,13 +46,7 @@ Build.start!
 Lint.on \done -> rl.prompt!
 # Lint.start!
 
-Site.start!
+<- Site.start!
 LiveRl.start!
-
-_.delay show-help, 500ms
-_.delay (-> rl.prompt!), 750ms
-
-## helpers
-
-function show-help
-  for c in COMMANDS then log c.display
+show-help!
+rl.prompt!
