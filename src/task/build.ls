@@ -72,8 +72,8 @@ function run-task t, ipath then new Promise (resolve, reject) ->
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
 
 async function run-tasks tasks
-  await Promise.all promises = [for , t of tasks when t.cmd then for f in Glob(t.glob) then run-task t, f].flat!.flat!
-  log Chalk.green "...done #{promises.length} files!"
+  await Promise.all p = [for , t of tasks when t.cmd then for f in Glob(t.glob) then run-task t, f].flat!flat!
+  log Chalk.green "...done #{p.length} files!"
 
 function start-watching t
   log "start watching #{t.tid}: #{t.srcdir}/#{t.pat}"

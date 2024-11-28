@@ -33,8 +33,8 @@ for , t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->>
     try
-      await Promise.all promises = [for , t of tasks then for f in Glob(t.glob) then lint t, f].flat!.flat!
-      log Chalk.green "...done #{promises.length} files!"
+      await Promise.all p = [for , t of tasks then for f in Glob(t.glob) then lint t, f].flat!flat!
+      log Chalk.green "...done #{p.length} files!"
       me.emit \done
     catch err then log err
   start: ->
