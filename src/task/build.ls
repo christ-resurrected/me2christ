@@ -49,9 +49,9 @@ for tid, t of tasks then
   t.glob = Path.resolve t.srcdir, t.pat
 
 module.exports = me = (new Emitter!) with
-  all: ->
+  all: ->>
     Sh.rm \-rf Dir.build.SITE
-    for , t of tasks when t.cmd then compile-batch t
+    await run-tasks tasks
     me.emit \restart
   start: ->
     log Chalk.green 'start build'
@@ -62,22 +62,20 @@ module.exports = me = (new Emitter!) with
 
 ## helpers
 
-function compile t, ipath
-  Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
-  log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-  # P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
-  try P.execSync cmd catch err
-
-function compile-batch t
-  files = Glob t.glob
-  info = "#{files.length} #{t.tid} files"
-  log Chalk.stripColor "compiling #info..."
-  for f in files then compile t, f
-  log Chalk.green "...done #info!"
-
 function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
   Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
+
+function run-task t, ipath then new Promise (resolve, reject) ->
+  Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
+  log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
+  P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
+
+async function run-tasks tasks
+  promises = []
+  for tid, t of tasks when t.cmd then promises ++= (files = Glob t.glob).map (f) -> run-task t, f
+  await Promise.all promises
+  log Chalk.green "...done #{promises.length} files!"
 
 function start-watching t
   log "start watching #{t.tid}: #{t.srcdir}/#{t.pat}"
@@ -87,8 +85,8 @@ function start-watching t
       return unless Match path, t.pat
       w.close!
       setTimeout process, 50ms # wait for background file updates to settle
-      function process
-        if t.pid then compile-batch tasks[t.pid]
-        else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
+      async function process
+        if t.pid then await run-tasks [tasks[t.pid]]
+        else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
         me.emit if t.rsn then \restart else \built
         setTimeout watch-once, 10ms
