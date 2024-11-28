@@ -9,18 +9,8 @@ Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 
 const CFG = "#{Dir.SRC}/task/lint"
-const MOD = "#{Dir.BUILD}/node_modules"
 
 tasks =
-  # site_pug:
-  #   cmd : \pug-lint
-  #   cfg : \.pug-lintrc.js
-  #   ixt : \pug
-  site_scss:
-    cmd : \stylelint
-    cfg : \.stylelintrc.json
-    ixt : \scss
-    opts: "--config-basedir #MOD --custom-syntax #MOD/postcss-scss"
   task_ls:
     cmd : \ls-lint
     cfg : \ls-lint.lson
