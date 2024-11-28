@@ -81,7 +81,7 @@ function start-watching t
   function watch-once then w = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
     w.close! # shutdown flood of events
-    await new Promise (resolve) -> setTimeout resolve, 20ms # wait for background file updates to settle
+    await new Promise -> setTimeout it, 20ms # wait for background file updates to settle
     try
       if t.pid then await run-tasks [tasks[t.pid]]
       else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath

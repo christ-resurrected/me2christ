@@ -54,12 +54,10 @@ function start-watching tid
   t = tasks[tid]
   log "start watching #tid: #{t.pat}"
   watch-once!
-  function watch-once
-    w = t.watcher = Fs.watch Dir.SRC, {recursive:true}, (e, path) ->
-      return unless Match path, t.pat
-      w.close!
-      setTimeout process, 50ms # wait for events to settle
-      async function process
-        if Fs.existsSync ipath = Path.resolve Dir.SRC, path then await lint t, ipath
-        setTimeout watch-once, 10ms
-        me.emit \done
+  function watch-once then w = t.watcher = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
+    return unless Match path, t.pat
+    w.close! # shutdown flood of events
+    await new Promise -> setTimeout it, 20ms # allow background file updates to settle
+    if Fs.existsSync ipath = Path.resolve Dir.SRC, path then await lint t, ipath
+    me.emit \done
+    watch-once!
