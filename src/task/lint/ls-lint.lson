@@ -17,7 +17,7 @@ indent-pipes:
 #
 max-line-length:
   level: \warning
-  value: 99
+  value: 120
 
 #
 max-file-lines:
