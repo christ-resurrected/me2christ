@@ -52,7 +52,7 @@ module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.build.SITE
     try await run-tasks tasks; me.emit \restart
-    catch err then log \x; me.emit \error
+    catch err then log err; me.emit \error
   start: ->
     log Chalk.green 'start build'
     for , t of tasks then start-watching t
@@ -72,7 +72,7 @@ function run-task t, ipath then new Promise (resolve, reject) ->
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
 
 async function run-tasks tasks
-  await Promise.all p = [for , t of tasks when t.cmd then for f in Glob(t.glob) then run-task t, f].flat!flat!
+  await Promise.all p = [[run-task t, f for f in Glob(t.glob)] for , t of tasks when t.cmd].flat!flat!
   log Chalk.green "...done #{p.length} files!"
 
 function start-watching t
