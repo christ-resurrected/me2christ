@@ -27,7 +27,7 @@ tasks =
     oxt: \html
   site_pug_includes:
     dir: Dirname.SITE
-    ixt: '{js,pug,scss}'
+    ixt: '{css,js,pug,scss}'
     pat: '*/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
   task_lint:
