@@ -50,11 +50,11 @@ for , t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->
     Sh.rm \-rf Dir.build.SITE
-    for tid, t of tasks when t.cmd then compile-batch tid
+    for tid, t of tasks when t.cmd then compile-batch t, tid
     me.emit \restart
   start: ->
     log Chalk.green 'start build'
-    for tid of tasks then start-watching tid
+    for tid, t of tasks then start-watching t, tid
   stop: ->
     log Chalk.red 'stop build'
     for , t of tasks then t.watcher?close!
@@ -66,8 +66,8 @@ function compile t, ipath
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
 
-function compile-batch tid
-  files = Glob (t = tasks[tid]).glob
+function compile-batch t, tid
+  files = Glob t.glob
   info = "#{files.length} #tid files"
   log Chalk.stripColor "compiling #info..."
   for f in files then compile t, f
@@ -77,8 +77,7 @@ function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
   Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
 
-function start-watching tid
-  t = tasks[tid]
+function start-watching t, tid
   log "start watching #tid: #{t.pat} in #{t.srcdir}"
   watch-once!
   function watch-once
@@ -87,7 +86,7 @@ function start-watching tid
       w.close!
       setTimeout process, 50ms # wait for background file updates to complete
       function process
-        if t.tid then compile-batch t.tid
+        if t.tid then compile-batch t, t.tid
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
         me.emit if t.rsn then \restart else \built
         setTimeout watch-once, 10ms
