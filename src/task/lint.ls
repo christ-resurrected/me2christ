@@ -40,9 +40,6 @@ module.exports = me = (new Emitter!) with
   start: ->
     log Chalk.green 'start lint'
     for tid of tasks then start-watching tid
-  stop: ->
-    log Chalk.red 'stop lint'
-    for , t of tasks then t.watcher?close!
 
 ## helpers
 
