@@ -33,7 +33,7 @@ tasks =
   task_lint:
     cmd: "cp --target-directory $OUT $IN"
     dir: "#{Dirname.TASK}/lint"
-    ixt: '{js,json,lson}'
+    ixt: '{lson}'
   task_ls:
     cmd: "yarn lsc --output $OUT $IN"
     dir: Dirname.TASK
