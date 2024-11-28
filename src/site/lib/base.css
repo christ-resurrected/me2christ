@@ -1,6 +1,7 @@
 body {
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
-  hyphens: auto; // fix large gaps between words
+  /* fix large gaps between words */
+  hyphens: auto;
   line-height: 1.4;
   margin: 0;
   text-align: justify;
@@ -27,17 +28,15 @@ h3 {
   text-align: center;
 }
 
-$text-off-white: #aaa;
-
 header,
 footer {
   background: #333;
-  color: $text-off-white;
+  color: #aaa;
   padding: 1rem;
   text-align: center;
 
   a {
-    color: $text-off-white;
+    color: #aaa;
 
     &:hover {
       color: cyan;
