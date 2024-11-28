@@ -73,7 +73,7 @@ function run-task t, ipath then new Promise (resolve, reject) ->
 
 async function run-tasks tasks
   promises = []
-  for tid, t of tasks when t.cmd then promises ++= (files = Glob t.glob).map (f) -> run-task t, f
+  for , t of tasks when t.cmd then promises ++= (Glob t.glob).map (f) -> run-task t, f
   await Promise.all promises
   log Chalk.green "...done #{promises.length} files!"
 
