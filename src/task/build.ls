@@ -52,14 +52,7 @@ module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.build.SITE
     try await run-tasks tasks; me.emit \restart catch err then log err; me.emit \error
-  start: ->
-    log Chalk.green 'start build'
-    for , t of tasks then start-watching t
-  stop: ->
-    log Chalk.red 'stop build'
-    for , t of tasks then t.watcher?close!
-
-## helpers
+  start: -> for , t of tasks then start-watching t
 
 function get-opath t, ipath
   ipath.replace t.ixt, t.oxt if t.oxt
