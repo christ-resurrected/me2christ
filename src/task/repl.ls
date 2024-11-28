@@ -36,7 +36,8 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.resume!
     rl.prompt!
 
-Build.on \built -> LiveRl.notify!; rl.prompt!
+Build.on \built -> rl.prompt!; LiveRl.notify!
+Build.on \error -> rl.prompt!
 Build.on \restart -> Sh.touch \.restart-node
 Build.start!
 

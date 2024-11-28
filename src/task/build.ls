@@ -51,8 +51,10 @@ for tid, t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.build.SITE
-    await run-tasks tasks
-    me.emit \restart
+    try
+      await run-tasks tasks
+      me.emit \restart
+    catch err then log \x; me.emit \error
   start: ->
     log Chalk.green 'start build'
     for , t of tasks then start-watching t
@@ -86,7 +88,9 @@ function start-watching t
       w.close!
       setTimeout process, 50ms # wait for background file updates to settle
       async function process
-        if t.pid then await run-tasks [tasks[t.pid]]
-        else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
-        me.emit if t.rsn then \restart else \built
+        try
+          if t.pid then await run-tasks [tasks[t.pid]]
+          else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
+          me.emit if t.rsn then \restart else \built
+        catch err then me.emit \error
         setTimeout watch-once, 10ms
