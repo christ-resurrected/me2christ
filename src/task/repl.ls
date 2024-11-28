@@ -43,7 +43,7 @@ Build.on \built ->
 Build.on \restart -> Sh.touch \.restart-node
 Build.start!
 
-# Lint.on \done -> rl.prompt!
+Lint.on \done -> rl.prompt!
 # Lint.start!
 
 Site.start!

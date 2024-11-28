@@ -65,7 +65,8 @@ module.exports = me = (new Emitter!) with
 function compile t, ipath
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-  P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
+  # P.execSync cmd, {stdio: \pipe} # hide stdout/err to avoid duplicating error messages
+  try P.execSync cmd catch err
 
 function compile-batch t
   files = Glob t.glob

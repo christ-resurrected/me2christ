@@ -31,9 +31,7 @@ for , t of tasks then
   t.glob = Path.resolve Dir.SRC, t.pat
 
 module.exports = me = (new Emitter!) with
-  all: ->
-    for , t of tasks then lint-batch t
-    me.emit \done
+  all: -> for , t of tasks then lint-batch t
   start: ->
     log Chalk.green 'start lint'
     for tid of tasks then start-watching tid
@@ -43,16 +41,17 @@ module.exports = me = (new Emitter!) with
 
 ## helpers
 
-function lint t, ipath
+function lint-promise t, ipath then new Promise (resolve, reject) ->
   cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
-  try P.execSync cmd, stdio:\inherit catch err
+  P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout; resolve!
 
-function lint-batch t
+async function lint-batch t
   files = Glob t.glob
   info = "#{files.length} #{t.ixt} files"
   log Chalk.stripColor "linting #info..."
-  for f in files then lint t, f
+  await Promise.all files.map (f) -> lint-promise t, f
   log Chalk.green "...done #info!"
+  me.emit \done
 
 function start-watching tid
   t = tasks[tid]
@@ -63,7 +62,7 @@ function start-watching tid
       return unless Match path, t.pat
       w.close!
       setTimeout process, 50ms # wait for events to settle
-      function process
-        if Fs.existsSync ipath = Path.resolve Dir.SRC, path then lint t, ipath
+      async function process
+        if Fs.existsSync ipath = Path.resolve Dir.SRC, path then await lint-promise t, ipath
         setTimeout watch-once, 10ms
         me.emit \done
