@@ -52,18 +52,10 @@ module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.build.SITE
     try await run-tasks tasks; me.emit \restart catch err then log err; me.emit \error
-  start: ->
-    log Chalk.green 'start build'
-    for , t of tasks then start-watching t
-  stop: ->
-    log Chalk.red 'stop build'
-    for , t of tasks then t.watcher?close!
-
-## helpers
+  start: -> for , t of tasks then start-watching t
 
 function get-opath t, ipath
-  ipath.replace t.ixt, t.oxt if t.oxt
-  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
+  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
 
 function run-task t, ipath then new Promise (resolve, reject) ->
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
@@ -71,11 +63,11 @@ function run-task t, ipath then new Promise (resolve, reject) ->
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
 
 async function run-tasks tasks
-  await Promise.all p = [run-task t, f for , t of tasks when t.cmd for f in Glob(t.glob)].flat!flat!
+  await Promise.all p = [run-task t, f for , t of tasks when t.cmd for f in Glob t.glob].flat!flat!
   log Chalk.green "...done #{p.length} files!"
 
 function start-watching t
-  log "start watching #{t.tid}: #{t.srcdir}/#{t.pat}"
+  log "start watching build #{t.tid}: #{t.srcdir}/#{t.pat}"
   watch-once!
   function watch-once then w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
