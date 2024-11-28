@@ -33,8 +33,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..on \line (cmd) ->
     rl.pause!
     for c in COMMANDS when cmd is c.cmd.trim!
-      try c.fn!
-      catch e then log e
+      try c.fn! catch e then log e
     rl.resume!
     rl.prompt!
 
