@@ -55,8 +55,7 @@ module.exports = me = (new Emitter!) with
   start: -> for , t of tasks then start-watching t
 
 function get-opath t, ipath
-  ipath.replace t.ixt, t.oxt if t.oxt
-  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath
+  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
 
 function run-task t, ipath then new Promise (resolve, reject) ->
   Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
