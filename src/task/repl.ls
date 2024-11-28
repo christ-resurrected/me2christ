@@ -32,8 +32,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
   ..on \line (cmd) ->
     rl.pause!
-    for c in COMMANDS when cmd is c.cmd.trim!
-      try c.fn! catch e then log e
+    for c in COMMANDS when cmd is c.cmd.trim! then try c.fn! catch e then log e
     rl.resume!
     rl.prompt!
 
