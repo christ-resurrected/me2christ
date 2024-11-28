@@ -37,11 +37,7 @@ module.exports = me = (new Emitter!) with
       log Chalk.green "...done #{p.length} files!"
       me.emit \done
     catch err then log err
-  start: ->
-    log Chalk.green 'start lint'
-    for tid of tasks then start-watching tid
-
-## helpers
+  start: -> for tid of tasks then start-watching tid
 
 function lint t, ipath then new Promise (resolve, reject) ->
   log cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
@@ -49,7 +45,7 @@ function lint t, ipath then new Promise (resolve, reject) ->
 
 function start-watching tid
   t = tasks[tid]
-  log "start watching #tid: #{t.pat}"
+  log "start watching lint #tid: #{t.pat}"
   watch-once!
   function watch-once then w = t.watcher = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
