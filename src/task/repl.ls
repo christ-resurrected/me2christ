@@ -42,7 +42,7 @@ Build.on \restart -> Sh.touch \.restart-node
 Build.start!
 
 Lint.on \done -> rl.prompt!
-# Lint.start!
+Lint.start!
 
 <- Site.start!
 LiveRl.start!
