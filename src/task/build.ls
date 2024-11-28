@@ -51,9 +51,7 @@ for tid, t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.build.SITE
-    try
-      await run-tasks tasks
-      me.emit \restart
+    try await run-tasks tasks; me.emit \restart
     catch err then log \x; me.emit \error
   start: ->
     log Chalk.green 'start build'
@@ -82,15 +80,13 @@ async function run-tasks tasks
 function start-watching t
   log "start watching #{t.tid}: #{t.srcdir}/#{t.pat}"
   watch-once!
-  function watch-once
-    w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (e, path) ->
-      return unless Match path, t.pat
-      w.close!
-      setTimeout process, 50ms # wait for background file updates to settle
-      async function process
-        try
-          if t.pid then await run-tasks [tasks[t.pid]]
-          else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
-          me.emit if t.rsn then \restart else \built
-        catch err then me.emit \error
-        setTimeout watch-once, 10ms
+  function watch-once then w = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
+    return unless Match path, t.pat
+    w.close! # shutdown flood of events
+    await new Promise (resolve) -> setTimeout resolve, 50ms # wait for background file updates to settle
+    try
+      if t.pid then await run-tasks [tasks[t.pid]]
+      else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
+      me.emit if t.rsn then \restart else \built
+    catch err then me.emit \error
+    watch-once!
