@@ -85,9 +85,9 @@ function start-watching tid
     w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (e, path) ->
       return unless Match path, t.pat
       w.close!
-      setTimeout process, 50ms # wait for events to settle
+      setTimeout process, 50ms # wait for background file updates to complete
       function process
-        if t?tid then compile-batch t.tid
+        if t.tid then compile-batch t.tid
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then compile t, ipath
-        setTimeout watch-once, 10ms
         me.emit if t.rsn then \restart else \built
+        setTimeout watch-once, 10ms
