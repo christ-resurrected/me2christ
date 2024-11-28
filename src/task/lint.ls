@@ -32,7 +32,10 @@ for , t of tasks then
 
 module.exports = me = (new Emitter!) with
   all: ->>
-    await lint-batch tasks
+    promises = []
+    for , t of tasks then promises ++= (Glob t.glob).map (f) -> lint t, f
+    await Promise.all promises
+    log Chalk.green "...done #{promises.length} files!"
     me.emit \done
   start: ->
     log Chalk.green 'start lint'
@@ -46,12 +49,6 @@ module.exports = me = (new Emitter!) with
 function lint t, ipath then new Promise (resolve, reject) ->
   log cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout; resolve!
-
-async function lint-batch tasks
-  promises = []
-  for tid, t of tasks when t.cmd then promises ++= (files = Glob t.glob).map (f) -> lint t, f
-  await Promise.all promises
-  log Chalk.green "...done #{promises.length} files!"
 
 function start-watching tid
   t = tasks[tid]
