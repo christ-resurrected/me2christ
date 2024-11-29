@@ -7,7 +7,6 @@ const DIRNAME =
   SITE : \site
   SRC  : \src
   TASK : \task
-  TEST : \test
 
 Assert DIRNAME.BUILD, Path.basename cwd = process.cwd!
 root = Path.resolve cwd, \..
