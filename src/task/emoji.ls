@@ -1,11 +1,10 @@
-Emit = require \events .EventEmitter
 Fs   = require \fs
 Http = require \https
-Dir  = require \./constants .dir
 Path = require \path
 Sh   = require \shelljs
+Dir  = require \./constants .dir
 
-module.exports = me = (new Emit!) with
+module.exports =
   download: ->
     const NOTO = \https://raw.githubusercontent.com/googlefonts/noto-emoji/refs/heads/main/svg/emoji_
     const EMOJI =
@@ -17,13 +16,13 @@ module.exports = me = (new Emit!) with
 
     for key, url of EMOJI then download key, url
 
-function download key, url then Http.get url, (res) ->
-  return log "ERROR #{res.statusCode} #key #url" unless res.statusCode is 200
-  data = ''
-  res.on \data -> data += it
-  res.on \end ->
-    try
-      Sh.mkdir \-p odir = Path.resolve Dir.SRC_SITE_ASSET, \emoji
-      Fs.writeFileSync (opath = Path.resolve odir, "#key.svg"), data
-      log "wrote #{data.length} bytes to #opath"
-    catch err then log err
+    function download key, url then Http.get url, (res) ->
+      return log "ERROR #{res.statusCode} #key #url" unless res.statusCode is 200
+      data = ''
+      res.on \data -> data += it
+      res.on \end ->
+        try
+          Sh.mkdir \-p odir = Path.resolve Dir.SRC_SITE_ASSET, \emoji
+          Fs.writeFileSync (opath = Path.resolve odir, "#key.svg"), data
+          log "wrote #{data.length} bytes to #opath"
+        catch err then log err
