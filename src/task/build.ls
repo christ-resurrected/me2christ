@@ -54,11 +54,9 @@ module.exports = me = (new Emitter!) with
     try await run-tasks tasks; me.emit \restart catch err then log err; me.emit \error
   start: -> for , t of tasks then start-watching t
 
-function get-opath t, ipath
-  Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
-
 function run-task t, ipath then new Promise (resolve, reject) ->
-  Sh.mkdir \-p odir = Path.dirname opath = get-opath t, ipath
+  function get-opath then Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
+  Sh.mkdir \-p odir = Path.dirname opath = get-opath!
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
 
