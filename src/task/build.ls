@@ -18,8 +18,9 @@ tasks =
     oxt: \json
   site_asset:
     cmd: "cp --target-directory $OUT $IN"
-    dir: "#{Dirname.SITE}/asset/tract"
-    ixt: \png
+    dir: "#{Dirname.SITE}/asset"
+    ixt: '{png,svg}'
+    pat: '*/'
   site_pug:
     cmd: "yarn pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
     dir: Dirname.SITE

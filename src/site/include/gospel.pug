@@ -1,9 +1,14 @@
 append head
   style: include gospel.css
 
+mixin h2-emoji(title, emoji)
+  h2= title
+    img(src=`asset/emoji/${emoji}.svg`).left
+    img(src=`asset/emoji/${emoji}.svg`).right
+
 .cards.dark
   .card
-    h2 ALERT!
+    +h2-emoji('ALERT!', 'megaphone')
     h3 JESUS WILL RETURN TO JUDGE THE WORLD IN RIGHTEOUSNESS
     p
       | Jesus will come back to give to us all according to what we did. Those who follow Jesus and do the will of His Father will be welcomed into His eternal kingdom. But those who continue to do evil will face God’s punishment.
@@ -18,7 +23,7 @@ append head
           :markdown-it
             But the *cowardly*, *unbelieving*, *abominable*, *murderers*, *sexually immoral*, *sorcerers*, *idolaters*, and all *liars* shall have their part in the lake which **burns** with **fire** and **brimstone**, which is the second death.
   .card
-    h2 DANGER!
+    +h2-emoji('DANGER!', 'fire')
     .verses
       +verse('Mark 9:47,48')(pre='Jesus says:' seeAlso='Mat. 13:40-42, 47-50; Luke 16:22-24')
         q.Jesus
@@ -31,7 +36,7 @@ append head
       +verse('Luke 12:4,5')(seeAlso='Proverbs 1:7, 9:10, 14:27, 16:6; Mat. 10:28')
         q.Jesus And I say to you, My friends, do not be afraid of those who kill the body, and after that have no more that they can do. But I will show you whom you should fear: Fear Him who, after He has killed, has power to cast into #[strong hell]; yes, I say to you, fear Him!
   .card
-    h2 WARNING!
+    +h2-emoji('WARNING!', 'skull_bones')
     .verses
       +verse('Gal. 5:19-21 NKJV')(pre='The apostle Paul warns:')
         :markdown-it

@@ -3,8 +3,28 @@
     font-weight: bold;
   }
 
-  .dark em {
-    color: orange;
+  .dark {
+    em {
+      color: orange;
+    }
+
+    h2 {
+      position: relative;
+
+      img {
+        position: absolute;
+        width: 40px;
+      }
+
+      .left {
+        left: 0;
+        transform: scaleX(-1);
+      }
+
+      .right {
+        right: 0;
+      }
+    }
   }
 
   .light em {
