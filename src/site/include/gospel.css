@@ -3,31 +3,44 @@
     font-weight: bold;
   }
 
-  .dark {
-    em {
-      color: orange;
-    }
+  .emoji {
+    position: relative;
 
-    h2 {
-      position: relative;
+    img {
+      position: absolute;
+      width: 40px;
 
-      img {
-        position: absolute;
-        width: 40px;
-      }
-
-      .left {
+      &:first-child {
         left: 0;
         transform: scaleX(-1);
       }
 
-      .right {
+      &:last-child {
         right: 0;
+        top: 0;
       }
     }
   }
 
-  .light em {
-    color: green;
+  .dark em {
+    color: orange;
+  }
+
+  .light {
+    em {
+      color: green;
+    }
+
+    h2 {
+      margin-left: 50px;
+    }
+
+    .emoji img {
+      width: 60px;
+
+      &:last-child {
+        display: none;
+      }
+    }
   }
 }
