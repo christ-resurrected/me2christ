@@ -15,8 +15,10 @@ dir =
   BUILD: cwd
   build:
     SITE: Path.resolve cwd, DIRNAME.SITE
-  ROOT : root
-  SRC  : Path.resolve root, DIRNAME.SRC
+  ROOT: root
+  SRC: Path.resolve root, DIRNAME.SRC
+  SRC_SITE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE
+  SRC_SITE_ASSET: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE, \asset
 
 module.exports =
   APPNAME: \me2christ
