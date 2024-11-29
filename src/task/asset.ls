@@ -32,7 +32,7 @@ module.exports =
 
   convert-tract-pdfs-to-pngs: -> # dependencies: imagemagick and optipng
     try
-      pushd process.env.M2C_TRACT_PDF_PATH
+      Sh.pushd process.env.M2C_TRACT_PDF_PATH
       for f in Fs.readdirSync \. when f.endsWith \.pdf then
         Sh.rm \-f \/tmp/*.png # prepare
         basename = f.replace \.pdf ''
@@ -40,4 +40,4 @@ module.exports =
         P.execSync convert # convert pdf to pngs, 1 per page
         P.execSync 'optipng /tmp/*.png' # reduce file sizes for productionn
         Sh.mv '/tmp/*.png' "#{Dir.SRC_SITE_ASSET}/tract/"
-    finally popd!
+    finally Sh.popd!
