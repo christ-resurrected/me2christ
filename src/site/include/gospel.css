@@ -4,20 +4,15 @@
   }
 
   .emoji {
-    position: relative;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 40px 1fr 40px;
 
     img {
-      position: absolute;
       width: 40px;
 
       &:first-child {
-        left: 0;
         transform: scaleX(-1);
-      }
-
-      &:last-child {
-        right: 0;
-        top: 0;
       }
     }
   }
@@ -29,10 +24,6 @@
   .light {
     em {
       color: green;
-    }
-
-    h2 {
-      margin-left: 50px;
     }
 
     .emoji img {
