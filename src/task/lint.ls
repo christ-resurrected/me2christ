@@ -37,7 +37,7 @@ function start-watching tid
   t = tasks[tid]
   log "start watching lint #tid: #{t.pat}"
   watch-once!
-  function watch-once then w = t.watcher = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
+  function watch-once then w = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
     w.close! # shutdown flood of events
     await new Promise -> setTimeout it, 20ms # allow background file updates to settle

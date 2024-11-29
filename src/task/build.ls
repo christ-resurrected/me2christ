@@ -67,7 +67,7 @@ async function run-tasks tasks
 function start-watching t
   log "start watching build #{t.tid}: #{t.srcdir}/#{t.pat}"
   watch-once!
-  function watch-once then w = t.watcher = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
+  function watch-once then w = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
     w.close! # shutdown flood of events
     await new Promise -> setTimeout it, 20ms # wait for background file updates to settle
