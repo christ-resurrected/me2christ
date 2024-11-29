@@ -3,12 +3,11 @@ global.log = console.log
 Chalk   = require \chalk
 Sh      = require \shelljs
 Rl      = require \readline
-AssetTr = require \./asset-tract
+Asset   = require \./asset
 Build   = require \./build
 Consts  = require \./constants
 Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
-Emoji   = require \./emoji
 Lint    = require \./lint
 LiveRl  = require \./livereload
 Site    = require \./site
@@ -16,9 +15,9 @@ Site    = require \./site
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'h ' level:0 desc:'help (show commands)' fn:show-help
-  * cmd:'at' level:0 desc:'asset-tract.convert'  fn:AssetTr.convert
+  * cmd:'ae' level:0 desc:'asset.download-emoji' fn:Asset.download-emoji-svgs
+  * cmd:'at' level:0 desc:'asset.convert-tracts' fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'b ' level:0 desc:'build all'            fn:Build.all
-  * cmd:'e ' level:0 desc:'emoji.download'       fn:Emoji.download
   * cmd:'l ' level:0 desc:'lint all'             fn:Lint.all
   * cmd:'q ' level:0 desc:'QUIT'                 fn:process.exit
 
