@@ -13,8 +13,7 @@ root = Path.resolve cwd, \..
 
 dir =
   BUILD: cwd
-  build:
-    SITE: Path.resolve cwd, DIRNAME.SITE
+  BUILD_SITE: Path.resolve cwd, DIRNAME.SITE
   ROOT: root
   SRC: Path.resolve root, DIRNAME.SRC
   SRC_SITE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE

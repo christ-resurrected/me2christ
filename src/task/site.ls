@@ -4,7 +4,7 @@ Ns   = require \node-static
 
 module.exports =
   start: (cb) ->
-    ns = new Ns.Server C.dir.build.SITE
+    ns = new Ns.Server C.dir.BUILD_SITE
     s = Http.createServer (req, resp) ->
       l = req.addListener \end -> ns.serve req, resp
       l.resume!

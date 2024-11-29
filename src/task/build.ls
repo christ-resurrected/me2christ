@@ -50,7 +50,7 @@ for tid, t of tasks then
 
 module.exports = me = (new Emitter!) with
   all: ->>
-    Sh.rm \-rf Dir.build.SITE
+    Sh.rm \-rf Dir.BUILD_SITE
     try await run-tasks tasks; me.emit \restart catch err then log err; me.emit \error
   start: -> for , t of tasks then start-watching t
 
