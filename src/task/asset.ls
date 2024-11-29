@@ -10,13 +10,14 @@ Dirname = require \./constants .dirname
 module.exports =
   download-emoji-svgs: ->
     const NOTO = \https://raw.githubusercontent.com/googlefonts/noto-emoji/refs/heads/main/svg/emoji_
+    const EMOJITWO = \https://raw.githubusercontent.com/EmojiTwo/emojitwo/refs/heads/master/svg/
     const EMOJI =
+      dove: EMOJITWO + \1f54a.svg
       # faith_christ: NOTO + \u271d.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg
-
     for key, url of EMOJI then download key, url
 
     function download key, url then Http.get url, (res) ->
