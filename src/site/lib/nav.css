@@ -10,20 +10,7 @@ nav {
   }
 
   .active {
-    color: #ccc;
+    color: #fff;
     font-weight: bold;
-    --active-bar: 2px solid #ccc;
-  }
-}
-
-header nav .active {
-  border-bottom: var(--active-bar);
-}
-
-footer nav>* {
-  align-self: flex-end;
-
-  &.active {
-    border-top: var(--active-bar);
   }
 }
