@@ -20,7 +20,6 @@ dependencies:
   glob                        : \~11.0.0
   'jstransformer-markdown-it' : \~3.0.0
   livescript                  : \~1.6.0
-  'node-static'               : \~0.7.11
   '@anduh/pug-cli'            : \~1.0.0-alpha8
   shelljs                     : \~0.8.5
   ws                          : \~8.18.0

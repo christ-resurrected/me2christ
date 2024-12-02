@@ -1,15 +1,38 @@
+# see https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework
 Http = require \http
-Ns   = require \node-static
+Fs   = require \fs
+Path = require \path
 Dir  = require \./constants .dir
+
+const MIME_TYPES =
+  default: "application/octet-stream",
+  html: "text/html; charset=UTF-8",
+  png: "image/png",
+  svg: "image/svg+xml",
 
 const PORT=7777
 
 module.exports =
   start: (cb) ->
-    ns = new Ns.Server Dir.BUILD_SITE
-    s = Http.createServer (req, resp) ->
-      l = req.addListener \end -> ns.serve req, resp
-      l.resume!
+    s = Http.createServer (req, res) ->>
+      file = await prepareFile req.url
+      statusCode = if file.found then 200 else 404
+      mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default
+      res.writeHead statusCode, {'Content-Type': mimeType}
+      file.stream.pipe res
+      # console.log "#{req.method} #{req.url} #{statusCode}"
     s.listen PORT, ->
       log "Http server listening on port #PORT"
       cb!
+
+async function prepare-file url
+  paths = [Dir.BUILD_SITE, url]
+  if url.endsWith '/' then paths.push \index.html
+  filePath = Path.join ...paths
+  pathTraversal = !filePath.startsWith Dir.BUILD_SITE
+  exists = await Fs.promises.access(filePath).then(-> true, -> false)
+  found = !pathTraversal && exists
+  streamPath = if found then filePath else Dir.BUILD_SITE + '/404.html'
+  ext = Path.extname(streamPath).substring(1).toLowerCase!
+  stream = Fs.createReadStream streamPath
+  {found, ext, stream}
