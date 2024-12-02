@@ -15,8 +15,6 @@ mixin ref(ref)
   - ref = ref.replaceAll('Pet.', 'Peter ')
   - ref = ref.replaceAll('Rev.', 'Revelation ')
   - ref = ref.replace(/-(\d+)/, '&ndash;$1')
-  - ref = ref.replace(/-(\d+)/, '&ndash;$1')
-  - ref = ref.replace(/-(\d+)/, '&ndash;$1')
   mark!= ref
 
 mixin see(refs, label='See')
