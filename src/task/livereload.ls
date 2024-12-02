@@ -1,6 +1,6 @@
 Ws = require \ws
 
-const PORT=8080
+const PORT=7778
 
 sockets = []
 

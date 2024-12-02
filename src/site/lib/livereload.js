@@ -1,7 +1,7 @@
 var ws
 
 function connect() {
-  ws = new WebSocket(`ws://${location.host.split(':')[0] || 'localhost'}:8080`)
+  ws = new WebSocket(`ws://${location.host.split(':')[0] || 'localhost'}:7778`)
 
   ws.onmessage = function() {
     window.location.reload()
