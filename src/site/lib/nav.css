@@ -1,7 +1,7 @@
 nav {
   display: flex;
   flex-wrap: wrap;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   gap: 1rem;
   justify-content: center;
 
@@ -10,9 +10,9 @@ nav {
   }
 
   .active {
-    color: #fff;
+    color: #ccc;
     font-weight: bold;
-    --active-bar: 4px solid cyan;
+    --active-bar: 2px solid #ccc;
   }
 }
 

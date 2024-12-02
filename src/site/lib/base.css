@@ -40,7 +40,7 @@ footer {
     color: #aaa;
 
     &:hover {
-      color: cyan;
+      color: #fff;
     }
   }
 }
