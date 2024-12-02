@@ -17,8 +17,14 @@
     }
   }
 
-  .dark em {
-    color: orange;
+  .dark {
+    em {
+      color: orange;
+    }
+
+    .emoji {
+      grid-template-columns: 40px 1fr 40px;
+    }
   }
 
   .light {
@@ -26,11 +32,19 @@
       color: green;
     }
 
-    .emoji img {
-      width: 60px;
+    .emoji {
+      grid-template-columns: 40px 1fr;
 
-      &:last-child {
-        display: none;
+      img {
+        width: 50px;
+
+        &:last-child {
+          display: none;
+        }
+      }
+
+      +p {
+        margin-top: 0;
       }
     }
   }
