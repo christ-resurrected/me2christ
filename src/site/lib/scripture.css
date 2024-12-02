@@ -13,8 +13,8 @@ mark {
   }
 
   span.body {
+    font-style: italic;
     padding: 0.15rem;
-
   }
 
   span.see {
@@ -35,10 +35,6 @@ mark {
 
 .verses~.verses {
   margin-top: 1rem;
-}
-
-q.Jesus {
-  font-weight: bold;
 }
 
 .dark {
@@ -71,14 +67,12 @@ q.Jesus {
 .light {
   .verse {
     span.body {
-      background: #248;
-      color: #fff;
-
+      background: #eee;
+      color: #000;
     }
   }
 
   q.Jesus {
-    color: #8ff;
-    font-weight: bold;
+    color: #f00;
   }
 }

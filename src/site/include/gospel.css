@@ -28,9 +28,9 @@
   }
 
   .light {
-    em {
-      color: green;
-    }
+    /* em { */
+    /*   color: green; */
+    /* } */
 
     .emoji {
       grid-template-columns: 40px 1fr;
