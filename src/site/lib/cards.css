@@ -25,6 +25,14 @@
 
     color: #fff;
 
+    a {
+      color: #aaa;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
     h2 {
       color: red;
       font-size: 2rem;
