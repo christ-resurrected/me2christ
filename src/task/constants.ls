@@ -23,7 +23,6 @@ module.exports =
   APPNAME: \me2christ
   dirname: DIRNAME
   dir    : dir
-  PORT   : 7777
 
 Assert Sh.test \-e dir.BUILD
 Assert Sh.test \-e dir.SRC
