@@ -6,15 +6,6 @@
   .emoji {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 40px 1fr 40px;
-
-    img {
-      width: 40px;
-
-      &:first-child {
-        transform: scaleX(-1);
-      }
-    }
   }
 
   .dark {
@@ -23,7 +14,16 @@
     }
 
     .emoji {
-      grid-template-columns: 40px 1fr 40px;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      img {
+        width: 40px;
+
+        &:first-child {
+          justify-self: right;
+          transform: scaleX(-1);
+        }
+      }
     }
   }
 
