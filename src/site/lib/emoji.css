@@ -1,0 +1,37 @@
+.emoji {
+  display: grid;
+  gap: 1rem;
+}
+
+.dark {
+  .emoji {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    img {
+      width: 40px;
+
+      &:first-child {
+        justify-self: right;
+        transform: scaleX(-1);
+      }
+    }
+  }
+}
+
+.light {
+  .emoji {
+    grid-template-columns: 40px 1fr;
+
+    img {
+      width: 50px;
+
+      &:last-child {
+        display: none;
+      }
+    }
+
+    +p {
+      margin-top: 0;
+    }
+  }
+}

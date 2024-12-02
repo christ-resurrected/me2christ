@@ -1,12 +1,6 @@
 append head
   style: include gospel.css
 
-mixin h2-emoji(title, emoji)
-  .emoji
-    img(src=`asset/emoji/${emoji}.svg`)
-    h2= title
-    img(src=`asset/emoji/${emoji}.svg`)
-
 .cards.dark
   .card
     +h2-emoji('ALERT!', 'megaphone')
