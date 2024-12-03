@@ -6,7 +6,7 @@ append head
   }
 
   function finalise(ref) {
-    return ref.replace(/-(\d+)/, '&ndash;$1')
+    return ref.replaceAll(/-(\d+)/g, '&ndash;$1')
   }
 
 mixin see(refs, label='See')
