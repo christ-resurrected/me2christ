@@ -24,5 +24,5 @@ module.exports =
 
   generate-verses-json: ->
     verses = Fs.readFileSync KJVPATH, \utf8
-    Fs.writeFileSync C.VERSES_PATH, data = JSON.stringify(verses: JSON.parse verses.replaceAll '#' '')
+    Fs.writeFileSync C.VERSES_PATH, data = JSON.stringify(VERSES: JSON.parse verses.replaceAll '#' '')
     log "wrote #{data.length} bytes to #{C.VERSES_PATH}"
