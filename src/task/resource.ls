@@ -2,8 +2,11 @@ Fs   = require \fs
 Http = require \https
 Path = require \path
 Sh   = require \shelljs
+C    = require \./constants
 Dir  = require \./constants .dir
-KjvPath = require \./constants .KJVPATH
+
+const KJVNAME = \verses-1769.json
+const KJVPATH = Path.resolve Dir.SRC_SITE_RESOURCE, KJVNAME
 
 module.exports =
   download-kjv-json: ->
@@ -15,7 +18,11 @@ module.exports =
       res.on \end ->
         try
           Sh.mkdir \-p Dir.SRC_SITE_RESOURCE
-          Fs.writeFileSync KjvPath, data
-          log "wrote #{data.length} bytes to #KjvPath"
+          Fs.writeFileSync KJVPATH, data
+          log "wrote #{data.length} bytes to #KJVPATH"
         catch err then log err
 
+  generate-verses-json: ->
+    verses = Fs.readFileSync KJVPATH, \utf8
+    Fs.writeFileSync C.VERSES_PATH, data = JSON.stringify(verses: JSON.parse verses.replaceAll '#' '')
+    log "wrote #{data.length} bytes to #{C.VERSES_PATH}"

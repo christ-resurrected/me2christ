@@ -20,7 +20,8 @@ const COMMANDS =
   * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
-  * cmd:'r ' level:1 desc:'resource.download-kjv' fn:Rsource.download-kjv-json
+  * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Rsource.download-kjv-json
+  * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Rsource.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
 
 Sh.config.fatal  = true # shelljs doesn't raise exceptions, so set this process to die on error

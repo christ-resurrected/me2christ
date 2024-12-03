@@ -7,6 +7,7 @@ Match   = require \minimatch .minimatch
 P       = require \child_process
 Path    = require \path
 Sh      = require \shelljs
+C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 
@@ -22,7 +23,7 @@ tasks =
     ixt: '{png,svg}'
     pat: '*/'
   site_pug:
-    cmd: "yarn pug3 -O \"{version:'#{process.env.npm_package_version}'}\" --out $OUT $IN"
+    cmd: "yarn pug3 -O #{C.VERSES_PATH} --out $OUT $IN"
     dir: Dirname.SITE
     ixt: \pug
     oxt: \html
