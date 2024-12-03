@@ -20,10 +20,14 @@
 
 .light {
   .emoji {
+    align-items: center;
     grid-template-columns: 40px 1fr;
 
     img {
-      width: 50px;
+      position: relative;
+      top: -8px;
+      transform: scaleX(-1);
+      width: 60px;
 
       &:last-child {
         display: none;
