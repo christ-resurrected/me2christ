@@ -10,16 +10,18 @@ Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
 Lint    = require \./lint
 LiveRl  = require \./livereload
+Rsource = require \./resource
 Site    = require \./site
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
-  * cmd:'h ' level:0 desc:'help (show commands)' fn:show-help
-  * cmd:'ae' level:0 desc:'asset.download-emoji' fn:Asset.download-emoji-svgs
-  * cmd:'at' level:0 desc:'asset.convert-tracts' fn:Asset.convert-tract-pdfs-to-pngs
-  * cmd:'b ' level:0 desc:'build all'            fn:Build.all
-  * cmd:'l ' level:0 desc:'lint all'             fn:Lint.all
-  * cmd:'q ' level:0 desc:'QUIT'                 fn:process.exit
+  * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
+  * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji-svgs
+  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
+  * cmd:'b ' level:0 desc:'build all'             fn:Build.all
+  * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
+  * cmd:'r ' level:1 desc:'resource.download-kjv' fn:Rsource.download-kjv-json
+  * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
 
 Sh.config.fatal  = true # shelljs doesn't raise exceptions, so set this process to die on error
 #config.silent = true # otherwise too much noise
