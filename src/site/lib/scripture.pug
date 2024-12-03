@@ -1,20 +1,14 @@
 append head
   style: include scripture.css
+-
+  function expand(ref) {
+    return ref.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
+  }
 
 mixin ref(ref)
-  - if (!ref) return
-  - ref = ref.replaceAll('Mat.', 'Matthew ')
-  - ref = ref.replaceAll('Rom.', 'Romans ')
-  - ref = ref.replaceAll('Cor.', 'Corinthians ')
-  - ref = ref.replaceAll('Gal.', 'Galatians ')
-  - ref = ref.replaceAll('Eph.', 'Ephesians ')
-  - ref = ref.replaceAll('Php.', 'Philippians ')
-  - ref = ref.replaceAll('Col.', 'Colossians ')
-  - ref = ref.replaceAll('Tim.', 'Timothy ')
-  - ref = ref.replaceAll('Heb.', 'Hebrews ')
-  - ref = ref.replaceAll('Pet.', 'Peter ')
-  - ref = ref.replaceAll('Rev.', 'Revelation ')
-  - ref = ref.replace(/-(\d+)/, '&ndash;$1')
+  -
+    ref = ref.replace(/-(\d+)/, '&ndash;$1')
+    ref = expand(ref)
   mark.tooltip!= ref
     span.tooltiptext= verses[ref.trim()]
 
