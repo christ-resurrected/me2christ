@@ -1,20 +1,19 @@
 .emoji {
   display: grid;
   gap: 1.2rem;
+
+  img {
+    width: 40px;
+
+    &:first-child {
+      transform: scaleX(-1);
+    }
+  }
 }
 
 .dark {
   .emoji {
     grid-template-columns: 40px 1fr 40px;
-
-    img {
-      width: 40px;
-
-      &:first-child {
-        justify-self: right;
-        transform: scaleX(-1);
-      }
-    }
   }
 }
 
@@ -26,16 +25,14 @@
     img {
       position: relative;
       top: -8px;
-      transform: scaleX(-1);
-      width: 40px;
 
       &:last-child {
         display: none;
       }
-    }
 
-    &.dove img {
-      width: 60px;
+      &.dove {
+        width: 60px;
+      }
     }
 
     +p {

@@ -2,7 +2,7 @@ append head
   style: include emoji.css
 
 mixin h2-emoji(title, emoji)
-  .emoji(class=emoji)
-    img(src=`asset/emoji/${emoji}.svg`)
+  .emoji
+    img(class=emoji src=`asset/emoji/${emoji}.svg`)
     h2= title
-    img(src=`asset/emoji/${emoji}.svg`)
+    img(class=emoji src=`asset/emoji/${emoji}.svg`)
