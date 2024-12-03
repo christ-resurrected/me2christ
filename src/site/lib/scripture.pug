@@ -1,6 +1,8 @@
 append head
   style: include scripture.css
 -
+  log = console.log
+
   function expand(refs) {
     return refs.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('2-Thes.', '2-Thessalonians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
   }
@@ -18,39 +20,34 @@ mixin see(refs, label='See')
   each bookrefs in books
     -
       var chapters = bookrefs.trim().split(' ')
-      var book = chapters[0]
-      console.log()
-      console.log(chapters)
-      var out = ''
+      var book = chapters[0].replace('-', ' ')
+      var tooltip = ''
       for (var i = 1; i < chapters.length; i++) {
         var chapPassages = chapters[i].split(':')
         if (chapPassages.length != 2) continue;
-        console.log(chapPassages)
         var passages = chapPassages[1].replace(/,$/, '').split(',')
-        console.log(passages)
         for (const p of passages) {
-          console.log(p)
           var verses = p.split('-')
-          console.log(verses)
           if (verses.length == 1) verses.push(verses[0]);
           if (verses.length != 2) continue;
-          console.log(verses[0])
-          console.log(verses[1])
-          if (verses[1] - verses[0] > 10) continue;
-          for (var j = verses[0]; j <= verses[1]; j++) {
-            // console.log(j)
+          var from = Number(verses[0])
+          var to = Number(verses[1])
+          if (to - from > 10) continue;
+          for (var j = from; j <= to; j++) {
             var ref = `${book} ${chapPassages[0]}:${j}`
-            console.log(ref)
-            out += VERSES[ref] + ' '
+            tooltip += VERSES[ref] + ' '
           }
-          // console.log(out)
         }
-        out += '<br/><br/>'
+        if (i < chapters.length - 1) tooltip += '|'
       }
+      tooltip = tooltip.replaceAll('|', '<br/><br/>')
       bookrefs = finalise(bookrefs)
     | 
-    mark.tooltip!= bookrefs
-      span.tooltiptext!= out
+    if (tooltip.length)
+      mark.tooltip!= bookrefs
+        span.tooltiptext!= tooltip
+    else
+      mark!= bookrefs
   span )
 
 mixin seeAlso(refs)
