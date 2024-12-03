@@ -1,0 +1,28 @@
+.tooltip-anchor {
+  /* tooltips are positioned immediately under the anchor */
+  position: relative;
+}
+
+.tooltip {
+  border-bottom: 2px dotted;
+
+  & .tooltiptext {
+    display: none;
+    top: 100%;
+    background-color: grey;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    z-index: 1;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: red;
+
+    .tooltiptext {
+      display: block;
+    }
+  }
+}
