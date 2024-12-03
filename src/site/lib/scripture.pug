@@ -5,12 +5,9 @@ append head
     return ref.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
   }
 
-mixin ref(ref)
-  -
-    ref = ref.replace(/-(\d+)/, '&ndash;$1')
-    ref = expand(ref)
-  mark.tooltip!= ref
-    span.tooltiptext= verses[ref.trim()]
+  function finalise(ref) {
+    return ref.replace(/-(\d+)/, '&ndash;$1')
+  }
 
 mixin see(refs, label='See')
   - if (!refs) return
@@ -19,7 +16,9 @@ mixin see(refs, label='See')
   span= label
   each ref in refarr
     | 
-    +ref(ref)
+    - ref = finalise(expand(ref))
+    mark.tooltip!= ref
+      span.tooltiptext= verses[ref.trim()]
   span )
 
 mixin seeAlso(refs)
@@ -31,5 +30,6 @@ mixin verse(ref)
     span.body
       block
     span  &ndash;
-    +ref(ref)
+    - ref = finalise(expand(ref))
+    mark!= ref
     +seeAlso(attributes.seeAlso)
