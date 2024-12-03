@@ -4,7 +4,7 @@ Source code for [me2christ.com](https://me2christ.com)
 
 ## to build and run locally
 
-Install [node.js 20][nodejs] and [yarn classic 1.22][yarn] then:
+Install [node.js 22][nodejs] and [yarn classic 1.22][yarn] then:
 
     $ git clone --branch=dev https://github.com/dizzib/me2christ.git
     $ . me2christ/bootstrap
