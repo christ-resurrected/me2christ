@@ -10,31 +10,31 @@ Dir     = require \./constants .dir
 
 const CFG = "#{Dir.SRC}/task/lint"
 
-tasks =
+const TASKS =
   task_ls:
     cmd : \ls-lint
     cfg : \ls-lint.lson
     ixt : \ls
 
-for , t of tasks then
+for , t of TASKS then
   t.pat = "**/*.#{t.ixt}"
   t.glob = Path.resolve Dir.SRC, t.pat
 
 module.exports = me = (new Emitter!) with
   all: ->>
     try
-      await Promise.all p = [lint t, f for , t of tasks for f in Glob(t.glob)].flat!flat!
+      await Promise.all p = [lint t, f for , t of TASKS for f in Glob(t.glob)].flat!flat!
       log Chalk.green "...done #{p.length} files!"
       me.emit \done
     catch err then log err
-  start: -> for tid of tasks then start-watching tid
+  start: -> for tid of TASKS then start-watching tid
 
 function lint t, ipath then new Promise (resolve, reject) ->
   log cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout; resolve!
 
 function start-watching tid
-  t = tasks[tid]
+  t = TASKS[tid]
   log "start watching lint #tid: #{t.pat}"
   watch-once!
   function watch-once then w = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>

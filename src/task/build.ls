@@ -11,7 +11,7 @@ C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 
-tasks =
+const TASKS =
   json_ls:
     cmd: "yarn lsc --output $OUT $IN"
     dir: \.
@@ -44,7 +44,7 @@ tasks =
     pat: '**/'
     rsn: true # restart node
 
-for tid, t of tasks then
+for tid, t of TASKS then
   t.tid = tid
   t.pat = "#{t.pat || ''}*.#{t.ixt}"
   t.srcdir = Path.resolve Dir.SRC, t.dir
@@ -53,8 +53,8 @@ for tid, t of tasks then
 module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.BUILD_SITE
-    try await run-tasks tasks; me.emit \restart catch err then log err; me.emit \error
-  start: -> for , t of tasks then start-watching t
+    try await run-tasks TASKS; me.emit \restart catch err then log err; me.emit \error
+  start: -> for , t of TASKS then start-watching t
 
 function run-task t, ipath then new Promise (resolve, reject) ->
   function get-opath then Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
@@ -73,7 +73,7 @@ function start-watching t
     return unless Match path, t.pat
     w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
     try
-      if t.pid then await run-tasks [tasks[t.pid]]
+      if t.pid then await run-tasks [TASKS[t.pid]]
       else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
       me.emit if t.rsn then \restart else \built
     catch err then me.emit \error
