@@ -1,7 +1,6 @@
 Emitter = require \events .EventEmitter
 Fs      = require \fs
 Match   = require \minimatch .minimatch
-Path    = require \path
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
@@ -11,8 +10,9 @@ const TASKS = T.prepare const RAW_TASKS =
     cmd: "cp --target-directory $OUT $IN"
     dir: "#{Dirname.TASK}/lint"
     ixt: \lson
+
   lint_ls:
-    cmd: "yarn --silent ls-lint --config #{Dir.SRC}/task/lint/ls-lint.lson $IN"
+    cmd: "yarn --silent ls-lint --config #{Dir.SRC_TASK}/lint/ls-lint.lson $IN"
     dir: Dirname.TASK
     ixt: \ls
     pat: '**/'

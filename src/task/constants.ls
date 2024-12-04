@@ -19,6 +19,7 @@ dir =
   SRC_SITE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE
   SRC_SITE_ASSET: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE, \asset
   SRC_SITE_RESOURCE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE, \resource
+  SRC_TASK: Path.resolve root, DIRNAME.SRC, DIRNAME.TASK
 
 module.exports =
   APPNAME: \me2christ
