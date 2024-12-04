@@ -5,7 +5,7 @@ Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
 
-const TASKS = T.prepare RAW_TASKS =
+const TASKS = T.prepare const RAW_TASKS =
   json_ls:
     cmd: "yarn lsc --output $OUT $IN"
     dir: \.
