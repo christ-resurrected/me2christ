@@ -21,7 +21,6 @@ dependencies:
   'jstransformer-markdown-it' : \~3.0.0
   livescript                  : \~1.6.0
   '@anduh/pug-cli'            : \~1.0.0-alpha8
-  shelljs                     : \~0.8.5
   ws                          : \~8.18.0
 devDependencies:
   'ls-lint'                   : \~0.1.2
