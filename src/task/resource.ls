@@ -1,7 +1,6 @@
 Fs   = require \fs
 Http = require \https
 Path = require \path
-Sh   = require \shelljs
 C    = require \./constants
 Dir  = require \./constants .dir
 
@@ -17,7 +16,7 @@ module.exports =
       res.on \data -> data += it
       res.on \end ->
         try
-          Sh.mkdir \-p Dir.SRC_SITE_RESOURCE
+          if !Fs.existsSync Dir.SRC_SITE_RESOURCE then Fs.mkdirSync Dir.SRC_SITE_RESOURCE
           Fs.writeFileSync KJVPATH, data
           log "wrote #{data.length} bytes to #KJVPATH"
         catch err then log err

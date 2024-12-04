@@ -1,6 +1,6 @@
 Assert = require \assert
+Fs     = require \fs
 Path   = require \path
-Sh     = require \shelljs
 
 const DIRNAME =
   BUILD: \build
@@ -27,5 +27,5 @@ module.exports =
   dir    : dir
   VERSES_PATH: Path.resolve dir.SRC_SITE_RESOURCE, \verses.json
 
-Assert Sh.test \-e dir.BUILD
-Assert Sh.test \-e dir.SRC
+Assert Fs.existsSync dir.BUILD
+Assert Fs.existsSync dir.SRC
