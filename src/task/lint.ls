@@ -30,7 +30,7 @@ module.exports = me = (new Emitter!) with
   start: -> for tid of TASKS then start-watching tid
 
 function lint t, ipath then new Promise (resolve, reject) ->
-  log cmd = "yarn #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
+  log Chalk.blue cmd = "yarn --silent #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout; resolve!
 
 function start-watching tid

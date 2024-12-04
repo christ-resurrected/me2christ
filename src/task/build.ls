@@ -23,7 +23,7 @@ const TASKS =
     ixt: '{png,svg}'
     pat: '*/'
   site_pug:
-    cmd: "yarn pug3 -O #{C.VERSES_PATH} --out $OUT $IN"
+    cmd: "yarn --silent pug3 -O #{C.VERSES_PATH} --out $OUT $IN"
     dir: Dirname.SITE
     ixt: \pug
     oxt: \html
@@ -37,7 +37,7 @@ const TASKS =
     dir: "#{Dirname.TASK}/lint"
     ixt: '{lson}'
   task_ls:
-    cmd: "yarn lsc --output $OUT $IN"
+    cmd: "yarn --silent lsc --output $OUT $IN"
     dir: Dirname.TASK
     ixt: \ls
     oxt: \js
