@@ -6,7 +6,7 @@ Source code for [me2christ.com](https://me2christ.com)
 
 Install [node.js 22][nodejs] and [yarn classic 1.22][yarn] then:
 
-    $ git clone --branch=dev https://github.com/dizzib/me2christ.git
+    $ git clone --branch=dev https://github.com/christ-resurrected/me2christ.git
     $ . me2christ/bootstrap
     $ yarn run start
 
