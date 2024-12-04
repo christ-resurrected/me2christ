@@ -23,7 +23,7 @@ const TASKS =
     ixt: '{png,svg}'
     pat: '*/'
   site_pug:
-    cmd: "yarn --silent pug3 -O #{C.VERSES_PATH} --out $OUT $IN"
+    cmd: "yarn --silent pug3 -s -O #{C.VERSES_PATH} --out $OUT $IN"
     dir: Dirname.SITE
     ixt: \pug
     oxt: \html
