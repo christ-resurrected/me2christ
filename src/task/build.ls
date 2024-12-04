@@ -34,14 +34,14 @@ const TASKS = T.init const RAW_TASKS =
     pat: '**/'
     rsn: true # restart node
 
-const TASKS_NO_JSON_LS = {[tid, t] for tid, t of TASKS when tid isnt \json_ls}
+const TASKS_ASYNC = {[tid, t] for tid, t of TASKS when tid isnt \json_ls}
 
 module.exports = me = (new Emitter!) with
   all: ->>
     Fs.rmSync Dir.BUILD_SITE, {force:true, recursive:true}
     try
-      await T.run-tasks json_ls:TASKS.json_ls # build first so yarn can run async, or we may get an error
-      await T.run-tasks TASKS_NO_JSON_LS
+      await T.run-tasks json_ls:TASKS.json_ls # avoid "Unexpected end of JSON input" error
+      await T.run-tasks TASKS_ASYNC
       me.emit \restart
     catch err then log err; me.emit \error
   start: -> for _, t of TASKS then T.start-watching \build, me, t
