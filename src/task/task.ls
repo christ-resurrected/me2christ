@@ -20,7 +20,7 @@ module.exports = me =
     await Promise.all p = [run-task t, f for , t of tasks when t.cmd for f in Glob t.glob].flat!flat!
     log Chalk.green "...done #{p.length} files!"
 
-  start-watching: (emitter, group, t) ->
+  start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     watch-once!
     function watch-once then w = Fs.watch t.srcdir, recursive:true, (, path) ->>

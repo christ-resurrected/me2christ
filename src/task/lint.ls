@@ -19,4 +19,4 @@ const TASKS = T.init const RAW_TASKS =
 
 module.exports = me = (new Emitter!) with
   all: ->> try T.run-tasks TASKS; me.emit \done catch err then log err
-  start: -> for _, t of TASKS then T.start-watching me, \lint, t
+  start: -> for _, t of TASKS then T.start-watching \lint, me, t

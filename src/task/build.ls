@@ -44,4 +44,4 @@ module.exports = me = (new Emitter!) with
       await T.run-tasks TASKS_NO_JSON_LS
       me.emit \restart
     catch err then log err; me.emit \error
-  start: -> for _, t of TASKS then T.start-watching me, \build, t
+  start: -> for _, t of TASKS then T.start-watching \build, me, t
