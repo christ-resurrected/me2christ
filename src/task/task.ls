@@ -4,7 +4,6 @@ Glob  = require \glob .globSync
 Match = require \minimatch .minimatch
 Path  = require \path
 P     = require \child_process
-Sh    = require \shelljs
 Dir   = require \./constants .dir
 
 module.exports = me =
@@ -36,6 +35,6 @@ module.exports = me =
 
 function run-task t, ipath then new Promise (resolve, reject) ->
   function get-opath then Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
-  Sh.mkdir \-p odir = Path.dirname opath = get-opath!
+  if !Fs.existsSync(odir = Path.dirname opath = get-opath!) then Fs.mkdirSync odir, recursive:true
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!

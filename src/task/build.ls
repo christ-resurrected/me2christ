@@ -1,5 +1,5 @@
 Emitter = require \events .EventEmitter
-Sh      = require \shelljs
+Fs      = require \fs
 C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
@@ -36,6 +36,6 @@ const TASKS = T.init const RAW_TASKS =
 
 module.exports = me = (new Emitter!) with
   all: ->>
-    Sh.rm \-rf Dir.BUILD_SITE
+    Fs.rmSync Dir.BUILD_SITE, {force:true, recursive:true}
     try await T.run-tasks TASKS; me.emit \restart catch err then log err; me.emit \error
   start: -> for , t of TASKS then T.start-watching me, \build, t
