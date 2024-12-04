@@ -17,7 +17,7 @@ module.exports = me =
     tasks
 
   run-tasks: (tasks) ->>
-    await Promise.all p = [run-task t, f for , t of tasks when t.cmd for f in Glob t.glob].flat!flat!
+    await Promise.all p = [run-task t, f for _, t of tasks for f in Glob t.glob].flat!flat!
     log Chalk.green "...done #{p.length} files!"
 
   start-watching: (group, emitter, t) ->
