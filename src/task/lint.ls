@@ -39,8 +39,7 @@ function start-watching tid
   watch-once!
   function watch-once then w = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
-    w.close! # shutdown flood of events
-    await new Promise -> setTimeout it, 20ms # allow background file updates to settle
+    w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
     if Fs.existsSync ipath = Path.resolve Dir.SRC, path then await lint t, ipath
     me.emit \done
     watch-once!
