@@ -7,19 +7,17 @@ P       = require \child_process
 Path    = require \path
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
+T       = require \./task
 
 const CFG = "#{Dir.SRC}/task/lint"
 
-const TASKS =
+const TASKS = T.prepare RAW_TASKS =
   task_ls:
-    cmd : \ls-lint
-    cfg : \ls-lint.lson
-    ixt : \ls
-
-for tid, t of TASKS then
-  t.tid = tid
-  t.pat = "**/*.#{t.ixt}"
-  t.glob = Path.resolve Dir.SRC, t.pat
+    cmd: \ls-lint
+    dir: Dirname.TASK
+    cfg: \ls-lint.lson
+    ixt: \ls
+    pat: '**/'
 
 module.exports = me = (new Emitter!) with
   all: ->>

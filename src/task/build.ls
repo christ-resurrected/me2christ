@@ -10,8 +10,9 @@ Sh      = require \shelljs
 C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
+T       = require \./task
 
-const TASKS =
+const TASKS = T.prepare RAW_TASKS =
   json_ls:
     cmd: "yarn lsc --output $OUT $IN"
     dir: \.
@@ -43,12 +44,6 @@ const TASKS =
     oxt: \js
     pat: '**/'
     rsn: true # restart node
-
-for tid, t of TASKS then
-  t.tid = tid
-  t.pat = "#{t.pat || ''}*.#{t.ixt}"
-  t.srcdir = Path.resolve Dir.SRC, t.dir
-  t.glob = Path.resolve t.srcdir, t.pat
 
 module.exports = me = (new Emitter!) with
   all: ->>
