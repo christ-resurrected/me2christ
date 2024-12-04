@@ -7,7 +7,7 @@ T       = require \./task
 
 const TASKS = T.prepare const RAW_TASKS =
   json_ls:
-    cmd: "yarn lsc --output $OUT $IN"
+    cmd: "yarn --silent lsc --output $OUT $IN"
     dir: \.
     ixt: \json.ls
     oxt: \json
