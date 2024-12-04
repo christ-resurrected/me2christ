@@ -1,6 +1,5 @@
 .emoji {
   display: grid;
-  gap: 1.2rem;
 
   img {
     width: 40px;
@@ -13,6 +12,7 @@
 
 .dark {
   .emoji {
+    gap: 0;
     grid-template-columns: 40px 1fr 40px;
   }
 }
@@ -20,6 +20,7 @@
 .light {
   .emoji {
     align-items: center;
+    gap: 1.2rem;
     grid-template-columns: 40px 1fr;
 
     img {
