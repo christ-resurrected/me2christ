@@ -30,10 +30,6 @@ const TASKS = T.prepare RAW_TASKS =
     ixt: '{css,js,pug}'
     pat: '*/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
-  task_lint:
-    cmd: "cp --target-directory $OUT $IN"
-    dir: "#{Dirname.TASK}/lint"
-    ixt: '{lson}'
   task_ls:
     cmd: "yarn --silent lsc --output $OUT $IN"
     dir: Dirname.TASK

@@ -7,7 +7,11 @@ Dir     = require \./constants .dir
 T       = require \./task
 
 const TASKS = T.prepare RAW_TASKS =
-  task_ls:
+  config:
+    cmd: "cp --target-directory $OUT $IN"
+    dir: "#{Dirname.TASK}/lint"
+    ixt: \lson
+  lint_ls:
     cmd: "yarn --silent ls-lint --config #{Dir.SRC}/task/lint/ls-lint.lson $IN"
     dir: Dirname.TASK
     ixt: \ls
