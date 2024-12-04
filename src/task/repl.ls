@@ -1,4 +1,4 @@
-global.log = console.log
+global.log = -> console.log it; it
 
 Chalk   = require \chalk
 Sh      = require \shelljs
