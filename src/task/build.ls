@@ -1,6 +1,3 @@
-Assert  = require \assert
-Chalk   = require \chalk
-Glob    = require \glob .globSync
 Emitter = require \events .EventEmitter
 Fs      = require \fs
 Match   = require \minimatch .minimatch
@@ -48,18 +45,8 @@ const TASKS = T.prepare RAW_TASKS =
 module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.BUILD_SITE
-    try await run-tasks TASKS; me.emit \restart catch err then log err; me.emit \error
+    try await T.run-tasks TASKS; me.emit \restart catch err then log err; me.emit \error
   start: -> for , t of TASKS then start-watching t
-
-function run-task t, ipath then new Promise (resolve, reject) ->
-  function get-opath then Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt
-  Sh.mkdir \-p odir = Path.dirname opath = get-opath!
-  log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir).replace(\$OPATH opath)
-  P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
-
-async function run-tasks tasks
-  await Promise.all p = [run-task t, f for , t of tasks when t.cmd for f in Glob t.glob].flat!flat!
-  log Chalk.green "...done #{p.length} files!"
 
 function start-watching t
   log "start watching build #{t.tid}: #{t.srcdir}/#{t.pat}"
@@ -68,8 +55,8 @@ function start-watching t
     return unless Match path, t.pat
     w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
     try
-      if t.pid then await run-tasks [TASKS[t.pid]]
-      else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
+      if t.pid then await T.run-tasks [TASKS[t.pid]]
+      else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await T.run-task t, ipath
       me.emit if t.rsn then \restart else \built
     catch err then me.emit \error
     watch-once!
