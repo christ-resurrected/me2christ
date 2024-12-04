@@ -10,10 +10,10 @@ Dir   = require \./constants .dir
 module.exports = me =
   prepare: (tasks) ->
     for tid, t of tasks then
-      t.tid = tid
       t.pat = "#{t.pat || ''}*.#{t.ixt}"
       t.ptask = tasks[t.pid] if t.pid
       t.srcdir = Path.resolve Dir.SRC, t.dir
+      t.tid = tid
       t.glob = Path.resolve t.srcdir, t.pat
     tasks
 
