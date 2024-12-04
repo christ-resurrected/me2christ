@@ -16,7 +16,8 @@ const TASKS =
     cfg : \ls-lint.lson
     ixt : \ls
 
-for , t of TASKS then
+for tid, t of TASKS then
+  t.tid = tid
   t.pat = "**/*.#{t.ixt}"
   t.glob = Path.resolve Dir.SRC, t.pat
 
@@ -27,15 +28,14 @@ module.exports = me = (new Emitter!) with
       log Chalk.green "...done #{p.length} files!"
       me.emit \done
     catch err then log err
-  start: -> for tid of TASKS then start-watching tid
+  start: -> for , t of TASKS then start-watching t
 
 function lint t, ipath then new Promise (resolve, reject) ->
   log Chalk.blue cmd = "yarn --silent #{t.cmd} --config #CFG/#{t.cfg} #{t.opts || ''} #ipath"
   P.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout; resolve!
 
-function start-watching tid
-  t = TASKS[tid]
-  log "start watching lint #tid: #{t.pat}"
+function start-watching t
+  log "start watching lint #{t.tid}: #{t.pat}"
   watch-once!
   function watch-once then w = Fs.watch Dir.SRC, {recursive:true}, (, path) ->>
     return unless Match path, t.pat
