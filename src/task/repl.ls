@@ -1,7 +1,7 @@
 global.log = -> console.log it; it
 
 Chalk   = require \chalk
-Sh      = require \shelljs
+P       = require \child_process
 Rl      = require \readline
 Asset   = require \./asset
 Build   = require \./build
@@ -24,11 +24,6 @@ const COMMANDS =
   * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Rsource.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
 
-Sh.config.fatal  = true # shelljs doesn't raise exceptions, so set this process to die on error
-#config.silent = true # otherwise too much noise
-
-Sh.cd Dir.BUILD # for safety, set working directory to build
-
 function show-help then for c in COMMANDS then log c.display
 for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
@@ -42,7 +37,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
 
 Build.on \built -> rl.prompt!; LiveRl.notify!
 Build.on \error -> rl.prompt!
-Build.on \restart -> Sh.touch \.restart-node
+Build.on \restart -> P.execSync "touch #{Dir.BUILD}/.restart-node"
 Build.start!
 
 Lint.on \done -> rl.prompt!
