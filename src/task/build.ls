@@ -1,8 +1,4 @@
 Emitter = require \events .EventEmitter
-Fs      = require \fs
-Match   = require \minimatch .minimatch
-P       = require \child_process
-Path    = require \path
 Sh      = require \shelljs
 C       = require \./constants
 Dirname = require \./constants .dirname
@@ -42,17 +38,4 @@ module.exports = me = (new Emitter!) with
   all: ->>
     Sh.rm \-rf Dir.BUILD_SITE
     try await T.run-tasks TASKS; me.emit \restart catch err then log err; me.emit \error
-  start: -> for , t of TASKS then start-watching t
-
-function start-watching t
-  log "start watching build #{t.tid}: #{t.srcdir}/#{t.pat}"
-  watch-once!
-  function watch-once then w = Fs.watch t.srcdir, {recursive:true}, (, path) ->>
-    return unless Match path, t.pat
-    w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
-    try
-      if t.pid then await T.run-tasks [TASKS[t.pid]]
-      else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await T.run-task t, ipath
-      me.emit if t.rsn then \restart else \built
-    catch err then me.emit \error
-    watch-once!
+  start: -> for , t of TASKS then T.start-watching me, \build, t
