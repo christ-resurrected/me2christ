@@ -5,7 +5,7 @@ Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
 
-const TASKS = T.prepare const RAW_TASKS =
+const TASKS = T.init const RAW_TASKS =
   config:
     cmd: "cp --target-directory $OUT $IN"
     dir: "#{Dirname.TASK}/lint"
