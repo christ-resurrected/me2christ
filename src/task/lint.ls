@@ -1,6 +1,4 @@
 Emitter = require \events .EventEmitter
-Fs      = require \fs
-Match   = require \minimatch .minimatch
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task

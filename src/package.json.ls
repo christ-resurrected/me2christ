@@ -10,7 +10,7 @@ repository:
   type: \git
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
-  build: 'node task/yarn/build.js'
+  build: 'node -e "global.log = console.log; require(\'./task/build\').all()"'
   start: 'touch .restart-node && node --watch-path=.restart-node --watch-preserve-output task/repl.js'
 engines:
   node: '22'

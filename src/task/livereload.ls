@@ -1,7 +1,5 @@
 Ws = require \ws
 
-const PORT=7778
-
 sockets = []
 
 module.exports =
@@ -11,7 +9,7 @@ module.exports =
     sockets := [] # should reconnect on reload
 
   start: ->
-    wss = new Ws.WebSocketServer {port:PORT}
+    wss = new Ws.WebSocketServer port: const PORT=7778
     log "Live-reload WebSocketServer listening on port #PORT"
     wss.on \connection (ws, req) ->
       # log "New connection from #{req.socket.remoteAddress}"

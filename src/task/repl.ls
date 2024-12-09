@@ -1,4 +1,4 @@
-global.log = -> console.log it; it
+global.log = (...args) -> console.log(if args.length is 1 then args.0 else args); args.0
 
 Chalk   = require \chalk
 P       = require \child_process
@@ -9,8 +9,8 @@ Consts  = require \./constants
 Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
 Lint    = require \./lint
-LiveRl  = require \./livereload
-Rsource = require \./resource
+LiveRld = require \./livereload
+Resrc   = require \./resource
 Site    = require \./site
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
@@ -20,12 +20,11 @@ const COMMANDS =
   * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
-  * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Rsource.download-kjv-json
-  * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Rsource.generate-verses-json
+  * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Resrc.download-kjv-json
+  * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Resrc.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
 
-function show-help then for c in COMMANDS then log c.display
-for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
+show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
@@ -35,7 +34,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.resume!
     rl.prompt!
 
-Build.on \built -> rl.prompt!; LiveRl.notify!
+Build.on \built -> rl.prompt!; LiveRld.notify!
 Build.on \error -> rl.prompt!
 Build.on \restart -> P.execSync "touch #{Dir.BUILD}/.restart-node"
 Build.start!
@@ -44,6 +43,6 @@ Lint.on \done -> rl.prompt!
 Lint.start!
 
 <- Site.start!
-LiveRl.start!
+LiveRld.start!
 show-help!
 rl.prompt!
