@@ -61,7 +61,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .card:nth-child(1),
+  .card.colspan-2,
   .card:only-child {
     grid-column: span 2;
   }
