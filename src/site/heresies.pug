@@ -6,6 +6,10 @@ append head
 
   - const PAGE_ID='heresies'
 
+mixin belief(title)
+  .card
+    h2= title
+
 mixin heresy(title, doctrine, proof_texts, origin, problems, refuted_by)
   .card
     h2= title
@@ -99,22 +103,15 @@ append main
   .card.dark
     h1 False Belief Systems
   .cards.dark
-    .card
-      h2 Atheism
-    .card
-      h2 Islam
-    .card
-      h2 Judaism
-    .card
-      h2 Jehovah Witness
-    .card
-      h2 Mormonism
-    .card
-      h2 Roman Catholicism
-    .card
-      h2 Seventh Day Adventism
-    // Flat Earth
-    // Freemasonry
-    // New Age
-    // Old Earth
-    // Satanism
+    +belief('Atheism')
+    +belief('Evolution')
+    +belief('Roman Catholicism')
+    +belief('Islam')
+    +belief('Judaism')
+    +belief('Jehovah Witness')
+    +belief('Mormonism')
+    +belief('Seventh Day Adventism')
+    +belief('Flat Earth')
+    +belief('Freemasonry')
+    +belief('New Age')
+    +belief('Satanism')
