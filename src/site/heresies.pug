@@ -5,56 +5,93 @@ append head
 
   - const PAGE_ID='heresies'
 
+mixin heresy(title, doctrine, proof_texts, origin, problems, teachers)
+  .card
+    h2= title
+    p #[strong Doctrine:] #{doctrine}
+    if origin
+      p #[strong Origin:] #{origin}
+    if attributes.deception
+      p #[strong Level of Deception:] #{attributes.deception}
+    p.tooltip-anchor #[strong Proof-texts:]
+      +see(proof_texts)
+    if problems
+      p #[strong Problems:] #{problems}
+    if teachers
+      p #[strong Teachers:] #{teachers}
+    if attributes.aka
+      p #[strong Also known as:] #{attributes.aka}
+    block
+
 append main
   .card.dark
     h1 Heresies
+    p.tooltip-anchor
+      | Friends beware, for the devil came to Jesus abusing Scripture
+      +see('Mat.4:6', 'see')
+      |  and has done the same for thousands of years. The apostle Peter warns us how some of Paul's writings are hard to understand and will be twisted by the unlearned to change its meaning
+      +see('2-Pet.3:15-16', 'see')
+      | . Jesus warns us to beware of false prophets and false doctrines.
+      +see('Mat.7:15-20, 16:6,12', 'see')
+      | . Neither Jesus, nor His apostles, nor the early church taught these doctrines.
     .verses
-      +verse('2-Pet.2:1')
-        :markdown-it But there were also false prophets among the people, even as there will be *false teachers* among you, who will secretly bring in *destructive heresies*, even denying the Lord who bought them, and bring on themselves swift destruction.
-      +verse('1-Tim.4:1,2')(seeAlso='')
-        :markdown-it Now the Spirit expressly says that in latter times some will depart from the faith, giving heed to deceiving spirits and *doctrines of demons*, speaking lies in hypocrisy, having their own conscience seared with a hot iron,
-      +verse('Jude 1:3')(seeAlso='Jude 1:4; Eph.5:11')
-        :markdown-it Beloved, while I was very diligent to write to you concerning our common salvation, I found it necessary to write to you exhorting you to contend earnestly for the faith which was once for all delivered to the saints.
+      +verse('1-Tim.4:1,2')(seeAlso='2-Cor.11:3-4, 11:13-15'): :markdown-it Now the Spirit expressly says that in latter times some will depart from the faith, giving heed to deceiving spirits and *doctrines of demons*, speaking lies in hypocrisy, having their own conscience seared with a hot iron,
+      +verse('2-Pet.2:1')(seeAlso='Acts 20:29-31'): :markdown-it But there were also false prophets among the people, even as there will be *false teachers* among you, who will secretly bring in *destructive heresies*, even denying the Lord who bought them, and bring on themselves swift destruction.
+      +verse('Jude 1:3')(seeAlso='Jude 1:4; Eph.5:11'): :markdown-it Beloved, while I was very diligent to write to you concerning our common salvation, I found it necessary to write to you exhorting you to contend earnestly for the faith which was once for all delivered to the saints.
+      +verse('2-Tim.4:3-4'): :markdown-it For the time will come when they will not endure sound doctrine, but according to their *own desires*, because they have itching ears, they will heap up for themselves teachers; and they will turn their ears away from the truth, and be *turned aside to fables*.
   .cards.dark
-    .card
-      h2 Annihilationism
-    .card
-      h2 Calvinism
-    .card
-      h2 Cessationism
-    .card
-      h2 Dispensationalism
-    .card
-      h2 Double Imputation
-    .card
-      h2 Irresistable Grace
-    .card
-      h2 Justification by Faith Alone
-    .card
-      h2 #[em L]imited Atonement
-    .card
-      h2 Original Sin
-    .card
-      h2 Penal Substitution Atonement
-    .card
-      h2 Once Saved Always Saved
-    .card
-      h2 Perseverance of the Saints
-    .card
-      h2 Theistic Evolution
-    .card
-      h2 Total Depravity
-    .card
-      h2 Unconditional Election
-    .card
-      h2 Universalism
+    +heresy(
+      'Cessationism',
+      'The gifts, signs and wonders of God are no longer operating today.',
+      '',
+      '',
+      '')
+    +heresy(
+      'Imputed Righteousness',
+      'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus.',
+      '2-Cor.5:21',
+      'Luther, Calvin',
+      '')(aka='Double Imputation')
+    +heresy(
+      'Justification by Faith Alone',
+      'We are justified by faith alone, not by anything we do.',
+      'Rom.10:9; Eph.2:8-9',
+      'Luther',
+      '')
+    +heresy(
+      'Original Sin',
+      'Every baby is born a sinner.',
+      'Psa.51:5; Rom.5:12',
+      'Augustine, Gnostics',
+      'Allows sinners to blame God (not themselves) for their sins i.e. "God made me this way!", so God is unjust to judge.')
+    +heresy(
+      'Penal Substitution Atonement',
+      'Jesus paid the *penalty* for our sins. The wrath of God was poured out and satisfied as God punished Him for our sins so we can go free.',
+      'Isaiah 53:10; Rom.3:25; 1-John 2:2',
+      'Anselm, Aquinas, Luther, Calvin',
+      'Maligns God\'s character and logically leads to double jeopardy or universalism, which leads to Calvinism\'s limited atonement.')(deception='High')
+    +heresy(
+      'Once Saved Always Saved',
+      'After initial salvation, it is impossible to fall away from the faith.',
+      '',
+      '',
+      '')
+    // Annihilationism
+    // Dispensationalism
+    // Irresistable Grace
+    // Limited Atonement
+    // Perseverance of the Saints
+    // Prosperity
+    // Theistic Evolution
+    // Total Depravity
+    // Unconditional Election
+    // Universalism
+    // Word of faith
   .card.dark
     h1 False Belief Systems
   .cards.dark
     .card
       h2 Atheism
-    .card
-      h2 Flat Earth
     .card
       h2 Islam
     .card
@@ -64,8 +101,11 @@ append main
     .card
       h2 Mormonism
     .card
-      h2 Old Earth
-    .card
       h2 Roman Catholicism
     .card
       h2 Seventh Day Adventism
+    // Flat Earth
+    // Freemasonry
+    // New Age
+    // Old Earth
+    // Satanism
