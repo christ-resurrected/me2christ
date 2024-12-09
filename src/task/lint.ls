@@ -8,10 +8,10 @@ T       = require \./task
 const TASKS = T.init const _TASKS =
   config:
     cmd: "cp --target-directory $OUT $IN"
-    dir: "#{Dirname.TASK}/lint"
+    dir: Dirname.TASK
     ixt: \lson
   lint_ls:
-    cmd: "yarn --silent ls-lint --config #{Dir.SRC_TASK}/lint/ls-lint.lson $IN"
+    cmd: "yarn --silent ls-lint --config #{Dir.SRC_TASK}/lint-ls.lson $IN"
     dir: Dirname.TASK
     ixt: \ls
     pat: '**/'
