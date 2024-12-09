@@ -1,4 +1,4 @@
-global.log = -> console.log it; it
+global.log = (...args) -> console.log(if args.length is 1 then args.0 else args); args.0
 
 Chalk   = require \chalk
 P       = require \child_process
