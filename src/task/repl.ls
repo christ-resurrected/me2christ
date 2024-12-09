@@ -24,8 +24,7 @@ const COMMANDS =
   * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Rsource.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
 
-function show-help then for c in COMMANDS then log c.display
-for c in COMMANDS then c.display = "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
+show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
