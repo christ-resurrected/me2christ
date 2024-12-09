@@ -12,11 +12,8 @@ append head
   }
 
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
-mixin see(refs, label='See')
-  - if (!refs) return
+mixin refs(refs)
   - var books = expand(refs).split(';')
-  span.see  (
-  span= label
   each bookrefs in books
     -
       var chapters = bookrefs.trim().split(' ')
@@ -47,6 +44,12 @@ mixin see(refs, label='See')
         span.tooltiptext!= tooltip
     else
       mark!= bookrefs
+
+mixin see(refs, label='See')
+  - if (!refs) return
+  span.see  (
+  span= label
+  +refs(refs)
   span )
 
 mixin seeAlso(refs)

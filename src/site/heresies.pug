@@ -14,7 +14,7 @@ mixin heresy(title, doctrine, proof_texts, origin, problems, teachers)
     if attributes.deception
       p #[strong Level of Deception:] #{attributes.deception}
     p.tooltip-anchor #[strong Proof-texts:]
-      +see(proof_texts)
+      +refs(proof_texts)
     if problems
       p #[strong Problems:] #{problems}
     if teachers
@@ -31,9 +31,9 @@ append main
       +see('Mat.4:6', 'see')
       |  and has done the same for thousands of years. The apostle Peter warns us how some of Paul's writings are hard to understand and will be twisted by the unlearned to change its meaning
       +see('2-Pet.3:15-16', 'see')
-      | . Jesus warns us to beware of false prophets and false doctrines.
+      | . Jesus warns us to beware of false prophets and false doctrines
       +see('Mat.7:15-20, 16:6,12', 'see')
-      | . Neither Jesus, nor His apostles, nor the early church taught these doctrines.
+      | . Neither Jesus, nor His apostles, nor the early pre-Nicean church taught these things.
     .verses
       +verse('1-Tim.4:1,2')(seeAlso='2-Cor.11:3-4, 11:13-15'): :markdown-it Now the Spirit expressly says that in latter times some will depart from the faith, giving heed to deceiving spirits and *doctrines of demons*, speaking lies in hypocrisy, having their own conscience seared with a hot iron,
       +verse('2-Pet.2:1')(seeAlso='Acts 20:29-31'): :markdown-it But there were also false prophets among the people, even as there will be *false teachers* among you, who will secretly bring in *destructive heresies*, even denying the Lord who bought them, and bring on themselves swift destruction.
@@ -60,10 +60,10 @@ append main
       '')
     +heresy(
       'Original Sin',
-      'Every baby is born a sinner.',
+      'Every baby is born with a sinful nature inherited from Adam, guilty not innocent. Babies who die go to hell unless baptised.',
       'Psa.51:5; Rom.5:12',
-      'Augustine, Gnostics',
-      'Allows sinners to blame God (not themselves) for their sins i.e. "God made me this way!", so God is unjust to judge.')
+      'Augustine (influcenced by Gnosticsm)',
+      '1. Allows sinners to blame God (not themselves) for their sins i.e. "God made me this way!", so God is unjust to judge them. 2. leads to the unbiblical practice of infant baptism.')
     +heresy(
       'Penal Substitution Atonement',
       'Jesus paid the *penalty* for our sins. The wrath of God was poured out and satisfied as God punished Him for our sins so we can go free.',
