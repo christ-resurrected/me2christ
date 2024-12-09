@@ -1,4 +1,3 @@
-Chalk   = require \chalk
 Fs      = require \fs
 Http    = require \https
 P       = require \child_process
