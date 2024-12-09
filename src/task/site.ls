@@ -20,7 +20,7 @@ module.exports =
       mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default
       res.writeHead statusCode, {'Content-Type': mimeType}
       file.stream.pipe res
-      # console.log "#{req.method} #{req.url} #{statusCode}"
+      # log "#{req.method} #{req.url} #{statusCode}"
     s.listen PORT, ->
       log "Http server listening on port #PORT"
       cb!
