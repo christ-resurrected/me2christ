@@ -47,7 +47,7 @@ mixin refs(refs)
 
 mixin see(refs, label='See')
   - if (!refs) return
-  span.see  (
+  span.ml-1 (
   span= label
   +refs(refs)
   span )
