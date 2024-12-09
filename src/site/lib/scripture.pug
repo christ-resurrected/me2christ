@@ -51,6 +51,7 @@ mixin see(refs, label='See')
   span= label
   +refs(refs)
   span )
+  block
 
 mixin seeAlso(refs)
   +see(refs, 'See also')
