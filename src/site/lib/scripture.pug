@@ -38,7 +38,7 @@ mixin refs(refs)
       }
       tooltip = tooltip.replaceAll('|', '<br/><br/>')
       bookrefs = finalise(bookrefs)
-    | 
+    = ' '
     if (tooltip.length)
       mark.tooltip!= bookrefs
         span.tooltiptext!= tooltip
