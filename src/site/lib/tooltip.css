@@ -5,10 +5,12 @@
 
 .tooltip {
   border-bottom: 2px dotted;
+  cursor: hand;
 
   & .tooltiptext {
     color: #fff;
     display: none;
+    font-weight: normal;
     padding: 0.5rem;
     position: absolute;
     top: 100%;
