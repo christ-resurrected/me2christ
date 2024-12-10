@@ -18,8 +18,8 @@ mixin heresy(title, doctrine, proof_texts, origin, problems)
       p #[strong Origin:] #{origin}
     if attributes.aka
       p #[strong Also known as:] #{attributes.aka}
-    if attributes.deception
-      p #[strong Level of Deception:] #{attributes.deception}
+    // if attributes.deception
+    //   p #[strong Level of Deception:] #{attributes.deception}
     .tooltip-anchor
       strong.tooltip.help Proof-texts:
         span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
@@ -47,8 +47,8 @@ append main
   .cards.dark
     +heresy(
       'Penal Substitution Atonement (PSA)',
-      'Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as God punished Him so we can go free.',
-      'Isaiah 53:4,6,10; Mat.27:46; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
+      'Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.',
+      'Is.53:4,6,10; Mat.27:46; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
       '(Anselm, Aquinas), Luther, Calvin',
       'Maligns God\'s character and logically leads to double jeopardy or universalism, which can lead to Calvinism\'s limited atonement. Also, this does not fix the believer\'s relationship with God, only their legal standing.')(deception='High')
       p.tooltip-anchor In
@@ -86,11 +86,16 @@ append main
       // 'Isaiah 7:15; Jer.19:4; John 9:41')
     +heresy(
       'Imputed Righteousness',
-      'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange. God sees us as righteous even if we sin.',
-      'Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
+      'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.',
+      'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
       'Luther, Calvin',
-      'Deceives the believer into thinking they are righteous when really they are not. Only changes the legal status with God.')(aka='Double Imputation')
-      +refs('1-Cor.6:9,10; 1-John 3:7,8')
+      'Abuses Isaiah 64:6, taking it out of context to deceive the believer into thinking they cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism). Changes our legal status with God.')(aka='Double Imputation')
+      p.tooltip-anchor
+        +refs('1-John 3:7,8'): |says whoever #[em practices] righteousness is righteous.
+      p.tooltip-anchor
+        +refs('Gal.5:19-21'): |says whoever does not #[em practice] righteousness cannot inherit the kingdom of God.
+      p
+        +refs('Rev.19:8'): |says the white robe is the righteous #[em acts] of the saints.
     +heresy(
       'Eternal security',
       'You cannot be lost once you\'re saved.',
