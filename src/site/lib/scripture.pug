@@ -64,7 +64,8 @@ mixin seeAlso(refs)
 
 mixin verse(ref)
   .verse.tooltip-anchor
-    span.pre= attributes.pre
+    if attributes.pre
+      span.pre= attributes.pre
     span.body
       block
     span  &ndash;
