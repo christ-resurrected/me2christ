@@ -13,6 +13,8 @@ LiveRld = require \./livereload
 Resrc   = require \./resource
 Site    = require \./site
 
+show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
+
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
@@ -24,8 +26,6 @@ const COMMANDS =
   * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Resrc.download-kjv-json
   * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Resrc.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
-
-show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
