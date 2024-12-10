@@ -10,7 +10,7 @@ mixin belief(title)
   .card
     h2= title
 
-mixin heresy(title, doctrine, proof_texts, origin, problems, refuted_by)
+mixin heresy(title, doctrine, proof_texts, origin, problems)
   .card
     h2= title
     p #[strong Doctrine:] #{doctrine}
@@ -18,16 +18,14 @@ mixin heresy(title, doctrine, proof_texts, origin, problems, refuted_by)
       p #[strong Origin:] #{origin}
     if attributes.aka
       p #[strong Also known as:] #{attributes.aka}
-    if attributes.deception
-      p #[strong Level of Deception:] #{attributes.deception}
+    // if attributes.deception
+    //   p #[strong Level of Deception:] #{attributes.deception}
     p.tooltip-anchor #[strong Proof-texts:]
       +refs(proof_texts)
     if problems
       p #[strong Problems:] #{problems}
-    if refuted_by
-      p.tooltip-anchor #[strong Refuted by:]
-        +refs(refuted_by)
-    .defense #[strong Defense: ]
+    .defense.tooltip-anchor
+      h3 Defense
       block
 
 append main
@@ -52,12 +50,13 @@ append main
       'Anselm, Aquinas, Luther, Calvin',
       'Maligns God\'s character and logically leads to double jeopardy or universalism, which leads to Calvinism\'s limited atonement. Also, this does not fix our relationship with God, only our legal standing.',
       'Psa.22:1; Mat.18:23-27; Mark 10:45; Luke 7:41-42; Acts 2:23; 1-Cor.5:7; 1-Tim.2:6')(deception='High')
-      :markdown-it
-        In Matthew 18 and Luke 7 the unpayable debt was *forgiven* not paid off.
-        In Mark 10 Jesus says he is our *ransom* for sin.
-        Jesus was quoting Psalm 22:1 on the cross.
-        He was our Passover lamb, a *sin offering* to lead us to repentance.
-        The Septuagint version of Isaiah 53:10 reads very differently to the Masoretic.
+      p.tooltip-anchor In
+        +refs('Mat.18:23-27; Luke 7:41,42', 'and'): |the unpayable debt is #[em forgiven], not paid off. In
+        +refs('Mark 10:45; 1-Tim.2:6', 'and'): |Jesus is our #[em ransom] i.e. our Passover lamb, a #[em sin offering] to lead us to repentance.
+      p Jesus is quoting
+        +refs('Psa.22:1'): |on the cross.
+        | The sacrificial animals in Leviticus were not being punished.
+        | The Septuagint version of Isaiah 53:10 reads very differently to the Masoretic.
     +heresy(
       'Original Sin',
       'We are all born with a sinful nature inherited from Adam, guilty not innocent from birth. Unbaptised babies who die go to hell.',
