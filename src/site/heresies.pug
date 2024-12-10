@@ -27,7 +27,7 @@ mixin heresy(title, doctrine, proof_texts, origin, problems)
     if problems
       p #[strong Problems:] #{problems}
     .defense.tooltip-anchor
-      h3 ~ Rebuttal ~
+      h3 ~ Rebuttals ~
       block
 
 append main
@@ -51,25 +51,25 @@ append main
       'Is.53:4,6,10; Mat.27:46; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
       '(Anselm, Aquinas), Luther, Calvin',
       'Maligns God\'s character and logically leads to double jeopardy or universalism, which can lead to Calvinism\'s limited atonement. Also, this does not fix the believer\'s relationship with God, only their legal standing.')(deception='High')
-      p.tooltip-anchor In
-        +refs('Mat.18:23-27; Luke 7:41,42', 'and'): |the unpayable debt is #[em forgiven], not paid off. In
-        +refs('Mark 10:45; 1-Tim.2:6', 'and'): |Jesus is our #[em ransom] i.e. our Passover lamb, a #[em sin offering] to lead us to repentance.
-      p Jesus is quoting
+      li In
+        +refs('Mat.18:23-27; Luke 7:41,42', 'and'): |the unpayable debt is #[em forgiven], not paid off.
+      li In
+        +refs('Mark 10:45; 1-Tim.2:6', 'and'): |Jesus is our #[em ransom] i.e. our Passover lamb, a #[em sin offering] leading us to repentance.
+      li Jesus is quoting
         +refs('Psa.22:1'): |on the cross.
-        | The sacrificial animals in Leviticus were not being punished.
-        | The Septuagint version of Isaiah 53:10 reads very differently to the Masoretic.
+      li The sacrificial animals in Leviticus were not being punished.
+      li The Septuagint version of Isaiah 53:10 reads very differently to the Masoretic.
     +heresy(
       'Justification by Faith Alone',
       'We are justified by faith alone, not by anything we do (our works).',
       'John 6:29; Rom.3:28, 10:9; Eph.2:8-9',
       'Luther',
       'Deceives the believer into thinking what they do plays no role in their salvation (monergism). Therefore there is little or no incentive for good works or obedience to God. For example, baptism is not required for salvation.')(aka='Sola Fide')
-      p.tooltip-anchor This doctrine contradicts
+      li This doctrine contradicts
         +refs('James 2:14-26'): |which says we are justified by (good) works (of faith and obedience), and that faith (alone) without works is dead.
-        +refs('Rom.3:24, 5:9; Titus 3:7', 'and'): |says we are also justified by grace and the blood.
-      p.tooltip-anchor
-        +refs('Mark 16:16; 1-Pet.3:21'): |says baptism is a necessary part of salvation.
-      p We must have good works (of faithful obedience) to enter the kingdom of heaven:
+      li: +refs('Rom.3:24, 5:9; Titus 3:7', 'and'): |says we are also justified by grace and the blood.
+      li: +refs('Mark 16:16; 1-Pet.3:21'): |says baptism is a necessary part of salvation.
+      li We must have good works (of faithful obedience) to enter the kingdom of heaven:
         +refs('Rom.2:5-10; Luke 13:24-27; Gal.6:7-10; Rev.20:12,13')
         |. We are not earning salvation, for it is a gift from God, with conditions.
     +heresy(
@@ -78,11 +78,11 @@ append main
       'Psa.51:5; John 3:6; Rom.5:12; Eph.2:3',
       'Augustine (influcenced by Gnosticism)',
       'Deceives the believer into thinking God made them a certain way which is impossible to repent of. Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them. Also leads to the unbiblical practice of infant baptism.')
-      p.tooltip-anchor God sees little children as innocent:
+      li God sees little children as innocent:
         +refs('Deut.1:39; Mat.18:2-5; Luke 18:15-17; Rom.9:11')
-      p.tooltip-anchor God will not hold us accountable for Adam's sin, only our own:
+      li God will not hold us accountable for Adam's sin, only our own:
         +refs('Deut.24:16; Eze.18:19-20')
-      p Gnostics mis-interpreted Ephesians 2:3 as concerning damnation by nature rather than personal sins. Gnosticism teaches all flesh is created evil.
+      li Gnostics mis-interpreted Ephesians 2:3 as concerning damnation by nature rather than personal sins. Gnosticism teaches all flesh is created evil.
       // 'Isaiah 7:15; Jer.19:4; John 9:41')
     +heresy(
       'Imputed Righteousness',
@@ -90,12 +90,9 @@ append main
       'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
       'Luther, Calvin',
       'Abuses Isaiah 64:6, taking it out of context to deceive the believer into thinking they cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism). Changes our legal status with God.')(aka='Double Imputation')
-      p.tooltip-anchor
-        +refs('1-John 3:7,8'): |says whoever #[em practices] righteousness is righteous.
-      p.tooltip-anchor
-        +refs('Gal.5:19-21'): |says whoever does not #[em practice] righteousness cannot inherit the kingdom of God.
-      p
-        +refs('Rev.19:8'): |says the white robe is the righteous #[em acts] of the saints.
+      li: +refs('1-John 3:7,8'): |says whoever #[em practices] righteousness is righteous.
+      li: +refs('Gal.5:19-21'): |says whoever does not #[em practice] righteousness cannot inherit the kingdom of God.
+      li: +refs('Rev.19:8'): |says the white robe is the righteous #[em acts] of the saints.
     +heresy(
       'Eternal security',
       'You cannot be lost once you\'re saved.',

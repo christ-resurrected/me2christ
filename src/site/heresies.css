@@ -1,3 +1,13 @@
 .defense p:last-child {
   margin-bottom: 0;
 }
+
+li {
+  margin-bottom: 0.5rem;
+  /* make every li a tooltip anchor */
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
