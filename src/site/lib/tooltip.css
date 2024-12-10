@@ -9,6 +9,10 @@
 
   &.help {
     cursor: help;
+
+    &:hover {
+      background: #840;
+    }
   }
 
   & .tooltiptext {
