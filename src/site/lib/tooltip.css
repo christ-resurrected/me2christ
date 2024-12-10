@@ -5,7 +5,11 @@
 
 .tooltip {
   border-bottom: 2px dotted;
-  cursor: hand;
+  cursor: pointer;
+
+  &.help {
+    cursor: help;
+  }
 
   & .tooltiptext {
     color: #fff;

@@ -21,7 +21,7 @@ mixin heresy(title, doctrine, proof_texts, origin, problems)
     if attributes.deception
       p #[strong Level of Deception:] #{attributes.deception}
     .tooltip-anchor
-      strong.tooltip Proof-texts:
+      strong.tooltip.help Proof-texts:
         span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
       +refs(proof_texts)
     if problems
