@@ -13,7 +13,7 @@ append head
   }
 
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
-mixin refs(refs, delimiter='')
+mixin refs(refs)
   - var books = expand(refs).split(';')
   each bookrefs, bookindex in books
     -
@@ -40,8 +40,6 @@ mixin refs(refs, delimiter='')
       tooltip = tooltip.replaceAll('|', '<br/><br/>')
       bookrefs = finalise(bookrefs)
     = ' '
-    if bookindex > 0 && delimiter
-      = delimiter + ' '
     if (tooltip.length)
       mark.tooltip!= bookrefs
         span.tooltiptext!= tooltip
