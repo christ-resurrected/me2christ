@@ -1,13 +1,6 @@
 .heresies {
   li {
     margin-bottom: 0.5rem;
-  }
-
-  .heresy li,
-  .truth li {
-    &:after {
-      content: '.';
-    }
 
     /* bullet points */
     list-style: none;
@@ -31,14 +24,32 @@
     li {
       display: inline;
       margin-left: 0.5rem;
-
-      &:before {
-        background: url('asset/emoji/crossmark.svg');
-      }
     }
 
     .errors {
       display: inline-block;
+    }
+  }
+
+  .heresy li,
+  .other li {
+    &:before {
+      background: url('asset/emoji/crossmark.svg');
+    }
+  }
+
+  .heresy li,
+  .truth li {
+    &:after {
+      content: '.';
+    }
+
+  }
+
+  /* nested list e.g. Calvinism */
+  .other ul>li {
+    &:first-child {
+      margin-top: 0.5rem;
     }
   }
 
@@ -69,10 +80,5 @@
         color: #ff8;
       }
     }
-  }
-
-  /* nested list e.g. Calvinism */
-  .other ul>li:first-child {
-    margin-top: 0.5rem;
   }
 }
