@@ -12,6 +12,7 @@ module.exports =
     const EMOJITWO = \https://raw.githubusercontent.com/EmojiTwo/emojitwo/refs/heads/master/svg/
     const EMOJI =
       cross: \https://upload.wikimedia.org/wikipedia/commons/8/87/Christian_cross.svg
+      checkmark_box: NOTO + \u2705.svg
       dove: EMOJITWO + \1f54a.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
@@ -21,9 +22,9 @@ module.exports =
 
   download-symbols: ->
     const ODIR = Path.resolve Dir.SRC_SITE_ASSET, \symbol
-    const SYMBOLS =
-      question_circle: \https://www.iconbolt.com/download/format:svg/plain/font-awesome-solid/question-circle.svg
-    for key, url of SYMBOLS then download-svg key, url, ODIR
+    # const SYMBOLS =
+    #   check: \https://raw.githubusercontent.com/FortAwesome/Font-Awesome/refs/heads/6.x/svgs/solid/check.svg
+    # for key, url of SYMBOLS then download-svg key, url, ODIR
 
   convert-tract-pdfs-to-pngs: -> # dependencies: imagemagick and optipng
     Fs.rmSync tdir = \/tmp/tract {force:true, recursive:true}; Fs.mkdirSync tdir
