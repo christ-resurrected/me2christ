@@ -13,4 +13,9 @@
       display: inline;
     }
   }
+
+  /* nested list e.g. Calvinism */
+  ul>li:first-child {
+    margin-top: 0.5rem;
+  }
 }
