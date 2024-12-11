@@ -8,9 +8,14 @@
       margin-bottom: 0;
     }
 
-    /* fix android chrome */
     .verse {
+      /* fix android chrome */
       display: inline;
+
+      /* add gap between text and verse */
+      &::before {
+        content: ' ';
+      }
     }
   }
 
