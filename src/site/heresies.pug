@@ -26,7 +26,7 @@ mixin heresy(title, doctrine, proof_texts, origin, error)
       +refs(proof_texts)
     if error
       p #[img(src='asset/emoji/crossmark.svg').error] #[strong Error:] #{error}
-    .defense.tooltip-anchor
+    .tooltip-anchor
       h3 ~ Rebuttals ~
       block
 
