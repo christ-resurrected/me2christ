@@ -3,7 +3,7 @@
     margin-bottom: 0.5rem;
   }
 
-  :not(ul)>li {
+  .heresy li {
     /* make every li a tooltip anchor */
     position: relative;
 
@@ -29,12 +29,11 @@
         background: #322;
         color: #ff8;
       }
-
     }
   }
 
   /* nested list e.g. Calvinism */
-  ul>li:first-child {
+  .other ul>li:first-child {
     margin-top: 0.5rem;
   }
 }

@@ -11,7 +11,7 @@ mixin belief(title)
     h2= title
 
 mixin heresy(title, doctrine, proof_texts, origin, problems)
-  .card
+  .card.heresy
     h2!= title
     p #[strong False doctrine:] #{doctrine}
     if origin
@@ -116,7 +116,7 @@ append main
       li Scripture exhorts us to strive and be diligent to enter in:
         +refs('Luke 13:24-27; 1-Cor.10:6-11; Heb.4:1,11')
       li The Lord warns
-    .card
+    .card.other
       h2 Other Heresies
       :markdown-it
         - Annihilationism
