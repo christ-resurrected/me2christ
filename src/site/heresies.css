@@ -10,4 +10,9 @@ li {
   &:last-child {
     margin-bottom: 0;
   }
+
+  /* fix android chrome */
+  .verse {
+    display: inline;
+  }
 }
