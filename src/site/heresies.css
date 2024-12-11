@@ -14,6 +14,11 @@
     }
   }
 
+  /* period after each li, except in "Other Heresies" */
+  :not(ul)>li:after {
+    content: '.';
+  }
+
   /* nested list e.g. Calvinism */
   ul>li:first-child {
     margin-top: 0.5rem;
