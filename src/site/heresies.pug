@@ -25,7 +25,7 @@ mixin heresy(title, doctrine, proof_texts, origin, error)
         span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
       +refs(proof_texts)
     if error
-      p #[strong Error:] #{error}
+      p #[img(src='asset/emoji/crossmark.svg').error] #[strong Error:] #{error}
     .defense.tooltip-anchor
       h3 ~ Rebuttals ~
       block

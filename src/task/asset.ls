@@ -11,8 +11,9 @@ module.exports =
     const NOTO = \https://raw.githubusercontent.com/googlefonts/noto-emoji/refs/heads/main/svg/emoji_
     const EMOJITWO = \https://raw.githubusercontent.com/EmojiTwo/emojitwo/refs/heads/master/svg/
     const EMOJI =
-      cross: \https://upload.wikimedia.org/wikipedia/commons/8/87/Christian_cross.svg
       checkmark_box: NOTO + \u2705.svg
+      cross: \https://upload.wikimedia.org/wikipedia/commons/8/87/Christian_cross.svg
+      crossmark: NOTO + \u274c.svg
       dove: EMOJITWO + \1f54a.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
