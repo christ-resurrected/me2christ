@@ -1,8 +1,16 @@
 .heresies {
   li {
     margin-bottom: 0.5rem;
+  }
+
+  :not(ul)>li {
     /* make every li a tooltip anchor */
     position: relative;
+
+    /* period after each li */
+    &:after {
+      content: '.';
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -23,11 +31,6 @@
       }
 
     }
-  }
-
-  /* period after each li, except in "Other Heresies" */
-  :not(ul)>li:after {
-    content: '.';
   }
 
   /* nested list e.g. Calvinism */
