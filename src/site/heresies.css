@@ -46,9 +46,13 @@
   }
 
   /* nested list e.g. Calvinism */
-  .other ul>li {
-    &:first-child {
-      margin-top: 0.5rem;
+  .other ul {
+    padding-inline-start: 1rem;
+
+    li {
+      &:first-child {
+        margin-top: 0.5rem;
+      }
     }
   }
 
