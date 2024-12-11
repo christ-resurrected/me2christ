@@ -16,6 +16,12 @@
       &::before {
         content: ' ';
       }
+
+      span.body {
+        background: #322;
+        color: #ff8;
+      }
+
     }
   }
 
