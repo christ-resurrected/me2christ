@@ -69,6 +69,10 @@
       margin-bottom: 0;
     }
 
+    span+span {
+      margin-left: 0.5rem;
+    }
+
     .verse {
       /* fix android chrome */
       display: inline;
