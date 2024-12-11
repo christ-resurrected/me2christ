@@ -34,7 +34,7 @@
   .heresy li,
   .other li {
     &:before {
-      background: url('asset/emoji/crossmark.svg');
+      background: url('asset/symbol/red_x.svg');
     }
   }
 
@@ -43,7 +43,6 @@
     &:after {
       content: '.';
     }
-
   }
 
   /* nested list e.g. Calvinism */

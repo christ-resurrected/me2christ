@@ -13,19 +13,18 @@ module.exports =
     const EMOJI =
       checkmark_box: NOTO + \u2705.svg
       cross: \https://upload.wikimedia.org/wikipedia/commons/8/87/Christian_cross.svg
-      crossmark: NOTO + \u274c.svg
       dove: EMOJITWO + \1f54a.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg
-    for key, url of EMOJI then download-svg key, url, ODIR
+    for key, url of EMOJI then download-asset key, url, ODIR
 
   download-symbols: ->
     const ODIR = Path.resolve Dir.SRC_SITE_ASSET, \symbol
-    # const SYMBOLS =
-    #   check: \https://raw.githubusercontent.com/FortAwesome/Font-Awesome/refs/heads/6.x/svgs/solid/check.svg
-    # for key, url of SYMBOLS then download-svg key, url, ODIR
+    const SYMBOLS =
+      red_x: \https://pixabay.com/get/gde3693cabe6566d09422464c057147a85a81f3afa5e19082f79923816464dd98b67595c691487fc9375df657215fda33.svg
+    for key, url of SYMBOLS then download-asset key, url, ODIR
 
   convert-tract-pdfs-to-pngs: -> # dependencies: imagemagick and optipng
     Fs.rmSync tdir = \/tmp/tract {force:true, recursive:true}; Fs.mkdirSync tdir
@@ -34,13 +33,13 @@ module.exports =
     P.execSync "optipng -quiet #tdir/*.png" # reduce file sizes for productionn
     for png in Fs.readdirSync tdir then Fs.copyFileSync "#tdir/#png" "#{Dir.SRC_SITE_ASSET}/tract/#png"
 
-function download-svg key, url, odir then Http.get url, (res) ->
+function download-asset key, url, odir then Http.get url, (res) ->
   return log "ERROR #{res.statusCode} #key #url" unless res.statusCode is 200
   data = ''
   res.on \data -> data += it
   res.on \end ->
     try
       if !Fs.existsSync odir then Fs.mkdirSync odir
-      Fs.writeFileSync (opath = Path.resolve odir, "#key.svg"), data
+      Fs.writeFileSync (opath = Path.resolve odir, "#key#{Path.extname url}"), data
       log "wrote #{data.length} bytes to #opath"
     catch err then log err
