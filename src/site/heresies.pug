@@ -10,26 +10,26 @@ mixin belief(title)
   .card
     h2= title
 
-mixin heresy(title, doctrine, proof_texts, origin, error)
+mixin heresy(title, doctrine, proof_texts, origin)
   .heresy
     h2!= title
-    p #[strong False doctrine:] #{doctrine}
+    div #[strong False doctrine:] #{doctrine}
     if origin
-      p #[strong Origin:] #{origin}
+      div #[strong Origin:] #{origin}
     if attributes.aka
-      p #[strong Also known as:] #{attributes.aka}
+      div #[strong Also known as:] #{attributes.aka}
     // if attributes.deception
-    //   p #[strong Level of Deception:] #{attributes.deception}
+    //   div #[strong Level of Deception:] #{attributes.deception}
     .tooltip-anchor
       strong.tooltip.help Proof-texts:
         span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
       +refs(proof_texts)
-    if error
-      p #[img(src='asset/emoji/crossmark.svg').error] #[strong Error:] #{error}
+    .errors: strong Errors:
+    block
 
-mixin rebuttals()
-  .tooltip-anchor
-    h3 ~ Rebuttals ~
+mixin defense()
+  .defense.tooltip-anchor
+    h3.mt-4 ~ Defense ~
     block
 
 append main
@@ -52,9 +52,11 @@ append main
         'Penal Substitution Atonement (PSA)',
         'Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.',
         'Is.53:4,6,10; Mat.27:46; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
-        '(Anselm, Aquinas), Luther, Calvin',
-        'Maligns God\'s character and logically leads to double jeopardy or universalism, which can lead to Calvinism\'s limited atonement. Also, this does not fix the believer\'s relationship with God, only their legal standing.')(deception='High')
-      +rebuttals
+        '(Anselm, Aquinas), Luther, Calvin')(deception='High')
+        li Maligns God's character
+        li Logically leads to double jeopardy or universalism, which can lead to Calvinism\'s limited atonement
+        li Does not fix the believer's relationship with God, only their legal standing
+      +defense
         li In Jesus' parables, the unpayable debt is #[em forgiven], not paid off:
           +refs('Mat.18:23-27; Luke 7:41,42')
         li Jesus is our #[em ransom], a perfect #[em sin offering] to lead us to repentance:
@@ -70,9 +72,10 @@ append main
         'Justification by Faith Alone',
         'We are justified by faith alone, not by anything we do (our works).',
         'John 6:29; Rom.3:28, 10:9; Eph.2:8-9',
-        'Luther',
-        'Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is little or no incentive for good works or obedience to God. For example, baptism is not required for salvation.')(aka='Sola Fide')
-      +rebuttals
+        'Luther')(aka='Sola Fide')
+        li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
+        li Logically follows that baptism is not required for salvation
+      +defense
         li We are justified by (good) works (of faith and obedience). Faith (alone) without works is dead:
           +refs('James 2:14-26')
         li: |We are also justified by grace and the blood:
@@ -87,9 +90,11 @@ append main
         'Original Sin',
         'Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.',
         'Psa.51:5; John 3:6; Rom.5:12; Eph.2:3',
-        'Augustine (influcenced by Gnosticism)',
-        'Deceives the believer to think God made them a certain way which is impossible to repent of. Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them. Also leads to the unbiblical practice of infant baptism.')
-      +rebuttals
+        'Augustine (influcenced by Gnosticism)')
+        li Deceives the believer to think God made them a certain way which is impossible to repent of
+        li Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them
+        li Leads to the unbiblical practice of infant baptism
+      +defense
         li Little children are innocent in the eyes of God:
           +refs('Deut.1:39; Mat.18:2-5; Luke 18:15-17; Rom.9:11')
         li God holds us accountable for our own sin, not Adam's:
@@ -102,32 +107,36 @@ append main
         'Imputed Righteousness',
         'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.',
         'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
-        'Luther, Calvin',
-        'Abuses Isaiah 64:6, taking it out of context to deceive us that we cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism).')(aka='Double Imputation')
-      +rebuttals
+        'Luther, Calvin')(aka='Double Imputation')
+        li Abuses Isaiah 64:6, taking it out of context to imply we cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism)
+      +defense
         li: |Whoever #[em practices] righteousness is righteous:
-          +refs('1-John 3:7')
+          +refs('1-John 3:7,10')
         li: | Whoever does not #[em practice] righteousness cannot inherit the kingdom of God:
           +refs('Gal.5:19-21')
         li The fine linen is not the righteous acts of God, but the saints:
           +verse('Rev.19:8'): |And to her it was granted to be arrayed in fine linen, clean and bright, for the fine linen is the righteous acts of the saints.
-        li True righteousness is found in obedience to Jesus, not trusting in our own:
-          +refs('Luke 18:9-14')
+        li True righteousness is found in obedience to Jesus, not in self-righteousness or in keeping the Law of Moses:
+          +refs('Luke 18:9-14; Rom.3:21,22')
     .card
       +heresy(
         'Eternal security',
         'You cannot be lost once you\'re saved.',
-        'John 6:37, 10:28; Rom.8:38,39; Php.1:6',
-        '',
-        'Deceives the believer to think they will enter the kingdom of God even if they should continue living in sin. Related to the unbiblical idea that one can pray the "sinners\' prayer" to be saved.')(aka='Once Saved Always Saved')
-      +rebuttals
+        'John 6:37, 10:28; Rom.8:38,39; Php.1:6')(aka='Once Saved Always Saved')
+        li Deceives the believer to think they will enter the kingdom of God even if they should go back to living in sin
+        li Related to the unbiblical idea that one can pray a "sinners' prayer" to be saved or born again
+      +defense
+        li After initial salvation, we must endure to the end to be (finally) saved:
+          +refs('Mat.24:13')
+        li God removes unfruitful branches from the vine and casts them into the fire:
+          +refs('John 15:1-10; Rom.11:20-22')
+        li Scripture exhorts us to strive and be diligent to enter in, with fear and trembling:
+          +refs('Luke 13:24-27; 1-Cor.10:6-11; Php.2:12; Heb.4:1,11')
         li Scripture warns born again believers the danger of falling away from the faith and going back to a life of sin:
           +refs('Heb.6:4-6, 10:26-31; 2-Pet.2:20-22')
-        li We must endure to the end to be saved:
-          +refs('Mat.24:13')
-        li Scripture exhorts us to strive and be diligent to enter in:
-          +refs('Luke 13:24-27; 1-Cor.10:6-11; Heb.4:1,11')
-        li The Lord warns
+        li It takes more than just a prayer to be initially saved:
+          +verse('John 3:5')
+            |Jesus answered, "Most assuredly, I say to you, unless one is born of water and the Spirit, he cannot enter the kingdom of God.
     .card.other
       h2 Other Heresies
       :markdown-it
