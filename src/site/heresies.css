@@ -4,7 +4,7 @@
   }
 
   .heresy li,
-  .defense li {
+  .truth li {
     &:after {
       content: '.';
     }
@@ -42,7 +42,7 @@
     }
   }
 
-  .defense li {
+  .truth li {
     /* make every li a tooltip anchor */
     position: relative;
 
