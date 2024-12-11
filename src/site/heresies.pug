@@ -13,7 +13,7 @@ mixin belief(title)
 mixin heresy(title, doctrine, proof_texts, origin)
   .heresy
     h2!= title
-    div #[strong False doctrine:] #{doctrine}
+    div #[strong The Lie:] #{doctrine}
     if origin
       div #[strong Origin:] #{origin}
     if attributes.aka
@@ -29,7 +29,7 @@ mixin heresy(title, doctrine, proof_texts, origin)
 
 mixin defense()
   .defense.tooltip-anchor
-    h3.mt-4 ~ Defense ~
+    h3.mt-4 ~ The Truth ~
     block
 
 append main
@@ -74,17 +74,20 @@ append main
         'John 6:29; Rom.3:28, 10:9; Eph.2:8-9',
         'Luther')(aka='Sola Fide')
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
-        li Logically follows that baptism is not required for salvation
+        li It logically follows that baptism is not required for salvation
       +defense
-        li We are justified by (good) works (of faith and obedience). Faith (alone) without works is dead:
-          +refs('James 2:14-26')
+        li We are justified by (good) works (of faith and obedience):
+          +verse('James 2:24'): |You see then that a man is justified by works, and not by faith only.
+        li
+          +verse('James 2:26'): |For as the body without the spirit is dead, so faith without works is dead also.
+          +seeAlso('James 2:14-26')
         li: |We are also justified by grace and the blood:
           +refs('Rom.3:24, 5:9; Titus 3:7')
         li Baptism (a good work of faith) is a necessary part of salvation:
           +refs('Mark 16:16; Acts 2:38, 22:16; Rom.6:3-4; 1-Pet.3:21')
         li We must have good works (of faithful obedience) to enter the kingdom of heaven:
           +refs('Rom.2:5-10; Luke 13:24-27; Gal.6:7-10; Rev.20:12,13')
-          |. We are not earning salvation for it is a gift from God, but with conditions
+            |. We cannot #[em earn] eternal life... it is a gift from God, but with conditions
     .card
       +heresy(
         'Original Sin',
@@ -134,7 +137,7 @@ append main
           +refs('Luke 13:24-27; 1-Cor.10:6-11; Php.2:12; Heb.4:1,11')
         li Scripture warns born again believers the danger of falling away from the faith and going back to a life of sin:
           +refs('Heb.6:4-6, 10:26-31; 2-Pet.2:20-22')
-        li It takes more than just a prayer to be initially saved:
+        li It takes more than just a prayer to be (initially) saved:
           +verse('John 3:5')
             |Jesus answered, "Most assuredly, I say to you, unless one is born of water and the Spirit, he cannot enter the kingdom of God.
     .card.other
