@@ -66,7 +66,7 @@ mixin verse(ref)
       span.pre= attributes.pre
     span.body
       block
-    span  &ndash;
+    span.dash &ndash;
     - ref = finalise(expand(ref))
     mark!= ref
     +seeAlso(attributes.seeAlso)
