@@ -69,18 +69,9 @@
       margin-bottom: 0;
     }
 
-    span+span {
-      margin-left: 0.5rem;
-    }
-
     .verse {
       /* fix android chrome */
       display: inline;
-
-      /* add gap between text and verse */
-      &::before {
-        content: ' ';
-      }
 
       span.body {
         background: #322;
