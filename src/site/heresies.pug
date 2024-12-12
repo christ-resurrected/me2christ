@@ -13,7 +13,7 @@ mixin belief(title)
 mixin heresy(title, doctrine, proof_texts, origin)
   .heresy
     h2!= title
-    div #[strong The Lie:] #{doctrine}
+    div #[strong False doctrine:] #{doctrine}
     if origin
       div #[strong Origin:] #{origin}
     if attributes.aka
@@ -29,7 +29,7 @@ mixin heresy(title, doctrine, proof_texts, origin)
 
 mixin truth()
   .truth.tooltip-anchor
-    h3.mt-4 ~ The Truth ~
+    h3.mt-4 Contending for the Faith
     block
 
 append main
