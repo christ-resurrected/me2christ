@@ -6,4 +6,16 @@
   .light em {
     color: green;
   }
+
+  .check:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    top: 2px;
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    background: url('asset/emoji/checkmark_box.svg');
+    filter: hue-rotate(00deg) brightness(72%) contrast(500%);
+  }
 }
