@@ -10,22 +10,23 @@ mixin belief(title)
   .card
     h2= title
 
-mixin heresy(title, doctrine, proof_texts, origin)
-  .heresy
-    h2!= title
-    div #[strong False doctrine:] #{doctrine}
-    if origin
-      div #[strong Origin:] #{origin}
-    if attributes.aka
-      div #[strong Also known as:] #{attributes.aka}
-    // if attributes.deception
-    //   div #[strong Level of Deception:] #{attributes.deception}
-    .tooltip-anchor
-      strong.tooltip.help Proof-texts:
-        span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
-      +refs(proof_texts)
-    .errors: strong Errors:
-    block
+mixin preamble(title, doctrine, proof_texts, origin)
+  h2!= title
+  div #[strong False doctrine:] #{doctrine}
+  if origin
+    div #[strong Origin:] #{origin}
+  if attributes.aka
+    div #[strong Also known as:] #{attributes.aka}
+  // if attributes.deception
+  //   div #[strong Level of Deception:] #{attributes.deception}
+  .tooltip-anchor
+    strong.tooltip.help Proof-texts:
+      span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
+    +refs(proof_texts)
+
+mixin errors()
+  .errors: strong Errors:
+  block
 
 mixin refutation()
   .refutation.tooltip-anchor
@@ -47,12 +48,13 @@ append main
       +verse('2-Tim.4:3-4'): :markdown-it For the time will come when they will not endure sound doctrine, but according to their *own desires*, because they have itching ears, they will heap up for themselves teachers; and they will turn their ears away from the truth, and be *turned aside to fables*.
     p.mb-0 Neither the prophets, nor the Lord Jesus, nor His apostles taught any of the doctrines found below.
   .cards.dark.heresies
-    .card
-      +heresy(
+    .card.heresy
+      +preamble(
         'Penal Substitution Atonement (PSA)',
         'Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.',
         'Is.53:4,6,10; Mat.27:46; John 19:30; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
         '(Anselm, Aquinas), Luther, Calvin')(deception='High')
+      +errors
         li Maligns God's character
         li Logically leads to double jeopardy or universalism, which can lead to Calvinism's limited atonement
         li Does not fix the believer's relationship with God, only their legal standing
@@ -72,12 +74,13 @@ append main
           span.tooltip Septuagint version of Isaiah 53:10
             .tooltiptext And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)
           span reads differently to the Masoretic
-    .card
-      +heresy(
+    .card.heresy
+      +preamble(
         'Justification by Faith Alone',
         'We are justified by faith alone, not by anything we do in obedience (our works). However, good works should follow.',
         'John 6:29; Rom.3:28, 10:9; Eph.2:8-9',
         'Luther')(aka='Sola Fide')
+      +errors
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
         li It logically follows that baptism (a good work of faith) is not required for salvation
       +refutation
@@ -93,12 +96,13 @@ append main
         li We must have good works (of faithful obedience) to enter the kingdom of heaven:
           +refs('Rom.2:5-10; Luke 13:24-27; Gal.6:7-10; Rev.20:12,13')
           |. We cannot #[em earn] eternal life... it is a gift from God, but with conditions
-    .card
-      +heresy(
+    .card.heresy
+      +preamble(
         'Original Sin',
         'Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.',
         'Psa.51:5; John 3:6; Rom.5:12; Eph.2:3',
         'Augustine (influcenced by Gnosticism)')
+      +errors
         li Deceives the believer to think God made them a certain way which is impossible to repent of
         li Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them
         li Leads to the unbiblical practice of infant baptism
@@ -110,12 +114,13 @@ append main
           +seeAlso('Deut.24:16; Eze.18:19-20')
         li Gnostics taught that all flesh is evil, so mis-interpreted Ephesians 2:3 as concerning damnation by nature rather than personal sins.
         // 'Isaiah 7:15; Jer.19:4; John 9:41')
-    .card
-      +heresy(
+    .card.heresy
+      +preamble(
         'Imputed Righteousness',
         'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.',
         'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
         'Luther, Calvin')(aka='Double Imputation')
+      +errors
         li Abuses Isaiah 64:6, taking it out of context to imply we cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism)
       +refutation
         li: |Whoever #[em practices] righteousness is righteous:
@@ -126,11 +131,12 @@ append main
           +verse('Rev.19:8'): |And to her it was granted to be arrayed in fine linen, clean and bright, for the fine linen is the righteous acts of the saints.
         li True righteousness is found in obedience to Jesus, not in self-righteousness or in keeping the Law of Moses:
           +refs('Luke 18:9-14; Rom.3:21,22')
-    .card
-      +heresy(
+    .card.heresy
+      +preamble(
         'Eternal security',
         'You cannot be lost once you\'re saved.',
         'John 6:37, 10:28; Rom.8:38,39; Php.1:6')(aka='Once Saved Always Saved')
+      +errors
         li Deceives the believer to think they will enter the kingdom of God even if they should go back to living in sin
         li Related to the unbiblical idea that one can pray a "sinners' prayer" to be saved or born again
       +refutation
