@@ -20,25 +20,25 @@
     div+div {
       margin-top: 1rem;
     }
+  }
+
+  .errors {
+    display: inline-block;
 
     li {
       display: inline;
       margin-left: 0.5rem;
     }
-
-    .errors {
-      display: inline-block;
-    }
   }
 
-  .heresy li,
+  .errors li,
   .other li {
     &:before {
       background: url('asset/symbol/red_x.svg');
     }
   }
 
-  .heresy li,
+  .errors li,
   .refutation li {
     &:after {
       content: '.';

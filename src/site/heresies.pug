@@ -11,23 +11,25 @@ mixin belief(title)
     h2= title
 
 mixin preamble(title, proof_texts, origin)
-  h2!= title
-  div #[strong False doctrine: ]
-    block
-  if origin
-    div #[strong Origin:] #{origin}
-  if attributes.aka
-    div #[strong Also known as:] #{attributes.aka}
-  // if attributes.deception
-  //   div #[strong Level of Deception:] #{attributes.deception}
-  .tooltip-anchor
-    strong.tooltip.help Proof-texts:
-      span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
-    +refs(proof_texts)
+  .preamble
+    h2!= title
+    div #[strong False doctrine: ]
+      block
+    if origin
+      div #[strong Origin:] #{origin}
+    if attributes.aka
+      div #[strong Also known as:] #{attributes.aka}
+    // if attributes.deception
+    //   div #[strong Level of Deception:] #{attributes.deception}
+    .tooltip-anchor
+      strong.tooltip.help Proof-texts:
+        span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
+      +refs(proof_texts)
 
 mixin errors()
-  .errors: strong Errors:
-  block
+  .errors
+    strong Errors:
+    block
 
 mixin refutation()
   .refutation.tooltip-anchor
@@ -78,7 +80,9 @@ append main
     .card.heresy
       +preamble(
         'Justification by Faith Alone', 'John 6:29; Rom.3:28, 10:9; Eph.2:8-9', 'Luther')(aka='Sola Fide')
-        |We are justified by faith alone, not by anything we do in obedience (our works). However, good works should follow.
+        span We are
+        span justified
+        span by faith alone, not by anything we do in obedience (our works). However, good works should follow.
       +errors
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
         li It logically follows that baptism (a good work of faith) is not required for salvation
