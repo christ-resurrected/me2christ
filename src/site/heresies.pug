@@ -10,9 +10,10 @@ mixin belief(title)
   .card
     h2= title
 
-mixin preamble(title, doctrine, proof_texts, origin)
+mixin preamble(title, proof_texts, origin)
   h2!= title
-  div #[strong False doctrine:] #{doctrine}
+  div #[strong False doctrine: ]
+    block
   if origin
     div #[strong Origin:] #{origin}
   if attributes.aka
@@ -51,9 +52,9 @@ append main
     .card.heresy
       +preamble(
         'Penal Substitution Atonement (PSA)',
-        'Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.',
         'Is.53:4,6,10; Mat.27:46; John 19:30; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
         '(Anselm, Aquinas), Luther, Calvin')(deception='High')
+        | Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.
       +errors
         li Maligns God's character
         li Logically leads to double jeopardy or universalism, which can lead to Calvinism's limited atonement
@@ -76,10 +77,8 @@ append main
           span reads differently to the Masoretic
     .card.heresy
       +preamble(
-        'Justification by Faith Alone',
-        'We are justified by faith alone, not by anything we do in obedience (our works). However, good works should follow.',
-        'John 6:29; Rom.3:28, 10:9; Eph.2:8-9',
-        'Luther')(aka='Sola Fide')
+        'Justification by Faith Alone', 'John 6:29; Rom.3:28, 10:9; Eph.2:8-9', 'Luther')(aka='Sola Fide')
+        |We are justified by faith alone, not by anything we do in obedience (our works). However, good works should follow.
       +errors
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
         li It logically follows that baptism (a good work of faith) is not required for salvation
@@ -97,11 +96,8 @@ append main
           +refs('Rom.2:5-10; Luke 13:24-27; Gal.6:7-10; Rev.20:12,13')
           |. We cannot #[em earn] eternal life... it is a gift from God, but with conditions
     .card.heresy
-      +preamble(
-        'Original Sin',
-        'Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.',
-        'Psa.51:5; John 3:6; Rom.5:12; Eph.2:3',
-        'Augustine (influcenced by Gnosticism)')
+      +preamble('Original Sin', 'Psa.51:5; John 3:6; Rom.5:12; Eph.2:3', 'Augustine (influcenced by Gnosticism)')
+        |Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.
       +errors
         li Deceives the believer to think God made them a certain way which is impossible to repent of
         li Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them
@@ -115,11 +111,8 @@ append main
         li Gnostics taught that all flesh is evil, so mis-interpreted Ephesians 2:3 as concerning damnation by nature rather than personal sins.
         // 'Isaiah 7:15; Jer.19:4; John 9:41')
     .card.heresy
-      +preamble(
-        'Imputed Righteousness',
-        'Jesus\' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.',
-        'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21',
-        'Luther, Calvin')(aka='Double Imputation')
+      +preamble('Imputed Righteousness', 'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21', 'Luther, Calvin')(aka='Double Imputation')
+        |Jesus' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.
       +errors
         li Abuses Isaiah 64:6, taking it out of context to imply we cannot become righteous before God. Therefore God must give us His righteousness apart from our works (monergism)
       +refutation
@@ -132,10 +125,8 @@ append main
         li True righteousness is found in obedience to Jesus, not in self-righteousness or in keeping the Law of Moses:
           +refs('Luke 18:9-14; Rom.3:21,22')
     .card.heresy
-      +preamble(
-        'Eternal security',
-        'You cannot be lost once you\'re saved.',
-        'John 6:37, 10:28; Rom.8:38,39; Php.1:6')(aka='Once Saved Always Saved')
+      +preamble('Eternal security', 'John 6:37, 10:28; Rom.8:38,39; Php.1:6')(aka='Once Saved Always Saved')
+        |You cannot be lost once you're saved.
       +errors
         li Deceives the believer to think they will enter the kingdom of God even if they should go back to living in sin
         li Related to the unbiblical idea that one can pray a "sinners' prayer" to be saved or born again
