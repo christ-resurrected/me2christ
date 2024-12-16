@@ -29,7 +29,7 @@
 
 .cards.dark {
   .card {
-    /* background: #000; */
+    background: #000;
     border-color: red;
 
     color: #fff;
