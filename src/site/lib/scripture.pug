@@ -52,7 +52,7 @@ mixin refs(refs)
 mixin see(refs, label='See')
   - if (!refs) return
   span.ml-1 (
-  span= label
+  = label
   +refs(refs)
   span )
   block
