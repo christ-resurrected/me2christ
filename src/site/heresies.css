@@ -20,6 +20,10 @@
     div+div {
       margin-top: 1rem;
     }
+
+    span+span {
+      margin-left: 0.3rem;
+    }
   }
 
   .errors {
@@ -67,10 +71,6 @@
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    span+span {
-      margin-left: 0.3rem;
     }
 
     .verse {
