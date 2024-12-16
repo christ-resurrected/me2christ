@@ -39,7 +39,7 @@
   }
 
   .heresy li,
-  .truth li {
+  .refutation li {
     &:after {
       content: '.';
     }
