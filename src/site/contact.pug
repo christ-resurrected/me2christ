@@ -1,5 +1,8 @@
 extends lib/base.pug
 
+append head
+  style: include contact.css
+
 mixin input(id, label, type, value)
   div
     label(for=id) #{label}
@@ -16,8 +19,10 @@ mixin textarea(id, label)
 append main
   .card
     h1 Contact Me
-    form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
-      +input('name', 'Name', 'text', 'jonah')
-      +input('email', 'Email', 'email', 'jonah@gmail.com')
-      +textarea('message', 'Message')
-      button(type='submit') Submit
+    .contact
+      form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
+        +input('name', 'Name', 'text', 'jonah')
+        +input('email', 'Email', 'email', 'jonah@gmail.com')
+        +textarea('message', 'Message')
+
+        button(type='submit').mt-8 Submit
