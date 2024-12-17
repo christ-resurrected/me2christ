@@ -1,0 +1,23 @@
+extends lib/base.pug
+
+mixin input(id, label, type, value)
+  div
+    label(for=id) #{label}
+    input(id=id name=id type=type value=value)
+
+mixin textarea(id, label)
+  div
+    label(for=id) #{label}
+    textarea(id=id name=id cols=40 rows=10)
+      |Geetings,
+      |
+      |Grace and peace.
+
+append main
+  .card
+    h1 Contact Me
+    form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
+      +input('name', 'Name', 'text', 'jonah')
+      +input('email', 'Email', 'email', 'jonah@gmail.com')
+      +textarea('message', 'Message')
+      button(type='submit') Submit
