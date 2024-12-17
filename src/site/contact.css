@@ -36,12 +36,12 @@
       border-radius: 4px;
       padding: 0.75rem;
       font-size: 1rem;
-      cursor: pointer;
       width: 100%;
     }
 
-    button:hover {
+    button:enabled:hover {
       background-color: #0f0;
+      cursor: pointer;
     }
   }
 }
