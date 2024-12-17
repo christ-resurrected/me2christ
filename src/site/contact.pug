@@ -3,26 +3,23 @@ extends lib/base.pug
 append head
   style: include contact.css
 
-mixin input(id, label, type, value)
+mixin input(id, label, type, desc)
   div
     label(for=id) #{label}
-    input(id=id name=id type=type value=value)
+    input(id=id name=id placeholder=`Your ${desc}` type=type)
 
 mixin textarea(id, label)
   div
     label(for=id) #{label}
-    textarea(id=id name=id cols=40 rows=10)
-      |Geetings,
-      |
-      |Grace and peace.
+    textarea(id=id name=id placeholder=`Your message` cols=40 rows=10)
 
 append main
   .card
     h1 Contact Me
     .contact
       form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
-        +input('name', 'Name', 'text', 'jonah')
-        +input('email', 'Email', 'email', 'jonah@gmail.com')
+        +input('name', 'Name', 'text', 'name')
+        +input('email', 'Email', 'email', 'email address')
         +textarea('message', 'Message')
 
         button(type='submit').mt-8 Submit
