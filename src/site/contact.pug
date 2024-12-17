@@ -7,12 +7,12 @@ append head
 mixin input(id, label, type, desc)
   div
     label(for=id) #{label}
-    input(id=id name=id placeholder=`Your ${desc}` type=type)
+    input(id=id name=id placeholder=`Your ${desc}` required type=type)
 
 mixin textarea(id, label)
   div
     label(for=id) #{label}
-    textarea(id=id name=id placeholder=`Your message` cols=40 rows=10)
+    textarea(cols=40 id=idname=id placeholder=`Your message` required rows=10)
 
 append main
   .card
