@@ -32,8 +32,7 @@
     }
 
     button {
-      background-color: #068;
-      color: white;
+      background-color: #ccc;
       border: none;
       border-radius: 4px;
       padding: 0.75rem;
@@ -43,7 +42,7 @@
     }
 
     button:hover {
-      background-color: #0af;
+      background-color: #0f0;
     }
   }
 }
