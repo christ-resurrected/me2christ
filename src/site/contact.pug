@@ -5,14 +5,12 @@ append head
   script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
 mixin input(id, label, type, desc)
-  div
-    label(for=id) #{label}
-    input(id=id name=id placeholder=`Your ${desc}` required type=type)
+  label(for=id) #{label}
+  input(id=id name=id placeholder=`Your ${desc}` required type=type)
 
 mixin textarea(id, label)
-  div
-    label(for=id) #{label}
-    textarea(cols=40 id=idname=id placeholder=`Your message` required rows=10)
+  label(for=id) #{label}
+  textarea(cols=40 id=id name=id placeholder=`Your message` required rows=10)
 
 append main
   .card
@@ -23,5 +21,5 @@ append main
         +input('email', 'Email', 'email', 'email address')
         +textarea('message', 'Message')
 
-        div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile
+        div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-8
         button(type='submit').mt-8 Send

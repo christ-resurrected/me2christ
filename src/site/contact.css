@@ -6,7 +6,7 @@
     padding: 1rem;
     max-width: 600px;
 
-    div+div {
+    input+label {
       margin-top: 1rem;
     }
 
