@@ -7,19 +7,16 @@ addEventListener("DOMContentLoaded", () => {
     elError.style.display = 'none'
     elFieldset.disabled = true
     req = { method: 'POST', body: new URLSearchParams(new FormData(event.target)) }
-    fetch(event.target.action, req).then(handleResponse).then(showSuccess).catch(showError);
+    fetch(event.target.action, req).then(handleResponse).then(handleResponseText).then(showSuccess).catch(showError);
   });
 
-  function handleResponse(res) {
-    if (!res.ok) throw res.text()
-  }
+  function handleResponse(res) { return res.text() }
+  function handleResponseText(t) { if (t != 'OK') throw new Error(t) }
 
-  function showError(promise) {
-    promise.then(txt => {
-      elError.innerHTML = txt
-      elError.style.display = 'block'
-      elFieldset.disabled = false
-    })
+  function showError(e) {
+    elError.innerHTML = e
+    elError.style.display = 'block'
+    elFieldset.disabled = false
   }
 
   function showSuccess() {
