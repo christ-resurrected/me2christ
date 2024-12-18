@@ -1,34 +1,29 @@
 addEventListener("DOMContentLoaded", () => {
   const elError = document.getElementById('error')
-  const elSubmit = document.getElementById('submit')
+  const elFieldset = document.getElementsByTagName('fieldset')[0]
 
-  document.forms['contact'].addEventListener('submit', (event) => {
-    hideError();
+  document.forms[0].addEventListener('submit', (event) => {
     event.preventDefault();
-    elSubmit.disabled = true
+    elError.style.display = 'none'
+    elFieldset.disabled = true
     req = { method: 'POST', body: new URLSearchParams(new FormData(event.target)) }
     fetch(event.target.action, req).then(handleResponse).then(showSuccess).catch(showError);
   });
 
   function handleResponse(res) {
-    elSubmit.disabled = false
-    if (!res.ok) throw new Error(`${res.statusText} ${res.status}`);
-    // return res.text();
+    if (!res.ok) throw res.text()
   }
 
-  function hideError() {
-    elError.innerHTML = ''
-    elError.style.display = 'none'
-  }
-
-  function showError(error) {
-    console.error(error)
-    elError.innerHTML = error
-    elError.style.display = 'block'
+  function showError(promise) {
+    promise.then(txt => {
+      elError.innerHTML = txt
+      elError.style.display = 'block'
+      elFieldset.disabled = false
+    })
   }
 
   function showSuccess() {
-    document.getElementById('contact').style.display = 'none'
+    elFieldset.style.display = 'none'
     document.getElementById('success').style.display = 'block'
   }
 })

@@ -3,8 +3,13 @@
   justify-content: center;
 
   form {
-    padding: 1rem;
-    max-width: 600px;
+    fieldset {
+      border: none;
+
+      &:disabled * {
+        cursor: wait;
+      }
+    }
 
     input+label {
       margin-top: 1rem;
@@ -39,9 +44,11 @@
       width: 100%;
     }
 
-    button:enabled:hover {
-      background-color: #0f0;
-      cursor: pointer;
+    @media (hover: hover) {
+      button:enabled:hover {
+        background-color: #0f0;
+        cursor: pointer;
+      }
     }
 
     #error {
