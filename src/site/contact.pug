@@ -21,10 +21,10 @@ append main
           textarea(cols=40 id='message' maxlength=1000 minlengthX=40 name='message' placeholder='Your message' required rows=7)
             |xyz
 
-          div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-8
-          #error.mt-4
+          button(type='submit')#submit.mt-6 Send
+          #error.mt-6
 
-          button(type='submit')#submit.mt-8 Send
+          div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
 
       #success.mt-8
         p Thank you.

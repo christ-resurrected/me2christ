@@ -47,7 +47,7 @@
       width: 100%;
 
       &.spinner {
-        font-size: 0;
+        color: transparent;
 
         &:after {
           content: "";
