@@ -7,7 +7,7 @@ addEventListener("DOMContentLoaded", () => {
     elError.style.display = 'none'
     req = { method: 'POST', body: new URLSearchParams(new FormData(e.target)) }
     elFieldset.disabled = true // must disable AFTER getting FormData
-    fetch(e.target.action, req).then(handleResponse).then(handleResponseText).then(showSuccess).catch(showError);
+    fetch(e.target.action, req).then(handleResponse).then(handleResponseText).then(showSuccess).catch(showError)
   });
 
   function handleResponse(res) { return res.text() }
