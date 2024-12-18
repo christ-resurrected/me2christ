@@ -12,14 +12,13 @@ append main
       form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
         fieldset
           label(for='name') Name
-          input(id='name' maxlength=40 minlength=2 name='name' placeholder='Your name' required value='aa')
+          input(id='name' maxlength=40 minlength=2 name='name' placeholder='Your name' required value='')
 
           label(for='email') Email
-          input(id='email' maxlength=40 name='email' placeholder='Your email address' required type='email' value='b@c')
+          input(id='email' maxlength=40 name='email' placeholder='Your email address' required type='email' value='')
 
           label(for='message') Message
-          textarea(cols=40 id='message' maxlength=1000 minlengthX=40 name='message' placeholder='Your message' required rows=7)
-            |xyz
+          textarea(cols=40 id='message' maxlength=1000 minlength=20 name='message' placeholder='Your message' required rows=7)
 
           button(type='submit')#submit.mt-6 Send
           #error.mt-6
