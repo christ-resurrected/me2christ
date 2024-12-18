@@ -3,7 +3,7 @@ addEventListener("DOMContentLoaded", () => {
   const elFieldset = document.getElementsByTagName('fieldset')[0]
 
   document.forms[0].addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault()
     elError.style.display = 'none'
     elFieldset.disabled = true
     req = { method: 'POST', body: new URLSearchParams(new FormData(event.target)) }

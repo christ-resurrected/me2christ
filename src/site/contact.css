@@ -65,5 +65,7 @@
 
   #success {
     display: none;
+    height: 30rem;
+    text-align: center;
   }
 }
