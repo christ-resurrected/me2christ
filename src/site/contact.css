@@ -5,6 +5,7 @@
   form {
     fieldset {
       border: none;
+      max-width: 600px;
 
       &:disabled * {
         cursor: wait;
