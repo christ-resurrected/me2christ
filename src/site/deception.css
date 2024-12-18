@@ -21,6 +21,7 @@
       margin-top: 1rem;
     }
 
+    mark+span,
     span+span {
       margin-left: 0.3rem;
     }
