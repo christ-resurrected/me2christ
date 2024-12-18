@@ -1,4 +1,4 @@
-.heresies {
+.doctrines {
   li {
     margin-bottom: 0.5rem;
 
@@ -16,7 +16,7 @@
     }
   }
 
-  .heresy {
+  .doctrine {
     div+div {
       margin-top: 1rem;
     }
