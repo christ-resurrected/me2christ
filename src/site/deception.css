@@ -26,7 +26,7 @@
     }
   }
 
-  .errors {
+  .problems {
     display: inline-block;
 
     li {
@@ -35,14 +35,14 @@
     }
   }
 
-  .errors li,
+  .problems li,
   .other li {
     &:before {
       background: url('asset/symbol/red_x.svg');
     }
   }
 
-  .errors li,
+  .problems li,
   .refutation li {
     &:after {
       content: '.';
