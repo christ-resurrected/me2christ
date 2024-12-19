@@ -27,7 +27,7 @@ mixin preamble(title, proof_texts, origin, aka)
       +refs(proof_texts)
 
 mixin danger()
-  .danger
+  .danger.tooltip-anchor
     strong Danger:
     block
 
@@ -133,15 +133,21 @@ append main
       +preamble('Imputed Righteousness of Christ', 'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21', 'Luther, Calvin', 'Double Imputation')
         |Jesus' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.
       +danger
-        li Abuses Isaiah 64:6, taking it out of context to imply we will always be sinners
+        li Turns the grace of God into a license to sin, teaching we are #[em positionally] righteous with God even while #[em practicing] sin
+        li Takes Isaiah 64:6 out of context to imply we will always be sinners
       +refutation
         li: |Whoever #[em practices] righteousness is righteous:
           +refs('1-John 3:7,10')
-        li: | Whoever does not #[em practice] righteousness cannot inherit the kingdom of God:
-          +refs('Gal.5:19-21')
+        li: | Whoever sins is of the devil and cannot inherit the kingdom of God:
+          +refs('Gal.5:19-21; 1-John 3:8')
         li
           span The fine linen of the Bride of Christ is not the righteous acts of Christ, but the saints:
           +verse('Rev.19:8'): |And to her it was granted to be arrayed in fine linen, clean and bright, for the fine linen is the righteous acts of #[em the saints].
+        li The grace of God is not a license to sin:
+          +refs('Rom.6:1-2, 6:15; Titus 2:11,12')
+        li Jesus says we can be perfect:
+          +refs('Mat.5:48')
+          |. This is possible only by the Holy Spirit working in and through us
         li True righteousness is found in obedience to Jesus, not in self-righteousness or in keeping the Law of Moses:
           +refs('Luke 18:9-14; Rom.3:21,22')
     .card.doctrine
@@ -149,11 +155,12 @@ append main
         |You cannot be lost once you're saved.
       +danger
         li Deceives the believer to think they will enter the kingdom of God even if they should go back to living in sin
+        li Teaches
         li Related to the unbiblical idea that one can pray a "sinners' prayer" to be saved or born again
       +refutation
-        li After initial salvation, we must endure to the end to be (finally) saved:
+        li After becoming born again, we must endure to the end to be (finally) saved:
           +refs('Mat.24:13')
-        li God removes unfruitful branches from the vine and casts them into the fire:
+        li God removes unfruitful branches from the Vine (Jesus) and casts them into the fire:
           +refs('John 15:1-10; Rom.11:20-22')
         li Scripture exhorts us to strive and be diligent to enter in with fear and trembling:
           +refs('Luke 13:24-27; 1-Cor.10:6-11; Php.2:12; Heb.4:1,11')
