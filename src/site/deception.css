@@ -21,8 +21,8 @@
       margin-top: 1rem;
     }
 
-    span+span {
-      margin-left: 0.3rem;
+    span+span:before {
+      content: ' '
     }
   }
 

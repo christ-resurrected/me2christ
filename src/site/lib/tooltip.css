@@ -4,6 +4,7 @@
 }
 
 .tooltip {
+  display: inline;
   border-bottom: 2px dotted;
   cursor: pointer;
 
