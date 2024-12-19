@@ -36,6 +36,12 @@ mixin refutation()
     h3.mt-4 Refutation
     block
 
+mixin tooltip(text)
+  //- nest .tooltip so tooltip dotted underline does not extend out leftwards
+  span: .tooltip.help= text
+    .tooltiptext
+      block
+
 append main
   .card.dark
     h1 False Doctrines
@@ -73,15 +79,13 @@ append main
         li The sacrificial animals in Leviticus were not being punished
         li
           span The
-          span: .tooltip Septuagint version of Isaiah 53:10
-            .tooltiptext And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)
+          +tooltip('Septuagint version of Isaiah 53:10'): |And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)
           span reads differently to the Masoretic
     .card.doctrine
       +preamble(
         'Justification by Faith Alone', 'John 6:29; Rom.3:28, 10:9; Eph.2:8-9', 'Luther, Calvin')(aka='Sola Fide')
         span We are
-        span: .tooltip.help justified
-          .tooltiptext Made righteous (Greek δικαιόω - dikaioō)
+        +tooltip('justified'): |Made righteous (Greek δικαιόω - dikaioō)
         span by faith alone, not by anything we do (our works). Good works should follow but are not necessary for salvation.
       +errors
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
