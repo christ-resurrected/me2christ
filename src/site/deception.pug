@@ -26,9 +26,9 @@ mixin preamble(title, proof_texts, origin)
         span.tooltiptext These Scripture verses are the most common ones used to promote this false doctrine.
       +refs(proof_texts)
 
-mixin problems()
-  .problems
-    strong Problems:
+mixin danger()
+  .danger
+    strong Danger:
     block
 
 mixin refutation()
@@ -63,7 +63,7 @@ append main
         'Is.53:4,6,10; Mat.27:46; John 19:30; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
         '(Anselm, Aquinas), Luther, Calvin')(deception='High')
         | Jesus paid the penalty for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.
-      +problems
+      +danger
         li Logically leads to double jeopardy or universalism, which can lead to Calvinism's limited atonement
         li Does not fix the believer's relationship with God, only their legal standing
         li Maligns God's character
@@ -86,7 +86,7 @@ append main
         span We are
         +tooltip('justified'): |Made righteous (Greek δικαιόω - dikaioō)
         span by faith alone, not by anything we do (our works). Good works should follow but are not necessary for salvation.
-      +problems
+      +danger
         li Deceives the believer to think what they do plays no role in their salvation (monergism). Therefore there is much less incentive for good works or obedience to God
         li It logically follows that baptism (a good work of faith) is not required for salvation
       +refutation
@@ -106,7 +106,7 @@ append main
     .card.doctrine
       +preamble('Original Sin (Augustinian)', 'Psa.51:5; John 3:6; Rom.5:12,19; Eph.2:3', 'Augustine (influenced by Gnosticism)')
         |Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.
-      +problems
+      +danger
         li Deceives the believer to think God made them a certain way which is impossible to repent of
         li Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them
         li Leads to the unbiblical practice of infant baptism
@@ -130,7 +130,7 @@ append main
     .card.doctrine
       +preamble('Imputed Righteousness of Christ', 'Is.64:6; Rom.4:6; 1-Cor.1:30; 2-Cor.5:21', 'Luther, Calvin')(aka='Double Imputation')
         |Jesus' righteousness is transferred onto us, and our sins are transferred onto Jesus, in a divine exchange.
-      +problems
+      +danger
         li Abuses Isaiah 64:6, taking it out of context to imply we will always be sinners
       +refutation
         li: |Whoever #[em practices] righteousness is righteous:
@@ -145,7 +145,7 @@ append main
     .card.doctrine
       +preamble('Eternal security', 'John 6:37, 10:28; Rom.8:38,39; Php.1:6')(aka='Once Saved Always Saved')
         |You cannot be lost once you're saved.
-      +problems
+      +danger
         li Deceives the believer to think they will enter the kingdom of God even if they should go back to living in sin
         li Related to the unbiblical idea that one can pray a "sinners' prayer" to be saved or born again
       +refutation
