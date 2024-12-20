@@ -71,7 +71,6 @@
 
     &.book:before {
       background: url('asset/emoji/notebook_deco.svg');
-      /* filter: invert(1); */
     }
 
     &:last-child {
