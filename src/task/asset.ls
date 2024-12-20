@@ -16,7 +16,6 @@ module.exports =
       dove: EMOJITWO + \1f54a.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
-      notebook_deco: NOTO + \u1f4d4.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg
     for key, url of EMOJI then download-asset key, url, ODIR
