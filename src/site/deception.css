@@ -69,6 +69,11 @@
       filter: hue-rotate(00deg) brightness(72%) contrast(500%);
     }
 
+    &.book:before {
+      background: url('asset/emoji/notebook_deco.svg');
+      /* filter: invert(1); */
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
