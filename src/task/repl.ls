@@ -23,6 +23,7 @@ const COMMANDS =
   * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
+  * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld.notify
   * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Resrc.download-kjv-json
   * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Resrc.generate-verses-json
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
