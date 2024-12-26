@@ -16,11 +16,11 @@ engines:
   node: '22'
   yarn: '1.22'
 dependencies:
-  chalk                       : \~0.4.0
-  glob                        : \~11.0.0
-  'jstransformer-markdown-it' : \~3.0.0
-  livescript                  : \~1.6.0
-  '@anduh/pug-cli'            : \~1.0.0-alpha8
-  ws                          : \~8.18.0
+  chalk                      : \~0.4.0
+  glob                       : \~11.0.0
+  'jstransformer-markdown-it': \~3.0.0
+  livescript                 : \~1.6.0
+  '@anduh/pug-cli'           : \~1.0.0-alpha8
 devDependencies:
-  'ls-lint'                   : \~0.1.2
+  'ls-lint': \~0.1.2
+  ws       : \~8.18.0
