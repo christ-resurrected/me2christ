@@ -5,6 +5,11 @@ append head
   script: include contact.js
   script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
+mixin field(tag, id, label, minlen, maxlen, desc = '')
+  - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
+  label(for=id)= label
+  #{tag}(id=id minlength=minlen maxlength=maxlen name=id placeholder=ph required)&attributes(attributes)
+
 append main
   .card
     h1 Contact Me
@@ -12,20 +17,12 @@ append main
       form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
         fieldset
           p If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance, or baptism, or help with evangelism, or have any questions, please contact me and I will try to help.
-          label(for='name') Name
-          input(id='name' maxlength=40 minlength=2 name='name' placeholder='Your name' required value='')
-
-          label(for='email') Email
-          input(id='email' maxlength=40 name='email' placeholder='Your email address' required type='email' value='')
-
-          label(for='message') Message
-          textarea(cols=40 id='message' maxlength=1000 minlength=20 name='message' placeholder='Your message' required rows=7)
-
+          +field('input', 'name', 'Name', 2, 40)
+          +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
+          +field('textarea', 'message', 'Message', 20, 1000)(cols=40 rows=7)
           button(type='submit')#submit.mt-6 Send
           #error.mt-6
-
           div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
-
       #success.mt-8
         p Thank you.
         p Your message has been successfully sent.
