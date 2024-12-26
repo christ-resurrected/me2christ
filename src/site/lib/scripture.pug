@@ -12,9 +12,9 @@ append head
 
   // generate tooltip scripture for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51"
   function generateTooltip(bookrefs) {
+    var tooltip = ''
     var chapters = bookrefs.trim().split(' ')
     var book = chapters[0].replace('-', ' ')
-    var tooltip = ''
     for (var i = 1; i < chapters.length; i++) {
       var chapPassages = chapters[i].split(':')
       if (chapPassages.length != 2) continue;
@@ -30,9 +30,9 @@ append head
           tooltip += VERSES[ref] + ' '
         }
       }
-      if (i < chapters.length - 1) tooltip += '|'
+      if (i < chapters.length - 1) tooltip += '<br/><br/>'
     }
-    return tooltip.replaceAll('|', '<br/><br/>')
+    return tooltip
   }
 
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
