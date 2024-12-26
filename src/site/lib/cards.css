@@ -3,10 +3,19 @@
   border-radius: 8px;
   padding: 0.5rem;
 
+  &.dark {
+    background: #000;
+    color: #fff;
+  }
+
   &.light {
     background: #fff;
     color: #000
   }
+}
+
+.card+.cards {
+  margin-top: 1rem;
 }
 
 .cards {
@@ -20,7 +29,7 @@
 
 .cards.dark {
   .card {
-    /* background: #000; */
+    background: #000;
     border-color: red;
 
     color: #fff;
@@ -52,7 +61,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .card:nth-child(1),
+  .card.colspan-2,
   .card:only-child {
     grid-column: span 2;
   }

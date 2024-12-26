@@ -9,22 +9,24 @@ Consts  = require \./constants
 Dir     = require \./constants .dir
 Dirname = require \./constants .dirname
 Lint    = require \./lint
-LiveRld = require \./livereload
+LiveRld = require \./livereload if process.env.M2C_LIVE_RELOAD
 Resrc   = require \./resource
 Site    = require \./site
+
+show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
-  * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji-svgs
-  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
+  * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
+  * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld?notify
+  * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji
+  * cmd:'as' level:1 desc:'asset.download-syms'   fn:Asset.download-symbols
+  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
   * cmd:'r1' level:1 desc:'resource.download-kjv' fn:Resrc.download-kjv-json
   * cmd:'r2' level:1 desc:'resource.gen-verses'   fn:Resrc.generate-verses-json
-  * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
-
-show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
@@ -34,7 +36,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.resume!
     rl.prompt!
 
-Build.on \built -> rl.prompt!; LiveRld.notify!
+Build.on \built -> rl.prompt!; LiveRld?notify!
 Build.on \error -> rl.prompt!
 Build.on \restart -> P.execSync "touch #{Dir.BUILD}/.restart-node"
 Build.start!

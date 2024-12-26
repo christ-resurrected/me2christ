@@ -24,14 +24,18 @@ module.exports = me =
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     watch-once!
     function watch-once then w = Fs.watch t.srcdir, recursive:true, (, path) ->>
-      return unless Match path, t.pat
+      return if path[*-1] is \~ or not Match path, t.pat
+      t.runid = runid = new Date!getTime!
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
+      watch-once!
       try
+        # console.time time-id = "run-tasks-#{runid}"
         if t.ptask then await me.run-tasks [t.ptask]
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
+        # console.timeEnd time-id
+        return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then emitter.emit \error
-      watch-once!
 
 function run-task t, ipath then new Promise (resolve, reject) ->
   function get-opath then Path.resolve Dir.BUILD, Path.relative Dir.SRC, ipath.replace t.ixt, t.oxt || t.ixt

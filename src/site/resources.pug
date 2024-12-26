@@ -7,12 +7,12 @@ mixin tract-image(basename, width='50%')
 append head
   style: include lib/bg-light-to-dark.css
 
-  - const PAGE_ID='tract'
+  - const PAGE_ID='resources'
   - const SOURCE_URL='https://github.com/christ-resurrected/gospel-tracts'
 
 append main
   .cards.light
-    .card
+    .card.colspan-2
       h1 Gospel Tracts
       :markdown-it The word _gospel_ is translated from the Greek word **εὐαγγέλιον** which means _good news_ or _glad tidings_. Jesus commands His disciples to go out into the world and preach this good news...
       .verses

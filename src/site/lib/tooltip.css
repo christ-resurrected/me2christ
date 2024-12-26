@@ -4,11 +4,22 @@
 }
 
 .tooltip {
+  display: inline;
   border-bottom: 2px dotted;
+  cursor: pointer;
+
+  &.help {
+    cursor: help;
+
+    &:hover {
+      background: #840;
+    }
+  }
 
   & .tooltiptext {
     color: #fff;
     display: none;
+    font-weight: normal;
     padding: 0.5rem;
     position: absolute;
     top: 100%;

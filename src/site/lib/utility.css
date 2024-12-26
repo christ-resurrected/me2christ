@@ -1,10 +1,10 @@
 /* these classes are based on tailwindcss */
-.font-bold {
-  font-weight: bold;
-}
-
 .mb-0 {
   margin-bottom: 0;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
 }
 
 .mt-4 {

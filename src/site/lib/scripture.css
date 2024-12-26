@@ -8,17 +8,17 @@ mark {
     font-weight: bold;
   }
 
-  span.pre:not(:empty) {
+  .pre:not(:empty) {
     margin-right: 0.25rem;
   }
 
-  span.body {
+  .body {
     font-style: italic;
     padding: 0.15rem;
   }
 
-  span.see {
-    margin-left: 0.5rem;
+  .dash {
+    margin: 0 0.25rem;
   }
 }
 
@@ -39,6 +39,10 @@ mark {
 
 .dark {
   .verse {
+    em {
+      color: orange;
+    }
+
     p {
       display: inline;
     }
