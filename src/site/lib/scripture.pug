@@ -10,8 +10,8 @@ append head
 
   function finalise(refs) { return refs.replaceAll(/-(\d+)/g, '&ndash;$1') }
 
-  // for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51" returns the text and tooltip
-  function parseBook(bookrefs) {
+  // generate tooltip scripture for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51"
+  function generateTooltip(bookrefs) {
     var chapters = bookrefs.trim().split(' ')
     var book = chapters[0].replace('-', ' ')
     var tooltip = ''
@@ -32,19 +32,17 @@ append head
       }
       if (i < chapters.length - 1) tooltip += '|'
     }
-    tooltip = tooltip.replaceAll('|', '<br/><br/>')
-    text = finalise(bookrefs)
-    return [text, tooltip]
+    return tooltip.replaceAll('|', '<br/><br/>')
   }
 
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
 mixin refs(refs)
   - var books = expand(refs).split(';')
   each bookrefs in books
-    - const [text, tooltip] = parseBook(bookrefs)
+    - const tooltip = generateTooltip(bookrefs)
     = ' '
     if (tooltip.length)
-      mark.tooltip!= text
+      mark.tooltip!= finalise(bookrefs)
         span.tooltiptext!= tooltip
     else
       mark!= bookrefs
