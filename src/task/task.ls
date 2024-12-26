@@ -29,8 +29,10 @@ module.exports = me =
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
       watch-once!
       try
+        console.time \run-tasks
         if t.ptask then await me.run-tasks [t.ptask]
         else if Fs.existsSync ipath = Path.resolve t.srcdir, path then await run-task t, ipath
+        console.timeEnd \run-tasks
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then emitter.emit \error
