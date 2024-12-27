@@ -6,5 +6,4 @@ function countText(id) {
   elCount.innerText = `${len}/${maxlen}`
   elCount.classList.remove('error', 'warn')
   if (len / maxlen > 0.8) elCount.classList.add('warn')
-  if (len == maxlen) elCount.classList.add('error')
 }

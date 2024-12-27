@@ -21,26 +21,20 @@
         }
 
         .labels {
+          color: #333;
           display: flex;
           justify-content: space-between;
           margin-bottom: 0.3rem;
 
           label {
             font-weight: bold;
-            color: #333;
           }
 
           .count {
             display: none;
-            color: #080;
 
-            /* order matters: .error must come after .warn */
             &.warn {
               color: #f80;
-            }
-
-            &.error {
-              color: #f00;
             }
           }
         }
@@ -52,6 +46,11 @@
           border: 1px solid #888;
           border-radius: 4px;
           font-size: 1rem;
+
+          &:user-invalid {
+            background: #fee;
+            border: 2px solid #f00;
+          }
         }
 
         textarea {
