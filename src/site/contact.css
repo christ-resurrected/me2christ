@@ -25,23 +25,23 @@
           justify-content: space-between;
           margin-bottom: 0.3rem;
 
-          .count {
-            display: none;
-            color: #080;
-          }
-
-          .count.warn {
-            color: #f80;
-          }
-
-          /* order matters: must come after .warn */
-          .count.error {
-            color: #f00;
-          }
-
           label {
             font-weight: bold;
             color: #333;
+          }
+
+          .count {
+            display: none;
+            color: #080;
+
+            /* order matters: .error must come after .warn */
+            &.warn {
+              color: #f80;
+            }
+
+            &.error {
+              color: #f00;
+            }
           }
         }
 
