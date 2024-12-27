@@ -4,12 +4,16 @@ append head
   style: include contact.css
   style: include contact-button.css
   script: include contact.js
+  script: include contact-count.js
   script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
 mixin field(tag, id, label, minlen, maxlen, desc = '')
   - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
-  label(for=id)= label
-  #{tag}(id=id minlength=minlen maxlength=maxlen name=id placeholder=ph required)&attributes(attributes)
+  .field
+    .labels
+      label(for=id)= label
+      span(id=`${id}-count`).count
+    #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
 
 append main
   .card

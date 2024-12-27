@@ -10,40 +10,64 @@
       &:disabled * {
         cursor: wait;
       }
-    }
 
-    input+label {
-      margin-top: 1rem;
-    }
+      .field {
+        &+.field {
+          margin-top: 1rem;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: bold;
-      color: #333;
-    }
+        &:focus-within .labels .count {
+          display: block;
+        }
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #888;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
+        .labels {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.3rem;
 
-    textarea {
-      resize: vertical;
-    }
+          .count {
+            display: none;
+            color: #080;
+          }
 
-    #error {
-      display: none;
-      background-color: #fcc;
-      color: #f00;
-      border: none;
-      border-radius: 4px;
-      padding: 0.75rem;
-      font-size: 1rem;
+          .count.warn {
+            color: #f80;
+          }
+
+          /* order matters: must come after .warn */
+          .count.error {
+            color: #f00;
+          }
+
+          label {
+            font-weight: bold;
+            color: #333;
+          }
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid #888;
+          border-radius: 4px;
+          font-size: 1rem;
+        }
+
+        textarea {
+          resize: vertical;
+        }
+      }
+
+      #error {
+        display: none;
+        background-color: #fcc;
+        color: #f00;
+        border: none;
+        border-radius: 4px;
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
     }
   }
 
