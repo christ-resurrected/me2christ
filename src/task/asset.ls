@@ -18,6 +18,7 @@ module.exports =
       megaphone: NOTO + \u1f4e2.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg
+      warning: NOTO + \u26a0.svg
     for key, url of EMOJI then download-asset key, url, ODIR
 
   download-symbols: ->
