@@ -24,7 +24,7 @@ append main
           p If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance, or baptism, or help with evangelism, or have any questions, please contact me and I will try to help.
           +field('input', 'name', 'Name', 2, 40)
           +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
-          +field('textarea', 'message', 'Message', 20, 1000)(cols=40 rows=7)
+          +field('textarea', 'message', 'Message', 40, 800)(cols=40 rows=7)
           button(type='submit')#submit.mt-6 Send
           #error.mt-6
           div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
