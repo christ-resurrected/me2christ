@@ -22,15 +22,15 @@ const TASKS = T.init const _TASKS =
     fun: require \./task-pug .render
     ixt: \pug
     ord: 2
-  site_pug_include:
+  site_css_js:
     dir: Dirname.SITE
     ixt: '{js,css}'
     pat: '**/'
     pid: \site_pug # parent task id to run
-  site_pug_pug:
+  site_lib_pug:
     dir: Dirname.SITE
     ixt: \pug
-    pat: '*/' # subdir 1-level deep
+    pat: 'lib/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
