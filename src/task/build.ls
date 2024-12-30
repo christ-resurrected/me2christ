@@ -3,6 +3,7 @@ Fs      = require \fs
 C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
+Pug     = require \./pug
 T       = require \./task
 
 const TASKS = T.init const _TASKS =
@@ -18,7 +19,7 @@ const TASKS = T.init const _TASKS =
     ord: 2
     pat: '*/'
   site_pug:
-    cmd: "yarn --silent pug3 -s -O #{C.VERSES_PATH} --out $ODIR $IN"
+    fun: Pug.render
     dir: Dirname.SITE
     ixt: \pug
     ord: 2
