@@ -4,7 +4,6 @@ C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
-Tpug    = require \./task-pug
 
 const TASKS = T.init const _TASKS =
   json_ls:
@@ -20,7 +19,7 @@ const TASKS = T.init const _TASKS =
     pat: '*/'
   site_pug:
     dir: Dirname.SITE
-    fun: Tpug.render
+    fun: require \./task-pug .render
     ixt: \pug
     ord: 2
   site_pug_include:
