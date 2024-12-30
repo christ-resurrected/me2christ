@@ -10,8 +10,8 @@ const VERSES = JSON.parse(KJV.replaceAll '#' '')
 
 opts =
   filters:
-    # highlight: replicate markdown-it functionality for * and **
-    hl: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>
+    hl: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
+    link: -> it.replace(/\[(.+?)\]\((.+?)\)/g, "<a href='$2'>$1</a>")
   VERSES:VERSES
 
 module.exports =
