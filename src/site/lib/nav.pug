@@ -1,11 +1,16 @@
+-
+  const NAV_PAGES = [
+    {'id':'truth', 'href':'index', 'title':'The Truth'},
+    {'id':'deception', 'href':'deception', 'title':'Deception'},
+    {'id':'resources', 'href':'resources', 'title':'Resources'},
+  ]
+
 append head
   style: include nav.css
 
-  - locals.NAV_PAGES = [{'id':'truth','href':'index','title':'The Truth'},{'id':'deception','href':'deception','title':'Deception'},{'id':'resources','href':'resources','title':'Resources'}];
-
 mixin nav()
   nav
-    each page in locals.NAV_PAGES
+    each page in NAV_PAGES
       if PAGE_ID === page.id
         .active= page.title
       else
