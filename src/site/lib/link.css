@@ -1,0 +1,29 @@
+a:hover {
+  color: red;
+}
+
+a[href^='http']:after {
+  background-image: url('asset/symbol/link_external.svg');
+  content: '';
+  display: inline-block;
+  margin-left: 2px;
+  position: relative;
+  height: 1rem;
+  width: 1rem;
+  top: 2px;
+}
+
+.dark a[href^='http']:after {
+  filter: invert(100%);
+}
+
+header,
+footer {
+  a {
+    color: #aaa;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
