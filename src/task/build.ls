@@ -24,14 +24,14 @@ const TASKS = T.init const _TASKS =
     ixt: \pug
     ord: 2
     oxt: \html
-  site_pug_css:
+  site_pug_include:
     dir: Dirname.SITE
-    ixt: \css
+    ixt: '{js,css}'
     pat: '**/'
     pid: \site_pug # parent task id to run
-  site_pug_includes:
+  site_pug_pug:
     dir: Dirname.SITE
-    ixt: '{js,pug}'
+    ixt: \pug
     pat: '*/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
   task_ls:

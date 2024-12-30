@@ -1,0 +1,78 @@
+.contact {
+  display: flex;
+  justify-content: center;
+
+  form {
+    fieldset {
+      border: none;
+      max-width: 600px;
+
+      &:disabled * {
+        cursor: wait;
+      }
+
+      .field {
+        &+.field {
+          margin-top: 1rem;
+        }
+
+        &:focus-within .labels .count {
+          display: block;
+        }
+
+        .labels {
+          color: #333;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.3rem;
+
+          label {
+            font-weight: bold;
+          }
+
+          .count {
+            display: none;
+
+            &.warn {
+              color: #f80;
+            }
+          }
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid #888;
+          border-radius: 4px;
+          font-size: 1rem;
+
+          &:user-invalid {
+            background: #fee;
+            border: 2px solid #f00;
+          }
+        }
+
+        textarea {
+          resize: vertical;
+        }
+      }
+
+      #error {
+        display: none;
+        background-color: #fcc;
+        color: #f00;
+        border: none;
+        border-radius: 4px;
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #success {
+    display: none;
+    height: 30rem;
+    text-align: center;
+  }
+}
