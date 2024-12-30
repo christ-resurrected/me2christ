@@ -11,16 +11,15 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'node -e "global.log = console.log; require(\'./task/build\').all()"'
-  start: 'touch .restart-node && node --disable-warning=DEP0040 --watch-path=.restart-node --watch-preserve-output task/repl.js'
+  start: 'touch .restart-node && node --watch-path=.restart-node --watch-preserve-output task/repl.js'
 engines:
   node: '22'
   yarn: '1.22'
 dependencies:
-  chalk                      : \~0.4.0
-  glob                       : \~11.0.0
-  'jstransformer-markdown-it': \~3.0.0
-  livescript                 : \~1.6.0
-  pug                        : \~3.0.3
+  chalk     : \~0.4.0
+  glob      : \~11.0.0
+  livescript: \~1.6.0
+  pug       : \~3.0.3
 devDependencies:
   'ls-lint': \~0.1.2
   ws       : \~8.18.0
