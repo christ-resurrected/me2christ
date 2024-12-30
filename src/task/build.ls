@@ -19,8 +19,8 @@ const TASKS = T.init const _TASKS =
     ord: 2
     pat: '*/'
   site_pug:
-    fun: Pug.render
     dir: Dirname.SITE
+    fun: Pug.render
     ixt: \pug
     ord: 2
   site_pug_include:
