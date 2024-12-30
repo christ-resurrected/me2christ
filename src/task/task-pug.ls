@@ -9,8 +9,9 @@ const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const VERSES = JSON.parse(KJV.replaceAll '#' '')
 
 opts =
-  filters: # replicate markdown-it functionality for * and **
-    verse: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>
+  filters:
+    # highlight: replicate markdown-it functionality for * and **
+    hl: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>
   VERSES:VERSES
 
 module.exports =
