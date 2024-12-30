@@ -1,5 +1,5 @@
 name       : \me2christ
-version    : \3.2.0
+version    : \3.3.0
 description: 'me2christ.com source code'
 private    : true
 homepage   : \https://github.com/christ-resurrected/me2christ
