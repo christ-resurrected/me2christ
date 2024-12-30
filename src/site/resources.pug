@@ -5,10 +5,9 @@ mixin tract-image(basename, width='50%')
     img(src=`asset/tract/${basename}.png` width=width)
 
 append head
-  style: include lib/bg-light-to-dark.css
-
   - const PAGE_ID='resources'
   - const SOURCE_URL='https://github.com/christ-resurrected/gospel-tracts'
+  style: include lib/bg-light-to-dark.css
 
 append main
   .cards.light

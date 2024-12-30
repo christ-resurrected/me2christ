@@ -1,10 +1,9 @@
 extends lib/base.pug
 
 append head
+  - const PAGE_ID='deception'
   style: include lib/bg-dark.css
   style: include deception.css
-
-  - const PAGE_ID='deception'
 
 mixin belief(title)
   .card
