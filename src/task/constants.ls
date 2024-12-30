@@ -1,6 +1,6 @@
 Assert = require \assert
 Fs     = require \fs
-Path   = require \path
+P      = require \path
 
 const DIRNAME =
   BUILD: \build
@@ -8,24 +8,24 @@ const DIRNAME =
   SRC  : \src
   TASK : \task
 
-Assert DIRNAME.BUILD, Path.basename cwd = process.cwd!
-root = Path.resolve cwd, \..
+Assert DIRNAME.BUILD, P.basename cwd = process.cwd!
+root = P.resolve cwd, \..
 
-dir =
+const DIR =
   BUILD: cwd
-  BUILD_SITE: Path.resolve cwd, DIRNAME.SITE
+  BUILD_SITE: P.resolve cwd, DIRNAME.SITE
   ROOT: root
-  SRC: Path.resolve root, DIRNAME.SRC
-  SRC_SITE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE
-  SRC_SITE_ASSET: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE, \asset
-  SRC_SITE_RESOURCE: Path.resolve root, DIRNAME.SRC, DIRNAME.SITE, \resource
-  SRC_TASK: Path.resolve root, DIRNAME.SRC, DIRNAME.TASK
+  SRC: P.resolve root, DIRNAME.SRC
+  SRC_SITE: P.resolve root, DIRNAME.SRC, DIRNAME.SITE
+  SRC_SITE_ASSET: P.resolve root, DIRNAME.SRC, DIRNAME.SITE, \asset
+  SRC_SITE_RESOURCE: P.resolve root, DIRNAME.SRC, DIRNAME.SITE, \resource
+  SRC_TASK: P.resolve root, DIRNAME.SRC, DIRNAME.TASK
 
 module.exports =
   APPNAME: \me2christ
   dirname: DIRNAME
-  dir    : dir
-  KJVPATH: Path.resolve dir.SRC_SITE_RESOURCE, \verses-1769.json
+  dir    : DIR
+  KJVPATH: P.resolve DIR.SRC_SITE_RESOURCE, \verses-1769.json
 
-Assert Fs.existsSync dir.BUILD
-Assert Fs.existsSync dir.SRC
+Assert Fs.existsSync DIR.BUILD
+Assert Fs.existsSync DIR.SRC
