@@ -38,7 +38,7 @@ module.exports = me =
       catch err then emitter.emit \error
 
 function run-task t, ipath then new Promise (resolve, reject) ->
-  function get-opath then P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
-  if !Fs.existsSync(odir = P.dirname opath = get-opath!) then Fs.mkdirSync odir, recursive:true
+  odir = P.dirname P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
+  if !Fs.existsSync odir then Fs.mkdirSync odir, recursive:true
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$OUT odir)
   CP.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
