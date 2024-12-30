@@ -5,7 +5,7 @@ T       = require \./task
 
 const TASKS = T.init const _TASKS =
   config:
-    cmd: "cp --target-directory $OUT $IN"
+    cmd: "cp --target-directory $ODIR $IN"
     dir: Dirname.TASK
     ixt: \lson
   lint_ls:
