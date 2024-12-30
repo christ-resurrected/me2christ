@@ -15,7 +15,7 @@
       display: inline-block;
       margin-right: 0.5rem;
       top: 2px;
-      /* position: relative; */
+      position: relative;
       height: 1rem;
       width: 1rem;
     }
