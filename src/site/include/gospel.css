@@ -18,4 +18,9 @@
     background: url('asset/emoji/checkmark_box.svg');
     filter: hue-rotate(00deg) brightness(72%) contrast(500%);
   }
+
+  .verse {
+    /* make every verse a tooltip anchor */
+    position: relative;
+  }
 }

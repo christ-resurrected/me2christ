@@ -13,7 +13,7 @@ mixin belief(title)
 mixin preamble(title, proof_texts, origin, aka)
   .preamble
     h2!= title
-    div.tooltip-anchor #[strong False doctrine: ]
+    .tooltip-anchor #[strong False doctrine: ]
       block
     if origin
       div #[strong Origin:] #{origin}
@@ -27,23 +27,27 @@ mixin preamble(title, proof_texts, origin, aka)
       +refs(proof_texts)
 
 mixin danger()
-  .danger.tooltip-anchor
+  .danger
     strong Danger:
     block
 
 mixin refutation()
-  .refutation.tooltip-anchor
+  .refutation
     h3.mt-4 Refutation
     block
 
 mixin tooltip(text)
-  //- nest .tooltip so tooltip dotted underline does not extend out leftwards
-  span: .tooltip.help= text
+  //- nest .tooltip so tooltip dotted underline does not extend leftwards
+  span: .tooltip.help!= text
     .tooltiptext
       block
 
+mixin tooltip-works()
+  +tooltip('<em>works</em>')
+    | Things done in faithful obedience and love toward God, NOT things done by our own efforts (which would lead to self-righteousness), nor keeping the the old covenant Law of Moses.
+
 append main
-  .card.dark
+  .card.dark.intro
     h1 False Doctrines
     p.tooltip-anchor
       | Friends, let us be vigilant, for the devil came to Jesus abusing Scripture
@@ -94,15 +98,25 @@ append main
         li Implies baptism (a good work of faith) is not required for salvation and is just symbolic of one's faith
       +refutation
         li
-          span We are justified by (good) works (of faith and obedience):
-          +verse('James 2:24,26'): |You see then that a man is justified by #[em works], and not by faith only. For as the body without the spirit is dead, so faith without #[em works] is dead also.
+          span We are justified by
+          +tooltip-works
+          span and not faith alone:
+          +verse('James 2:24,26')
+            span You see then that a man is justified by
+            +tooltip-works
+            |, and not by faith only. For as the body without the spirit is dead, so faith without
+            +tooltip-works
+            span is dead also.
           +seeAlso('James 2:14-26')
-        li It takes more than just a prayer, a "decision", or a confession with the mouth to be born again:
-          +refs('John 3:3-5')
+        li.warn
+          span We are exhorted to have good
+          +tooltip-works
+          span because we will be judged by them on the Day of Judgement:
+          +refs('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15')
         li Baptism (for the remission of sins) is a necessary part of salvation:
           +refs('Mark 16:16; Acts 2:38, 22:16; Rom.6:3-4; 1-Pet.3:21')
-        li.warn We are exhorted to have good works, because we will be judged by them on the Day of Judgement:
-          +refs('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15')
+        li It takes more than just a prayer, a "decision", or a confession with the mouth to be born again:
+          +refs('John 3:3-5')
         // li We do not #[em earn] eternal life in and of ourselves, neither is it all of God (monergism). It is a gift conditional on our relationship and faithfulness to God (synergism)
         li: |We are also justified by grace and the blood:
           +refs('Rom.3:24, 5:9; Titus 3:7')

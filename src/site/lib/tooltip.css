@@ -6,6 +6,7 @@
 .tooltip {
   display: inline;
   border-bottom: 2px dotted;
+  text-decoration: none;
   cursor: pointer;
 
   &.help {
