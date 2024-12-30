@@ -11,7 +11,6 @@ const TASKS = T.init const _TASKS =
     dir: \.
     ixt: \json.ls
     ord: 1 # run first to avoid "Unexpected end of JSON input" error
-    oxt: \json
   site_asset:
     cmd: "cp --target-directory $OUT $IN"
     dir: "#{Dirname.SITE}/asset"
@@ -23,7 +22,6 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.SITE
     ixt: \pug
     ord: 2
-    oxt: \html
   site_pug_include:
     dir: Dirname.SITE
     ixt: '{js,css}'
@@ -39,7 +37,6 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.TASK
     ixt: \ls
     ord: 2
-    oxt: \js
     pat: '**/'
     rsn: true # restart node
 
