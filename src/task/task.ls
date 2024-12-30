@@ -4,6 +4,7 @@ Fs    = require \fs
 Glob  = require \glob .globSync
 Match = require \minimatch .minimatch
 P     = require \path
+Perf  = require \perf_hooks .performance
 Dir   = require \./constants .dir
 
 module.exports = me =
@@ -17,8 +18,9 @@ module.exports = me =
     tasks
 
   run-tasks: (tasks) ->>
+    t1 = Perf.now!
     await Promise.all p = [run-task t, f for _, t of tasks for f in Glob t.glob].flat!flat!
-    log Chalk.green "...done #{p.length} files!"
+    log Chalk.green "Ran #{p.length} tasks in #{(Perf.now! - t1).toFixed(0)}ms"
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
@@ -29,10 +31,8 @@ module.exports = me =
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
       watch-once!
       try
-        # console.time time-id = "run-tasks-#{runid}"
         if t.ptask then await me.run-tasks [t.ptask]
         else if Fs.existsSync ipath = P.resolve t.srcdir, path then await run-task t, ipath
-        # console.timeEnd time-id
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then emitter.emit \error
