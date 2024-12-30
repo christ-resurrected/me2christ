@@ -25,7 +25,7 @@ module.exports =
   APPNAME: \me2christ
   dirname: DIRNAME
   dir    : dir
-  VERSES_PATH: Path.resolve dir.SRC_SITE_RESOURCE, \verses.json
+  KJVPATH: Path.resolve dir.SRC_SITE_RESOURCE, \verses-1769.json
 
 Assert Fs.existsSync dir.BUILD
 Assert Fs.existsSync dir.SRC

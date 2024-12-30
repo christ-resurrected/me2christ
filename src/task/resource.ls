@@ -4,9 +4,6 @@ Path = require \path
 C    = require \./constants
 Dir  = require \./constants .dir
 
-const KJVNAME = \verses-1769.json
-const KJVPATH = Path.resolve Dir.SRC_SITE_RESOURCE, KJVNAME
-
 module.exports =
   download-kjv: ->
     const URL = \https://raw.githubusercontent.com/farskipper/kjv/refs/heads/master/json/verses-1769.json
@@ -17,6 +14,6 @@ module.exports =
       res.on \end ->
         try
           if !Fs.existsSync Dir.SRC_SITE_RESOURCE then Fs.mkdirSync Dir.SRC_SITE_RESOURCE
-          Fs.writeFileSync KJVPATH, data
-          log "wrote #{data.length} bytes to #KJVPATH"
+          Fs.writeFileSync C.KJVPATH, data
+          log "wrote #{data.length} bytes to #{C.KJVPATH}"
         catch err then log err
