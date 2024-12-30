@@ -11,7 +11,7 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'node -e "global.log = console.log; require(\'./task/build\').all()"'
-  start: 'touch .restart-node && node --watch-path=.restart-node --watch-preserve-output task/repl.js'
+  start: 'touch .restart-node && node --disable-warning=DEP0040 --watch-path=.restart-node --watch-preserve-output task/repl.js'
 engines:
   node: '22'
   yarn: '1.22'
