@@ -9,7 +9,7 @@ Dir   = require \./constants .dir
 
 module.exports = me =
   init: (tasks) ->
-    for tid, t of tasks then
+    for tid, t of tasks
       t.pat = "#{t.pat || ''}*.#{t.ixt}"
       t.ptask = tasks[t.pid] if t.pid
       t.srcdir = P.resolve Dir.SRC, t.dir
