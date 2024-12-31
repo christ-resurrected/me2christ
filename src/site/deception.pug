@@ -37,7 +37,7 @@ mixin refutation()
     block
 
 mixin refute(refs)
-  li
+  li(class!=attributes.class)
     span
       block
       |:
@@ -85,38 +85,25 @@ append main
         +refute('1-Cor.5:7; Heb.9:14') Jesus did not become a sinner on the cross, but was offered up as an innocent Passover lamb to God:
         li On the cross, Jesus is quoting #[+refs('Psa.22:1')] to fulfil prophecy, not because the Father turned His back on Him
         li: +refs('Is.53:4'): :hl says we *esteemed* him smitten of God, not that he was *actually* smitten of God
-        li The #[+tooltip('Septuagint version of Isaiah 53:10'): | And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)] reads differently to the Masoretic
+        li The #[+tooltip('Septuagint version of Isaiah 53:10') And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)] reads differently to the Masoretic
         li The sacrificial animals in Leviticus were not being punished
     .card.doctrine
       +preamble('Justification by Faith Alone', 'John 3:15,16, 6:29; Rom.3:28, 10:9; Eph.2:8-9', 'Luther, Calvin', 'Sola Fide')
-        span We are
-        +tooltip('justified'): | Made righteous (Greek δικαιόω - dikaioō)
-        span by faith alone, not by anything we do (our works). Good works should follow but are not necessary for salvation.
+        span We are #[+tooltip('justified') Made righteous (Greek δικαιόω - dikaioō)] by faith alone, not by anything we do (our works). Good works should follow but are not necessary for salvation.
       +danger
         li Teaches we become born again when we believe, apart from works
         li There is much less incentive for good works or obedience to God
         li Implies baptism (a good work of faith) is not required for salvation and is just symbolic of one's faith
       +refutation
         li
-          span We are justified by
-          +tooltip-works: span and not by faith alone:
-          +verse('James 2:24,26')
-            span You see then that a man is justified by
-            +tooltip-works: |, and not by faith only. For as the body without the spirit is dead, so faith without
-            +tooltip-works: span is dead also.
+          span We are justified by #[+tooltip-works] and not by faith alone:
+            +verse('James 2:24,26') You see then that a man is justified by #[+tooltip-works], and not by faith only. For as the body without the spirit is dead, so faith without #[+tooltip-works] is dead also.
           +seeAlso('James 2:14-26')
-        li.warn
-          span We are exhorted to have good
-          +tooltip-works
-          span because we will be judged by them on the Day of Judgement:
-          +refs('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15')
-        li Baptism (for the remission of sins) is a necessary part of salvation:
-          +refs('Mark 16:16; Acts 2:38, 22:16; Rom.6:3-4; 1-Pet.3:21')
-        li It takes more than just a prayer, a "decision", or a confession with the mouth to be born again:
-          +refs('John 3:3-5')
+        +refute('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15').warn We are exhorted to have good #[+tooltip-works] because we will be judged by them on the Day of Judgement
+        +refute('Mark 16:16; Acts 2:38, 22:16; Rom.6:3-4; 1-Pet.3:21') Baptism (for the remission of sins) is a necessary part of salvation
+        +refute('John 3:3-5') It takes more than just a prayer, a "decision", or a confession with the mouth to be born again
         // li We do not #[em earn] eternal life in and of ourselves, neither is it all of God (monergism). It is a gift conditional on our relationship and faithfulness to God (synergism)
-        li: | We are also justified by grace and the blood:
-          +refs('Rom.3:24, 5:9; Titus 3:7')
+        +refute('Rom.3:24, 5:9; Titus 3:7') We are also justified by grace and the blood
     .card.doctrine
       +preamble('Eternal security', 'John 6:37, 10:28; Rom.8:38,39; Php.1:6', '', 'Once Saved Always Saved')
         | You cannot be lost once you're saved.
