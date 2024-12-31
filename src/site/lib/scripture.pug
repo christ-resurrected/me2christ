@@ -50,7 +50,7 @@ mixin refs(refs)
     = ' '
     block
 
-mixin see(refs, label='See')
+mixin see(refs, label='see')
   - if (!refs) return
   span.ml-1 (
   = label
@@ -59,7 +59,7 @@ mixin see(refs, label='See')
   block
 
 mixin seeAlso(refs)
-  +see(refs, 'See also')
+  +see(refs, 'see also')
 
 mixin verse(ref)
   .verse
