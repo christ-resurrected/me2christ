@@ -44,6 +44,7 @@ mixin tooltip(text)
 mixin tooltip-works()
   +tooltip('<em>works</em>')
     | Things done in faithful obedience and love toward God, NOT things done by our own efforts (which would lead to self-righteousness), nor keeping the the old covenant Law of Moses.
+  block
 
 append main
   .card.dark.intro
@@ -98,14 +99,11 @@ append main
       +refutation
         li
           span We are justified by
-          +tooltip-works
-          span and not faith alone:
+          +tooltip-works: span and not faith alone:
           +verse('James 2:24,26')
             span You see then that a man is justified by
-            +tooltip-works
-            |, and not by faith only. For as the body without the spirit is dead, so faith without
-            +tooltip-works
-            span is dead also.
+            +tooltip-works: |, and not by faith only. For as the body without the spirit is dead, so faith without
+            +tooltip-works: span is dead also.
           +seeAlso('James 2:14-26')
         li.warn
           span We are exhorted to have good
