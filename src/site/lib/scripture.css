@@ -41,18 +41,10 @@ mark {
   }
 }
 
-.verses~.verses {
-  margin-top: 1rem;
-}
-
 .dark {
   .verse {
     em {
       color: orange;
-    }
-
-    p {
-      display: inline;
     }
 
     span.body {
