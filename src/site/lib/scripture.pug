@@ -60,13 +60,14 @@ mixin see(refs, label='see')
 mixin seeAlso(refs)
   +see(refs, 'see also')
 
-mixin verse(ref)
-  .verse
-    if attributes.pre
-      span.pre= attributes.pre
-    span.body
-      block
-    span.dash &ndash;
+mixin verse(ref, pretext)
+  span.verse
+    if pretext
+      span= pretext
+    span
+      span.body
+        block
+    span &ndash;
     - ref = finalise(expand(ref))
     span: mark!= ref
     +seeAlso(attributes.seeAlso)
