@@ -16,6 +16,7 @@ module.exports =
       dove: EMOJITWO + \1f54a.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
+      scroll: NOTO + \u1f4dc.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg
       warning: NOTO + \u26a0.svg
