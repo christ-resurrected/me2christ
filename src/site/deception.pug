@@ -36,6 +36,13 @@ mixin refutation()
     h3.mt-4 Refutation
     block
 
+mixin refute(refs)
+  li
+    span
+      block
+      |:
+    +refs(refs)
+
 mixin tooltip(text)
   //- nest .tooltip so tooltip dotted underline does not extend leftwards
   span: .tooltip.help!= text
@@ -73,26 +80,12 @@ append main
         li Does not fix the believer's relationship with God, only their legal standing
         li Maligns God's character
       +refutation
-        li
-          span: :hl In Jesus' parables, the unpayable debt is *forgiven*, not paid off:
-          +refs('Mat.18:23-27; Luke 7:41,42')
-        li: :hl Jesus is our *ransom*, a perfect *sin offering* to lead us to repentance:
-          +refs('Mark 10:45; 1-Tim.2:6; 1-Pet.1:18,19')
-        li Jesus did not become a sinner on the cross, but was offered up as an innocent Passover lamb to God:
-          +refs('1-Cor.5:7; Heb.9:14')
-        li On the cross, Jesus is quoting
-          +refs('Psa.22:1')
-          span to fulfil prophecy, not because the Father turned His back on Him
-
+        +refute('Mat.18:23-27; Luke 7:41,42'): :hl In Jesus' parables, the unpayable debt is *forgiven*, not paid off
+        +refute('Mark 10:45; 1-Tim.2:6; 1-Pet.1:18,19'): :hl Jesus is our *ransom*, a perfect *sin offering* to lead us to repentance
+        +refute('1-Cor.5:7; Heb.9:14') Jesus did not become a sinner on the cross, but was offered up as an innocent Passover lamb to God:
+        li On the cross, Jesus is quoting #[+refs('Psa.22:1')] to fulfil prophecy, not because the Father turned His back on Him
         li: +refs('Is.53:4'): :hl says we *esteemed* him smitten of God, not that he was *actually* smitten of God
-
-        li: +refs('Jon 1:1')
-        li: span Jon 1:1
-
-        li
-          span The
-          +tooltip('Septuagint version of Isaiah 53:10'): | And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)
-          span reads differently to the Masoretic
+        li The #[+tooltip('Septuagint version of Isaiah 53:10'): | And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)] reads differently to the Masoretic
         li The sacrificial animals in Leviticus were not being punished
     .card.doctrine
       +preamble('Justification by Faith Alone', 'John 3:15,16, 6:29; Rom.3:28, 10:9; Eph.2:8-9', 'Luther, Calvin', 'Sola Fide')
