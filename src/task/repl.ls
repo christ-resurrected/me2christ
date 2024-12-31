@@ -5,6 +5,7 @@ P        = require \child_process
 Rl       = require \readline
 Asset    = require \./asset
 Build    = require \./build
+Check    = require \./check
 Consts   = require \./constants
 Dir      = require \./constants .dir
 Dirname  = require \./constants .dirname
@@ -17,6 +18,7 @@ show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
+  * cmd:'c ' level:0 desc:"check external links"  fn:Check.check-external-links
   * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
