@@ -48,8 +48,9 @@ mixin refs(refs)
           span.tooltiptext!= tooltip
       else
         mark!= bookrefs
-  span
-    block
+  if block
+    span
+      block
 
 mixin see(refs, label='see')
   - if (!refs) return
