@@ -16,8 +16,8 @@ mark {
     padding: 0.15rem;
   }
 
-  .dash {
-    margin: 0 0.25rem;
+  .dash:after {
+    content: ' '
   }
 }
 
@@ -58,7 +58,6 @@ mark {
         text-shadow: 1px 1px 0px #ffc;
       }
     }
-
   }
 
   mark {

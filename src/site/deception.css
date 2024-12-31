@@ -25,10 +25,6 @@
     div+div {
       margin-top: 1rem;
     }
-
-    span+span:before {
-      content: ' '
-    }
   }
 
   .danger {

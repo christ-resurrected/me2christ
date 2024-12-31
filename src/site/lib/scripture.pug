@@ -53,9 +53,9 @@ mixin refs(refs)
 mixin see(refs, label='see')
   - if (!refs) return
   span.ml-1 (
-  = label
-  +refs(refs)
-  | )
+    = label
+    +refs(refs)
+    | )
   block
 
 mixin seeAlso(refs)
