@@ -35,6 +35,8 @@ append head
     return tooltip
   }
 
+// NOTE: adjacent spans are separated by ' ' (see base.css)
+
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
 mixin refs(refs)
   - var books = expand(refs).split(';')
