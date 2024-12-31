@@ -40,22 +40,21 @@ mixin refs(refs)
   - var books = expand(refs).split(';')
   each bookrefs in books
     - const tooltip = generateTooltip(bookrefs)
-    = ' '
-    if (tooltip.length)
-      mark.tooltip!= finalise(bookrefs)
-        span.tooltiptext!= tooltip
-    else
-      mark!= bookrefs
+    span
+      if (tooltip.length)
+        mark.tooltip!= finalise(bookrefs)
+          span.tooltiptext!= tooltip
+      else
+        mark!= bookrefs
   if block
     = ' '
     block
 
 mixin see(refs, label='see')
   - if (!refs) return
-  span.ml-1 (
-    = label
-    +refs(refs)
-    | )
+  span (#[=label]
+  +refs(refs)
+  |)
   block
 
 mixin seeAlso(refs)

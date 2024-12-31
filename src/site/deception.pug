@@ -21,8 +21,9 @@ mixin preamble(title, proof_texts, origin, aka)
     // if attributes.deception
     //   div #[strong Level of Deception:] #{attributes.deception}
     .tooltip-anchor
-      strong.tooltip.help Proof-texts:
-        span.tooltiptext These Scripture verses are commonly used to promote this false doctrine.
+      span
+        strong.tooltip.help Proof-texts:
+          span.tooltiptext These Scripture verses are commonly used to promote this false doctrine.
       +refs(proof_texts)
 
 mixin danger()
@@ -50,7 +51,7 @@ append main
   .card.dark.intro
     h1 False Doctrines
     p.tooltip-anchor
-      | Friends, let us be vigilant and take heed, for the devil came to Jesus abusing Scripture
+      span Friends, let us be vigilant and take heed, for the devil came to Jesus abusing Scripture
       +see('Mat.4:6; Luke 4:9-11'): span and has been doing the same for 6,000 years. The apostle Peter warns us how some of Paul's writings are hard to understand and will be twisted by the unlearned
       +see('2-Pet.3:15-16', 'see'): |. Jesus warns us to beware of false prophets and false doctrines
       +see('Mat.7:15-20, 16:6,12'): |.
@@ -72,7 +73,8 @@ append main
         li Does not fix the believer's relationship with God, only their legal standing
         li Maligns God's character
       +refutation
-        li: :hl In Jesus' parables, the unpayable debt is *forgiven*, not paid off:
+        li
+          span: :hl In Jesus' parables, the unpayable debt is *forgiven*, not paid off:
           +refs('Mat.18:23-27; Luke 7:41,42')
         li: :hl Jesus is our *ransom*, a perfect *sin offering* to lead us to repentance:
           +refs('Mark 10:45; 1-Tim.2:6; 1-Pet.1:18,19')
@@ -81,7 +83,12 @@ append main
         li On the cross, Jesus is quoting
           +refs('Psa.22:1')
           span to fulfil prophecy, not because the Father turned His back on Him
-        li: :hl Isaiah 53:4 says we *esteemed* him smitten of God, not that he was *actually* smitten of God
+
+        li: +refs('Is.53:4'): :hl says we *esteemed* him smitten of God, not that he was *actually* smitten of God
+
+        li: +refs('Jon 1:1')
+        li: span Jon 1:1
+
         li
           span The
           +tooltip('Septuagint version of Isaiah 53:10'): | And the Lord desires to cleanse him from his blow. If you offer for sin, your soul shall see a long-lived offspring. And the Lord wishes to take away from the pain of his soul, (NETS version)
