@@ -49,10 +49,6 @@ mixin tooltip(text)
     .tooltiptext
       block
 
-mixin tooltip-works()
-  +tooltip('<em>works</em>') Things done in faithful obedience and love toward God, NOT things done by our own efforts (which would lead to self-righteousness), nor keeping the the old covenant Law of Moses.
-  block
-
 append main
   .card.dark.intro
     h1 False Doctrines
@@ -93,11 +89,13 @@ append main
         li There is much less incentive for good works or obedience to God
         li Implies baptism (a good work of faith) is not required for salvation and is just symbolic of one's faith
       +refutation
+        mixin works
+          +tooltip('<em>works</em>') Things done in faithful obedience and love toward God, NOT things done by our own efforts (which would lead to self-righteousness), nor keeping the the old covenant Law of Moses.
         li
-          span We are justified by #[+tooltip-works] and not by faith alone:
-            +verse('James 2:24,26') You see then that a man is justified by #[+tooltip-works], and not by faith only. For as the body without the spirit is dead, so faith without #[+tooltip-works] is dead also.
+          span We are justified by #[+works] and not by faith alone:
+            +verse('James 2:24,26') You see then that a man is justified by #[+works], and not by faith only. For as the body without the spirit is dead, so faith without #[+works] is dead also.
           +seeAlso('James 2:14-26')
-        +refute('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15').warn We are exhorted to have good #[+tooltip-works] because we will be judged by them on the Day of Judgement
+        +refute('Rom.2:5-10; Gal.6:7-10; Rev.20:12-15').warn We are exhorted to have good #[+works] because we will be judged by them on the Day of Judgement
         +refute('Mark 16:16; Acts 2:38, 22:16; Rom.6:3-4; 1-Pet.3:21') Baptism (for the remission of sins) is a necessary part of salvation
         +refute('John 3:3-5') It takes more than just a prayer, a "decision", or a confession with the mouth to be born again
         // li We do not #[em earn] eternal life in and of ourselves, neither is it all of God (monergism). It is a gift conditional on our relationship and faithfulness to God (synergism)
