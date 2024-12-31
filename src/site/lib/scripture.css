@@ -20,10 +20,6 @@ mark {
     font-weight: bold;
   }
 
-  .pre:not(:empty) {
-    margin-right: 0.25rem;
-  }
-
   .body {
     font-style: italic;
     padding: 0.15rem;
