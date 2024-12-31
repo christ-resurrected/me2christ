@@ -1,8 +1,8 @@
 extends lib/base.pug
 
 mixin tract-image(basename, width='50%')
-  a(href=`asset/tract/${basename}.png`)
-    img(src=`asset/tract/${basename}.png` width=width)
+  - href = `asset/tract/${basename}.png`
+  a(href=href): img(src=href width=width)
 
 append head
   - const PAGE_ID='resources'
