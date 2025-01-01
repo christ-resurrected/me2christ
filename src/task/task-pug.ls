@@ -13,7 +13,7 @@ opts =
     hi: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m[1]
-      it.replace(/\[(.+?)\]\((.+?)\)/g, "<a href='$2'>$1</a>")
+      it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
   VERSES:VERSES
 
 module.exports = me =
