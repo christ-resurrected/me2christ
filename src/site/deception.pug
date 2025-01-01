@@ -18,8 +18,6 @@ mixin preamble(title, proof_texts, origin, aka)
       div #[strong Origin:] #{origin}
     if aka
       div #[strong Also known as:] #{aka}
-    // if attributes.deception
-    //   div #[strong Level of Deception:] #{attributes.deception}
     .tooltip-anchor
       span
         strong.tooltip.help Proof-texts:
@@ -68,7 +66,7 @@ append main
     .card.doctrine
       +preamble('Penal Substitution Atonement (PSA)',
         'Is.53:4,6, 53:10; Mat.27:46; John 19:30; Rom.3:25; Col.2:14; 1-John 2:2, 4:10',
-        '(Anselm, Aquinas), Luther, Calvin')(deception='High')
+        '(Anselm, Aquinas), Luther, Calvin')
         :hl Jesus paid the *penalty* for our past, present and future sins. The wrath of God was poured out and satisfied as the Father punished the Son so we can go free.
       +danger
         li Logically leads to double jeopardy or universalism, which can lead to Calvinism's limited atonement
