@@ -18,9 +18,9 @@ show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
+  * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'c ' level:0 desc:"check external links"  fn:Check.check-external-links
   * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
-  * cmd:'b ' level:0 desc:'build all'             fn:Build.all
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
   * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld?notify
