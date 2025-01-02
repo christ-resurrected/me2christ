@@ -13,15 +13,14 @@ module.exports = me =
     function process mat then Postcss([Cssnano!]).process(mat[1]).then(-> mat[0].replace mat[1], it.css)
     const RX = new RegExp '<style>(.+?)<\/style>' \gs  # livescript renders /regex/gs as /regex/g.s
 
-    in-len = it.length
     promises = [...it.matchAll RX].map process
     replacements = await Promise.all promises
     out = it.replace RX, -> replacements.shift!
-    delta = in-len - out.length
-    percent = (100 * delta / in-len).toFixed 2
+    delta = it.length - out.length
+    percent = (100 * delta / it.length).toFixed 2
     log Chalk.yellow "Reduced css by #{delta.toLocaleString!} bytes (#percent%)"
     out
 
-  html-comments: function
+  html-comments: ->
     return it unless me.enabled
     it.replace /<!--(.*?)-->/g ''
