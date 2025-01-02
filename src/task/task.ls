@@ -18,7 +18,7 @@ module.exports = me =
   run-tasks: (tasks) ->>
     t1 = Perf.now!
     await Promise.all p = [run-task t, f for _, t of tasks for f in Fs.globSync t.glob].flat!flat!
-    log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t1).toFixed(0)}ms"
+    log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t1).toFixed 0}ms"
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
