@@ -23,8 +23,7 @@ module.exports = me =
   render: (ipath, odir) ->>
     t1 = Perf.now!
     me.external-links = []
-    html = Pug.renderFile ipath, opts
-    html = await Mcss.minify html
+    html = await Mcss.minify Pug.renderFile ipath, opts
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/, \.html
     Fs.writeFileSync opath, html
     log Chalk.green "Rendered #{html.length} bytes to #opath in #{(Perf.now! - t1).toFixed(0)}ms"
