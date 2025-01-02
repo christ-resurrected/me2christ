@@ -1,8 +1,6 @@
 Chalk = require \chalk
 CP    = require \child_process
 Fs    = require \fs
-Glob  = require \glob .globSync
-Match = require \minimatch .minimatch
 P     = require \path
 Perf  = require \perf_hooks .performance
 Dir   = require \./constants .dir
@@ -19,14 +17,14 @@ module.exports = me =
 
   run-tasks: (tasks) ->>
     t1 = Perf.now!
-    await Promise.all p = [run-task t, f for _, t of tasks for f in Glob t.glob].flat!flat!
+    await Promise.all p = [run-task t, f for _, t of tasks for f in Fs.globSync t.glob].flat!flat!
     log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t1).toFixed(0)}ms"
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     watch-once!
     function watch-once then w = Fs.watch t.srcdir, recursive:true, (, path) ->>
-      return if path[*-1] is \~ or not Match path, t.pat
+      return if path[*-1] is \~ or not P.matchesGlob path, t.pat
       t.runid = runid = new Date!getTime!
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
       watch-once!

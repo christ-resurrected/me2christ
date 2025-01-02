@@ -18,7 +18,6 @@ engines:
 dependencies:
   chalk      : \~0.4.0
   cssnano    : \~7.0.6
-  glob       : \~11.0.0
   livescript : \~1.6.0
   pug        : \~3.0.3
   postcss    : \~8.4.49
