@@ -35,11 +35,11 @@ module.exports = me =
         else if Fs.existsSync ipath = P.resolve t.srcdir, path then await run-task t, ipath
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
-      catch err then emitter.emit \error
+      catch err then log "ERROR: #err"; emitter.emit \error
 
-function run-task t, ipath then new Promise (resolve, reject) ->
+function run-task t, ipath then new Promise (resolve, reject) ->>
   odir = P.dirname P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
   if !Fs.existsSync odir then Fs.mkdirSync odir, recursive:true
-  if t.fun then try t.fun ipath, odir; resolve! catch err then log err; reject! finally return
+  if t.fun then try await t.fun ipath, odir; resolve! catch err then reject err finally return
   log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$ODIR odir)
-  CP.exec cmd, (err, stdout, stderr) -> if err then log stderr; reject! else log stdout if stdout.length; resolve!
+  CP.exec cmd, (err, stdout, stderr) -> if err then reject stderr else log stdout if stdout.length; resolve!

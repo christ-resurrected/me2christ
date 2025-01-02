@@ -23,7 +23,7 @@ module.exports = me =
   render: (ipath, odir) ->>
     t1 = Perf.now!
     me.external-links = []
-    html = await Minify.css Minify.html-comments Pug.renderFile ipath, opts
+    html = await Minify.js await Minify.css Minify.html-comments Pug.renderFile ipath, opts
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/, \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!

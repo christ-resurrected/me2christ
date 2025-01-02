@@ -16,12 +16,13 @@ engines:
   node: '22'
   yarn: '1.22'
 dependencies:
-  chalk     : \~0.4.0
-  cssnano   : \~7.0.6
-  glob      : \~11.0.0
-  livescript: \~1.6.0
-  pug       : \~3.0.3
-  postcss   : \~8.4.49
+  chalk      : \~0.4.0
+  cssnano    : \~7.0.6
+  glob       : \~11.0.0
+  livescript : \~1.6.0
+  pug        : \~3.0.3
+  postcss    : \~8.4.49
+  'uglify-js': \~3.19.3
 devDependencies:
   'ls-lint': \~0.1.2
   ws       : \~8.18.0
