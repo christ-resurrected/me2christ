@@ -7,14 +7,13 @@ C      = require \./constants
 Minify = require \./minify
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
-const VERSES = JSON.parse(KJV.replaceAll '#' '')
 const OPTS =
   filters:
     hi: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
-  VERSES:VERSES
+  VERSES: JSON.parse(KJV.replaceAll '#' '')
 
 module.exports = me =
   external-links: []

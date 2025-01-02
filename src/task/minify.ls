@@ -30,10 +30,10 @@ module.exports = me =
 
 async function minify filetype, tag, html, process
   return html unless me.enabled
-  const RX = new RegExp "<#tag>(.+?)<\/#tag>" \gs  # livescript renders /regex/gs as /regex/g.s
-  promises = [...html.matchAll RX].map process
+  const RE = new RegExp "<#tag>(.+?)<\/#tag>" \gs  # livescript renders /regex/gs as /regex/g.s
+  promises = [...html.matchAll RE].map process
   replacements = await Promise.all promises
-  out = html.replace RX, -> replacements.shift!
+  out = html.replace RE, -> replacements.shift!
   delta = html.length - out.length
   percent = (100 * delta / html.length).toFixed 2
   log Chalk.yellow "Reduced #filetype by #{delta.toLocaleString!} bytes (#percent%)"
