@@ -23,7 +23,7 @@ module.exports = me =
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     watch-once!
-    function watch-once then w = Fs.watch t.srcdir, recursive:true, (, path) ->>
+    function watch-once then w = Fs.watch t.srcdir, recursive:true, (_, path) ->>
       return if path[*-1] is \~ or not P.matchesGlob path, t.pat
       t.runid = runid = new Date!getTime!
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
