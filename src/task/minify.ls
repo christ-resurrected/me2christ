@@ -17,7 +17,6 @@ module.exports = me =
     it.replace /<!--(.*?)-->/g ''
 
   js: ->>
-    # return it
     function process mat then new Promise (resolve, reject) ->
       res = Uglijs.minify mat[1]
       if res.error then reject res.error else resolve mat[0].replace mat[1], res.code
