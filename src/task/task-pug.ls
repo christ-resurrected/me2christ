@@ -26,4 +26,6 @@ module.exports = me =
     html = await Minify.css Minify.html-comments Pug.renderFile ipath, opts
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/, \.html
     Fs.writeFileSync opath, html
-    log Chalk.green "Rendered #{html.length} bytes to #opath in #{(Perf.now! - t1).toFixed(0)}ms"
+    len = html.length.toLocaleString!
+    minify = Chalk.yellow "minify=#{Minify.enabled}"
+    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t1).toFixed(0)}ms #minify"
