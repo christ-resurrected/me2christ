@@ -13,7 +13,7 @@ opts =
   filters:
     hi: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
     link: ->
-      for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m[1]
+      for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
   VERSES:VERSES
 
@@ -28,4 +28,4 @@ module.exports = me =
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
     minify = if Minify.enabled then '' else Chalk.yellow "minify disabled"
-    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t1).toFixed(0)}ms #minify"
+    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t1).toFixed 0}ms #minify"
