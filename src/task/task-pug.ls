@@ -8,8 +8,7 @@ Minify = require \./minify
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const VERSES = JSON.parse(KJV.replaceAll '#' '')
-
-opts =
+const OPTS =
   filters:
     hi: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
     link: ->
@@ -23,7 +22,7 @@ module.exports = me =
   render: (ipath, odir) ->>
     t1 = Perf.now!
     me.external-links = []
-    html = await Minify.js await Minify.css Minify.html-comments Pug.renderFile ipath, opts
+    html = await Minify.js await Minify.css Minify.html-comments Pug.renderFile ipath, OPTS
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/, \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
