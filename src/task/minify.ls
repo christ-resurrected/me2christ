@@ -8,8 +8,14 @@ module.exports = me =
   enabled: true
   toggle-enabled: -> me.enabled = not me.enabled
 
+  # In css and js process functions:
+  #
+  # m is the regex match
+  # m[0] includes enclosing tags
+  # m[1] is capture group 1 containing the original code excluding tags
+
   css: ->>
-    function process mat then Postcss([Cssnano!]).process(mat[1]).then(-> mat[0].replace mat[1], it.css)
+    function process m then Postcss([Cssnano!]).process(m.1).then(-> m.0.replace m.1, it.css)
     minify \css, \style, it, process
 
   html-comments: ->
@@ -17,9 +23,9 @@ module.exports = me =
     it.replace /<!--(.*?)-->/g ''
 
   js: ->>
-    function process mat then new Promise (resolve, reject) ->
-      res = Uglijs.minify mat[1]
-      if res.error then reject res.error else resolve mat[0].replace mat[1], res.code
+    function process m then new Promise (resolve, reject) ->
+      res = Uglijs.minify m.1
+      if res.error then reject res.error else resolve m.0.replace m.1, res.code
     minify \js, \script, it, process
 
 async function minify filetype, tag, html, process
