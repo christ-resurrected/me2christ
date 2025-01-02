@@ -13,8 +13,8 @@ scripts:
   build: 'node -e "global.log = console.log; require(\'./task/build\').all()"'
   start: 'touch .restart-node && node --watch-path=.restart-node --watch-preserve-output task/repl.js'
 engines:
-  node: '22'
-  yarn: '1.22'
+  node: \22
+  yarn: \1.22
 dependencies:
   chalk      : \~0.4.0
   cssnano    : \~7.0.6
