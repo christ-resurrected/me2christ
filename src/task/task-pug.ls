@@ -21,11 +21,11 @@ module.exports = me =
   external-links: []
 
   render: (ipath, odir) ->>
-    t1 = Perf.now!
+    t0 = Perf.now!
     me.external-links = []
     html = await Minify.js await Minify.css Minify.html-comments Pug.renderFile ipath, OPTS
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
     minify = if Minify.enabled then '' else Chalk.yellow "minify disabled"
-    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t1).toFixed 0}ms #minify"
+    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t0).toFixed 0}ms #minify"
