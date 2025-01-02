@@ -1,3 +1,4 @@
+# see https://jeffkreeftmeijer.com/nodejs-purge-minify-css/
 Cssnano = require \cssnano
 Postcss = require \postcss
 
