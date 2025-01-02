@@ -9,7 +9,9 @@ Minify = require \./minify
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
   filters:
-    hi: -> it.replace(/\*\*(.+?)\*\*/g, \<strong>$1</strong>).replace /\*(.+?)\*/g, \<em>$1</em>  # highlights
+    hi: -> # highlights
+      tmp = it.replace /\*\*(.+?)\*\*/g \<strong>$1</strong>
+      tmp.replace /\*(.+?)\*/g \<em>$1</em>
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
