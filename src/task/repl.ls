@@ -18,7 +18,7 @@ Site     = require \./site
 process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejection:' promise
 process.on \uncaughtException (error) -> console.error 'Uncaught exception' error
 
-show-help = function
+function show-help
   log "\n#{Chalk.cyan \m}inify = #{Chalk.bold Minify.enabled}\n"
   for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
