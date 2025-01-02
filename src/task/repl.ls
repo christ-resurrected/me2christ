@@ -11,10 +11,13 @@ Dir      = require \./constants .dir
 Dirname  = require \./constants .dirname
 Lint     = require \./lint
 LiveRld  = require \./livereload if process.env.M2C_LIVE_RELOAD
+Minify   = require \./minify
 Resource = require \./resource
 Site     = require \./site
 
-show-help = -> for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
+show-help = function
+  log "\n#{Chalk.cyan \m}inify = #{Chalk.bold Minify.enabled}\n"
+  for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
@@ -33,7 +36,11 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
   ..on \line (cmd) ->
     rl.pause!
-    for c in COMMANDS when cmd is c.cmd.trim! then try c.fn! catch e then log e
+    if cmd is \m
+      Minify.toggle-enabled!
+      show-help!
+    else
+      for c in COMMANDS when cmd is c.cmd.trim! then try c.fn! catch e then log e
     rl.resume!
     rl.prompt!
 
