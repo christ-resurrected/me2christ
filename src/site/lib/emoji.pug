@@ -1,8 +1,13 @@
 append head
   style: include emoji.css
 
-mixin h2-emoji(title, emoji)
+// lighthouse audit requires explicit size in html
+mixin h2-emoji(title, emoji, size='40x40')
+  - height = size.split('x')[1]
+  - width = size.split('x')[0]
+  mixin image
+    img(class=emoji src=`asset/emoji/${emoji}.svg` height=height width=width)
   .emoji
-    img(class=emoji src=`asset/emoji/${emoji}.svg`)
+    +image
     h2= title
-    img(class=emoji src=`asset/emoji/${emoji}.svg`)
+    +image

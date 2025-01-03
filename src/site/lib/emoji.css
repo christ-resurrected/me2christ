@@ -2,8 +2,6 @@
   display: grid;
 
   img {
-    width: 40px;
-
     &:first-child {
       transform: scaleX(-1);
     }
@@ -29,10 +27,6 @@
 
       &:last-child {
         display: none;
-      }
-
-      &.dove {
-        width: 60px;
       }
     }
 
