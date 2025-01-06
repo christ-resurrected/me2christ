@@ -25,6 +25,7 @@ dependencies:
   postcss               : \~8.4.49
   'postcss-import-sync2': \~1.2.0
   'postcss-mixins'      : \~11.0.3
+  'postcss-nested'      : \~7.0.2
 devDependencies:
   'ls-lint': \~0.1.2
   ws       : \~8.18.0
