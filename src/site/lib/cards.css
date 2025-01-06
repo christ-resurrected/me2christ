@@ -25,10 +25,8 @@
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
-}
 
-.cards.dark {
-  .card {
+  &.dark .card {
     background: #000;
     border-color: red;
 
@@ -47,10 +45,8 @@
       font-size: 2rem;
     }
   }
-}
 
-.cards.light {
-  .card {
+  &.light .card {
     background: #fff;
     color: #000;
   }
