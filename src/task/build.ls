@@ -22,9 +22,9 @@ const TASKS = T.init const _TASKS =
     fun: require \./task-pug .render
     ixt: \pug
     ord: 2
-  site_css_js:
+  site_script_style:
     dir: Dirname.SITE
-    ixt: '{js,css}'
+    ixt: '{js,css,sss}'
     pat: '**/'
     pid: \site_pug # parent task id to run
   site_lib_pug:
