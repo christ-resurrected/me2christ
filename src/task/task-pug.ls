@@ -5,6 +5,7 @@ Perf   = require \perf_hooks .performance
 Pug    = require \pug
 C      = require \./constants
 Minify = require \./minify
+Pcss   = require \./postcss
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
@@ -15,6 +16,7 @@ const OPTS =
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
+    postcss: Pcss.process
   VERSES: JSON.parse(KJV.replaceAll '#' '')
 
 module.exports = me =
