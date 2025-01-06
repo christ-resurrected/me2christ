@@ -1,0 +1,41 @@
+.tooltip-anchor
+  position: relative  // tooltips are positioned immediately under the anchor
+
+.tooltip
+  display: inline
+  border-bottom: 2px dotted
+  text-decoration: none
+  cursor: pointer
+
+  &.help
+    cursor: help
+
+    &:hover
+      background: #840
+
+  & .tooltiptext
+    color: #fff
+    display: none
+    font-style: normal
+    font-weight: normal
+    padding: 0.5rem
+    position: absolute
+    top: 100%
+    z-index: 1
+    /* From https://css.glass */
+    background: rgba(56, 50, 50, 0.84)
+    border-radius: 16px
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    backdrop-filter: blur(5px)
+    -webkit-backdrop-filter: blur(5px)
+    border: 1px solid rgba(56, 50, 50, 0.27)
+
+    em
+      color: #fff !important
+
+  &:hover
+    background-color: red
+    color: #fff
+
+    .tooltiptext
+      display: block
