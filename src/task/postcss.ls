@@ -7,6 +7,4 @@ module.exports =
   process: ->
     imp = Import path: "#{Dir.SRC_SITE}/lib"
     plugins = [Mixins]
-    css = Postcss(plugins).use(imp).process(it, {from:undefined}).css
-    log css.length
-    css
+    Postcss(plugins).use(imp).process(it, from:undefined).css
