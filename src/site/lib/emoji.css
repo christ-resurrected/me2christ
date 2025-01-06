@@ -8,30 +8,26 @@
   }
 }
 
-.dark {
-  .emoji {
-    gap: 0;
-    grid-template-columns: 40px 1fr 40px;
-  }
+.dark .emoji {
+  gap: 0;
+  grid-template-columns: 40px 1fr 40px;
 }
 
-.light {
-  .emoji {
-    align-items: center;
-    gap: 1.2rem;
-    grid-template-columns: 40px 1fr;
+.light .emoji {
+  align-items: center;
+  gap: 1.2rem;
+  grid-template-columns: 40px 1fr;
 
-    img {
-      position: relative;
-      top: -8px;
+  img {
+    position: relative;
+    top: -8px;
 
-      &:last-child {
-        display: none;
-      }
+    &:last-child {
+      display: none;
     }
+  }
 
-    +p {
-      margin-top: 0;
-    }
+  +p {
+    margin-top: 0;
   }
 }
