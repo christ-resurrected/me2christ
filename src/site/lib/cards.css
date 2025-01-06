@@ -3,11 +3,27 @@
   border-radius: 8px;
   padding: 0.5rem;
 
+  .dark &,
   &.dark {
     background: #000;
     color: #fff;
+    border-color: red;
+
+    a {
+      color: #aaa;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    h2 {
+      color: red;
+      font-size: 2rem;
+    }
   }
 
+  .light &,
   &.light {
     background: #fff;
     color: #000
@@ -51,31 +67,5 @@
         grid-column: span 3;
       }
     }
-  }
-
-  /* theme */
-  &.dark .card {
-    background: #000;
-    border-color: red;
-
-    color: #fff;
-
-    a {
-      color: #aaa;
-
-      &:hover {
-        color: #fff;
-      }
-    }
-
-    h2 {
-      color: red;
-      font-size: 2rem;
-    }
-  }
-
-  &.light .card {
-    background: #fff;
-    color: #000;
   }
 }
