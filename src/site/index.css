@@ -2,10 +2,6 @@ em {
   font-weight: bold;
 }
 
-.light em {
-  color: green;
-}
-
 .check:before {
   content: '';
   display: inline-block;
@@ -16,6 +12,18 @@ em {
   width: 1rem;
   background: url('asset/emoji/checkmark_box.svg');
   filter: hue-rotate(00deg) brightness(72%) contrast(500%);
+}
+
+.dark .verse strong {
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(to top, red, yellow);
+  color: transparent;
+  text-shadow: 1px 1px 0px #ffc;
+}
+
+.light em {
+  color: green;
 }
 
 .verse {

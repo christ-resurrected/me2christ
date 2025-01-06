@@ -46,14 +46,6 @@ mark {
     span.body {
       background: #780606;
       color: #fcc;
-
-      strong {
-        -webkit-background-clip: text;
-        background-clip: text;
-        background-image: linear-gradient(to top, red, yellow);
-        color: transparent;
-        text-shadow: 1px 1px 0px #ffc;
-      }
     }
   }
 
