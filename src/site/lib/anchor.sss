@@ -1,6 +1,3 @@
-a:hover
-  color: red
-
 a[href^='http']:after
   background-image: url('asset/symbol/link_external.svg')
   content: ''
@@ -18,5 +15,8 @@ header, footer
   a
     color: #aaa
 
-    &:hover
-      color: #fff
+a:hover
+  color: red
+
+  header &, footer &
+    color: #fff
