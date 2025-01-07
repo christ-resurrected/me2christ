@@ -3,16 +3,15 @@
 em
   font-weight: bold
 
-.check:before
+.check::before
   @mixin glyph emoji/checkmark_box
   filter: hue-rotate(00deg) brightness(72%) contrast(500%)
 
 .dark .verse strong
-  -webkit-background-clip: text
   background-clip: text
   background-image: linear-gradient(to top, red, yellow)
   color: transparent
-  text-shadow: 1px 1px 0px #ffc
+  text-shadow: 1px 1px 0 #ffc
 
 .light em
   color: green
