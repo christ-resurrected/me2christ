@@ -10,6 +10,6 @@ rules:
   declaration-empty-line-before: null
   import-notation: null
 
-  # allow @mixin
+  # allow @mixin and @define-mixin
   at-rule-no-unknown: null
-  scss/at-rule-no-unknown: true
+  scss/at-rule-no-unknown: null
