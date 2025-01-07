@@ -11,12 +11,6 @@
         cursor: wait
 
       .field
-        &+.field
-          margin-top: 1rem
-
-        &:focus-within .labels .count
-          display: block
-
         .labels
           color: #333
           display: flex
@@ -31,6 +25,12 @@
 
             &.warn
               color: #f80
+
+        &:focus-within .labels .count
+          display: block
+
+        &+.field
+          margin-top: 1rem
 
         textarea
           resize: vertical
