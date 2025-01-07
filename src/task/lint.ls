@@ -3,13 +3,15 @@ Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
 
+const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"
+
 const TASKS = T.init const _TASKS =
   config:
     cmd: "cp --target-directory $ODIR $IN"
     dir: Dirname.TASK
     ixt: \lson
   lint_ls:
-    cmd: "yarn --silent ls-lint --config #{Dir.SRC_TASK}/lint-ls.lson $IN"
+    cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
     ixt: \ls
     pat: '**/'
