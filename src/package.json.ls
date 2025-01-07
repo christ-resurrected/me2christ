@@ -28,8 +28,8 @@ dependencies:
   'postcss-nested'      : \~7.0.2
   sugarss               : \~5.0.0
 devDependencies:
-  'ls-lint'                  : \~0.1.2
-  stylelint                  : \~16.12.0
-  'stylelint-config-standard': \~36.0.1
-  'stylelint-scss'           : \~6.10.0
-  ws                         : \~8.18.0
+  'ls-lint'                         : \~0.1.2
+  stylelint                         : \~16.12.0
+  'stylelint-config-standard'       : \~36.0.1
+  'stylelint-config-sass-guidelines': \~12.1.0
+  ws                                : \~8.18.0

@@ -3,13 +3,19 @@ defaultSeverity: warning
 extends:
   - stylelint-config-standard
   - stylelint-config-recommended
-  # - stylelint-config-sass-guidelines
+  - stylelint-config-sass-guidelines
 plugins:
   - stylelint-scss
 rules:
-  declaration-empty-line-before: null
-  import-notation: null
-
   # allow @mixin and @define-mixin
   at-rule-no-unknown: null
   scss/at-rule-no-unknown: null
+
+  # stylelint-config-standard
+  declaration-empty-line-before: null
+  import-notation: null
+
+  # stylelint-config-sass-guidelines
+  max-nesting-depth: 4
+  '@stylistic/block-opening-brace-space-before': null
+  '@stylistic/declaration-block-trailing-semicolon': null
