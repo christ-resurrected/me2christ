@@ -1,3 +1,5 @@
+@import 'mixin.sss'
+
 .intro .verse
   position: relative  // make every verse a tooltip anchor
 
@@ -9,13 +11,7 @@
     list-style: none
 
     &:before
-      content: ''
-      display: inline-block
-      margin-right: 0.5rem
-      top: 2px
-      position: relative
-      height: 1rem
-      width: 1rem
+      @mixin glyph
 
   .doctrine
     div+div
