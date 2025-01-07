@@ -10,9 +10,6 @@
     // bullet points
     list-style: none
 
-    &:before
-      @mixin glyph
-
   .doctrine
     div+div
       margin-top: 1rem
@@ -27,7 +24,7 @@
   .danger li,
   .other li
     &:before
-      background: url('asset/symbol/red_x.svg')
+      @mixin glyph symbol/red_x
 
   .danger li,
   .refutation li
@@ -46,11 +43,11 @@
     position: relative  // make every li a tooltip anchor
 
     &:before
-      background: url('asset/emoji/checkmark_box.svg')
+      @mixin glyph emoji/checkmark_box
       filter: hue-rotate(00deg) brightness(72%) contrast(500%)
 
     &.warn:before
-      background: url('asset/emoji/warning.svg')
+      @mixin glyph emoji/warning
       filter: none
 
     &:last-child
