@@ -2,7 +2,7 @@ extends lib/base.pug
 
 append head
   - const PAGE_ID='deception'
-  style: include lib/bg-dark.css
+  style: include:postcss lib/bg-dark.sss
   style: include:postcss deception.sss
 
 mixin belief(title)
