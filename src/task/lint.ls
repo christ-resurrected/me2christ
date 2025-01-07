@@ -13,6 +13,11 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.TASK
     ixt: \ls
     pat: '**/'
+  lint_sss:
+    run: "yarn --silent stylelint --customSyntax sugarss -c stylelint-config-recommended $IN"
+    dir: Dirname.SITE
+    ixt: \sss
+    pat: '**/'
 
 module.exports = me = (new Emitter!) with
   all: ->> try await T.run-tasks TASKS; me.emit \done catch err then log err

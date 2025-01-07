@@ -53,6 +53,7 @@ Build.on \restart -> P.execSync "touch #{Dir.BUILD}/.restart-node"
 Build.start!
 
 Lint.on \done -> rl.prompt!
+Lint.on \error -> rl.prompt!
 Lint.start!
 
 <- Site.start!
