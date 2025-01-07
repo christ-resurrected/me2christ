@@ -10,10 +10,7 @@ fieldset
     cursor: wait
 
 .field
-  &:focus-within .labels .count
-    display: block
-
-  &+.field
+  +.field
     margin-top: 1rem
 
   textarea
@@ -42,6 +39,9 @@ fieldset
 
   .count
     display: none
+
+    .field:focus-within &
+      display: block
 
     &.warn
       color: #f80
