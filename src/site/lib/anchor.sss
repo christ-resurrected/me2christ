@@ -1,4 +1,4 @@
-a[href^='http']:after
+a[href^='http']::after
   background-image: url('asset/symbol/link_external.svg')
   content: ''
   display: inline-block
@@ -8,7 +8,7 @@ a[href^='http']:after
   width: 1rem
   top: 2px
 
-.dark a[href^='http']:after
+.dark a[href^='http']::after
   filter: invert(100%)
 
 header, footer
