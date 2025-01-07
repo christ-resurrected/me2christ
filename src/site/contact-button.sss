@@ -1,6 +1,6 @@
-.contact form button
+form button
   background-color: #ccc
-  border: none
+  border: 0
   border-radius: 4px
   color: #333
   font-size: 1rem
@@ -9,25 +9,25 @@
   position: relative
   width: 100%
 
-  &.spinner
-    color: transparent
-
-    &::after
-      content: ""
-      position: absolute
-      width: 16px
-      height: 16px
-      inset: 0
-      margin: auto
-      border: 4px solid transparent
-      border-top-color: #888
-      border-radius: 50%
-      animation: spinner 1s ease infinite
-
   @media (hover: hover)
     &:enabled:hover
       background-color: #0f0
       cursor: pointer
+
+.spinner
+  color: transparent
+
+  &::after
+    content: ''
+    position: absolute
+    width: 16px
+    height: 16px
+    inset: 0
+    margin: auto
+    border: 4px solid transparent
+    border-top-color: #888
+    border-radius: 50%
+    animation: spinner 1s ease infinite
 
 @keyframes spinner
   from
