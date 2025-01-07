@@ -31,4 +31,5 @@ devDependencies:
   'ls-lint'                  : \~0.1.2
   stylelint                  : \~16.12.0
   'stylelint-config-standard': \~36.0.1
+  'stylelint-scss'           : \~6.10.0
   ws                         : \~8.18.0

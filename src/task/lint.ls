@@ -9,14 +9,15 @@ const TASKS = T.init const _TASKS =
   config:
     cmd: "cp --target-directory $ODIR $IN"
     dir: Dirname.TASK
-    ixt: \lson
+    ixt: '{lson,yml}'
+    pat: '**/'
   lint_ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
     ixt: \ls
     pat: '**/'
   lint_sss:
-    cmd: "yarn --silent stylelint --customSyntax sugarss -c stylelint-config-recommended $IN"
+    cmd: "yarn --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
     dir: Dirname.SITE
     ixt: \sss
     pat: '**/'

@@ -1,0 +1,15 @@
+customSyntax: sugarss
+defaultSeverity: warning
+extends:
+  - stylelint-config-standard
+  - stylelint-config-recommended
+  # - stylelint-config-sass-guidelines
+plugins:
+  - stylelint-scss
+rules:
+  declaration-empty-line-before: null
+  import-notation: null
+
+  # allow @mixin
+  at-rule-no-unknown: null
+  scss/at-rule-no-unknown: true
