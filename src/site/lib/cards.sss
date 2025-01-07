@@ -8,7 +8,7 @@
   // .cols-* specifies the desired (maximum) number of columns in the responsive grid layout
   &.cols-2,
   &.cols-3
-    @media (min-width: 600px)
+    @media (width >= 600px)
       grid-template-columns: repeat(2, 1fr)
 
       .card.cols-2-span-2,
@@ -16,7 +16,7 @@
         grid-column: span 2
 
   &.cols-3
-    @media (min-width: 900px)
+    @media (width >= 900px)
       grid-template-columns: repeat(3, 1fr)
 
       .card:nth-child(1)
