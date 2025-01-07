@@ -19,25 +19,31 @@
       display: inline
       margin-left: 0.5rem
 
-  .danger li,
-  .other li
-    &:before
-      @mixin glyph symbol/red_x
+      &:after
+        content: '.'
 
-  .danger li,
-  .refutation li
-    &:after
-      content: '.'
+      &:before
+        @mixin glyph symbol/red_x
 
   .other ul  // nested list e.g. Calvinism
     padding-inline-start: 1rem
 
     li
+      &:before
+        @mixin glyph symbol/red_x
+
       &:first-child
         margin-top: 0.5rem
 
   .refutation li
     position: relative  // make every li a tooltip anchor
+
+    mark+span,
+    span+.verse
+      margin-left: 0.3rem
+
+    &:after
+      content: '.'
 
     &:before
       @mixin glyph emoji/checkmark_box
@@ -49,10 +55,6 @@
 
     &:last-child
       margin-bottom: 0
-
-    mark+span,
-    span+.verse
-      margin-left: 0.3rem
 
     .verse
       span.body
