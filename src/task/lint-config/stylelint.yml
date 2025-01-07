@@ -17,6 +17,7 @@ rules:
 
   # stylelint-config-sass-guidelines
   max-nesting-depth: 5
+  selector-max-compound-selectors: 5
   selector-max-id: 1
   '@stylistic/block-opening-brace-space-before': null
   '@stylistic/declaration-block-trailing-semicolon': null

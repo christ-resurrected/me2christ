@@ -25,34 +25,34 @@
     &::before
       @mixin glyph symbol/red_x
 
-.refutation li
-  position: relative  // make every li a tooltip anchor
+.refutation
+  li
+    position: relative  // make every li a tooltip anchor
 
-  mark+span,
-  span+.verse
-    margin-left: 0.3rem
+    mark+span,
+    span+.verse
+      margin-left: 0.3rem
 
-  &::after
-    content: '.'
+    &::after
+      content: '.'
 
-  &::before
-    @mixin glyph emoji/checkmark_box
-    filter: hue-rotate(00deg) brightness(72%) contrast(500%)
+    &::before
+      @mixin glyph emoji/checkmark_box
+      filter: hue-rotate(00deg) brightness(72%) contrast(500%)
 
-  &.warn::before
-    @mixin glyph emoji/warning
-    filter: none
+    &:last-child
+      margin-bottom: 0
 
-  &:last-child
-    margin-bottom: 0
-
-  .verse
-    .body
+    .verse .body
       background: #322
       color: #ff8
 
-    em
-      color: #ff8
+      em
+        color: #ff8
+
+  .warn::before
+    @mixin glyph emoji/warning
+    filter: none
 
 .other ul  // nested list e.g. Calvinism
   padding-inline-start: 1rem
