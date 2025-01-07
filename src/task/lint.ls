@@ -14,7 +14,7 @@ const TASKS = T.init const _TASKS =
     ixt: \ls
     pat: '**/'
   lint_sss:
-    run: "yarn --silent stylelint --customSyntax sugarss -c stylelint-config-recommended $IN"
+    cmd: "yarn --silent stylelint --customSyntax sugarss -c stylelint-config-recommended $IN"
     dir: Dirname.SITE
     ixt: \sss
     pat: '**/'
