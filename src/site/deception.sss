@@ -8,58 +8,58 @@
     margin-bottom: 0.5rem
     list-style: none  // bullet points
 
-  .doctrine
-    div+div
-      margin-top: 1rem
+.doctrine
+  div+div
+    margin-top: 1rem
 
-  .danger
-    display: inline-block
+.danger
+  display: inline-block
 
-    li
-      display: inline
-      margin-left: 0.5rem
-
-      &::after
-        content: '.'
-
-      &::before
-        @mixin glyph symbol/red_x
-
-  .refutation li
-    position: relative  // make every li a tooltip anchor
-
-    mark+span,
-    span+.verse
-      margin-left: 0.3rem
+  li
+    display: inline
+    margin-left: 0.5rem
 
     &::after
       content: '.'
 
     &::before
-      @mixin glyph emoji/checkmark_box
-      filter: hue-rotate(00deg) brightness(72%) contrast(500%)
+      @mixin glyph symbol/red_x
 
-    &.warn::before
-      @mixin glyph emoji/warning
-      filter: none
+.refutation li
+  position: relative  // make every li a tooltip anchor
 
-    &:last-child
-      margin-bottom: 0
+  mark+span,
+  span+.verse
+    margin-left: 0.3rem
 
-    .verse
-      span.body
-        background: #322
-        color: #ff8
+  &::after
+    content: '.'
 
-      em
-        color: #ff8
+  &::before
+    @mixin glyph emoji/checkmark_box
+    filter: hue-rotate(00deg) brightness(72%) contrast(500%)
 
-  .other ul  // nested list e.g. Calvinism
-    padding-inline-start: 1rem
+  &.warn::before
+    @mixin glyph emoji/warning
+    filter: none
 
-    li
-      &::before
-        @mixin glyph symbol/red_x
+  &:last-child
+    margin-bottom: 0
 
-      &:first-child
-        margin-top: 0.5rem
+  .verse
+    .body
+      background: #322
+      color: #ff8
+
+    em
+      color: #ff8
+
+.other ul  // nested list e.g. Calvinism
+  padding-inline-start: 1rem
+
+  li
+    &::before
+      @mixin glyph symbol/red_x
+
+    &:first-child
+      margin-top: 0.5rem
