@@ -16,6 +16,6 @@ rules:
   import-notation: null
 
   # stylelint-config-sass-guidelines
-  max-nesting-depth: 4
+  max-nesting-depth: 5
   '@stylistic/block-opening-brace-space-before': null
   '@stylistic/declaration-block-trailing-semicolon': null

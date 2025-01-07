@@ -2,61 +2,60 @@
   display: flex
   justify-content: center
 
-  form
-    fieldset
-      border: none
-      max-width: 600px
+fieldset
+  border: 0
+  max-width: 600px
 
-      &:disabled *
-        cursor: wait
+  &:disabled *
+    cursor: wait
 
-      .field
-        .labels
-          color: #333
-          display: flex
-          justify-content: space-between
-          margin-bottom: 0.3rem
+.field
+  &:focus-within .labels .count
+    display: block
 
-          label
-            font-weight: bold
+  &+.field
+    margin-top: 1rem
 
-          .count
-            display: none
+  textarea
+    resize: vertical
 
-            &.warn
-              color: #f80
+  input,
+  textarea
+    width: 100%
+    padding: 0.5rem
+    border: 1px solid #888
+    border-radius: 4px
+    font-size: 1rem
 
-        &:focus-within .labels .count
-          display: block
+    &:user-invalid
+      background: #fee
+      border: 2px solid #f00
 
-        &+.field
-          margin-top: 1rem
+.labels
+  color: #333
+  display: flex
+  justify-content: space-between
+  margin-bottom: 0.3rem
 
-        textarea
-          resize: vertical
+  label
+    font-weight: bold
 
-        input,
-        textarea
-          width: 100%
-          padding: 0.5rem
-          border: 1px solid #888
-          border-radius: 4px
-          font-size: 1rem
-
-          &:user-invalid
-            background: #fee
-            border: 2px solid #f00
-
-      #error
-        display: none
-        background-color: #fcc
-        color: #f00
-        border: none
-        border-radius: 4px
-        padding: 0.75rem
-        font-size: 1rem
-
-  #success
+  .count
     display: none
-    height: 30rem
-    text-align: center
+
+    &.warn
+      color: #f80
+
+#error
+  display: none
+  background-color: #fcc
+  color: #f00
+  border: 0
+  border-radius: 4px
+  padding: 0.75rem
+  font-size: 1rem
+
+#success
+  display: none
+  height: 30rem
+  text-align: center
