@@ -40,9 +40,13 @@
 .warn::before
   @mixin glyph-mr-2 emoji/warning
 
-.other li
-  &::before
-    @mixin glyph-mr-2 symbol/red_x
+.other
+  ul
+    padding-inline-start: 1rem
 
-  &:first-child
-    margin-top: 0.5rem
+  li
+    &::before
+      @mixin glyph-mr-2 symbol/red_x
+
+    &:first-child  // fix nested list
+      margin-top: 0.5rem
