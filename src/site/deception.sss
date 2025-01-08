@@ -5,46 +5,44 @@
 .intro .verse
   @mixin tooltip-anchor
 
+.doctrine div+div
+  margin-top: 1rem
+
 .doctrines li
   margin-bottom: 0.5rem
   list-style: none  // bullet points
 
-.doctrine div+div
-  margin-top: 1rem
+.danger li
+  display: inline
+  margin-left: 0.5rem
 
-.danger
-  li
-    display: inline
-    margin-left: 0.5rem
+  &::after
+    content: '.'
 
-    &::after
-      content: '.'
+  &::before
+    @mixin glyph symbol/red_x
 
-    &::before
-      @mixin glyph symbol/red_x
+.refutation li
+  @mixin tooltip-anchor
 
-.refutation
-  li
-    @mixin tooltip-anchor
+  mark+span,
+  span+.verse
+    margin-left: 0.3rem
 
-    mark+span,
-    span+.verse
-      margin-left: 0.3rem
+  &::after
+    content: '.'
 
-    &::after
-      content: '.'
+  &:not(.warn)::before
+    @mixin glyph emoji/checkmark_box
+    @mixin checkmark-filter
 
-    &:not(.warn)::before
-      @mixin glyph emoji/checkmark_box
-      @mixin checkmark-filter
+  &:last-child
+    margin-bottom: 0
 
-    &:last-child
-      margin-bottom: 0
+  @mixin colorise-verse-body #322, #ff8
 
-    @mixin colorise-verse-body #322, #ff8
-
-  .warn::before
-    @mixin glyph emoji/warning
+.warn::before
+  @mixin glyph emoji/warning
 
 .other li
   &::before
