@@ -20,7 +20,8 @@ dependencies:
   livescript : \~1.6.0
   pug        : \~3.0.3
   'uglify-js': \~3.19.3
-# css processing
+# css generation
+  autoprefixer          : \~10.4.20
   cssnano               : \~7.0.6
   postcss               : \~8.4.49
   'postcss-import-sync2': \~1.2.0
