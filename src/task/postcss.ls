@@ -5,10 +5,9 @@ Nested  = require \postcss-nested
 Sugarss = require \sugarss
 Dir     = require \./constants .dir
 
+const IMPORT = Import path: "#{Dir.SRC_SITE}/lib"
+const OPTS = from:undefined, parser:Sugarss
+const PLUGINS = [Mixins, Nested]
+
 module.exports =
-  process: ->
-    imp = Import path: "#{Dir.SRC_SITE}/lib"
-    plugins = [Mixins, Nested]
-    css = Postcss(plugins).use(imp).process(it, {from:undefined, parser:Sugarss}).css
-    # log css
-    css
+  process: -> Postcss(PLUGINS).use(IMPORT).process(it, OPTS).css
