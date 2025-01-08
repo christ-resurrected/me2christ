@@ -21,12 +21,12 @@ dependencies:
   pug        : \~3.0.3
   'uglify-js': \~3.19.3
 # css generation
-  autoprefixer          : \~10.4.20
   cssnano               : \~7.0.6
   postcss               : \~8.4.49
   'postcss-import-sync2': \~1.2.0
   'postcss-mixins'      : \~11.0.3
   'postcss-nested'      : \~7.0.2
+  'postcss-preset-env'  : \~10.1.3
   sugarss               : \~5.0.0
 devDependencies:
   'ls-lint'                         : \~0.1.2
