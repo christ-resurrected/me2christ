@@ -8,17 +8,18 @@
   width: 1rem
   top: 2px
 
-.dark [href^='http']::after
-  filter: invert(100%)
-
 header,
-footer
+footer,
+.dark
+  [href^='http']::after
+    filter: invert(100%)
+
   a
     color: #aaa
 
-a:hover
-  color: #f00
-
-  header &,
-  footer &
+  a:hover
     color: #fff
+
+.light
+  a:hover
+    color: #f00
