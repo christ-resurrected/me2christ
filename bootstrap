@@ -6,5 +6,5 @@ mkdir -p build \
   && yarn add livescript \
   && yarn lsc -o . -c ../src/*.ls \
   && yarn lsc -o ./task -c ../src/task/*.ls \
-  && yarn \
+  && yarn install \
   && yarn run build
