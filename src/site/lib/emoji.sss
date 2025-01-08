@@ -1,25 +1,32 @@
-.emoji
+@define-mixin emoji $id, $position: left, $size: 40px
+  background: url(asset/emoji/$id.svg) no-repeat $position
+  background-size: $size
+
+@define-mixin banner $id
+  .$(id)
+    @mixin emoji $id
+
+    h2
+      @mixin emoji $id, right
+
+@mixin banner fire
+@mixin banner skull_bones
+
+.cross
+  @mixin emoji cross
+
+  h2
+    margin-left: 40px
+
+.dove
   display: grid
+  grid-template-columns: 60px 1fr
 
-  img
-    &:first-child
-      transform: scaleX(-1)
+  .emoji  // nested so h2 is not flipped
+    @mixin emoji dove, , 60px
+    position: relative
+    top: -8px
+    transform: scaleX(-1)
 
-  .dark &
-    gap: 0
-    grid-template-columns: 40px 1fr 40px
-
-  .light &
-    align-items: center
-    gap: 1.2rem
-    grid-template-columns: 40px 1fr
-
-    img
-      position: relative
-      top: -8px
-
-      &:last-child
-        display: none
-
-    +p
-      margin-top: 0
+  +p
+    margin-top: 0
