@@ -20,7 +20,7 @@
     content: '.'
 
   &::before
-    @mixin glyph symbol/red_x
+    @mixin glyph-mr-2 symbol/red_x
 
 .refutation li
   @mixin tooltip-anchor
@@ -29,7 +29,7 @@
     content: '.'
 
   &:not(.warn)::before
-    @mixin glyph emoji/checkmark_box
+    @mixin glyph-mr-2 emoji/checkmark_box
     @mixin checkmark-filter
 
   &:last-child
@@ -38,11 +38,11 @@
   @mixin colorise-verse-body #322, #ff8
 
 .warn::before
-  @mixin glyph emoji/warning
+  @mixin glyph-mr-2 emoji/warning
 
 .other li
   &::before
-    @mixin glyph symbol/red_x
+    @mixin glyph-mr-2 symbol/red_x
 
   &:first-child
     margin-top: 0.5rem

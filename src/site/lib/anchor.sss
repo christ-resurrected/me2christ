@@ -1,12 +1,8 @@
+@import 'mixin/glyph.sss'
+
 [href^='http']::after
-  background-image: url('asset/symbol/link_external.svg')
-  content: ''
-  display: inline-block
+  @mixin glyph symbol/link_external
   margin-left: 2px
-  position: relative
-  height: 1rem
-  width: 1rem
-  top: 2px
 
 header,
 footer,
