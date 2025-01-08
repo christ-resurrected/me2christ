@@ -10,4 +10,4 @@ const IMPORT = Import path: "#{Dir.SRC_SITE}/lib"
 const OPTS = from:undefined, parser:Sugarss
 const PLUGINS = [Mixins, Nested, PresEnv]
 
-module.exports = -> Postcss(PLUGINS).use(IMPORT).process(it, OPTS)
+module.exports = -> Postcss(PLUGINS).use(IMPORT).process(it, OPTS).css
