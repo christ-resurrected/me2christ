@@ -6,7 +6,7 @@ mixin h2-emoji(title, emoji, size='40x40')
   - height = size.split('x')[1]
   - width = size.split('x')[0]
   mixin image
-    img(class=emoji src=`asset/emoji/${emoji}.svg` height=height width=width)
+    img(alt=emoji class=emoji src=`asset/emoji/${emoji}.svg` height=height width=width)
   .emoji
     +image
     h2= title
