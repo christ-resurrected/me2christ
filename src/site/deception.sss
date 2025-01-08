@@ -36,6 +36,8 @@
 
     &::before
       @mixin glyph emoji/checkmark_box
+
+    &:not(.warn)::before
       @mixin checkmark-filter
 
     &:last-child
@@ -45,7 +47,6 @@
 
   .warn::before
     @mixin glyph emoji/warning
-    filter: none
 
 .other ul  // nested list e.g. Calvinism
   padding-inline-start: 1rem
