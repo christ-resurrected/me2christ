@@ -1,7 +1,8 @@
 @import 'mixin.sss'
+@import 'mixin/tooltip.sss'
 
 .intro .verse
-  position: relative  // make every verse a tooltip anchor
+  @mixin tooltip-anchor
 
 .doctrines li
   margin-bottom: 0.5rem
@@ -25,7 +26,7 @@
 
 .refutation
   li
-    position: relative  // make every li a tooltip anchor
+    @mixin tooltip-anchor
 
     mark+span,
     span+.verse

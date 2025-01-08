@@ -1,4 +1,5 @@
 @import 'mixin.sss'
+@import 'mixin/tooltip.sss'
 
 em
   font-weight: bold
@@ -16,5 +17,5 @@ em
 .light em
   color: #080
 
-.verse  // make every verse a tooltip anchor
-  position: relative
+.verse
+  @mixin tooltip-anchor
