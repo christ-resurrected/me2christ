@@ -46,10 +46,9 @@
   .warn::before
     @mixin glyph emoji/warning
 
-.other
-  li
-    &::before
-      @mixin glyph symbol/red_x
+.other li
+  &::before
+    @mixin glyph symbol/red_x
 
-    &:first-child
-      margin-top: 0.5rem
+  &:first-child
+    margin-top: 0.5rem
