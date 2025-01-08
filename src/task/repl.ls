@@ -9,9 +9,9 @@ Check    = require \./check
 Consts   = require \./constants
 Dir      = require \./constants .dir
 Dirname  = require \./constants .dirname
+Flag     = require \./flag
 Lint     = require \./lint
 LiveRld  = require \./livereload if process.env.M2C_LIVE_RELOAD
-Minify   = require \./minify
 Resource = require \./resource
 Site     = require \./site
 
@@ -19,7 +19,7 @@ process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejectio
 process.on \uncaughtException (error) -> console.error 'Uncaught exception' error
 
 function show-help
-  log "\n#{Chalk.cyan \m}inify = #{Chalk.bold Minify.enabled}\n"
+  log "\n#{Chalk.cyan \p}roduction = #{Chalk.bold Flag.prod}\n"
   for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
@@ -39,8 +39,8 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
   ..on \line (cmd) ->
     rl.pause!
-    if cmd is \m
-      Minify.toggle-enabled!
+    if cmd is \p
+      Flag.toggle-prod!
       show-help!
     else
       for c in COMMANDS when cmd is c.cmd.trim! then try c.fn! catch e then log e

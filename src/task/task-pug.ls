@@ -4,6 +4,7 @@ P       = require \path
 Perf    = require \perf_hooks .performance
 Pug     = require \pug
 C       = require \./constants
+Flag    = require \./flag
 Minify  = require \./minify
 PostCss = require \./postcss
 
@@ -25,9 +26,10 @@ module.exports = me =
   render: (ipath, odir) ->>
     t0 = Perf.now!
     me.external-links = []
-    html = await Minify.js await Minify.css Minify.html-comments Pug.renderFile ipath, OPTS
+    html = Pug.renderFile ipath, OPTS
+    html = await Minify.js await Minify.css Minify.html-comments html if Flag.prod
     opath = P.resolve odir, P.basename ipath.replace /.(pug)$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
-    minify = if Minify.enabled then '' else Chalk.yellow "minify disabled"
-    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t0).toFixed 0}ms #minify"
+    prod = if Flag.prod then '' else Chalk.yellow "prod disabled"
+    log Chalk.green "Rendered #len bytes to #opath in #{(Perf.now! - t0).toFixed 0}ms #prod"
