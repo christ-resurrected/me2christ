@@ -5,7 +5,7 @@ Postcss = require \postcss
 Uglijs  = require \uglify-js
 
 module.exports = me =
-  enabled: true
+  enabled: process.env.NODE_ENV is \production
   toggle-enabled: -> me.enabled = not me.enabled
 
   # In css and js process functions:
