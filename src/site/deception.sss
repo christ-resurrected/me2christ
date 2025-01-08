@@ -1,4 +1,5 @@
 @import 'mixin/glyph.sss'
+@import 'mixin/scripture.sss'
 @import 'mixin/tooltip.sss'
 
 .intro .verse
@@ -42,12 +43,7 @@
     &:last-child
       margin-bottom: 0
 
-    .verse .body
-      background: #322
-      color: #ff8
-
-      em
-        color: #ff8
+    @mixin colorise-verse-body #322, #ff8, #ff8
 
   .warn::before
     @mixin glyph emoji/warning

@@ -1,3 +1,5 @@
+@import 'mixin/scripture.sss'
+
 mark
   padding: 0 0.2rem
 
@@ -31,22 +33,14 @@ mark
     flex-grow: 1
 
 .dark
-  .verse
-    em
-      color: #f80
-
-    .body
-      background: #780606
-      color: #fcc
+  @mixin colorise-verse-body #780606, #fcc, #f80
 
   mark
     background: #248
     color: #8ff
 
 .light
-  .verse .body
-    background: #fcf5e5
-    color: #000
+  @mixin colorise-verse-body #fcf5e5, #000
 
   .jesus  // lighter red yields lighthouse contrast warning
     color: #d00
