@@ -34,10 +34,8 @@
     &::after
       content: '.'
 
-    &::before
-      @mixin glyph emoji/checkmark_box
-
     &:not(.warn)::before
+      @mixin glyph emoji/checkmark_box
       @mixin checkmark-filter
 
     &:last-child
