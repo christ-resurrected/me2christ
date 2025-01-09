@@ -4,8 +4,8 @@ Mixins  = require \postcss-mixins
 Nested  = require \postcss-nested
 PresEnv = require \postcss-preset-env
 Sugarss = require \sugarss
-Dir     = require \./constants .dir
-Flag    = require \./flag
+Dir     = require \../constants .dir
+Flag    = require \../flag
 
 const IMPORT = Import path: "#{Dir.SRC_SITE}/lib"
 const PLUGINS_DEV = [Mixins, Nested]

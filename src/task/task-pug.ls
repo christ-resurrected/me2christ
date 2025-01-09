@@ -6,8 +6,8 @@ Pug     = require \pug
 C       = require \./constants
 Flag    = require \./flag
 Minify  = require \./minify
-InSvg   = require \./pug-filter-inline-svg
-PostCss = require \./pug-filter-postcss
+InSvg   = require \./pug-filter/inline-svg
+PostCss = require \./pug-filter/postcss
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =

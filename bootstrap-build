@@ -1,4 +1,5 @@
 #!/bin/sh
 
 yarn lsc -o . -c ../src/*.ls \
-  && yarn lsc -o ./task -c ../src/task/*.ls
+  && yarn lsc -o ./task -c ../src/task/*.ls \
+  && yarn lsc -o ./task/pug-filter -c ../src/task/pug-filter/*.ls

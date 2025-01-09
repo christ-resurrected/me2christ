@@ -1,6 +1,6 @@
 Fs  = require \fs
 P   = require \path
-Dir = require \./constants .dir
+Dir = require \../constants .dir
 
 module.exports = (css) ->
   const RE = /url\((.+?\.svg)\)/g
