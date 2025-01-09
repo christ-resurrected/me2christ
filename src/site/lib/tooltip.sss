@@ -1,8 +1,5 @@
 @import 'mixin/tooltip.sss'
 
-.tooltip-anchor
-  @mixin tooltip-anchor
-
 .tooltip
   display: inline
   border-bottom: 2px dotted
@@ -15,27 +12,30 @@
     &:hover
       background: #840
 
-  .tooltiptext
-    color: #fff
-    display: none
-    font-style: normal
-    font-weight: normal
-    padding: 0.5rem
-    position: absolute
-    top: 100%
-    z-index: 1
-
-    /* From https://css.glass */
-    background-color: rgb(56 50 50 / 84%)
-    border-radius: 16px
-    backdrop-filter: blur(5px)
-
-    em
-      color: #fff !important
-
   &:hover
     background-color: #f00
     color: #fff
 
     .tooltiptext
       display: block
+
+.tooltiptext
+  color: #fff
+  display: none
+  font-style: normal
+  font-weight: normal
+  padding: 0.5rem
+  position: absolute
+  top: 100%
+  z-index: 1
+
+  /* From https://css.glass */
+  background-color: rgb(56 50 50 / 84%)
+  border-radius: 16px
+  backdrop-filter: blur(5px)
+
+  em
+    color: #fff !important
+
+.tooltip-anchor
+  @mixin tooltip-anchor
