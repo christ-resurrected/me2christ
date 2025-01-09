@@ -6,7 +6,7 @@ Pug     = require \pug
 C       = require \./constants
 Flag    = require \./flag
 Minify  = require \./minify
-PostCss = require \./postcss
+PostCss = require \./pug-filter-postcss
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
