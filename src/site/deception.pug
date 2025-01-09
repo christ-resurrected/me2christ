@@ -1,8 +1,10 @@
 extends lib/base.pug
 
 append head
-  style: include:postcss lib/bg-dark.sss
   style: include:postcss deception.sss
+  style: :postcss
+    @import 'mixin/background.sss'
+    @mixin background #000
 
 mixin belief(title)
   .card

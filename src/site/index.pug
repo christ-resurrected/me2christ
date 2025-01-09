@@ -3,7 +3,9 @@ extends lib/base.pug
 append head
   script: include lib/scrollbar.js
   script initScrollbar('#000', '#fff')
-  style: include:postcss lib/bg-dark-to-light.sss
+  style: :postcss
+    @import 'mixin/background.sss'
+    @mixin background #000, #000, #ccc, #eee, #fff
   style: include:postcss lib/emoji.sss
   style: include:postcss index.sss
 
