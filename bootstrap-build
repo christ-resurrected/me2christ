@@ -1,0 +1,4 @@
+#!/bin/sh
+
+yarn lsc -o . -c ../src/*.ls \
+  && yarn lsc -o ./task -c ../src/task/*.ls
