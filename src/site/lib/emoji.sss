@@ -1,5 +1,5 @@
-@define-mixin emoji $id, $position: left, $size: 40px
-  background: url(asset/emoji/$id.svg) no-repeat $position
+@define-mixin emoji $id, $size: 40px
+  background: url(asset/emoji/$id.svg) no-repeat
   background-size: $size
 
 @define-mixin banner $id
@@ -7,7 +7,7 @@
     @mixin emoji $id
 
     h2
-      @mixin emoji $id, right
+      background-position: right
 
 @mixin banner fire
 @mixin banner skull_bones
@@ -23,7 +23,7 @@
   grid-template-columns: 60px 1fr
 
   .emoji  // nested so h2 is not flipped
-    @mixin emoji dove, , 60px
+    @mixin emoji dove, 60px
     position: relative
     top: -8px
     transform: scaleX(-1)
