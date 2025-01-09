@@ -8,10 +8,10 @@ Dir     = require \./constants .dir
 Flag    = require \./flag
 
 const IMPORT = Import path: "#{Dir.SRC_SITE}/lib"
-const OPTS = from:undefined, parser:Sugarss
 const PLUGINS_DEV = [Mixins, Nested]
 const PLUGINS_PROD = PLUGINS_DEV.concat [PresEnv]
+const PROCESS_OPTS = from:undefined, parser:Sugarss
 
 module.exports = ->
   plugins = if Flag.prod then PLUGINS_PROD else PLUGINS_DEV
-  Postcss(plugins).use(IMPORT).process(it, OPTS).css
+  Postcss(plugins).use(IMPORT).process(it, PROCESS_OPTS).css
