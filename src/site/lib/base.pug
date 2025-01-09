@@ -1,6 +1,7 @@
 doctype html
 
 include nav.pug
+include running.pug
 include scripture.pug
 
 html(lang='en')
@@ -17,11 +18,7 @@ html(lang='en')
       style: include:postcss base.sss
   // FIX: ipad tooltips -- see https://dev.webonomic.nl/fixing-the-iphone-css-hover-problem-on-ios
   body(onclick)
-    header
-      +nav
+    block header
     section
       block main
-    footer
-      +nav
-      p Bible verses are quoted from the New King James and King James Versions.
-      p: :link [Contact Me](contact.html)
+    block footer

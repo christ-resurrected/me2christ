@@ -1,0 +1,12 @@
+append head
+  style: include:postcss running.sss
+
+mixin footer(theme)
+  footer(class=theme)
+    +nav
+    p Bible verses are quoted from the New King James and King James Versions.
+    p: :link [Contact Me](contact.html)
+
+mixin header(theme)
+  header(class=theme)
+    +nav

@@ -4,18 +4,19 @@
   @mixin glyph symbol/link_external
   margin-left: 2px
 
-header,
-footer,
-.dark
-  [href^='http']::after
+  .dark &
     filter: invert(100%)
 
-  a
+a
+  .dark &
     color: #aaa
 
-  a:hover
+  .light &
+    color: #666
+
+a:hover
+  .dark &
     color: #fff
 
-.light
-  a:hover
+  .light &
     color: #f00

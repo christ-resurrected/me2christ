@@ -10,6 +10,9 @@ append head
   script initScrollbar('#fff', '#000')
   style: include:postcss lib/bg-light-to-dark.sss
 
+append header
+  +header('light')
+
 append main
   .card.light
     h1 Gospel Tracts
@@ -44,3 +47,6 @@ append main
     .card
       h2 False Gospel Tracts
       p: :link Beware of gospel tracts which misrepresent the true biblical gospel. To learn about today's most common false gospel please watch [this 23-minute video](https://youtu.be/5n-RqNTXM2c?si=H6leI6iZkFCF-x78).
+
+append footer
+  +footer('dark')

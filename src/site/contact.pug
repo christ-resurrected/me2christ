@@ -15,6 +15,9 @@ mixin field(tag, id, label, minlen, maxlen, desc = '')
       span(id=`${id}-count`).count
     #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
 
+append header
+  +header('light')
+
 append main
   .card
     h1 Contact Me
@@ -31,3 +34,6 @@ append main
       #success.mt-8
         p Thank you.
         p Your message has been successfully sent.
+
+append footer
+  +footer('light')
