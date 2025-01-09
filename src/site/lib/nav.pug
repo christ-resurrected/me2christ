@@ -1,8 +1,8 @@
 -
   const NAV_PAGES = [
-    {'id':'truth', 'href':'index', 'title':'The Truth'},
-    {'id':'deception', 'href':'deception', 'title':'Deception'},
-    {'id':'resources', 'href':'resources', 'title':'Resources'},
+    {'basename':'index', 'title':'The Truth'},
+    {'basename':'deception', 'title':'Deception'},
+    {'basename':'resources', 'title':'Resources'},
   ]
 
 append head
@@ -10,9 +10,10 @@ append head
 
 mixin nav()
   nav
+    - basename = locals.filename.split('/').at(-1).replace('.pug', '')
     each page in NAV_PAGES
-      if PAGE_ID === page.id
+      if page.basename === basename
         .active= page.title
       else
-        a(href=page.href + '.html')
+        a(href=page.basename + '.html')
           span= page.title
