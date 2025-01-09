@@ -6,6 +6,8 @@ mixin tract-image(basename, alt, width='50%')
 
 append head
   - const PAGE_ID='resources'
+  script: include lib/scrollbar.js
+  script initScrollbar('#fff', '#000')
   style: include:postcss lib/bg-light-to-dark.sss
 
 append main
