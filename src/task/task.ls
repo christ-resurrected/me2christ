@@ -29,8 +29,12 @@ module.exports = me =
       w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
       watch-once!
       try
-        if t.ptask then await me.run-tasks [t.ptask]
-        else if Fs.existsSync ipath = P.resolve t.srcdir, path then await run-task t, ipath
+        ipath = P.resolve t.srcdir, path
+        if t.ptask  # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
+          pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ".#{t.ptask.ixt}", '']
+          await if pfiles.length is 1 then run-task t.ptask, pfiles.0 else me.run-tasks [t.ptask]
+        else
+          if Fs.existsSync ipath , path then await run-task t, ipath
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
