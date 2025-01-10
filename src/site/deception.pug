@@ -25,12 +25,14 @@ mixin preamble(title, proof_texts, origin, aka)
 mixin danger()
   .danger
     strong Danger:
-    block
+    ul
+      block
 
 mixin refutation()
   .refutation
     h3.mt-4 Refutation
-    block
+    ul
+      block
 
 //- refutation list item
 mixin ri(refs)
