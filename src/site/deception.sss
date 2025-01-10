@@ -2,9 +2,6 @@
 @import 'mixin/scripture.sss'
 @import 'mixin/tooltip.sss'
 
-ul
-  padding-inline-start: 0
-
 .intro .verse
   @mixin tooltip-anchor
 
@@ -15,44 +12,52 @@ ul
   margin-bottom: 0.5rem
   list-style: none  // bullet points
 
-.danger li
-  display: inline
-  margin-left: 0.5rem
+.danger
+  li
+    display: inline
+    margin-left: 0.5rem
 
-  &::after
-    content: '.'
+    &::after
+      content: '.'
 
-  &::before
-    @mixin glyph-mr-2 symbol/red_x
+    &::before
+      @mixin glyph-mr-2 symbol/red_x
 
-.refutation li
-  @mixin tooltip-anchor
+  ul
+    display: inline
+    padding-inline-start: 0
 
-  &::after
-    content: '.'
+.refutation
+  li
+    &::after
+      content: '.'
 
-  &:not(.warn)::before
-    @mixin glyph-mr-2 emoji/checkmark_box
-    @mixin checkmark-filter
+    &:not(.warn)::before
+      @mixin glyph-mr-2 emoji/checkmark_box
+      @mixin checkmark-filter
 
-  &:last-child
-    margin-bottom: 0
+    &:last-child
+      margin-bottom: 0
 
-  @mixin colorise-verse-body #322, #ff8
+    @mixin colorise-verse-body #322, #ff8
+    @mixin tooltip-anchor
 
-.warn::before
-  @mixin glyph-mr-2 emoji/warning
+  ul
+    padding-inline-start: 0
+
+  .warn::before
+    @mixin glyph-mr-2 emoji/warning
 
 .other
-  ul
-    padding-inline-start: 1rem
-
   li
     &::before
       @mixin glyph-mr-2 symbol/red_x
 
     &:first-child  // fix nested list
       margin-top: 0.5rem
+
+  ul
+    padding-inline-start: 1rem
 
 .belief-systems
   h2
