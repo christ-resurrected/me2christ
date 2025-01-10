@@ -1,14 +1,14 @@
 extends lib/base.pug
 
-append head
-  style: :postcss
-    @import 'mixin/background.sss'
-    @mixin background #000, #111, #222, #111, #000
-  style: include:svg:postcss deception.sss
-
 mixin belief(title)
   .card
     h2= title
+
+mixin danger()
+  .danger
+    strong Danger:
+    ul
+      block
 
 mixin preamble(title, proof_texts, origin, aka)
   h2!= title
@@ -21,12 +21,6 @@ mixin preamble(title, proof_texts, origin, aka)
   .tooltip-anchor
     +tooltip('<strong>Proof-texts:</strong>') These Scripture verses are commonly taken out of context and mis-interpreted to promote this false doctrine.
     +refs(proof_texts)
-
-mixin danger()
-  .danger
-    strong Danger:
-    ul
-      block
 
 mixin refutation()
   .refutation
@@ -47,6 +41,12 @@ mixin tooltip(text)
   span: .tooltip.help!= text
     .tooltiptext
       block
+
+append head
+  style: :postcss
+    @import 'mixin/background.sss'
+    @mixin background #000, #111, #222, #111, #000
+  style: include:svg:postcss deception.sss
 
 append header
   +header('dark')
