@@ -30,7 +30,7 @@ module.exports = me =
     me.external-links = []
     html = Pug.renderFile ipath, OPTS
     html = await Minify.js await Minify.css Minify.html-comments html if Flag.prod
-    opath = P.resolve odir, P.basename ipath.replace /.(pug)$/ \.html
+    opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
     prod = if Flag.prod then '' else Chalk.yellow "prod disabled"
