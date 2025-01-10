@@ -6,8 +6,8 @@ append head
   style: :postcss
     @import 'mixin/background.sss'
     @mixin background #000, #000, #ccc, #eee, #eee
-  style: include:inlinesvg:postcss lib/emoji.sss
-  style: include:inlinesvg:postcss index.sss
+  style: include:svg:postcss lib/emoji.sss
+  style: include:svg:postcss index.sss
 
 append header
   +header('dark')
