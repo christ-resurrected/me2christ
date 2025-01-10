@@ -1,13 +1,36 @@
-.contact
-  display: flex
-  justify-content: center
-
 fieldset
   border: 0
   max-width: 600px
 
   &:disabled *
     cursor: wait
+
+#error
+  display: none
+  background-color: #fcc
+  color: #f00
+  border: 0
+  border-radius: 4px
+  padding: 0.75rem
+  font-size: 1rem
+
+#success
+  display: none
+  height: 30rem
+  text-align: center
+
+.contact
+  display: flex
+  justify-content: center
+
+.count
+  display: none
+
+  .field:focus-within &
+    display: block
+
+  &.warn
+    color: #f80
 
 .field
   +.field
@@ -36,26 +59,3 @@ fieldset
 
   label
     font-weight: bold
-
-  .count
-    display: none
-
-    .field:focus-within &
-      display: block
-
-    &.warn
-      color: #f80
-
-#error
-  display: none
-  background-color: #fcc
-  color: #f00
-  border: 0
-  border-radius: 4px
-  padding: 0.75rem
-  font-size: 1rem
-
-#success
-  display: none
-  height: 30rem
-  text-align: center
