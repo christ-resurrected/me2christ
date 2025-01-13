@@ -5,11 +5,11 @@ Path = require \path
 Dir  = require \./constants .dir
 
 const MIME_TYPES =
-  default: "application/octet-stream",
-  html: "text/html; charset=UTF-8",
-  ico: "image/x-icon",
-  png: "image/png",
-  svg: "image/svg+xml",
+  default: "application/octet-stream"
+  html: "text/html; charset=UTF-8"
+  ico: "image/x-icon"
+  png: "image/png"
+  svg: "image/svg+xml"
 
 const PORT=7777
 
