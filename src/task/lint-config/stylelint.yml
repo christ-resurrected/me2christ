@@ -13,6 +13,7 @@ rules:
 
   # stylelint-config-standard
   declaration-empty-line-before: null
+  function-no-unknown: null
   import-notation: null
 
   # stylelint-config-sass-guidelines
