@@ -6,8 +6,6 @@ Pug     = require \pug
 C       = require \./constants
 Flag    = require \./flag
 Minify  = require \./minify
-Svg     = require \./pug-filter/inline-svg
-PostCss = require \./pug-filter/postcss
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
@@ -18,8 +16,8 @@ const OPTS =
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
-    postcss: PostCss
-    svg: Svg
+    postcss: require \./pug-filter/postcss
+    svg: require \./pug-filter/inline-svg
   VERSES: JSON.parse(KJV.replaceAll '#' '')
 
 module.exports = me =
