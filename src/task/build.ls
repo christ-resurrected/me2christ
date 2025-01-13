@@ -3,6 +3,7 @@ Fs      = require \fs
 C       = require \./constants
 Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
+Flag    = require \./flag
 T       = require \./task
 
 const TASKS = T.init const _TASKS =
@@ -39,7 +40,7 @@ const TASKS = T.init const _TASKS =
     pid: \site_pug # parent task id to run
   task_favicon:
     dir: Dirname.TASK
-    fun: require \./favicon
+    fun: require \./favicon unless Flag.prod
     ixt: \pug
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
