@@ -18,14 +18,11 @@ module.exports = ->>
     {width: 32, height: 32},
   ]}]
   res = await Fi.favicons spath, c
-  # default
-  write-image \favicon.ico
-  # google, chrome
-  write-image \android-chrome-48x48.png
-  write-image \android-chrome-192x192.png
-  # iPad, iPhone
-  write-image \apple-touch-icon-167x167.png
-  write-image \apple-touch-icon-180x180.png
+  write-image \favicon.ico  # default
+  write-images \android-chrome [48 192] # google search, chrome
+  write-images \apple-touch-icon [167 180]  # ipad, iphone
+
+  function write-images type, sizes then for s in sizes then write-image "#type-#{s}x#{s}.png"
 
   function write-image fname
     try
