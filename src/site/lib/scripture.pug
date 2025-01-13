@@ -1,15 +1,15 @@
 append head
+  include hotword.js.pug
   include scripture.js.pug
-  style: include:postcss finger.sss
   style: include:postcss scripture.sss
 
 // NOTE: adjacent spans are separated by ' ' (see base.css)
 
 // separate books by semicolon and chapters by comma e.g. [Matthew 5:27, 13:47,48; Luke 12:4-5]
-mixin refs(refs)
+mixin refs(refs, hotwords)
   - var books = expand(refs).split(';')
   each bookrefs in books
-    - const tooltip = generateTooltip(bookrefs)
+    - const tooltip = addFingerPointers(generateTooltip(bookrefs), hotwords)
     span
       if (tooltip.length)
         mark.tooltip!= finalise(bookrefs)

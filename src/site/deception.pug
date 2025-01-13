@@ -29,12 +29,12 @@ mixin refutation()
       block
 
 //- refutation list item
-mixin ri(refs)
+mixin ri(refs, hotwords)
   li(class!=attributes.class)
     span
       block
       |:
-    +refs(refs)
+    +refs(refs, hotwords)
 
 mixin tooltip(text)
   //- nest .tooltip so tooltip dotted underline does not extend leftwards
@@ -127,8 +127,10 @@ append main
         li: :hi Turns the grace of God into a license to sin, teaching we are *positionally* righteous with God even while *practicing* sin
         li Takes Isaiah 64:6 out of context to imply we will always be sinners
       +refutation
-        +ri('1-John 3:8; Gal.5:19-21') Whoever #[em practices] righteousness is righteous: #[+refs('1-John 3:7,10')]. Whoever sins is of the devil and cannot inherit the kingdom of God
-        +ri('Genesis 6:9; 2-Samuel 4:11; Job 1:1, 1:8; Eze.14:14; Luke 1:5,6; Acts 11:22-24; 2-Pet.2:7') Scripture exhorts us to be perfect and blameless #[+refs('Mat.5:48; 1-Tim.3:2, 3:10; Titus 1:6,7; 2-Pet.3:14')], and gives us some examples
+        +ri('1-John 3:8; Gal.5:19-21') Whoever #[em practices] righteousness is righteous: #[+refs('1-John 3:7,10', 'doeth right')]. Whoever sins is of the devil and cannot inherit the kingdom of God
+        - const hotwords = 'blameless, good, just, righteous, perfect, upright'
+        +ri('Genesis 6:9; 2-Samuel 4:11; Job 1:1, 1:8; Eze.14:14; Luke 1:5,6; Acts 11:22-24; 2-Pet.2:7', hotwords) Scripture exhorts us to be perfect and blameless #[+refs('Mat.5:48; 1-Tim.3:2, 3:10; Titus 1:6,7; 2-Pet.3:14', hotwords)], and gives us some examples
+
         li
           span The fine linen of the Bride of Christ is not the righteous acts of Christ, but the saints:
           +verse('Rev.19:8'): :hi And to her it was granted to be arrayed in fine linen, clean and bright, for the fine linen is the righteous acts of *the saints*.
