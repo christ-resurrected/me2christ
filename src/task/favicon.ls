@@ -13,9 +13,18 @@ module.exports = ->>
   c = Fi.config.defaults
   c.output.files = false
   c.output.html = false
-  c.icons.favicons = [{name: 'favicon.ico', sizes: [{width: 32, height: 32}]}]
+  c.icons.favicons = [{name: 'favicon.ico', sizes: [
+    {width: 16, height: 16},
+    {width: 32, height: 32},
+  ]}]
   res = await Fi.favicons spath, c
+  # default
   write-image res.images, \favicon.ico
+  # google, chrome
+  write-image res.images, \android-chrome-48x48.png
+  write-image res.images, \android-chrome-192x192.png
+  # iPad, iPhone
+  write-image res.images, \apple-touch-icon-167x167.png
   write-image res.images, \apple-touch-icon-180x180.png
 
   function write-image images, fname
