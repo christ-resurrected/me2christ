@@ -19,16 +19,16 @@ module.exports = ->>
   ]}]
   res = await Fi.favicons spath, c
   # default
-  write-image res.images, \favicon.ico
+  write-image \favicon.ico
   # google, chrome
-  write-image res.images, \android-chrome-48x48.png
-  write-image res.images, \android-chrome-192x192.png
+  write-image \android-chrome-48x48.png
+  write-image \android-chrome-192x192.png
   # iPad, iPhone
-  write-image res.images, \apple-touch-icon-167x167.png
-  write-image res.images, \apple-touch-icon-180x180.png
+  write-image \apple-touch-icon-167x167.png
+  write-image \apple-touch-icon-180x180.png
 
-  function write-image images, fname
+  function write-image fname
     try
-      A (img = images.filter -> it.name is fname).length is 1
+      A (img = res.images.filter -> it.name is fname).length is 1
       Fs.writeFileSync "#FAVICON_PATH/#fname", img.0.contents
     catch err then log err
