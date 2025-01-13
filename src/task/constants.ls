@@ -14,6 +14,7 @@ root = P.resolve cwd, \..
 const DIR =
   BUILD: cwd
   BUILD_SITE: P.resolve cwd, DIRNAME.SITE
+  BUILD_TASK: P.resolve cwd, DIRNAME.TASK
   ROOT: root
   SRC: P.resolve root, DIRNAME.SRC
   SRC_SITE: P.resolve root, DIRNAME.SRC, DIRNAME.SITE
