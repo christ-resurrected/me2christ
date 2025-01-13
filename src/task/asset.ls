@@ -7,7 +7,7 @@ Dirname = require \./constants .dirname
 
 module.exports =
   download-emoji: ->
-    const ODIR = Path.resolve Dir.SRC_SITE_ASSET, \emoji
+    const ODIR = Path.resolve Dir.SRC_SITE_RESOURCE, \emoji
     const NOTO = \https://raw.githubusercontent.com/googlefonts/noto-emoji/refs/heads/main/svg/emoji_
     const EMOJITWO = \https://raw.githubusercontent.com/EmojiTwo/emojitwo/refs/heads/master/svg/
     const EMOJI =
@@ -23,7 +23,7 @@ module.exports =
     for key, url of EMOJI then download-asset key, url, ODIR
 
   download-symbols: ->
-    const ODIR = Path.resolve Dir.SRC_SITE_ASSET, \symbol
+    const ODIR = Path.resolve Dir.SRC_SITE_RESOURCE, \symbol
     const SYMBOLS =
       link_external: \https://www.iconbolt.com/iconsets/remix-icon-fill/external-link.svg
       red_x: \https://pixabay.com/get/gde3693cabe6566d09422464c057147a85a81f3afa5e19082f79923816464dd98b67595c691487fc9375df657215fda33.svg
