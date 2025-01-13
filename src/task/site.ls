@@ -7,6 +7,7 @@ Dir  = require \./constants .dir
 const MIME_TYPES =
   default: "application/octet-stream",
   html: "text/html; charset=UTF-8",
+  ico: "image/x-icon",
   png: "image/png",
   svg: "image/svg+xml",
 
@@ -20,7 +21,7 @@ module.exports =
       mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default
       res.writeHead statusCode, {'Content-Type': mimeType}
       file.stream.pipe res
-      # log "#{req.method} #{req.url} #{statusCode}"
+      # log req.method, req.url, statusCode
     s.listen PORT, ->
       log "Http server listening on port #PORT"
       cb!

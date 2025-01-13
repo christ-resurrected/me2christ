@@ -29,6 +29,7 @@ dependencies:
   'postcss-preset-env'  : \~10.1.3
   sugarss               : \~5.0.0
 devDependencies:
+  favicons                          : \~7.2.0
   'ls-lint'                         : \~0.1.2
   stylelint                         : \~16.12.0
   'stylelint-config-standard'       : \~36.0.1

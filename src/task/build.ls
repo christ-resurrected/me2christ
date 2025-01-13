@@ -17,6 +17,12 @@ const TASKS = T.init const _TASKS =
     ixt: \png
     ord: 2
     pat: '*/'
+  site_asset_favicon:
+    cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
+    dir: "#{Dirname.SITE}/asset/favicon"
+    ixt: \ico
+    ord: 2
+    # pat: '*/'
   site_pug:
     dir: Dirname.SITE
     fun: require \./task-pug .render
@@ -32,6 +38,12 @@ const TASKS = T.init const _TASKS =
     ixt: \pug
     pat: 'lib/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
+  task_asset:
+    cmd: "cp --target-directory $ODIR $IN"
+    dir: Dirname.TASK
+    ixt: \pug
+    ord: 2
+    pat: '**/'
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: Dirname.TASK
