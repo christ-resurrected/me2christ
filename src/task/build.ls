@@ -38,12 +38,6 @@ const TASKS = T.init const _TASKS =
     ixt: \pug
     pat: 'lib/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
-  task_asset:
-    cmd: "cp --target-directory $ODIR $IN"
-    dir: Dirname.TASK
-    ixt: \pug
-    ord: 2
-    pat: '**/'
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: Dirname.TASK
