@@ -4,17 +4,20 @@ include nav.pug
 include running.pug
 include scripture.pug
 
+mixin favicon
+  link(rel='icon' href='favicon.ico')
+  link(rel='icon' type='image/svg+xml' href='asset/favicon/favicon.svg')
+  link(rel='apple-touch-icon' href='asset/favicon/apple-touch-icon-180x180.png')
+
 html(lang='en')
   head
     block head
+      +favicon
       title me2christ.com - REPENT, FOR THE KINGDOM OF HEAVEN IS AT HAND!
       meta(charset='UTF-8')
       meta(name='description' content='The Gospel of our Lord Jesus Christ')
       meta(name='version' content=process.env.npm_package_version)
       meta(name='viewport' content='width=device-width, initial-scale=1.0')
-      link(rel='icon' href='favicon.ico')
-      link(rel='icon' type='image/svg+xml' href='asset/favicon/favicon.svg')
-      link(rel='apple-touch-icon' href='asset/favicon/apple-touch-icon-180x180.png')
       if process.env.M2C_LIVE_RELOAD
         script: include livereload.js
       style: include:svg:postcss base.sss
