@@ -1,0 +1,34 @@
+-
+  log = console.log
+
+  function expand(refs) {
+    refs = refs.replaceAll('Deut.', 'Deuteronomy ').replaceAll('Psa.', 'Psalms ').replaceAll('Is.', 'Isaiah ').replaceAll('Jer.', 'Jeremiah ').replaceAll('Eze.', 'Ezekiel ')
+    return refs.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('2-Thes.', '2-Thessalonians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
+  }
+
+  function finalise(refs) { return refs.replaceAll(/-(\d+)/g, '&ndash;$1') }
+
+  // generate tooltip scripture for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51"
+  function generateTooltip(bookrefs) {
+    var tooltip = ''
+    var chapters = bookrefs.trim().split(' ')
+    var book = chapters[0].replace('-', ' ')
+    for (var i = 1; i < chapters.length; i++) {
+      var chapPassages = chapters[i].split(':')
+      if (chapPassages.length != 2) continue;
+      var passages = chapPassages[1].replace(/,$/, '').split(',')
+      for (const p of passages) {
+        var verses = p.split('-')
+        if (verses.length == 1) verses.push(verses[0]);
+        if (verses.length != 2) continue;
+        var from = Number(verses[0]), to = Number(verses[1])
+        if (to - from > 15) continue;
+        for (var j = from; j <= to; j++) {
+          var ref = `${book} ${chapPassages[0]}:${j}`
+          tooltip += VERSES[ref] + ' '
+        }
+      }
+      if (i < chapters.length - 1) tooltip += '<br/><br/>'
+    }
+    return tooltip
+  }
