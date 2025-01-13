@@ -22,7 +22,6 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/asset/favicon"
     ixt: \ico
     ord: 2
-    # pat: '*/'
   site_pug:
     dir: Dirname.SITE
     fun: require \./task-pug .render
