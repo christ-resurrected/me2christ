@@ -5,14 +5,16 @@ include running.pug
 include scripture.pug
 
 mixin favicon
+  mixin apple(sizes)
+    link(rel='apple-touch-icon' href=`asset/favicon/apple-touch-icon-${sizes}.png` sizes=sizes)
+  mixin google(sizes)
+    link(rel='icon' href=`asset/favicon/android-chrome-${sizes}.png` sizes=sizes)
   link(rel='icon' href='favicon.ico' sizes='32x32')
   link(rel='icon' href='asset/favicon/favicon.svg' type='image/svg+xml')
-  // google, chrome
-  link(rel='icon' href='asset/favicon/android-chrome-48x48.png' sizes='48x48')
-  link(rel='icon' href='asset/favicon/android-chrome-192x192.png' sizes='192x192')
-  // iPad, iPhone
-  link(rel='apple-touch-icon' sizes='167x167' href='asset/favicon/apple-touch-icon-180x180.png')
-  link(rel='apple-touch-icon' sizes='180x180' href='asset/favicon/apple-touch-icon-180x180.png')
+  +google('48x48')    // google search
+  +google('192x192')  // chrome
+  +apple('167x167')   // iPad
+  +apple('180x180')   // iPhone
 
 html(lang='en')
   head
