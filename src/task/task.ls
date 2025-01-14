@@ -8,7 +8,6 @@ Dir   = require \./constants .dir
 module.exports = me =
   init: (tasks) ->
     for tid, t of tasks
-      t.pat = "#{t.pat || ''}*.#{t.ixt}"
       t.ptask = tasks[t.pid] if t.pid
       t.srcdir = P.resolve Dir.SRC, t.dir
       t.tid = tid
@@ -31,7 +30,8 @@ module.exports = me =
       try
         ipath = P.resolve t.srcdir, path
         if t.ptask  # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
-          pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ".#{t.ptask.ixt}", '']
+          ixt = P.extname t.ptask.pat
+          pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
           await if pfiles.length is 1 then run-task t.ptask, pfiles.0 else me.run-tasks [t.ptask]
         else
           if Fs.existsSync ipath , path then await run-task t, ipath

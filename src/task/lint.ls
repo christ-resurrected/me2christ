@@ -9,18 +9,15 @@ const TASKS = T.init const _TASKS =
   config:
     cmd: "cp --target-directory $ODIR $IN"
     dir: Dirname.TASK
-    ixt: '{lson,yml}'
-    pat: '**/'
+    pat: '**/*.{lson,yml}'
   lint_ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
-    ixt: \ls
-    pat: '**/'
+    pat: \**/*.ls
   lint_sss:
     cmd: "yarn --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
     dir: Dirname.SITE
-    ixt: \sss
-    pat: '**/'
+    pat: \**/*.sss
 
 module.exports = me = (new Emitter!) with
   all: ->> try await T.run-tasks TASKS catch err then log err finally me.emit \done

@@ -10,44 +10,40 @@ const TASKS = T.init const _TASKS =
   json_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: \.
-    ixt: \json.ls
+    pat: \*.json.ls
     ord: 1 # run first to avoid "Unexpected end of JSON input" error
   site_asset:
     cmd: "cp --target-directory $ODIR $IN"
     dir: "#{Dirname.SITE}/asset"
-    ixt: '{png,svg}'
     ord: 2
-    pat: '*/'
+    pat: '*/*{png,svg}'
   site_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
     dir: "#{Dirname.SITE}/asset/favicon"
-    ixt: \ico
+    pat: \*.ico
     ord: 2
   site_js_xss:
     dir: Dirname.SITE
-    ixt: '{js,css,sss}'
-    pat: '**/'
+    pat: '**/*{js,css,sss}'
     pid: \site_pug # parent task id to run
   site_lib_pug:
     dir: Dirname.SITE
-    ixt: \pug
-    pat: 'lib/' # subdir 1-level deep
+    pat: \lib/*.pug
     pid: \site_pug # parent task id to run
   site_pug:
     dir: Dirname.SITE
     fun: require \./task-pug .render
-    ixt: \pug
+    pat: \*.pug
     ord: 2
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
-    ixt: \pug
+    pat: \*.pug
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: Dirname.TASK
-    ixt: \ls
     ord: 2
-    pat: '**/'
+    pat: \**/*.ls
     rsn: true # restart node
 
 module.exports = me = (new Emitter!) with
