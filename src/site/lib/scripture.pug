@@ -20,15 +20,15 @@ mixin refs(refs, hotwords)
     span
       block
 
-mixin see(refs, label='see')
+mixin see(refs, hotwords, label='see')
   - if (!refs) return
   span (#[=label]
-  +refs(refs)
+  +refs(refs, hotwords)
   |)
   block
 
-mixin seeAlso(refs)
-  +see(refs, 'see also')
+mixin seeAlso(refs, hotwords)
+  +see(refs, hotwords, 'see also')
 
 mixin verse(ref, pretext)
   span.verse
@@ -40,4 +40,4 @@ mixin verse(ref, pretext)
     span &ndash;
     - ref = finalise(expand(ref))
     span: mark!= ref
-    +seeAlso(attributes.seeAlso)
+    +seeAlso(attributes.seeAlso, attributes.hotwords)
