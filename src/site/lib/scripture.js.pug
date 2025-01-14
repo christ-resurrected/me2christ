@@ -3,7 +3,7 @@
 
   function expand(refs) {
     refs = refs.replaceAll('Deut.', 'Deuteronomy ').replaceAll('Psa.', 'Psalms ').replaceAll('Is.', 'Isaiah ').replaceAll('Jer.', 'Jeremiah ').replaceAll('Eze.', 'Ezekiel ')
-    return refs.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('2-Thes.', '2-Thessalonians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
+    return refs.replaceAll('Mat.', 'Matthew ').replaceAll('Rom.', 'Romans ').replaceAll('Cor.', 'Corinthians ').replaceAll('Gal.', 'Galatians ').replaceAll('Eph.', 'Ephesians ').replaceAll('Php.', 'Philippians ').replaceAll('Col.', 'Colossians ').replaceAll('1-Thes.', '1-Thessalonians ').replaceAll('2-Thes.', '2-Thessalonians ').replaceAll('Tim.', 'Timothy ').replaceAll('Heb.', 'Hebrews ').replaceAll('Pet.', 'Peter ').replaceAll('Rev.', 'Revelation ')
   }
 
   function finalise(refs) { return refs.replaceAll(/-(\d+)/g, '&ndash;$1') }
