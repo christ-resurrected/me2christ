@@ -26,23 +26,15 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.SITE
     pat: '**/*{js,css,sss}'
     pid: \site_pug # parent task id to run
-  # site_child_pug:
-  #   dir: Dirname.SITE
-  #   pat: '(*.mixin|lib/*).pug'
-  #   pid: \site_pug
-  site_lib_pug:
-    dir: Dirname.SITE
-    pat: \lib/*.pug
-    pid: \site_pug
-  site_mixin_pug:
-    dir: Dirname.SITE
-    pat: \*.mixin.pug
-    pid: \site_pug
   site_pug:
     dir: Dirname.SITE
     fun: require \./task-pug .render
     ord: 2
     pat: '!(*.mixin).pug'
+  site_pug_child:
+    dir: Dirname.SITE
+    pat: '{*.mixin,lib/*}.pug'
+    pid: \site_pug
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
