@@ -10,8 +10,8 @@ const TASKS = T.init const _TASKS =
   json_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: \.
-    pat: \*.json.ls
     ord: 1 # run first to avoid "Unexpected end of JSON input" error
+    pat: \*.json.ls
   site_asset:
     cmd: "cp --target-directory $ODIR $IN"
     dir: "#{Dirname.SITE}/asset"
@@ -20,8 +20,8 @@ const TASKS = T.init const _TASKS =
   site_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
     dir: "#{Dirname.SITE}/asset/favicon"
-    pat: \*.ico
     ord: 2
+    pat: \*.ico
   site_js_xss:
     dir: Dirname.SITE
     pat: '**/*{js,css,sss}'
@@ -33,8 +33,8 @@ const TASKS = T.init const _TASKS =
   site_pug:
     dir: Dirname.SITE
     fun: require \./task-pug .render
-    pat: \*.pug
     ord: 2
+    pat: \*.pug
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
