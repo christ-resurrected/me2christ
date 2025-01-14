@@ -23,12 +23,7 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/asset/favicon"
     ixt: \ico
     ord: 2
-  site_pug:
-    dir: Dirname.SITE
-    fun: require \./task-pug .render
-    ixt: \pug
-    ord: 2
-  site_script_style:
+  site_js_xss:
     dir: Dirname.SITE
     ixt: '{js,css,sss}'
     pat: '**/'
@@ -38,6 +33,11 @@ const TASKS = T.init const _TASKS =
     ixt: \pug
     pat: 'lib/' # subdir 1-level deep
     pid: \site_pug # parent task id to run
+  site_pug:
+    dir: Dirname.SITE
+    fun: require \./task-pug .render
+    ixt: \pug
+    ord: 2
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
