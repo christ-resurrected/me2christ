@@ -1,0 +1,41 @@
+mixin belief(title)
+  .card
+    h2= title
+
+mixin danger()
+  .danger
+    strong Danger:
+    ul
+      block
+
+mixin preamble(title, proof_texts, origin, aka)
+  h2!= title
+  .tooltip-anchor #[strong False doctrine: ]
+    block
+  if origin
+    div #[strong Origin:] #{origin}
+  if aka
+    div #[strong Also known as:] #{aka}
+  .tooltip-anchor
+    +tooltip('<strong>Proof-texts:</strong>') These Scripture verses are commonly taken out of context and mis-interpreted to promote this false doctrine.
+    +refs(proof_texts)
+
+mixin refutation()
+  .refutation
+    h3.mt-4 Refutation
+    ul
+      block
+
+//- refutation list item
+mixin ri(refs, hotwords)
+  li(class!=attributes.class)
+    span
+      block
+      |:
+    +refs(refs, hotwords)
+
+mixin tooltip(text)
+  //- nest .tooltip so tooltip dotted underline does not extend leftwards
+  span: .tooltip.help!= text
+    .tooltiptext
+      block
