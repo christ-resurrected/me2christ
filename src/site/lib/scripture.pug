@@ -9,7 +9,7 @@ append head
 mixin refs(refs, hotwords)
   - var books = expand(refs).split(';')
   each bookrefs in books
-    - const tooltip = addFingerPointers(generateTooltip(bookrefs), hotwords)
+    - const tooltip = addHotWordIndicators(generateTooltip(bookrefs), hotwords)
     span
       if (tooltip.length)
         mark.tooltip!= finalise(bookrefs)
