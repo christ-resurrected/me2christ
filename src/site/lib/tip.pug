@@ -1,0 +1,8 @@
+append head
+  style: include:postcss tip.sss
+
+mixin tip(text)
+  //- nest .tip so tip dotted underline does not extend leftwards
+  span: .tip.tiphelp!= text
+    .tiptext
+      block

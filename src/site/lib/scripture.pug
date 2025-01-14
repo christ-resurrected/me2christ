@@ -9,11 +9,11 @@ append head
 mixin refs(refs, hotwords)
   - var books = expand(refs).split(';')
   each bookrefs in books
-    - const tooltip = addHotWordIndicators(generateTooltip(bookrefs), hotwords)
+    - const tip = addHotWordIndicators(generateTip(bookrefs), hotwords)
     span
-      if (tooltip.length)
-        mark.tooltip!= finalise(bookrefs)
-          span.tooltiptext!= tooltip
+      if (tip.length)
+        mark.tip!= finalise(bookrefs)
+          span.tiptext!= tip
       else
         mark!= bookrefs
   if block

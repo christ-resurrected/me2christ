@@ -8,9 +8,9 @@
 
   function finalise(refs) { return refs.replaceAll(/-(\d+)/g, '&ndash;$1') }
 
-  // generate tooltip scripture for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51"
-  function generateTooltip(bookrefs) {
-    var tooltip = ''
+  // generate tip scripture for a given book e.g. "Mat.5:27-30, 7:21-23, 24:50,51"
+  function generateTip(bookrefs) {
+    var tip = ''
     var chapters = bookrefs.trim().split(' ')
     var book = chapters[0].replace('-', ' ')
     for (var i = 1; i < chapters.length; i++) {
@@ -25,10 +25,10 @@
         if (to - from > 15) continue;
         for (var j = from; j <= to; j++) {
           var ref = `${book} ${chapPassages[0]}:${j}`
-          tooltip += VERSES[ref] + ' '
+          tip += VERSES[ref] + ' '
         }
       }
-      if (i < chapters.length - 1) tooltip += '<br/><br/>'
+      if (i < chapters.length - 1) tip += '<br/><br/>'
     }
-    return tooltip
+    return tip
   }

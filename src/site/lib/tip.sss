@@ -1,6 +1,6 @@
-@import 'mixin/tooltip.sss'
+@import 'mixin/tip.sss'
 
-.tooltiptext
+.tiptext
   color: #fff
   display: none
   font-style: normal
@@ -18,13 +18,13 @@
   em
     color: #fff !important
 
-.tooltip
+.tip
   display: inline
   border-bottom: 2px dotted
   text-decoration: none
   cursor: pointer
 
-  &.tooltiphelp
+  &.tiphelp
     cursor: help
 
     &:hover
@@ -34,8 +34,8 @@
     background-color: #f00
     color: #fff
 
-    .tooltiptext
+    .tiptext
       display: block
 
-.tooltip-anchor
-  @mixin tooltip-anchor
+.tip-anchor
+  @mixin tip-anchor

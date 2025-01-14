@@ -1,9 +1,9 @@
 @import 'mixin/glyph.sss'
 @import 'mixin/scripture.sss'
-@import 'mixin/tooltip.sss'
+@import 'mixin/tip.sss'
 
 .intro .verse
-  @mixin tooltip-anchor
+  @mixin tip-anchor
 
 .doctrine div+div
   margin-top: 1rem
@@ -13,7 +13,7 @@
   list-style: none  // bullet points
 
 .danger
-  @mixin tooltip-anchor
+  @mixin tip-anchor
 
   li
     display: inline
@@ -42,7 +42,7 @@
       margin-bottom: 0
 
     @mixin colorise-verse-body #322, #ff8
-    @mixin tooltip-anchor
+    @mixin tip-anchor
 
   ul
     padding-inline-start: 0

@@ -10,14 +10,14 @@ mixin danger()
 
 mixin preamble(title, proof_texts, origin, aka)
   h2!= title
-  .tooltip-anchor #[strong False doctrine: ]
+  .tip-anchor #[strong False doctrine: ]
     block
   if origin
     div #[strong Origin:] #{origin}
   if aka
     div #[strong Also known as:] #{aka}
-  .tooltip-anchor
-    +tooltip('<strong>Proof-texts:</strong>') These Scripture verses are commonly taken out of context and mis-interpreted to promote this false doctrine.
+  .tip-anchor
+    +tip('<strong>Proof-texts:</strong>') These Scripture verses are commonly taken out of context and mis-interpreted to promote this false doctrine.
     +refs(proof_texts)
 
 mixin refutation()
