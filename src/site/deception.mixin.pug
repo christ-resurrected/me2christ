@@ -33,9 +33,3 @@ mixin ri(refs, hotwords)
       block
       |:
     +refs(refs, hotwords)
-
-mixin tooltip(text)
-  //- nest .tooltip so tooltip dotted underline does not extend leftwards
-  span: .tooltip.help!= text
-    .tooltiptext
-      block
