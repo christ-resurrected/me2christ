@@ -7,8 +7,8 @@ mixin baptism(label='baptism')
 mixin ransom
   +tip('ransom') The price paid to set a captive free.
 
-mixin tip(text)
+mixin tip(label)
   //- nest .tip so tip dotted underline does not extend leftwards
-  span: .tip.tiphelp!= text
+  span: .tip.tiphelp!= label
     .tiptext
       block
