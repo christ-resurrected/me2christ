@@ -14,6 +14,7 @@ module.exports =
       checkmark_box: NOTO + \u2705.svg
       cross: \https://upload.wikimedia.org/wikipedia/commons/8/87/Christian_cross.svg
       dove: EMOJITWO + \1f54a.svg
+      excl_double: NOTO + \u203c.svg
       fire: NOTO + \u1f525.svg
       megaphone: NOTO + \u1f4e2.svg
       scroll: NOTO + \u1f4dc.svg
