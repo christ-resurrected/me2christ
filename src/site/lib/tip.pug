@@ -1,6 +1,9 @@
 append head
   style: include:postcss tip.sss
 
+mixin ransom
+  +tip('ransom') The price paid to set a captive free.
+
 mixin tip(text)
   //- nest .tip so tip dotted underline does not extend leftwards
   span: .tip.tiphelp!= text
