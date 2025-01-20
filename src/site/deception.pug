@@ -135,19 +135,15 @@ append main
     p These false doctrines twist, pervert and mis-interpret Bible scripture to justify themselves.
   .cards.dark.doctrines
     - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnessese', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
-    each other in others
-      .card.doctrine: +preamble(other)
+    each o in others.sort()
+      .card.doctrine: +preamble(o)
   .card.dark
     h1 False Belief Systems
     p These false belief systems deny the truth of the Bible, and do not use Scripture to justify themselves.
   .cards.dark.belief-systems
-    +belief('Atheism')
-    +belief('Islam')
-    +belief('Judaism')
-    +belief('Freemasonry')
-    +belief('New Age')
-    +belief('Hinduism')
-    +belief('Satanism')
+    -const beliefs = ['Atheism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
+    each b in beliefs.sort()
+      +belief(b)
 
 append footer
   +footer('dark')
