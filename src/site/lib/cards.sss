@@ -14,11 +14,11 @@
   &:not(.w-full, .md-w-full)
     flex: 1 0 300px
 
-  &.md-w-full // full width on medium screen width
-    @media (width < 990px)
+  &.md-w-full // full width on <= medium screen width
+    @media (width < 960px)
       width: 100%
 
-    @media (width >= 990px)
+    @media (width >= 960px)
       flex: 1 0 300px
 
   +.cards
