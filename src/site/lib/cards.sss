@@ -7,10 +7,18 @@
     margin-bottom: 1rem
 
 .card
-  flex: 1 0 300px
   border: solid 4px
   border-radius: 8px
   padding: 0.5rem
+
+  &:not(.wide)
+    flex: 1 0 300px
+
+  &.wide
+    @media (width < 990px)
+      width: 100%
+    @media (width >= 990px)
+      flex: 1 0 300px
 
   +.cards
     margin-top: 1rem
