@@ -123,8 +123,7 @@ append main
         li Gnostics taught that all flesh is evil, so mis-interpreted #[+refs('Eph.2:3')] as concerning damnation by nature rather than personal sins
           span: :link (see [The Foundation of Augustinian-Calvinism](https://www.google.com/search?q=The+foundation+of+Augustinian+Calvinism+Ken+Wilson) by Ken Wilson)
   .cards.dark
-    .card.w-full
-      h1 Calvinism (T.U.L.I.P)
+    .card.w-full: h1 Calvinism (T.U.L.I.P)
     .card.doctrine: +preamble('Total Depravity')
     .card.doctrine: +preamble('Unconditional Election')
     .card.doctrine: +preamble('Limited Atonement')
@@ -137,10 +136,10 @@ append main
     - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnessese', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
     each o in others.sort()
       .card.doctrine: +preamble(o)
-  .card.dark
-    h1 False Belief Systems
-    p These false belief systems deny the truth of the Bible, and do not use Scripture to justify themselves.
-  .cards.dark.belief-systems
+  .cards.dark
+    .card.w-full
+      h1 False Belief Systems
+      p These false belief systems deny the truth of the Bible, and do not use Scripture to justify themselves.
     -const beliefs = ['Atheism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
     each b in beliefs.sort()
       +belief(b)
