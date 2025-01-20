@@ -122,18 +122,18 @@ append main
         +ri('Heb.2:17') Jesus was in #[em all things] made like us yet without sin
         li Gnostics taught that all flesh is evil, so mis-interpreted #[+refs('Eph.2:3')] as concerning damnation by nature rather than personal sins
           span: :link (see [The Foundation of Augustinian-Calvinism](https://www.google.com/search?q=The+foundation+of+Augustinian+Calvinism+Ken+Wilson) by Ken Wilson)
-  .card.dark
-    h1 Calvinism (T.U.L.I.P)
-  .cards.dark.doctrines
+  .cards.dark
+    .card.w-full
+      h1 Calvinism (T.U.L.I.P)
     .card.doctrine: +preamble('Total Depravity')
     .card.doctrine: +preamble('Unconditional Election')
     .card.doctrine: +preamble('Limited Atonement')
     .card.doctrine: +preamble('Irresistable Grace')
     .card.doctrine: +preamble('Perseverance of the Saints')
-  .card.dark
-    h1 Other False Doctrines
-    p These false doctrines twist, pervert and mis-interpret Bible scripture to justify themselves.
-  .cards.dark.doctrines
+  .cards.dark
+    .card.w-full
+      h1 Other False Doctrines
+      p These false doctrines twist, pervert and mis-interpret Bible scripture to justify themselves.
     - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnessese', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
     each o in others.sort()
       .card.doctrine: +preamble(o)

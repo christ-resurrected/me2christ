@@ -11,12 +11,13 @@
   border-radius: 8px
   padding: 0.5rem
 
-  &:not(.wide)
+  &:not(.w-full, .md-w-full)
     flex: 1 0 300px
 
-  &.wide
+  &.md-w-full // full width on medium screen width
     @media (width < 990px)
       width: 100%
+
     @media (width >= 990px)
       flex: 1 0 300px
 
