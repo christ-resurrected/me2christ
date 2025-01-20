@@ -9,17 +9,15 @@
 .card
   border: solid 4px
   border-radius: 8px
+  flex: 1 0 300px
   padding: 0.5rem
-
-  &:not(.w-full, .md-w-full)
-    flex: 1 0 300px
 
   &.md-w-full // full width on <= medium screen width
     @media (width < 960px)
-      width: 100%
+      flex: 0 1 100%
 
-    @media (width >= 960px)
-      flex: 1 0 300px
+  &.w-full
+    flex: 0 1 100%
 
   +.cards
     margin-top: 1rem
