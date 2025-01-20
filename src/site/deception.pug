@@ -122,33 +122,24 @@ append main
         +ri('Heb.2:17') Jesus was in #[em all things] made like us yet without sin
         li Gnostics taught that all flesh is evil, so mis-interpreted #[+refs('Eph.2:3')] as concerning damnation by nature rather than personal sins
           span: :link (see [The Foundation of Augustinian-Calvinism](https://www.google.com/search?q=The+foundation+of+Augustinian+Calvinism+Ken+Wilson) by Ken Wilson)
-    .card.other
-      h2 Others...
-      ul
-        li Annihilationism
-        li Arianism
-        li Calvinism (T.U.L.I.P)
-          ul
-            li Total Depravity
-            li Unconditional Election
-            li Limited Atonement
-            li Irresistable Grace
-            li Perseverance of the Saints
-        li Cessationism
-        li Dispensationalism
-        li Fake Hebrew Israelites
-        li Gnosticism
-        li Hebrew Roots
-        li Jehovah Witness
-        li Modalism
-        li Mormonism
-        li Roman Catholicism
-        li Seventh Day Adventism
-        li Theistic Evolution
-        li Universalism
-        li Word of faith / Prosperity Gospel
+  .card.dark
+    h1 Calvinism (T.U.L.I.P)
+  .cards.cols-3.dark.doctrines
+    .card.doctrine: +preamble('Total Depravity')
+    .card.doctrine: +preamble('Unconditional Election')
+    .card.doctrine: +preamble('Limited Atonement')
+    .card.doctrine: +preamble('Irresistable Grace')
+    .card.doctrine: +preamble('Perseverance of the Saints')
+  .card.dark
+    h1 Other False Doctrines
+    p These false doctrines twist, pervert and mis-interpret Bible scripture to justify themselves.
+  .cards.cols-3.dark.doctrines
+    - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnessese', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
+    each other in others
+      .card.doctrine: +preamble(other)
   .card.dark
     h1 False Belief Systems
+    p These false belief systems deny the truth of the Bible, and do not use Scripture to justify themselves.
   .cards.cols-3.dark.belief-systems
     +belief('Atheism')
     +belief('Islam')
