@@ -30,10 +30,10 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.SITE
     fun: require \./task-pug .render
     ord: 2
-    pat: '!(*.mixin).pug'
+    pat: '!(*.*).pug'
   site_pug_child:
     dir: Dirname.SITE
-    pat: '{*.mixin,lib/*}.pug'
+    pat: '{*.*,lib/*}.pug'
     pid: \site_pug
   task_favicon:
     dir: Dirname.TASK
