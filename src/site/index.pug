@@ -3,8 +3,8 @@ extends lib/base.pug
 append head
   script: include lib/scrollbar.js
   script initScrollbar('#000', '#eee')
-  style: include:svg:postcss lib/emoji.sss
   style: include:svg:postcss index.sss
+  style: include:svg:postcss index.emoji.sss
 
 append header
   +header('dark')
