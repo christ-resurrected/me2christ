@@ -33,7 +33,7 @@ const TASKS = T.init const _TASKS =
     pat: '!(*.*).pug'
   site_pug_child:
     dir: Dirname.SITE
-    pat: '{*.*,lib/*}.pug'
+    pat: '{*.*,*/*}.pug'
     pid: \site_pug
   task_favicon:
     dir: Dirname.TASK
