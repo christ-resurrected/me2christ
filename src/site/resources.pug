@@ -16,34 +16,7 @@ append header
 
 append main
   .cards.light
-    .card.w-full
-      h1 Gospel Tracts
-      :hi The word *gospel* is translated from the Greek word **εὐαγγέλιον** which means *good news* or *glad tidings*. Jesus commands His disciples to go out into the world and preach this good news...
-      .verses.mt-4
-        +verse('Mark 16:15,16'): | And He said to them, #[q.Jesus Go into all the world and preach the gospel to every creature. He who believes and is baptized will be saved; but he who does not believe will be condemned.]
-        +verse('Mat.10:7-8'): q.Jesus And as you go, preach, saying, 'The kingdom of heaven is at hand.' Heal the sick, cleanse the lepers, raise the dead, cast out demons. Freely you have received, freely give.
-      p: :link To help with this endeavour, I have created these gospel tracts. You can find the PDFs and [source code here](https://github.com/christ-resurrected/gospel-tracts).
-    .card
-      h2 A6 2-sided
-      p: :link Inspired by [Gospel Tract #1](https://abideintheword.com/evangelism) by Adam at [AbideInTheWord.com](https://abideintheword.com).
-      +tract-image('tract_A6_2s-00', 'Side 1 of A6 tract showing warning Scripture')
-      +tract-image('tract_A6_2s-01', 'Side 2 of A6 tract declaring the gospel message')
-      p: :link For rinting [this 2-page PDF](https://github.com/christ-resurrected/gospel-tracts/blob/master/pdf/tract_A6_2s.pdf) in the UK I recommend [Mixam Leaflets & Flyers](https://mixam.co.uk/flyers) with the following options:
-      ul
-        li Orientation: portrait
-        li Size: A6 (105 mm x 148 mm)
-        li Colours (Front): Colour
-        li Colours (Back): Colour
-        li Paper Type: Gloss
-        li Paper Weight: 300gsm
-        li Lamination (Front): Gloss Lamination
-        li Lamination (Back): Same As Front
-    .card
-      h2 Pocket Trifold
-      p: :link Inspired by the [Poland Gospel Tract](https://docs.google.com/document/d/1nw98_2VB3hayzH0XHPzGlwBWH2TvXYnWT5TD-7Ep8bc) by Thomas Albin Holmes.
-      +tract-image('tract_pocket_trifold-00', 'Side 1 of pocket trifold tract, showing warning Scripture', '100%')
-      +tract-image('tract_pocket_trifold-01', 'Side 2 of pocket trifold tract, declaring the gospel message', '100%')
-      p This tract folds into a compact 72mm x 140mm.
+    include resources.tract.pug
   .cards.dark
     .card
       h2 False Gospel Tracts
