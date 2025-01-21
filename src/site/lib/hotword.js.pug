@@ -1,9 +1,0 @@
--
-  log = console.log
-
-  function addHotWordIndicators(html, hotwords) {
-    if (!hotwords) return html
-    hotwords = hotwords.split(',')
-    for (w of hotwords) { html = html.replaceAll(w.trim(), `👉${w.trim()}`) }
-    return html
-  }

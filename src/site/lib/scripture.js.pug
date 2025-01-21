@@ -1,6 +1,13 @@
 -
   log = console.log
 
+  function addHotWordIndicators(html, hotwords) {
+    if (!hotwords) return html
+    hotwords = hotwords.split(',')
+    for (w of hotwords) { html = html.replaceAll(w.trim(), `👉${w.trim()}`) }
+    return html
+  }
+
   function expand(refs) {
     const mappings = [['Deut', 'Deuteronomy'], ['Psa', 'Psalms'], ['Is', 'Isaiah'], ['Jer','Jeremiah'], ['Eze', 'Ezekiel'], ['Mat', 'Matthew'], ['Rom', 'Romans'], ['Cor', 'Corinthians'], ['Gal', 'Galatians'], ['Eph', 'Ephesians'], ['Php', 'Philippians'], ['Col', 'Colossians'], ['1-Thes', '1-Thessalonians'], ['2-Thes', '2-Thessalonians'], ['Tim', 'Timothy'], ['Heb', 'Hebrews'], ['Jam', 'James'], ['Pet', 'Peter'], ['Rev', 'Revelation']]
     for (const m of mappings) refs = refs.replaceAll(`${m[0]}.`, `${m[1]} `)
