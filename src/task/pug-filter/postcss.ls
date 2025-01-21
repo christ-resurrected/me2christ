@@ -7,7 +7,7 @@ Sugarss = require \sugarss
 Dir     = require \../constants .dir
 Flag    = require \../flag
 
-const IMPORT = Import path: "#{Dir.SRC_SITE}/lib"
+const IMPORT = Import path: "#{Dir.SRC_SITE}/lib/postcss-import"
 const PLUGINS_DEV = [Mixins, Nested]
 const PLUGINS_PROD = PLUGINS_DEV.concat [PresEnv]
 const PROCESS_OPTS = from:undefined, parser:Sugarss
