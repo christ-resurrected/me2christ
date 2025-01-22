@@ -10,6 +10,10 @@ const TASKS = T.init const _TASKS =
     cmd: "cp --target-directory $ODIR $IN"
     dir: Dirname.TASK
     pat: '**/*.{lson,yml}'
+  lint_html:
+    cmd: "yarn --silent html-validate $IN"
+    dir: Dir.BUILD_SITE
+    pat: \*.html
   lint_ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
