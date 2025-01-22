@@ -21,12 +21,13 @@ module.exports = me =
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
+    t.processing = []
     watch-once!
     function watch-once then w = Fs.watch t.srcdir, recursive:true, (_, path) ->>
-      return if path[*-1] is \~ or not P.matchesGlob path, t.pat
+      return if t.processing.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
+      t.processing.push path
       t.runid = runid = new Date!getTime!
-      w.close!; await new Promise -> setTimeout it, 20ms # stop event flood and wait for file updates to settle
-      watch-once!
+      await new Promise -> setTimeout it, 1ms # wait for neovim to finish intermittent file writes
       try
         ipath = P.resolve t.srcdir, path
         if (t.cmd or t.fun) and Fs.existsSync ipath then await run-task t, ipath
@@ -37,6 +38,7 @@ module.exports = me =
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
+      finally then t.processing = t.processing.filter -> it isnt path
 
 function run-task t, ipath then new Promise (resolve, reject) ->>
   odir = P.dirname P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
