@@ -9,6 +9,7 @@ Minify  = require \./minify
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
+  doctype: \html # fix lint html: do not self-close <img> tags
   filters:
     hi: -> # highlights
       tmp = it.replace /\*\*(.+?)\*\*/g \<strong>$1</strong>
