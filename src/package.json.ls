@@ -29,6 +29,7 @@ dependencies:
   'postcss-preset-env'  : \~10.1.3
   sugarss               : \~5.0.0
 devDependencies:
+  eslint                            : \~8.57.1  # ~9.18.0 yields issue #19118
   favicons                          : \~7.2.0
   'html-validate'                   : \~9.1.3
   'ls-lint'                         : \~0.1.2

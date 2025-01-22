@@ -14,6 +14,10 @@ const TASKS = T.init const _TASKS =
     cmd: "yarn --silent html-validate $IN"
     dir: Dir.BUILD_SITE
     pat: \*.html
+  lint_js:
+    cmd: "yarn --silent eslint -c #CONFIG_DIR/eslintrc.json $IN"
+    dir: Dir.SRC_SITE
+    pat: \**/*.js
   lint_ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
