@@ -8,8 +8,8 @@
 append head
   style: include:postcss nav.sss
 
-mixin nav()
-  nav
+mixin nav(aria_label)
+  nav(aria-label=aria_label)
     - basename = locals.filename.split('/').at(-1).replace('.pug', '')
     each page in NAV_PAGES
       if page.basename === basename

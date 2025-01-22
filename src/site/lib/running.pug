@@ -1,9 +1,9 @@
 mixin footer(theme)
   footer(class=theme)
-    +nav
+    +nav('header')
     p Bible verses are quoted from the New King James and King James Versions.
     p: :link [Contact Me](contact.html)
 
 mixin header(theme)
   header(class=theme)
-    +nav
+    +nav('footer')
