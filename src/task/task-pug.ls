@@ -15,7 +15,7 @@ const OPTS =
       tmp.replace /\*(.+?)\*/g \<em>$1</em>
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
-      it.replace /\[(.+?)\]\((.+?)\)/g "<a href='$2'>$1</a>"
+      it.replace /\[(.+?)\]\((.+?)\)/g '<a href="$2">$1</a>'
     postcss: require \./pug-filter/postcss
     svg: require \./pug-filter/inline-svg
   VERSES: JSON.parse(KJV.replaceAll '#' '')
