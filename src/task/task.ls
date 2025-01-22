@@ -29,12 +29,11 @@ module.exports = me =
       watch-once!
       try
         ipath = P.resolve t.srcdir, path
+        if (t.cmd or t.fun) and Fs.existsSync ipath then await run-task t, ipath
         if t.ptask  # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
           pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
           await if pfiles.length is 1 then run-task t.ptask, pfiles.0 else me.run-tasks [t.ptask]
-        else
-          if Fs.existsSync ipath, path then await run-task t, ipath
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
