@@ -6,23 +6,19 @@ T       = require \./task
 const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"
 
 const TASKS = T.init const _TASKS =
-  config:
-    cmd: "cp --target-directory $ODIR $IN"
-    dir: Dirname.TASK
-    pat: '**/*.{lson,yml}'
-  lint_html:
+  html:
     cmd: "yarn --silent html-validate $IN"
     dir: Dir.BUILD_SITE
     pat: \*.html
-  lint_js:
+  js:
     cmd: "yarn --silent eslint -c #CONFIG_DIR/eslintrc.json $IN"
     dir: Dir.SRC_SITE
     pat: \**/*.js
-  lint_ls:
+  ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dirname.TASK
     pat: \**/*.ls
-  lint_sss:
+  sss:
     cmd: "yarn --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
     dir: Dirname.SITE
     pat: \**/*.sss
