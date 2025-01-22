@@ -22,8 +22,7 @@ module.exports = me =
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     t.processing = []
-    watch-once!
-    function watch-once then w = Fs.watch t.srcdir, recursive:true, (_, path) ->>
+    Fs.watch t.srcdir, recursive:true, (_, path) ->>
       return if t.processing.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
       t.processing.push path
       t.runid = runid = new Date!getTime!
