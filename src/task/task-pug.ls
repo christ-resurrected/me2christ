@@ -25,9 +25,10 @@ module.exports = me =
   external-links: []
 
   render: (ipath, odir) ->>
+    function clean-html then it.replaceAll \</input> '' # fix: pug generates invalid end tag which fails lint
     t0 = Perf.now!
     me.external-links = []
-    html = Pug.renderFile ipath, OPTS
+    html = clean-html Pug.renderFile ipath, OPTS
     html = await Minify.js await Minify.css Minify.html-comments html if Flag.prod
     opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
