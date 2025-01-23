@@ -1,17 +1,8 @@
+@import 'glyph.sss'
 @import 'scripture.sss'
 
-mark
-  padding: 0 0.2rem
-
-  // &.tip:before
-  //   background: url('asset/emoji/scroll.svg')
-  //   content: ''
-  //   display: inline-block
-  //   margin-right: 0.25rem
-  //   top: 3px
-  //   position: relative
-  //   height: 1.1rem
-  //   width: 1.1rem
+.book::before
+  @mixin glyph emoji/scroll, 0.2rem
 
 .verse
   display: inline

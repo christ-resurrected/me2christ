@@ -1,6 +1,6 @@
 append head
   include scripture.js.pug
-  style: include:postcss scripture.sss
+  style: include:svg:postcss scripture.sss
 
 // NOTE: adjacent spans are separated by ' ' (see base.css)
 
@@ -11,7 +11,7 @@ mixin refs(refs, hotwords)
     - const tip = addHotWordIndicators(generateTip(bookrefs), hotwords)
     span
       if (tip.length)
-        mark.tip!= finalise(bookrefs)
+        mark.book.tip!= finalise(bookrefs)
           span.tiptext!= tip
       else
         mark!= bookrefs
