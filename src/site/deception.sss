@@ -9,7 +9,7 @@
   @mixin tip-anchor
 
 .excl::before
-  @mixin glyph-mr-2 emoji/excl_double
+  @mixin glyph emoji/excl_double
 
 .doctrine div+div
   margin-top: 1rem
@@ -29,7 +29,7 @@
       content: '.'
 
     &::before
-      @mixin glyph-mr-2 symbol/red_x
+      @mixin glyph symbol/red_x
 
   ul
     display: inline
@@ -41,7 +41,7 @@
       content: '.'
 
     &:not(.warn)::before
-      @mixin glyph-mr-2 emoji/checkmark_box
+      @mixin glyph emoji/checkmark_box
       @mixin checkmark-filter
 
     &:last-child
@@ -54,4 +54,4 @@
     padding-inline-start: 0
 
   .warn::before
-    @mixin glyph-mr-2 emoji/warning
+    @mixin glyph emoji/warning

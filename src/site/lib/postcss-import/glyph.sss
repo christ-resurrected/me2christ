@@ -1,7 +1,7 @@
 @define-mixin checkmark-filter
   filter: hue-rotate(00deg) brightness(72%) contrast(500%)
 
-@define-mixin glyph $id, $mr:0
+@define-mixin glyph $id, $mr:0.4rem
   background: svg($id)
   content: ''
   display: inline-block
@@ -10,6 +10,3 @@
   top: 2px
   height: 1rem
   width: 1rem
-
-@define-mixin glyph-mr-2 $id
-  @mixin glyph $id, 0.5rem
