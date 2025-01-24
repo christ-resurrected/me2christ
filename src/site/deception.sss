@@ -29,6 +29,7 @@
 
 .danger
   @mixin tip-anchor
+  @mixin ul
 
   li
     display: inline
@@ -39,9 +40,9 @@
 
     @mixin after-period
 
+.refutation
   @mixin ul
 
-.refutation
   li
     &:not(.warn)::before
       @mixin glyph emoji/checkmark_box
@@ -53,8 +54,6 @@
     @mixin after-period
     @mixin colorise-verse-body #322, #ff8
     @mixin tip-anchor
-
-  @mixin ul
 
   .warn::before
     @mixin glyph emoji/warning
