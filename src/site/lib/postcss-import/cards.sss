@@ -14,10 +14,10 @@
 
   &.md-w-full // full width on <= medium screen width
     @media (width < 960px)
-      flex: 0 1 100%
+    @mixin flex-full
 
   &.w-full
-    flex: 0 1 100%
+    @mixin flex-full
 
   .dark &,
   &.dark
