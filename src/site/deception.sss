@@ -3,8 +3,6 @@
 @import 'scripture.sss'
 @import 'tip.sss'
 
-@mixin background #000, #111, #222, #111, #000
-
 @define-mixin ul
   ul
     padding-inline-start: 0
@@ -13,6 +11,8 @@
 @define-mixin after-period
   &::after
     content: '.'
+
+@mixin background #000, #111, #222, #111, #000
 
 .intro .verse
   @mixin tip-anchor
