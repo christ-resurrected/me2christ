@@ -23,6 +23,8 @@ dependencies:
 # css generation
   cssnano               : \~7.0.6
   postcss               : \~8.4.49
+  'postcss-calc'        : \~10.1.0
+  'postcss-each'        : \~1.1.0
   'postcss-import-sync2': \~1.2.0
   'postcss-mixins'      : \~11.0.3
   'postcss-nested'      : \~7.0.2
