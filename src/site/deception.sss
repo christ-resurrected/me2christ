@@ -35,28 +35,27 @@ h2:only-child
   @mixin ul
 
   li
+    @mixin after-period
     display: inline
     margin-left: 0.5rem
 
     &::before
       @mixin glyph symbol/red_x
 
-    @mixin after-period
-
 .refutation
   @mixin ul
 
   li
+    @mixin after-period
+    @mixin colorise-verse-body #322, #ff8
+    @mixin tip-anchor
+
     &:not(.warn)::before
       @mixin glyph emoji/checkmark_box
       @mixin checkmark-filter
 
     &:last-child
       margin-bottom: 0
-
-    @mixin after-period
-    @mixin colorise-verse-body #322, #ff8
-    @mixin tip-anchor
 
   .warn::before
     @mixin glyph emoji/warning
