@@ -5,8 +5,8 @@
 
 @define-mixin ul
   ul
+    display: inline
     padding-inline-start: 0
-    @mixin-content
 
 @define-mixin after-period
   &::after
@@ -40,7 +40,6 @@
     @mixin after-period
 
   @mixin ul
-    display: inline
 
 .refutation
   li
