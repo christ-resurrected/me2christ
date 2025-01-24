@@ -2,7 +2,6 @@
 .mb-0
   margin-bottom: 0
 
-// stylelint-disable selector-class-pattern
 @each $x in 2, 4, 6, 8
-  .mt-$x
+  .mt-$(x)
     margin-top: calc($x / 4)rem
