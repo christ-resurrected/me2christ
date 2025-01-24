@@ -10,6 +10,10 @@
     padding-inline-start: 0
     @mixin-content
 
+@define-mixin after-period
+  &::after
+    content: '.'
+
 .intro .verse
   @mixin tip-anchor
 
@@ -30,20 +34,16 @@
     display: inline
     margin-left: 0.5rem
 
-    &::after
-      content: '.'
-
     &::before
       @mixin glyph symbol/red_x
+
+    @mixin after-period
 
   @mixin ul
     display: inline
 
 .refutation
   li
-    &::after
-      content: '.'
-
     &:not(.warn)::before
       @mixin glyph emoji/checkmark_box
       @mixin checkmark-filter
@@ -51,6 +51,7 @@
     &:last-child
       margin-bottom: 0
 
+    @mixin after-period
     @mixin colorise-verse-body #322, #ff8
     @mixin tip-anchor
 
