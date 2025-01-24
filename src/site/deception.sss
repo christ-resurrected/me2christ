@@ -5,6 +5,11 @@
 
 @mixin background #000, #111, #222, #111, #000
 
+@define-mixin ul
+  ul
+    padding-inline-start: 0
+    @mixin-content
+
 .intro .verse
   @mixin tip-anchor
 
@@ -31,9 +36,8 @@
     &::before
       @mixin glyph symbol/red_x
 
-  ul
+  @mixin ul
     display: inline
-    padding-inline-start: 0
 
 .refutation
   li
@@ -50,8 +54,7 @@
     @mixin colorise-verse-body #322, #ff8
     @mixin tip-anchor
 
-  ul
-    padding-inline-start: 0
+  @mixin ul
 
   .warn::before
     @mixin glyph emoji/warning
