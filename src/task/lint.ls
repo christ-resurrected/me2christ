@@ -7,7 +7,7 @@ const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"
 
 const TASKS = T.init const _TASKS =
   html:
-    cmd: "yarn --silent html-validate $IN"
+    cmd: "yarn --silent html-validate -c #CONFIG_DIR/htmlvalidate.json $IN"
     dir: Dir.BUILD_SITE
     pat: \*.html
   js:

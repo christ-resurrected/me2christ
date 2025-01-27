@@ -7,13 +7,14 @@ append head
   script: include contact-count.js
   script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
+
 mixin field(tag, id, label, minlen, maxlen, desc = '')
   - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
   .field
     .labels
       label(for=id)= label
       span(id=`${id}-count`).count
-    #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
+    #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required='')&attributes(attributes)
 
 append header
   +header('light')
