@@ -34,7 +34,7 @@ dependencies:
 # minification for production
   cssnano    : \~7.0.6
   htmlnano   : \~2.1.1
-  'uglify-js': \~3.19.3
+  terser     : \~5.37.0
 devDependencies:
   eslint                            : \~8.57.1  # ~9.18.0 yields issue #19118
   favicons                          : \~7.2.0

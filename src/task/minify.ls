@@ -18,12 +18,6 @@ module.exports =
 
   html: ->> Htmlnano.process it
 
-  js: ->>
-    function process m then new Promise (resolve, reject) ->
-      res = Uglijs.minify m.1
-      if res.error then reject res.error else resolve m.0.replace m.1, res.code
-    minify \js, \script, it, process
-
 async function minify filetype, tag, html, process
   const RE = new RegExp "<#tag>(.+?)<\/#tag>" \gs  # livescript renders /regex/gs as /regex/g.s
   promises = [...html.matchAll RE].map process
