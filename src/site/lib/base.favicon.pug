@@ -1,0 +1,12 @@
+mixin apple(sizes)
+  link(rel='apple-touch-icon' href=`asset/favicon/apple-touch-icon-${sizes}.png` sizes=sizes)
++apple('167x167') // iPad
++apple('180x180') // iPhone
+
+mixin google(sizes)
+  link(rel='icon' href=`asset/favicon/android-chrome-${sizes}.png` sizes=sizes)
++google('48x48')   // google search
++google('192x192') // chrome
+
+link(rel='icon' href='favicon.ico' sizes='32x32')
+link(rel='icon' href='asset/favicon/favicon.svg' type='image/svg+xml')

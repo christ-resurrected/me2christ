@@ -5,22 +5,10 @@ include running.pug
 include scripture.pug
 include tip.pug
 
-mixin favicon
-  mixin apple(sizes)
-    link(rel='apple-touch-icon' href=`asset/favicon/apple-touch-icon-${sizes}.png` sizes=sizes)
-  mixin google(sizes)
-    link(rel='icon' href=`asset/favicon/android-chrome-${sizes}.png` sizes=sizes)
-  link(rel='icon' href='favicon.ico' sizes='32x32')
-  link(rel='icon' href='asset/favicon/favicon.svg' type='image/svg+xml')
-  +google('48x48')    // google search
-  +google('192x192')  // chrome
-  +apple('167x167')   // iPad
-  +apple('180x180')   // iPhone
-
 html(lang='en')
   head
     block head
-      +favicon
+      include base.favicon.pug
       title me2christ.com - REPENT, FOR THE KINGDOM OF HEAVEN IS AT HAND!
       meta(charset='UTF-8')
       meta(name='description' content='The Gospel of our Lord Jesus Christ')
