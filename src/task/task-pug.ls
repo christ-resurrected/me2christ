@@ -30,9 +30,8 @@ module.exports = me =
     t0 = Perf.now!
     me.external-links = []
     html = clean-html Pug.renderFile ipath, OPTS
-    html = (await Posthtml html).html
     html = await Minify.css html if Flag.prod
-    html = (await Minify.html html).html if Flag.prod
+    html = (await Posthtml html).html
     opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!

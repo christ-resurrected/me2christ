@@ -16,8 +16,6 @@ module.exports =
     function process m then Postcss([Cssnano!]).process(m.1).then(-> m.0.replace m.1, it.css)
     minify \css, \style, it, process
 
-  html: ->> Htmlnano.process it
-
 async function minify filetype, tag, html, process
   const RE = new RegExp "<#tag>(.+?)<\/#tag>" \gs  # livescript renders /regex/gs as /regex/g.s
   promises = [...html.matchAll RE].map process
