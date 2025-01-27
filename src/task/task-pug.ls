@@ -5,7 +5,6 @@ Perf     = require \perf_hooks .performance
 Pug      = require \pug
 C        = require \./constants
 Flag     = require \./flag
-Minify   = require \./minify
 Posthtml = require \./posthtml
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
@@ -29,9 +28,7 @@ module.exports = me =
     function clean-html then it.replaceAll \</input> '' # fix: pug generates invalid end tag which fails lint
     t0 = Perf.now!
     me.external-links = []
-    html = clean-html Pug.renderFile ipath, OPTS
-    html = await Minify.css html if Flag.prod
-    html = (await Posthtml html).html
+    html = await Posthtml clean-html Pug.renderFile ipath, OPTS
     opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
