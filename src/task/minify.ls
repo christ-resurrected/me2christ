@@ -1,6 +1,7 @@
 # see https://jeffkreeftmeijer.com/nodejs-purge-minify-css/
 Chalk   = require \chalk
 Cssnano = require \cssnano
+Htmlnano = require \htmlnano
 Postcss = require \postcss
 Uglijs  = require \uglify-js
 
@@ -15,14 +16,13 @@ module.exports =
     function process m then Postcss([Cssnano!]).process(m.1).then(-> m.0.replace m.1, it.css)
     minify \css, \style, it, process
 
+  html: ->> Htmlnano.process it
+
   js: ->>
     function process m then new Promise (resolve, reject) ->
       res = Uglijs.minify m.1
       if res.error then reject res.error else resolve m.0.replace m.1, res.code
     minify \js, \script, it, process
-
-  html-comments: ->
-    it.replace /<!--(.*?)-->/g ''
 
 async function minify filetype, tag, html, process
   const RE = new RegExp "<#tag>(.+?)<\/#tag>" \gs  # livescript renders /regex/gs as /regex/g.s
