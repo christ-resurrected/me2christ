@@ -11,19 +11,18 @@ append header
   +header('light')
 
 append main
-  mixin field(tag, id, label, minlen, maxlen, desc = '')
-    - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
-    .field
-      .labels
-        label(for=id)= label
-        span(id=`${id}-count`).count
-      #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
-
   .card
     h1 Contact Me
     .contact
       form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
         fieldset
+          mixin field(tag, id, label, minlen, maxlen, desc = '')
+            - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
+            .field
+              .labels
+                label(for=id)= label
+                span(id=`${id}-count`).count
+              #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
           legend If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance, or baptism, or help with evangelism, or have any questions, please contact me and I will try to help.
           +field('input', 'name', 'Name', 2, 40)(type='text')
           +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
