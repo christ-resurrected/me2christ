@@ -16,6 +16,7 @@ append main
     .contact
       form(method='POST' action='https://me2christ-worker.dizzib-dev.workers.dev')
         fieldset
+          // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
           mixin field(tag, id, label, minlen, maxlen, desc = '')
             - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
             .field
