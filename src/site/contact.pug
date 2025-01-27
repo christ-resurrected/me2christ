@@ -7,7 +7,6 @@ append head
   script: include contact-count.js
   script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
-
 mixin field(tag, id, label, minlen, maxlen, desc = '')
   - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
   .field
