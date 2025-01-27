@@ -1,9 +1,5 @@
 extends lib/base.pug
 
-mixin tract-image(basename, alt, width='50%')
-  - href = `asset/tract/${basename}.png`
-  a(href=href): img(alt=alt src=href width=width)
-
 append head
   script: include lib/scrollbar.js
   script initScrollbar('#eee', '#000')

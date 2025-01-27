@@ -1,3 +1,7 @@
+mixin tract-image(basename, alt, width='50%')
+  - href = `asset/tract/${basename}.png`
+  a(href=href): img(alt=alt src=href width=width)
+
 .card.w-full
   h1 Gospel Tracts
   :hi The word *gospel* is translated from the Greek word **εὐαγγέλιον** which means *good news* or *glad tidings*. Jesus commands His disciples to go out into the world and preach this good news...
