@@ -1,11 +1,12 @@
-Chalk   = require \chalk
-Fs      = require \fs
-P       = require \path
-Perf    = require \perf_hooks .performance
-Pug     = require \pug
-C       = require \./constants
-Flag    = require \./flag
-Minify  = require \./minify
+Chalk    = require \chalk
+Fs       = require \fs
+P        = require \path
+Perf     = require \perf_hooks .performance
+Pug      = require \pug
+C        = require \./constants
+Flag     = require \./flag
+Minify   = require \./minify
+Posthtml = require \./posthtml
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
@@ -29,6 +30,7 @@ module.exports = me =
     t0 = Perf.now!
     me.external-links = []
     html = clean-html Pug.renderFile ipath, OPTS
+    html = (await Posthtml html).html
     html = await Minify.js await Minify.css Minify.html-comments html if Flag.prod
     opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html

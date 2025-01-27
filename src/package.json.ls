@@ -30,6 +30,9 @@ dependencies:
   'postcss-nested'      : \~7.0.2
   'postcss-preset-env'  : \~10.1.3
   sugarss               : \~5.0.0
+# html generation
+  posthtml               : \~0.16.6
+  'posthtml-img-autosize': \~0.1.6
 devDependencies:
   eslint                            : \~8.57.1  # ~9.18.0 yields issue #19118
   favicons                          : \~7.2.0
