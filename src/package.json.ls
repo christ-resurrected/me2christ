@@ -29,8 +29,9 @@ dependencies:
   'postcss-preset-env'  : \~10.1.3
   sugarss               : \~5.0.0
 # html generation
-  posthtml               : \~0.16.6
-  'posthtml-img-autosize': \~0.1.6
+  posthtml                     : \~0.16.6
+  'posthtml-boolean-attributes': \~0.3.1
+  'posthtml-img-autosize'      : \~0.1.6
 # minification for production
   cssnano    : \~7.0.6
   htmlnano   : \~2.1.1

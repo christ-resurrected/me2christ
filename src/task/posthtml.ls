@@ -1,12 +1,15 @@
 Chalk     = require \chalk
 Htmlnano  = require \htmlnano
 Posthtml  = require \posthtml
+PostBool  = require \posthtml-boolean-attributes
 PostImgAS = require \posthtml-img-autosize
 Dir       = require \./constants .dir
 Flag      = require \./flag
 
 module.exports = (html) ->>
-  plugins = [PostImgAS {processEmptySize:true, root:Dir.SRC_SITE}]
+  plugins =
+    * PostBool!
+    * PostImgAS {processEmptySize:true, root:Dir.SRC_SITE}
   plugins.push Htmlnano! if Flag.prod
 
   new Promise (resolve, reject) ->>

@@ -1,5 +1,5 @@
 {
   "rules": {
-    "attribute-boolean-style": ["warn", { "style": "empty" }]
+    "attribute-boolean-style": ["warn", { "style": "omit" }]
   }
 }
