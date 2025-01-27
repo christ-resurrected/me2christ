@@ -30,7 +30,7 @@ html(lang='en')
         script: include livereload.js
       style: include:svg:postcss base.sss
   // FIX: ipad tooltips -- see https://dev.webonomic.nl/fixing-the-iphone-css-hover-problem-on-ios
-  body(onclick)
+  body(tabindex=0)
     block header
     section
       block main
