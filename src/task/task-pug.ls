@@ -9,7 +9,6 @@ Posthtml = require \./posthtml
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
 const OPTS =
-  doctype: \html # fix lint html: do not self-close <img> tags
   filters:
     hi: -> # highlights
       tmp = it.replace /\*\*(.+?)\*\*/g \<strong>$1</strong>
@@ -25,10 +24,9 @@ module.exports = me =
   external-links: []
 
   render: (ipath, odir) ->>
-    function clean-html then it.replaceAll \</input> '' # fix: pug generates invalid end tag which fails lint
     t0 = Perf.now!
     me.external-links = []
-    html = await Posthtml clean-html Pug.renderFile ipath, OPTS
+    html = await Posthtml Pug.renderFile ipath, OPTS
     opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!

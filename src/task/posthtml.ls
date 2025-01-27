@@ -10,6 +10,12 @@ module.exports = (html) ->>
   plugins.push Htmlnano! if Flag.prod
 
   new Promise (resolve, reject) ->>
+    #
+    # Posthtml seems to clean up the following pug issues...
+    #
+    # - invalid </input> end tag
+    # - invalid <img/> self-closing tag (perhaps)
+    #
     Posthtml(plugins).process(html).then(ok).catch(reject)
 
     function ok
