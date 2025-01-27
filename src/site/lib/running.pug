@@ -1,3 +1,7 @@
+mixin header(theme)
+  header(class=theme)
+    +nav('footer')
+
 mixin footer(theme)
   footer(class=theme)
     +nav('header')
@@ -7,7 +11,3 @@ mixin footer(theme)
     p.contact-me.mb-0: :link [Contact Me](contact.html)
     script document.getElementsByClassName('contact-me')[0].style.display = 'block'
     noscript Please enable javascript to contact me
-
-mixin header(theme)
-  header(class=theme)
-    +nav('footer')
