@@ -16,7 +16,7 @@ const TASKS = T.init const _TASKS =
     cmd: "cp --target-directory $ODIR $IN"
     dir: "#{Dirname.SITE}/asset"
     ord: 2
-    pat: '*/*{png,svg}'
+    pat: '*/*.{png,svg}'
   site_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
     dir: "#{Dirname.SITE}/asset/favicon"
@@ -24,7 +24,7 @@ const TASKS = T.init const _TASKS =
     pat: \*.ico
   site_js_xss:
     dir: Dirname.SITE
-    pat: '**/*{js,css,sss}'
+    pat: '**/*.{js,css,sss}'
     pid: \site_pug # parent task id to run
   site_pug:
     dir: Dirname.SITE
