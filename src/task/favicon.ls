@@ -8,7 +8,7 @@ Dir = require \./constants .dir
 const FAVICON_PATH = P.resolve Dir.SRC_SITE_ASSET, \favicon
 
 module.exports = ->>
-  svg = Pug.renderFile P.resolve Dir.SRC_TASK, \favicon.pug
+  svg = Pug.renderFile P.resolve Dir.SRC_TASK, \favicon.svg.pug
   Fs.writeFileSync spath = "#FAVICON_PATH/favicon.svg", svg
   c = Fi.config.defaults
   c.output.files = false
