@@ -16,10 +16,8 @@ mixin Repent()
   +repent('Repent')
 
 append main
-  .cards.dark
-    include index.judgement.pug
-  .cards.light
-    include index.gospel.pug
+  .cards.dark: include index.judgement.pug
+  .cards.light: include index.gospel.pug
 
 append footer
   +footer('light')
