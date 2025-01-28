@@ -1,12 +1,5 @@
 @import 'glyph.sss'
 
-[href^='http']::after
-  @mixin glyph symbol/link_external
-  margin-left: 2px
-
-  .dark &
-    filter: invert(100%)
-
 a
   .dark &
     color: #aaa
@@ -14,9 +7,16 @@ a
   .light &
     color: #444
 
-a:hover
-  .dark &
-    color: #fff
+  &:hover
+    .dark &
+      color: #fff
 
-  .light &
-    color: #f00
+    .light &
+      color: #f00
+
+[href^='http']::after
+  @mixin glyph symbol/link_external
+  margin-left: 2px
+
+  .dark &
+    filter: invert(100%)
