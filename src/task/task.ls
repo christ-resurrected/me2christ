@@ -21,9 +21,13 @@ module.exports = me =
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
-    t.running = [] # dedupe runs when multiple events are fired when neovim writes a file
+    function clearRunning then t.running = [] # dedupe runs when multiple events are fired when neovim writes a file
+    clearRunning!
     Fs.watch t.srcdir, recursive:true, (_, path) ->>
       return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
+      # if t.timer then log \clearTimeout, t.tid
+      clearTimeout t.timer if t.timer
+      t.timer = setTimeout clearRunning, 1000ms  # fix suspected issue where t.running is not clearing
       t.running.push path
       t.runid = runid = new Date!getTime!
       await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
