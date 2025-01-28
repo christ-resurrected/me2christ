@@ -13,7 +13,7 @@ Favicon  = require \./favicon
 Flag     = require \./flag
 Lint     = require \./lint
 LiveRld  = require \./livereload if process.env.M2C_LIVE_RELOAD
-Resource = require \./resource
+ResKjv   = require \./resource.kjv
 Site     = require \./site
 
 process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejection:' promise
@@ -35,7 +35,7 @@ const COMMANDS =
   * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji
   * cmd:'as' level:1 desc:'asset.download-syms'   fn:Asset.download-symbols
   * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
-  * cmd:'rd' level:1 desc:'resource.download-kjv' fn:Resource.download-kjv
+  * cmd:'rd' level:1 desc:'resource.download-kjv' fn:ResKjv.download
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
