@@ -2,6 +2,10 @@
 @import 'anchor.sss'
 @import 'utility.sss'
 
+@define-mixin heading
+  hyphens: none
+  text-align: center
+
 body
   font-family: Arial, Verdana, Geneva, Tahoma, sans-serif
   hyphens: auto  // fix large gaps between words
@@ -11,18 +15,14 @@ body
   text-justify: inter-word
 
 h1
+  @mixin heading
   font-size: 2.5rem
   margin: 0
 
 h2,
 h3
+  @mixin heading
   margin: 0 0 1rem
-
-h1,
-h2,
-h3
-  hyphens: none
-  text-align: center
 
 header,
 footer
