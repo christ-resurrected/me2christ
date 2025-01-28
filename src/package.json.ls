@@ -16,9 +16,9 @@ engines:
   node: \22
   yarn: \1.22
 dependencies:
-  chalk      : \~0.4.0
-  livescript : \~1.6.0
-  pug        : \~3.0.3
+  chalk     : \~0.4.0
+  livescript: \~1.6.0
+  pug       : \~3.0.3
 # css generation
   postcss               : \~8.4.49
   'postcss-calc'        : \~10.1.0
@@ -33,9 +33,9 @@ dependencies:
   'posthtml-boolean-attributes': \~0.3.1
   'posthtml-img-autosize'      : \~0.1.6
 # minification for production
-  cssnano    : \~7.0.6
-  htmlnano   : \~2.1.1
-  terser     : \~5.37.0
+  cssnano : \~7.0.6
+  htmlnano: \~2.1.1
+  terser  : \~5.37.0
 devDependencies:
   eslint                            : \~8.57.1  # ~9.18.0 yields issue #19118
   favicons                          : \~7.2.0
