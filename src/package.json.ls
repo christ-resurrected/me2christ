@@ -28,6 +28,7 @@ dependencies:
   'postcss-nested'      : \~7.0.2
   'postcss-preset-env'  : \~10.1.3
   'postcss-short-color' : \~4.0.0
+  'postcss-short-size'  : \~4.0.0
   sugarss               : \~5.0.0
 # html generation
   posthtml                     : \~0.16.6
