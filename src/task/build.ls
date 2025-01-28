@@ -35,6 +35,10 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.SITE
     pat: '{*.*,*/*}.pug'
     pid: \site_pug
+  site_resource:
+    dir: "#{Dirname.SITE}/resource"
+    pat: '**/*.svg'
+    pid: \site_pug
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
