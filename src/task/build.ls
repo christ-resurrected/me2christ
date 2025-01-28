@@ -22,9 +22,9 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/asset/favicon"
     ord: 2
     pat: \*.ico
-  site_js_xss:
+  site_js_sss:
     dir: Dirname.SITE
-    pat: '**/*.{js,css,sss}'
+    pat: '**/*.{js,sss}'
     pid: \site_pug # parent task id to run
   site_pug:
     dir: Dirname.SITE
