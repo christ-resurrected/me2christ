@@ -17,7 +17,7 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/asset"
     ord: 2
     pat: '*/*.{png,svg}'
-  site_favicon:
+  site_asset_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
     dir: "#{Dirname.SITE}/asset/favicon"
     ord: 2
@@ -36,6 +36,10 @@ const TASKS = T.init const _TASKS =
     dir: Dirname.SITE
     pat: '{*.*,*/*}.pug'
     pid: \site_pug
+  site_resource_favicon:
+    dir: "#{Dirname.SITE}/resource/favicon"
+    fun: require \./favicon unless Flag.prod # favicons package not available in production
+    pat: \*.pug
   site_resource_pug:
     dir: "#{Dirname.SITE}/resource"
     fun: require \./task-pug .render
@@ -46,10 +50,6 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/resource"
     pat: '**/*.svg'
     pid: \site_pug
-  task_favicon:
-    dir: "#{Dirname.SITE}/resource/favicon"
-    fun: require \./favicon unless Flag.prod # favicons package not available in production
-    pat: \*.pug
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
     dir: Dirname.TASK
