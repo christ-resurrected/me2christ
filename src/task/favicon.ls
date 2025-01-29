@@ -5,7 +5,7 @@ P   = require \path
 Pug = require \pug
 Dir = require \./constants .dir
 
-const FAVICON_PATH = P.resolve Dir.SRC_SITE_ASSET, \favicon
+const FAVICON_PATH = P.resolve Dir.SRC_SITE_ASSET_FAVICON
 
 module.exports = (ipath) ->>
   svg = Pug.renderFile ipath, filters: postcss: require \./pug-filter/postcss

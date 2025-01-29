@@ -18,7 +18,7 @@ const TASKS = T.init const _TASKS =
     pat: '*/*.{png,svg}'
   site_asset_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
-    dir: "#{Dir.SRC_SITE_ASSET}/favicon"
+    dir: Dir.SRC_SITE_ASSET_FAVICON
     ord: 2
     pat: \*.ico
   site_js_sss:
