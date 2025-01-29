@@ -46,8 +46,12 @@ module.exports = me =
 function run-task t, ipath then new Promise (resolve, reject) ->>
   odir = P.dirname P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
   if !Fs.existsSync odir then Fs.mkdirSync odir, recursive:true
-  if t.fun then try await t.fun ipath, odir; resolve! catch err then reject err finally return
-  log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$ODIR odir)
-  cmd = (args = cmd.split ' ').splice 0 1 # splice alters args and returns the removed item
-  cp = CP.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
-  cp.on \close (code) -> if code is 0 then resolve! else reject!
+  if t.fun then run-fn! else run-cmd!
+
+  async function run-cmd
+    log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$ODIR odir)
+    cmd = (args = cmd.split ' ').splice 0 1 # splice alters args and returns the removed item
+    cp = CP.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
+    cp.on \close (code) -> if code is 0 then resolve! else reject!
+
+  async function run-fn then try await t.fun ipath, odir; resolve! catch err then reject err
