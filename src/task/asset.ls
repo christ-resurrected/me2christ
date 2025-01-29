@@ -26,7 +26,6 @@ module.exports =
     const ODIR = Path.resolve Dir.SRC_SITE_RESOURCE, \symbol
     const SYMBOLS =
       link_external: \https://www.iconbolt.com/iconsets/remix-icon-fill/external-link.svg
-      red_x: \https://pixabay.com/get/gde3693cabe6566d09422464c057147a85a81f3afa5e19082f79923816464dd98b67595c691487fc9375df657215fda33.svg
     for key, url of SYMBOLS then download-asset key, url, ODIR
 
   convert-tract-pdfs-to-pngs: -> # dependencies: imagemagick and optipng
