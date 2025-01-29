@@ -2,6 +2,7 @@ Chalk = require \chalk
 Fs    = require \fs
 P     = require \path
 Perf  = require \perf_hooks .performance
+Timer = require \node:timers/promises
 Dir   = require \./constants .dir
 Run   = require \./task.run
 
@@ -28,7 +29,7 @@ module.exports = me =
         t.running.push path
         clearTimeout t.timer
         t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
-        await new Promise -> setTimeout it, 0ms # allow async neovim file writes to be discarded before proceeding
+        await Timer.setTimeout 0ms # allow async neovim file writes to be discarded before proceeding
         ipath = P.resolve t.srcdir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
