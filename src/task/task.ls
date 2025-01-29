@@ -28,8 +28,8 @@ module.exports = me =
       try
         t.guard.push path
         await Timer.setTimeout 0ms # allow async neovim file writes to be discarded before proceeding
-        clearTimeout t.timer
-        t.timer = setTimeout (-> t.guard = []), 1000ms  # fix suspected issue where t.guard is not clearing
+        # clearTimeout t.timer
+        # t.timer = setTimeout (-> t.guard = []), 1000ms  # fix suspected issue where t.guard is not clearing
         ipath = P.resolve t.srcdir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
