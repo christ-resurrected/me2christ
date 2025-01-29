@@ -44,7 +44,7 @@ module.exports = me =
       finally then t.running = t.running.filter -> it isnt path
 
 function run-task t, ipath then new Promise (resolve, reject) ->>
-  odir = P.dirname P.resolve Dir.BUILD, P.relative Dir.SRC, ipath
+  odir = P.dirname P.resolve (t.out || Dir.BUILD), P.relative Dir.SRC, ipath
   if !Fs.existsSync odir then Fs.mkdirSync odir, recursive:true
   if t.fun then run-fn! else run-cmd!
 

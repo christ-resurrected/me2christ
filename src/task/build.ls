@@ -40,10 +40,12 @@ const TASKS = T.init const _TASKS =
     dir: "#{Dirname.SITE}/resource"
     pat: '**/*.svg'
     pid: \site_pug
-  site_resource_svg_pug:
+  site_resource_pug:
     dir: "#{Dirname.SITE}/resource"
-    fun: require \./resource.svg .compile
-    pat: '**/*.svg.pug'
+    fun: require \./task-pug .render
+    out: Dir.SRC
+    oxt: \svg
+    pat: '**/*.pug'
   task_favicon:
     dir: Dirname.TASK
     fun: require \./favicon unless Flag.prod
