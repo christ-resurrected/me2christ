@@ -23,11 +23,10 @@ const OPTS =
 module.exports = me =
   external-links: []
 
-  render: (ipath, odir) ->>
+  render: (ipath, opath) ->>
     t0 = Perf.now!
     me.external-links = []
     html = await Posthtml Pug.renderFile ipath, OPTS
-    opath = P.resolve odir, P.basename ipath.replace /\.pug$/ \.html
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!
     prod = if Flag.prod then '' else Chalk.yellow "prod disabled"

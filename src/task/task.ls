@@ -54,4 +54,9 @@ function run-task t, ipath then new Promise (resolve, reject) ->>
     cp = CP.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
     cp.on \close (code) -> if code is 0 then resolve! else reject!
 
-  async function run-fn then try await t.fun ipath, odir; resolve! catch err then reject err
+  async function run-fn
+    try
+      opath = P.resolve odir, P.basename ipath.replace /\.pug$/ ".#{t.oxt}"
+      await t.fun ipath, opath
+      resolve!
+    catch err then reject err
