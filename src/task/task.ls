@@ -2,7 +2,7 @@ Chalk = require \chalk
 Fs    = require \fs
 P     = require \path
 Perf  = require \perf_hooks .performance
-Timer = require \node:timers/promises
+Sleep = require \node:timers/promises .setTimeout
 Dir   = require \./constants .dir
 Run   = require \./task.run
 
@@ -27,7 +27,7 @@ module.exports = me =
       return if t.guard.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
       try
         t.guard.push path
-        await Timer.setTimeout 0ms # allow async neovim file writes to be discarded before proceeding
+        await Sleep 0 # allow async neovim file writes to be discarded before proceeding
         # clearTimeout t.timer
         # t.timer = setTimeout (-> t.guard = []), 1000ms  # fix suspected issue where t.guard is not clearing
         ipath = P.resolve t.srcdir, path
