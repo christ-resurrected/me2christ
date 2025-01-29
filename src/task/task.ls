@@ -23,19 +23,18 @@ module.exports = me =
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     t.running = [] # debounce runs when multiple events are fired when neovim writes a file
     Fs.watch t.srcdir, recursive:true, (_, path) ->>
-      return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
-      clearTimeout t.timer if t.timer
-      t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
-      t.running.push path
-      await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
       try
+        return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
+        clearTimeout t.timer if t.timer
+        t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
+        t.running.push path
+        await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
         ipath = P.resolve t.srcdir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
           pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
           await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
-        else
-          await Run t, ipath
+        else await Run t, ipath
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
       finally then t.running = t.running.filter -> it isnt path
