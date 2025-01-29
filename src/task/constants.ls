@@ -7,7 +7,7 @@ const DIRNAME =
   SITE : \site
   TASK : \task
 
-Assert DIRNAME.BUILD, P.basename cwd = process.cwd!
+Assert.equal P.basename(cwd = process.cwd!), DIRNAME.BUILD
 
 const DIR =
   BUILD: cwd
