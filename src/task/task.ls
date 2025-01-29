@@ -23,12 +23,12 @@ module.exports = me =
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
     t.running = [] # debounce runs when multiple events are fired when neovim writes a file
     Fs.watch t.srcdir, recursive:true, (_, path) ->>
+      return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
       try
-        return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
         t.running.push path
         clearTimeout t.timer
         t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
-        await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
+        await new Promise -> setTimeout it, 0ms # allow async neovim file writes to be discarded before proceeding
         ipath = P.resolve t.srcdir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
