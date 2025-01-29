@@ -1,5 +1,4 @@
 Emitter = require \events .EventEmitter
-Dirname = require \./constants .dirname
 Dir     = require \./constants .dir
 T       = require \./task
 
@@ -16,11 +15,11 @@ const TASKS = T.init const _TASKS =
     pat: \**/*.js
   ls:
     cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
-    dir: Dirname.TASK
+    dir: Dir.SRC_TASK
     pat: \**/*.ls
   sss:
     cmd: "yarn --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
-    dir: Dirname.SITE
+    dir: Dir.SRC_SITE
     pat: \**/*.sss
 
 module.exports = me = (new Emitter!) with

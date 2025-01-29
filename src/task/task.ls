@@ -9,10 +9,9 @@ Run   = require \./task.run
 module.exports = me =
   init: (tasks) ->
     for tid, t of tasks
+      t.glob = P.resolve t.dir, t.pat
       t.ptask = tasks[t.pid] if t.pid
-      t.srcdir = P.resolve Dir.SRC, t.dir
       t.tid = tid
-      t.glob = P.resolve t.srcdir, t.pat
     tasks
 
   run-tasks: (tasks) ->>
@@ -21,16 +20,16 @@ module.exports = me =
     log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t0).toFixed 0}ms"
 
   start-watching: (group, emitter, t) ->
-    log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
+    log "start watching #group #{t.tid}: #{t.dir}/#{t.pat}"
     t.guard = [] # guard against concurrent async runs on same file e.g. when neovim writes a file
-    Fs.watch t.srcdir, recursive:true, (_, path) ->>
+    Fs.watch t.dir, recursive:true, (_, path) ->>
       return if t.guard.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
       try
         t.guard.push path
         await Sleep 0 # allow async neovim file writes to be discarded before proceeding
         # clearTimeout t.timer
         # t.timer = setTimeout (-> t.guard = []), 1000ms  # fix suspected issue where t.guard is not clearing
-        ipath = P.resolve t.srcdir, path
+        ipath = P.resolve t.dir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
           pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
