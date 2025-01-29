@@ -1,8 +1,8 @@
 Chalk     = require \chalk
 Htmlnano  = require \htmlnano
 Posthtml  = require \posthtml
-PostBool  = require \posthtml-boolean-attributes
-PostImgAS = require \posthtml-img-autosize
+PostBool  = require \posthtml-boolean-attributes # e.g. <input required>
+PostImgAS = require \posthtml-img-autosize # add img width and height, to pass lighthouse tests
 Dir       = require \./constants .dir
 Flag      = require \./flag
 
