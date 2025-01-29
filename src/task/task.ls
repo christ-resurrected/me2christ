@@ -21,13 +21,12 @@ module.exports = me =
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.srcdir}/#{t.pat}"
-    t.running = [] # dedupe runs when multiple events are fired when neovim writes a file
+    t.running = [] # debounce runs when multiple events are fired when neovim writes a file
     Fs.watch t.srcdir, recursive:true, (_, path) ->>
       return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
       clearTimeout t.timer if t.timer
       t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
       t.running.push path
-      t.runid = runid = new Date!getTime!
       await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
       try
         ipath = P.resolve t.srcdir, path
@@ -37,7 +36,6 @@ module.exports = me =
           await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
         else
           await Run t, ipath
-        return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
       finally then t.running = t.running.filter -> it isnt path
