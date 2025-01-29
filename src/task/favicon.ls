@@ -7,8 +7,7 @@ Dir = require \./constants .dir
 
 const FAVICON_PATH = P.resolve Dir.SRC_SITE_ASSET, \favicon
 
-module.exports = ->>
-  ipath = P.resolve Dir.SRC_SITE_RESOURCE, \favicon, \favicon.pug
+module.exports = (ipath) ->>
   svg = Pug.renderFile ipath, filters: postcss: require \./pug-filter/postcss
   Fs.writeFileSync spath = "#FAVICON_PATH/favicon.svg", svg
   c = Fi.config.defaults
