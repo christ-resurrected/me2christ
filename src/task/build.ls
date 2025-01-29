@@ -48,7 +48,7 @@ const TASKS = T.init const _TASKS =
     pid: \site_pug
   task_favicon:
     dir: Dirname.TASK
-    fun: require \./favicon unless Flag.prod
+    fun: require \./favicon unless Flag.prod # favicons package not available in production
     pat: \*.pug
   task_ls:
     cmd: "yarn --silent lsc --output $ODIR $IN"
