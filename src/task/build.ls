@@ -41,7 +41,7 @@ const TASKS = T.init const _TASKS =
     fun: require \./task-pug .render
     out: Dir.SRC
     oxt: \svg
-    pat: '**/*.pug'
+    pat: '*.pug'
   site_resource_svg:
     dir: "#{Dirname.SITE}/resource"
     pat: '**/*.svg'
