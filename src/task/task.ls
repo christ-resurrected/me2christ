@@ -1,9 +1,9 @@
 Chalk = require \chalk
-CP    = require \child_process
 Fs    = require \fs
 P     = require \path
 Perf  = require \perf_hooks .performance
 Dir   = require \./constants .dir
+Run   = require \./task.run
 
 module.exports = me =
   init: (tasks) ->
@@ -16,7 +16,7 @@ module.exports = me =
 
   run-tasks: (tasks) ->>
     t0 = Perf.now!
-    await Promise.all p = [run-task t, f for _, t of tasks for f in Fs.globSync t.glob].flat!flat!
+    await Promise.all p = [Run t, f for _, t of tasks for f in Fs.globSync t.glob].flat!flat!
     log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t0).toFixed 0}ms"
 
   start-watching: (group, emitter, t) ->
@@ -31,30 +31,12 @@ module.exports = me =
       await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
       try
         ipath = P.resolve t.srcdir, path
-        if (t.cmd or t.fun) and Fs.existsSync ipath then await run-task t, ipath
+        if (t.cmd or t.fun) and Fs.existsSync ipath then await Run t, ipath
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
           ixt = P.extname t.ptask.pat
           pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
-          await if pfiles.length is 1 then run-task t.ptask, pfiles.0 else me.run-tasks [t.ptask]
+          await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
         return unless runid is t.runid # debounce: do not emit events if another run has started
         emitter.emit if t.rsn then \restart else \built
       catch err then log "ERROR: #err" if err; emitter.emit \error
       finally then t.running = t.running.filter -> it isnt path
-
-function run-task t, ipath then new Promise (resolve, reject) ->>
-  odir = P.dirname P.resolve (t.out || Dir.BUILD), P.relative Dir.SRC, ipath
-  if !Fs.existsSync odir then Fs.mkdirSync odir, recursive:true
-  if t.fun then run-fn! else run-cmd!
-
-  async function run-cmd
-    log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$ODIR odir)
-    cmd = (args = cmd.split ' ').splice 0 1 # splice alters args and returns the removed item
-    cp = CP.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
-    cp.on \close (code) -> if code is 0 then resolve! else reject!
-
-  async function run-fn
-    try
-      opath = P.resolve odir, P.basename ipath.replace /\.pug$/ ".#{t.oxt}"
-      await t.fun ipath, opath
-      resolve!
-    catch err then reject err
