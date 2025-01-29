@@ -25,9 +25,9 @@ module.exports = me =
     Fs.watch t.srcdir, recursive:true, (_, path) ->>
       try
         return if t.running.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
-        clearTimeout t.timer if t.timer
-        t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
         t.running.push path
+        clearTimeout t.timer
+        t.timer = setTimeout (-> t.running = []), 1000ms  # fix suspected issue where t.running is not clearing
         await new Promise -> setTimeout it, 1ms # allow async neovim file writes to be discarded before proceeding
         ipath = P.resolve t.srcdir, path
         if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
