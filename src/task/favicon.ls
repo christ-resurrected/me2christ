@@ -6,7 +6,7 @@ Pug = require \pug
 Dir = require \./constants .DIR
 
 module.exports = (ipath) ->>
-  svg = Pug.renderFile ipath, filters: postcss: require \./pug-filter/postcss
+  svg = Pug.renderFile ipath, filters: sss: require \./pug-filter/sss
   Fs.writeFileSync spath = "#{Dir.SRC_SITE_ASSET_FAVICON}/favicon.svg", svg
   c = Fi.config.defaults
   c.output.files = false
