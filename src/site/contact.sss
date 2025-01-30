@@ -1,21 +1,4 @@
-fieldset
-  border: 0
-  max-width: 600px
-
-  &:disabled *
-    cursor: wait
-
-label
-  font-weight: bold
-
-legend
-  padding: 1rem 0
-
-textarea
-  resize: vertical
-
-input,
-textarea
+@define-mixin input
   width: 100%
   padding: 0.5rem
   border: 1px solid #888
@@ -25,6 +8,26 @@ textarea
   &:user-invalid
     color: - #fee
     border: 2px solid #f00
+
+fieldset
+  border: 0
+  max-width: 600px
+
+  &:disabled *
+    cursor: wait
+
+input
+  @mixin input
+
+label
+  font-weight: bold
+
+legend
+  padding: 1rem 0
+
+textarea
+  @mixin input
+  resize: vertical
 
 #error
   border: 0
