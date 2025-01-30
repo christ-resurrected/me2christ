@@ -8,7 +8,6 @@ Build    = require \./build
 Check    = require \./check
 Consts   = require \./constants
 Dir      = require \./constants .dir
-Dirname  = require \./constants .dirname
 Favicon  = require \./favicon
 Flag     = require \./flag
 Lint     = require \./lint
