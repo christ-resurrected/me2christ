@@ -2,7 +2,7 @@ Chalk = require \chalk
 CP    = require \child_process
 Fs    = require \fs
 P     = require \path
-Dir   = require \./constants .dir
+Dir   = require \./constants .DIR
 
 module.exports = (t, ipath) ->
   new Promise (resolve, reject) ->>

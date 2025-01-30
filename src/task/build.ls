@@ -1,7 +1,7 @@
 Emitter = require \events .EventEmitter
 Fs      = require \fs
 C       = require \./constants
-Dir     = require \./constants .dir
+Dir     = require \./constants .DIR
 Flag    = require \./flag
 T       = require \./task
 

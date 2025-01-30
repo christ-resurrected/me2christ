@@ -2,7 +2,7 @@
 Http = require \http
 Fs   = require \fs
 Path = require \path
-Dir  = require \./constants .dir
+Dir  = require \./constants .DIR
 
 const MIME_TYPES =
   default: "application/octet-stream"

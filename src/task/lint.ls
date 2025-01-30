@@ -1,5 +1,5 @@
 Emitter = require \events .EventEmitter
-Dir     = require \./constants .dir
+Dir     = require \./constants .DIR
 T       = require \./task
 
 const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"

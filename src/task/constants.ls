@@ -19,7 +19,7 @@ DIR.SRC_TASK = P.resolve DIR.SRC, DIRNAME.TASK
 
 module.exports =
   APPNAME: \me2christ
-  dir    : DIR
+  DIR    : DIR
   KJVPATH: P.resolve DIR.SRC_SITE_RESOURCE, \verses-1769.json
 
 A Fs.existsSync DIR.BUILD

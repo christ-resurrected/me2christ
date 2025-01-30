@@ -2,7 +2,7 @@ Fs   = require \fs
 Http = require \https
 Path = require \path
 C    = require \./constants
-Dir  = require \./constants .dir
+Dir  = require \./constants .DIR
 
 module.exports =
   download: ->

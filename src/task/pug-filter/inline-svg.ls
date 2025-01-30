@@ -1,6 +1,6 @@
 Fs  = require \fs
 P   = require \path
-Dir = require \../constants .dir
+Dir = require \../constants .DIR
 
 module.exports = (css) ->
   const ENCODING = \base64 # cssnano seems to compress base64 better than utf8

@@ -3,7 +3,7 @@ Fs    = require \fs
 P     = require \path
 Perf  = require \perf_hooks .performance
 Sleep = require \node:timers/promises .setTimeout
-Dir   = require \./constants .dir
+Dir   = require \./constants .DIR
 Run   = require \./task.run
 
 module.exports = me =

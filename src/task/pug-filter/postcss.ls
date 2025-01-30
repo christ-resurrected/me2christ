@@ -8,7 +8,7 @@ PresEnv = require \postcss-preset-env  # add vendor prefixes
 ShColor = require \postcss-short-color # e.g. color: fg bg
 ShSize  = require \postcss-short-size
 Sugarss = require \sugarss
-Dir     = require \../constants .dir
+Dir     = require \../constants .DIR
 Flag    = require \../flag
 
 const IMPORT = Import path: "#{Dir.SRC_SITE}/lib/postcss-import"

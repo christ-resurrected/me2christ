@@ -3,7 +3,7 @@ Fi  = require \favicons
 Fs  = require \fs
 P   = require \path
 Pug = require \pug
-Dir = require \./constants .dir
+Dir = require \./constants .DIR
 
 module.exports = (ipath) ->>
   svg = Pug.renderFile ipath, filters: postcss: require \./pug-filter/postcss

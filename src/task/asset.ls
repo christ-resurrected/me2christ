@@ -2,7 +2,7 @@ Fs      = require \fs
 Http    = require \https
 P       = require \child_process
 Path    = require \path
-Dir     = require \./constants .dir
+Dir     = require \./constants .DIR
 
 module.exports =
   download-emoji: ->

@@ -3,7 +3,7 @@ Htmlnano  = require \htmlnano
 Posthtml  = require \posthtml
 PostBool  = require \posthtml-boolean-attributes # e.g. <input required>
 PostImgAS = require \posthtml-img-autosize # add img width and height, to pass lighthouse tests
-Dir       = require \./constants .dir
+Dir       = require \./constants .DIR
 Flag      = require \./flag
 
 module.exports = (html) ->>
