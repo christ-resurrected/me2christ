@@ -5,6 +5,8 @@ Perf     = require \perf_hooks .performance
 Pug      = require \pug
 C        = require \./constants
 Flag     = require \./flag
+InlnSvg  = require \./pug-filter/inline-svg
+Postcss  = require \./pug-filter/postcss
 Posthtml = require \./posthtml
 
 const KJV = Fs.readFileSync C.KJVPATH, \utf8
@@ -16,7 +18,7 @@ const OPTS =
     link: ->
       for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
       it.replace /\[(.+?)\]\((.+?)\)/g '<a href="$2">$1</a>'
-    sss: require \./pug-filter/sss
+    sss: -> InlnSvg Postcss it
   VERSES: JSON.parse(KJV.replaceAll '#' '')
 
 module.exports = me =
