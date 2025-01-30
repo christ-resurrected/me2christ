@@ -11,6 +11,21 @@ label
 legend
   padding: 1rem 0
 
+textarea
+  resize: vertical
+
+input,
+textarea
+  width: 100%
+  padding: 0.5rem
+  border: 1px solid #888
+  border-radius: 4px
+  font-size: 1rem
+
+  &:user-invalid
+    color: - #fee
+    border: 2px solid #f00
+
 #error
   border: 0
   border-radius: 4px
@@ -40,21 +55,6 @@ legend
 .field
   +.field
     margin-top: 1rem
-
-  textarea
-    resize: vertical
-
-  input,
-  textarea
-    width: 100%
-    padding: 0.5rem
-    border: 1px solid #888
-    border-radius: 4px
-    font-size: 1rem
-
-    &:user-invalid
-      color: - #fee
-      border: 2px solid #f00
 
 .labels
   color: #333
