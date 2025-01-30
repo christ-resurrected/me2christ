@@ -25,7 +25,7 @@ function show-help
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
   * cmd:'b ' level:0 desc:'build all'             fn:Build.all
-  * cmd:'bd' level:0 desc:'build debug tasks'     fn:Build.debug
+  * cmd:'bd' level:0 desc:'build.debug'           fn:Build.debug
   * cmd:'c ' level:0 desc:"check external links"  fn:Check.check-external-links
   * cmd:'f ' level:0 desc:'generate favicon'      fn:Favicon
   * cmd:'h ' level:0 desc:'help (show commands)'  fn:show-help
