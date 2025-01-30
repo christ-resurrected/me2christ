@@ -65,5 +65,5 @@ module.exports = me = (new Emitter!) with
       for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
       me.emit \restart
     catch err then log err; me.emit \error
-  debug: -> for _, t of TASKS then log t
+  debug: -> for tid, t of TASKS then log tid, t
   start: -> for _, t of TASKS then T.start-watching \build, me, t
