@@ -2,6 +2,10 @@ Fs  = require \fs
 P   = require \path
 Dir = require \../constants .DIR
 
+# Postcss inline-svg plugin is async only so yields error.
+#
+# Therefore this sync filter is required.
+#
 module.exports = (css) ->
   const ENCODING = \base64 # cssnano seems to compress base64 better than utf8
   for m in [...css.matchAll /inline-svg\((.+?)\)/g]
