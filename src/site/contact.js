@@ -5,7 +5,7 @@ addEventListener("DOMContentLoaded", () => {
 
   document.forms[0].addEventListener('submit', (e) => {
     e.preventDefault()
-    elError.style.display = 'none'
+    elError.innerHTML = ''
     req = { method: 'POST', body: new URLSearchParams(new FormData(e.target)) }
     elFieldset.disabled = true // must disable AFTER getting FormData
     elSubmit.classList.add('spinner')
@@ -17,7 +17,6 @@ addEventListener("DOMContentLoaded", () => {
 
   function showError(err) {
     elError.innerHTML = err
-    elError.style.display = 'block'
     elFieldset.disabled = false
     elSubmit.classList.remove('spinner')
   }
