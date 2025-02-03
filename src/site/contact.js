@@ -8,22 +8,21 @@ addEventListener("DOMContentLoaded", () => {
     e.preventDefault()
     elError.innerHTML = ''
     req = { method: 'POST', body: new URLSearchParams(new FormData(e.target)) }
-    elFieldset.disabled = true // must disable AFTER getting FormData
-    elSubmit.classList.add('spinner')
-    fetch(e.target.action, req).then(handleResponse).then(handleResponseText).then(showSuccess).catch(showError)
+    disableUI(true) // must happen AFTER reading form!
+    fetch(e.target.action, req).then(handleResponse)
   });
 
-  function handleResponse(res) { return res.text() }
-  function handleResponseText(t) { if (t != 'OK') throw new Error(t) }
-
-  function showError(err) {
-    elError.innerHTML = err
-    elFieldset.disabled = false
-    elSubmit.classList.remove('spinner')
+  function handleResponse(res) {
+    disableUI(false)
+    if (res.status == 200) {
+      elFieldset.style.display = 'none'
+      d.querySelector('#success').style.display = 'block'
+    }
+    else res.text().then((text) => { elError.innerHTML = text })
   }
 
-  function showSuccess() {
-    elFieldset.style.display = 'none'
-    d.querySelector('#success').style.display = 'block'
+  function disableUI(disabled) {
+    elFieldset.disabled = disabled
+    elSubmit.classList.toggle('spinner', disabled)
   }
 })
