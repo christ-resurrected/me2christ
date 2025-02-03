@@ -1,25 +1,21 @@
 addEventListener("DOMContentLoaded", () => {
-  const d = document
-  const elError = d.querySelector('#error')
-  const elFieldset = d.querySelector('fieldset')
-  const elSubmit = d.querySelector('#submit')
-  const elSuccess = d.querySelector('#success')
+  function el(sel) { return document.querySelector(sel) }
 
   document.forms[0].addEventListener('submit', (e) => {
     e.preventDefault()
-    elError.innerHTML = ''
+    el('#error').innerHTML = ''
     req = { method: 'POST', body: new URLSearchParams(new FormData(e.target)) }
     disableUI(true) // must happen AFTER reading form!
     fetch(e.target.action, req).then(handleResponse)
   });
 
   function disableUI(disabled) {
-    elFieldset.disabled = disabled
-    elSubmit.classList.toggle('spinner', disabled)
+    el('fieldset').disabled = disabled
+    el('#submit').classList.toggle('spinner', disabled)
   }
 
   function handleResponse(res) {
     disableUI(false)
-    res.text().then((text) => (res.status == 200 ? elSuccess : elError).innerHTML = text)
+    res.text().then((text) => (res.status == 200 ? el('#success') : el('#error')).innerHTML = text)
   }
 })
