@@ -3,6 +3,7 @@ addEventListener("DOMContentLoaded", () => {
   const elError = d.querySelector('#error')
   const elFieldset = d.querySelector('fieldset')
   const elSubmit = d.querySelector('#submit')
+  const elSuccess = d.querySelector('#success')
 
   document.forms[0].addEventListener('submit', (e) => {
     e.preventDefault()
@@ -14,10 +15,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function handleResponse(res) {
     disableUI(false)
-    if (res.status == 200) {
-      elFieldset.style.display = 'none'
-      d.querySelector('#success').style.display = 'block'
-    }
+    if (res.status == 200) { elFieldset.style.display = 'none'; elSuccess.style.display = 'block' }
     else res.text().then((text) => { elError.innerHTML = text })
   }
 
