@@ -1,7 +1,8 @@
 addEventListener("DOMContentLoaded", () => {
-  const elError = document.getElementById('error')
-  const elFieldset = document.getElementsByTagName('fieldset')[0]
-  const elSubmit = document.getElementById('submit')
+  const d = document
+  const elError = d.querySelector('#error')
+  const elFieldset = d.querySelector('fieldset')
+  const elSubmit = d.querySelector('#submit')
 
   document.forms[0].addEventListener('submit', (e) => {
     e.preventDefault()
@@ -23,6 +24,6 @@ addEventListener("DOMContentLoaded", () => {
 
   function showSuccess() {
     elFieldset.style.display = 'none'
-    document.getElementById('success').style.display = 'block'
+    d.querySelector('#success').style.display = 'block'
   }
 })
