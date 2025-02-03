@@ -14,6 +14,7 @@ append main
   .card
     h1 Contact Me
     .contact
+      #success.mt-8
       form(method='POST' action='https://worker.me2christ.com')
         fieldset
           // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
@@ -31,9 +32,6 @@ append main
           button(type='submit')#submit.mt-6 Send
           #error.mt-6
           div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
-      #success.mt-8
-        p Thank you.
-        p Your message has been successfully sent.
 
 append footer
   +footer('light')

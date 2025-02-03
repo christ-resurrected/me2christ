@@ -15,8 +15,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function handleResponse(res) {
     disableUI(false)
-    if (res.status == 200) { elFieldset.style.display = 'none'; elSuccess.style.display = 'block' }
-    else res.text().then((text) => elError.innerHTML = text)
+    res.text().then((text) => (res.status == 200 ? elSuccess : elError).innerHTML = text)
   }
 
   function disableUI(disabled) {

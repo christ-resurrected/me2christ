@@ -36,10 +36,12 @@ textarea
   font-size: 1rem
   padding: 0.75rem
 
-#success
-  display: none
+#success:not(:empty)
   height: 30rem
   text-align: center
+
+  & ~ form
+    display: none
 
 .contact
   display: flex
