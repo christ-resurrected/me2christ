@@ -13,13 +13,13 @@ addEventListener("DOMContentLoaded", () => {
     fetch(e.target.action, req).then(handleResponse)
   });
 
-  function handleResponse(res) {
-    disableUI(false)
-    res.text().then((text) => (res.status == 200 ? elSuccess : elError).innerHTML = text)
-  }
-
   function disableUI(disabled) {
     elFieldset.disabled = disabled
     elSubmit.classList.toggle('spinner', disabled)
+  }
+
+  function handleResponse(res) {
+    disableUI(false)
+    res.text().then((text) => (res.status == 200 ? elSuccess : elError).innerHTML = text)
   }
 })
