@@ -15,7 +15,7 @@ append main
     h1 Contact Me
     .contact
       #success.mt-8
-      form(action='https://worker.me2christ.com' method='POST')
+      form(action='https://worker.me2christ.com')
         fieldset
           // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
           mixin field(tag, id, label, minlen, maxlen, desc = '')
