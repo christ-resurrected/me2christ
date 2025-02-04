@@ -17,11 +17,8 @@
 h2:only-child
   margin: 0
 
-.intro .verse
-  @mixin tip-anchor
-
-.exclaim::before
-  @mixin glyph emoji/excl_double
+.calvinism h2::first-letter
+  color: #fff
 
 .doctrine div+div
   margin-top: 1rem
@@ -56,8 +53,5 @@ h2:only-child
     &:last-child
       margin-bottom: 0
 
-  .warn::before
-    @mixin glyph emoji/warning
-
-.calvinism h2::first-letter
-  color: #fff
+.warn::before
+  @mixin glyph emoji/warning
