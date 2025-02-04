@@ -4,7 +4,7 @@ addEventListener("DOMContentLoaded", () => {
   document.forms[0].addEventListener('submit', (e) => {
     e.preventDefault()
     el('#error').innerHTML = ''
-    req = { method: 'POST', body: new URLSearchParams(new FormData(e.target)) }
+    req = { method: 'POST', body: new FormData(e.target) }
     disableUI(true) // must happen AFTER reading form!
     fetch(e.target.action, req).then(handleResponse)
   });
