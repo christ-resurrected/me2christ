@@ -11,7 +11,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function disableUI(disabled) {
     el('fieldset').disabled = disabled
-    el('#submit').classList.toggle('spinner', disabled)
+    el('button').classList.toggle('spinner', disabled)
   }
 
   function handleResponse(res) {

@@ -29,7 +29,7 @@ append main
           +field('input', 'name', 'Name', 2, 40)(type='text')
           +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
           +field('textarea', 'message', 'Message', 40, 800)(cols=40 rows=7)
-          button(type='submit')#submit.mt-6 Send
+          button(type='submit').mt-6 Send
           #error.mt-6
           div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
 
