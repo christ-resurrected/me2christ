@@ -21,20 +21,19 @@ module.exports = me =
 
   start-watching: (group, emitter, t) ->
     log "start watching #group #{t.tid}: #{t.dir}/#{t.pat}"
-    t.guard = [] # guard against concurrent async runs on same file e.g. when neovim writes a file
-    Fs.watch t.dir, recursive:true, (_, path) ->>
-      return if t.guard.includes path or not P.matchesGlob path, t.pat
-      try
-        t.guard.push path
-        await Sleep 0 # allow async neovim file writes to be discarded before proceeding
-        # clearTimeout t.timer
-        # t.timer = setTimeout (-> t.guard = []), 1000ms  # fix suspected issue where t.guard is not clearing
-        ipath = P.resolve t.dir, path
-        if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
-          ixt = P.extname t.ptask.pat
-          pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
-          await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
-        else await Run t, ipath
-        emitter.emit if t.rsn then \restart else \built
-      catch err then log "ERROR: #err" if err; emitter.emit \error
-      finally then t.guard = t.guard.filter -> it isnt path
+    function watch-once
+      w = Fs.watch t.dir, recursive:true, (_, path) ->>
+        return unless P.matchesGlob path, t.pat
+        try
+          w.close!
+          await Sleep 0 # allow async neovim file writes to be discarded before proceeding
+          ipath = P.resolve t.dir, path
+          if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
+            ixt = P.extname t.ptask.pat
+            pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
+            await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
+          else await Run t, ipath
+          emitter.emit if t.rsn then \restart else \built
+        catch err then log "ERROR: #err" if err; emitter.emit \error
+        finally then watch-once! # git operations break existing watch, so start a new watch
+    watch-once!
