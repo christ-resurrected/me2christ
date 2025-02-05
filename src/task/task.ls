@@ -23,7 +23,7 @@ module.exports = me =
     log "start watching #group #{t.tid}: #{t.dir}/#{t.pat}"
     t.guard = [] # guard against concurrent async runs on same file e.g. when neovim writes a file
     Fs.watch t.dir, recursive:true, (_, path) ->>
-      return if t.guard.includes path or path[*-1] is \~ or not P.matchesGlob path, t.pat
+      return if t.guard.includes path or not P.matchesGlob path, t.pat
       try
         t.guard.push path
         await Sleep 0 # allow async neovim file writes to be discarded before proceeding
