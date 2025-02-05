@@ -26,7 +26,7 @@ module.exports = me =
         return unless P.matchesGlob path, t.pat
         try
           w.close!
-          await Sleep 0 # allow async neovim file writes to be discarded before proceeding
+          await Sleep 0 # allow multi async file ops to be discarded before proceeding
           ipath = P.resolve t.dir, path
           if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
             ixt = P.extname t.ptask.pat
