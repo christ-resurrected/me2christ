@@ -30,7 +30,7 @@ module.exports =
   convert-tract-pdfs-to-pngs: -> # dependencies: imagemagick and optipng
     Fs.rmSync tdir = \/tmp/tract {force:true, recursive:true}; Fs.mkdirSync tdir
     for f in Fs.readdirSync idir = process.env.M2C_TRACT_PDF_PATH when f.endsWith \.pdf then
-      P.execSync log "convert -density 144 #idir/#f #tdir/#{f.replace \.pdf \-%02d.png}"
+      P.execSync log "magick -density 144 #idir/#f -strip #tdir/#{f.replace \.pdf \-%02d.png}"
     P.execSync "optipng -quiet #tdir/*.png" # reduce file sizes for productionn
     for png in Fs.readdirSync tdir then Fs.copyFileSync "#tdir/#png" "#{Dir.SRC_SITE_ASSET}/tract/#png"
 
