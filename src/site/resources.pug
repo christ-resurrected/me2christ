@@ -6,13 +6,14 @@ append head
   style: include:sss resources.tract.sss
   style: :sss
     @import 'background.sss'
-    @mixin background #eee, #eee, #888, #666, #000
+    @mixin background #eee, #eee, #eee, #888, #000
 
 append header
   +header('light')
 
 append main
   .cards.light
+    include ministry.contact.pug
     include resources.tract.pug
   .cards.dark
     .card

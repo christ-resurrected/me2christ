@@ -1,0 +1,28 @@
+append head
+  style: include:sss contact.sss
+  style: include:sss contact-button.sss
+  script: include contact.js
+  script: include contact-count.js
+  script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
+
+.card
+  h1 Contact Me
+  .contact
+    #success.mt-8
+    form(action=process.env.WORKER_URL)
+      fieldset
+        // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
+        mixin field(tag, id, label, minlen, maxlen, desc = '')
+          - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
+          .field
+            .labels
+              label(for=id)= label
+              span(id=`${id}-count`).count
+            #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
+        legend If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance from demons, or baptism, or need help with street ministry and evangelism, or have any questions, please contact me and I will try to help.
+        +field('input', 'name', 'Name', 2, 40)(type='text')
+        +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
+        +field('textarea', 'message', 'Message', 40, 800)(cols=40 rows=7)
+        button(type='submit').mt-6 Send
+        #error.mt-6
+        div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
