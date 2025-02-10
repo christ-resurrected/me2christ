@@ -1,7 +1,5 @@
 script: include ministry.contact.js
 script: include ministry.contact-count.js
-script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
-
 style: include:sss ministry.contact.sss
 style: include:sss ministry.contact-button.sss
 style .form-ui {display: none}
@@ -29,7 +27,7 @@ style .form-ui {display: none}
           +field('textarea', 'message', 'Message', 40, 800)(cols=40 rows=7)
           button(type='submit').mt-6 Send
           #error.mt-6
-          div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
+          include ministry.contact.turnstile.pug
         noscript: p Please enable javascript in your web browser to show the contact form.
 
 script document.querySelector('.form-ui').style.display = 'block'
