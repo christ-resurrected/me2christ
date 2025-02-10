@@ -1,7 +1,8 @@
-@define-mixin glyph $id, $mr:0.4rem
+@define-mixin glyph $id, $mr:0.4rem, $brightness:100%
   background: inline-svg($id)
   content: ''
   display: inline-block
+  filter: brightness($brightness)
   margin-right: $mr
   position: relative
   size: 1rem
