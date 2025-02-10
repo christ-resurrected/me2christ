@@ -6,8 +6,3 @@ mixin footer(theme)
   footer(class=theme)
     +nav('header')
     p Bible verses are quoted from the New King James and King James Versions.
-
-    style .contact-me {display: none}
-    p.contact-me.mb-0: :link [Contact Me](contact.html)
-    script document.getElementsByClassName('contact-me')[0].style.display = 'block'
-    noscript Please enable javascript to contact me
