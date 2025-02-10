@@ -30,4 +30,4 @@ style: include:sss ministry.contact.sss
           div(data-sitekey=process.env.TURNSTILE_SITE_KEY data-theme='light' data-size='flexible').cf-turnstile.mt-6
         noscript: p Please enable javascript in your web browser to show the contact form.
 
-script document.getElementsByClassName('form-ui')[0].style.display = 'block'
+script document.querySelector('.form-ui').style.display = 'block'
