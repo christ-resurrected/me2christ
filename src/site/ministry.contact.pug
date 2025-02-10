@@ -1,10 +1,10 @@
-append head
-  style .form-ui {display: none}
-  style: include:sss ministry.contact.sss
-  style: include:sss ministry.contact-button.sss
-  script: include ministry.contact.js
-  script: include ministry.contact-count.js
-  script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
+// BUG: append head seems to load js twice!?
+style .form-ui {display: none}
+style: include:sss ministry.contact-button.sss
+style: include:sss ministry.contact.sss
+script: include ministry.contact-count.js
+script: include ministry.contact.js
+script(src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer)
 
 .card
   h1 Contact Me
