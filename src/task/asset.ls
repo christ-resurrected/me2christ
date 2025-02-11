@@ -33,7 +33,7 @@ module.exports =
       ofile = f.replace \.pdf \-%02d
       P.execSync log "magick -density 144 #idir/#f -strip #tdir/#ofile.png"
       P.execSync log "magick -density 288 #idir/#f -sample 30% -strip #tdir/#{ofile}-thumbnail.png"
-    P.execSync "oxipng -o 4 #tdir/*.png" # reduce file sizes for production
+    P.execSync "oxipng --opt 4 --strip all #tdir/*.png" # reduce file sizes for production
     for png in Fs.readdirSync tdir then Fs.copyFileSync "#tdir/#png" "#{Dir.SRC_SITE_ASSET}/tract/#png"
 
 function download-asset key, url, odir then Http.get url, (res) ->
