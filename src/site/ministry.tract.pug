@@ -3,7 +3,7 @@ style: include:sss ministry.tract.sss
 mixin tract-image(basename, alt)
   - href = `asset/tract/${basename}.png`
   - thumb = `asset/tract/${basename}-thumbnail.png`
-  a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 750w, ${href} 1250w`)
+  a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 640w, ${href} 1250w`)
 .card.w-full
   h1 Gospel Tracts
   :hi The word *gospel* is translated from the Greek word **εὐαγγέλιον** which means *good news* or *glad tidings*. Jesus commands His disciples to go out into the world and preach this good news...
