@@ -8,5 +8,6 @@
   size: 1rem
   top: 2px
 
-.warn::before
-  @mixin glyph emoji/warning
+@define-mixin glyph-warn
+  .warn::before
+    @mixin glyph emoji/warning
