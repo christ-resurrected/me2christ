@@ -9,24 +9,24 @@ append header
   +header('dark')
 
 append main
-  .cards.dark.doctrines
-    include deception.intro.pug
-    include deception.protestant.pug
-  include deception.calvinism.pug
-  .cards.dark
-    .card.w-full
-      h1 Other False Doctrines
-      p These false doctrines mis-interpret Bible scripture to justify themselves.
-    - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
-    each o in others.sort()
-      .card.doctrine: +preamble(o)
-  .cards.dark
-    .card.w-full
-      h1 False Belief Systems
-      p These false belief systems deny the truth of Jesus Christ and the New Testament scriptures.
-    -const beliefs = ['Atheism', 'Buddhism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
-    each b in beliefs.sort()
-      +belief(b)
+  .dark
+    .cards: include deception.intro.pug
+    .cards.doctrines: include deception.protestant.pug
+    .cards.calvinism: include deception.calvinism.pug
+    .cards
+      .card.w-full
+        h1 Other False Doctrines
+        p These false doctrines mis-interpret Bible scripture to justify themselves.
+      - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
+      each o in others.sort()
+        .card.doctrine: +preamble(o)
+    .cards
+      .card.w-full
+        h1 False Belief Systems
+        p These false belief systems deny the truth of Jesus Christ and the New Testament scriptures.
+      -const beliefs = ['Atheism', 'Buddhism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
+      each b in beliefs.sort()
+        +belief(b)
 
 append footer
   +footer('dark')
