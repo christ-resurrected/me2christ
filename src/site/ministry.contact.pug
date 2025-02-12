@@ -18,13 +18,17 @@ style .form-ui {display: none}
               label(for=id)= label
               span(id=`${id}-count`).count
             #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
+              block
         legend
           p My name is Andrew and I am based in Bradford, UK.
           p.mb-0 If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance from demons, or baptism, or need training with street ministry / evangelism, or have any questions, please contact me and I will try to help.
         .form-ui
-          +field('input', 'name', 'Name', 2, 40)(type='text')
-          +field('input', 'email', 'Email', 2, 40, 'address')(type='email')
+          - const isTest = 0 // set to 1 to aid testing during development
+          +field('input', 'name', 'Name', 2, 40)(type='text' value=`${isTest ? 'test' : ''}`)
+          +field('input', 'email', 'Email', 2, 40, 'address')(type='email' value=`${isTest ? 'test@email.com' : ''}`)
           +field('textarea', 'message', 'Message', 40, 800)(cols=40 rows=7)
+            if isTest
+              p This is a test message to test email functionality
           button(type='submit').mt-6 Send
           #error.mt-6
           include ministry.contact.turnstile.pug
