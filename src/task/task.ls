@@ -25,6 +25,7 @@ module.exports = me =
       w = Fs.watch t.dir, recursive:true, (_, path) ->>
         return unless P.matchesGlob path, t.pat
         try
+          emitter.emit \restart if t.rsn # will build all on restart
           w.close!
           await Sleep 0 # allow multi async file ops to be discarded before proceeding
           ipath = P.resolve t.dir, path
@@ -33,7 +34,7 @@ module.exports = me =
             pfiles = [f for f in Fs.globSync t.ptask.glob when ipath.startsWith f.replace ixt, '']
             await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
           else await Run t, ipath
-          emitter.emit if t.rsn then \restart else \built
+          emitter.emit \built
         catch err then log "ERROR: #err" if err; emitter.emit \error
         finally then watch-once! # git operations break existing watch, so start a new watch
     watch-once!

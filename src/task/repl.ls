@@ -18,13 +18,15 @@ Site     = require \./site
 process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejection:' promise
 process.on \uncaughtException (error) -> console.error 'Uncaught exception' error
 
+function restart then P.execSync "touch #{Dir.BUILD}/.restart-node"
+
 function show-help
   log "\n#{Chalk.cyan \p}roduction = #{Chalk.bold Flag.prod}\n"
   for c in COMMANDS then log "#{Chalk.bold CHALKS[c.level] c.cmd} #{c.desc}"
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
-  * cmd:'b ' level:0 desc:'build all'             fn:Build.all
+  * cmd:'b ' level:0 desc:'build all'             fn:restart
   * cmd:'bd' level:0 desc:'build.debug'           fn:Build.debug
   * cmd:'c ' level:0 desc:"check external links"  fn:Check.check-external-links
   * cmd:'f ' level:0 desc:'generate favicon'      fn:Favicon
@@ -51,7 +53,8 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
 
 Build.on \built -> rl.prompt!; LiveRld?notify!
 Build.on \error -> rl.prompt!
-Build.on \restart -> P.execSync "touch #{Dir.BUILD}/.restart-node"
+Build.on \restart restart
+Build.all!
 Build.start!
 
 Lint.on \built -> rl.prompt!
