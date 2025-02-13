@@ -36,6 +36,7 @@ dependencies:
   'posthtml-img-autosize'      : \~0.1.6
 # svg generation
   'mini-svg-data-uri'          : \~1.4.4
+  svgo                         : \~3.3.2
 # minification for production
   cssnano : \~7.0.6
   htmlnano: \~2.1.1
