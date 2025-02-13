@@ -14,6 +14,7 @@ module.exports =
       dove: EMOJITWO + \1f54a.svg
       excl_double: NOTO + \u203c.svg
       fire: NOTO + \u1f525.svg
+      gavel: \https://www.svgrepo.com/download/60798/gavel.svg
       megaphone: NOTO + \u1f4e2.svg
       scroll: NOTO + \u1f4dc.svg
       seedling: NOTO + \u1f331.svg
