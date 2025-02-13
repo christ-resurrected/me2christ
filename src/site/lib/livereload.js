@@ -13,7 +13,7 @@ function connect() {
   }
 
   ws.onerror = function(err) {
-    console.error('Socket encountered error: ', err.message, 'Closing socket');
+    console.error('Socket error: ', err, 'Closing socket');
     ws.close(); // should fire onclose and attempt reconnect
   }
 }
