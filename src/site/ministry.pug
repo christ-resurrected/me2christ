@@ -3,14 +3,12 @@ extends lib/base.pug
 append head
   script: include lib/scrollbar.js
   script initScrollbar('#eee', '#000')
-  style: :sss
-    @import 'background.sss'
-    @mixin background #eee, #ddd, #ccc, #ddd, #eee
 
 append header
   +header('light')
 
 append main
+  style: include:sss ministry.sss
   .cards.light: include ministry.tract.pug
   .cards.dark: .card
     h2 False Gospel Tracts
