@@ -1,27 +1,26 @@
 @define-mixin banner $id
-  .$(id)
-    @mixin emoji $id
+  .$(id)::after
+    @mixin emoji $id, right
 
-    h2
-      background-position: right
+  .$(id)::before
+    @mixin emoji $id // duplicate inline-svg adds just a few bytes when gzip'd!
+    transform: scaleX(-1)
 
-@define-mixin emoji $id, $size: 40px
+@define-mixin emoji $id, $pos:left, $size: 40px
   background: inline-svg(emoji/$id) no-repeat
   background-size: $size
+  content: ''
+  float: $pos
+  size: $size
 
 @mixin banner fire
 @mixin banner skull_bones
 
-.cross
+.cross::before
   @mixin emoji cross
+  height: 56px
+  margin-right: 1rem
 
-  h2
-    margin-left: 40px
-
-.dove
-  display: grid
-  grid-template-columns: 60px 1fr
-
-  .emoji  // nested so h2 is not flipped
-    @mixin emoji dove, 60px
-    transform: scaleX(-1)
+.dove::before
+  @mixin emoji dove, , 60px
+  transform: scaleX(-1)
