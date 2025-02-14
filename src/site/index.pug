@@ -3,7 +3,6 @@ extends lib/base.pug
 append head
   script: include lib/scrollbar.js
   script initScrollbar('#000', '#eee')
-  style: include:sss index.sss
 
 append header
   +header('dark')
@@ -15,6 +14,7 @@ mixin Repent()
   +repent('Repent')
 
 append main
+  style: include:sss index.sss
   .cards.dark: include index.judgement.pug
   .cards.light: include index.gospel.pug
 
