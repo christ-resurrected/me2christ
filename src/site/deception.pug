@@ -1,13 +1,11 @@
 extends lib/base.pug
 include deception.mixin.pug
 
-append head
-  style: include:sss deception.sss
-
 append header
   +header('dark')
 
 append main
+  style: include:sss deception.sss
   .dark
     .cards: include deception.intro.pug
     .cards.doctrines: include deception.protestant.pug
