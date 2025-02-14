@@ -2,6 +2,7 @@
 Http = require \http
 Fs   = require \fs
 Path = require \path
+Zlib = require \zlib
 Dir  = require \./constants .DIR
 
 const MIME_TYPES =
@@ -19,8 +20,8 @@ module.exports =
       file = await prepareFile req.url
       statusCode = if file.found then 200 else 404
       mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default
-      res.writeHead statusCode, {'Content-Type': mimeType}
-      file.stream.pipe res
+      res.writeHead statusCode, {'Content-Encoding':\gzip, 'Content-Type':mimeType}
+      file.stream.pipe(Zlib.createGzip!).pipe res
       # log req.method, req.url, statusCode
     s.listen PORT, ->
       log "Http server listening on port #PORT"
