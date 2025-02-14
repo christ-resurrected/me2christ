@@ -1,0 +1,14 @@
+@import 'emoji.sss'
+@import 'glyph.sss'
+
+@mixin emoji-l cross
+  height: 56px
+  margin-right: 1rem
+
+@mixin emoji-l dove, 60px
+
+.card:last-child p:last-child::before
+  @mixin glyph green-tick, ,80%
+
+.light em
+  color: #080

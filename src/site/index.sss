@@ -1,23 +1,10 @@
 @import 'background.sss'
-@import 'glyph.sss'
 @import 'tip.sss'
 
 @mixin background #181818, #181818, #ccc, #eee, #eee
 
 em
   font-weight: bold
-
-.card:last-child p:last-child::before
-  @mixin glyph green-tick, ,80%
-
-.dark .verse strong
-  background-clip: text
-  background-image: linear-gradient(to top, #f00, #ff0)
-  color: transparent
-  text-shadow: 1px 1px 0 #ffc
-
-.light em
-  color: #080
 
 .verse
   @mixin tip-anchor
