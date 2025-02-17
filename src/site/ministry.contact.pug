@@ -19,10 +19,9 @@ style .form-ui {display: none}
               span(id=`${id}-count`).count
             #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
               block
-        legend
-          p My name is Andrew and I am based in Bradford, UK.
-          p If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance from demons, or baptism, or need training with street ministry / evangelism, or have any questions, please contact me and I will try to help.
-          p Please note I do not charge nor ask for money, for Jesus said:
+        p My name is Andrew and I am based in Bradford, UK.
+        p If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance from demons, or baptism, or need training with street ministry / evangelism, or have any questions, please contact me and I will try to help.
+        p Please note I do not charge nor ask for money, for Jesus said:
             +verse('Mat.10:8'): | #[q.jesus Freely you have received, freely give]
         .form-ui
           - const isTest = 0 // set to 1 to aid testing during development
