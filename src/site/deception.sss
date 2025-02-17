@@ -18,8 +18,11 @@
 h2:only-child
   margin: 0
 
-.doctrine div + div
-  margin-top: 1rem
+.doctrine
+  overflow: hidden // fix for very narrow viewport
+
+  div + div
+    margin-top: 1rem
 
 .doctrines li
   margin-bottom: 0.5rem
