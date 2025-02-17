@@ -16,6 +16,7 @@ module.exports =
       fire: NOTO + \u1f525.svg
       gavel: \https://www.svgrepo.com/download/60798/gavel.svg
       megaphone: NOTO + \u1f4e2.svg
+      poison: \https://www.svgrepo.com/download/444563/poison.svg
       scroll: NOTO + \u1f4dc.svg
       seedling: NOTO + \u1f331.svg
       skull_bones: NOTO + \u2620.svg

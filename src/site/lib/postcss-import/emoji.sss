@@ -13,12 +13,12 @@
     transform: scaleX(-1)
     @mixin-content
 
-@define-mixin emoji-r $id
-  @mixin emoji $id, after, right
+@define-mixin emoji-r $id, $size
+  @mixin emoji $id, after, right, $size
     @mixin-content
 
-@define-mixin emoji-lr $id // duplicate inline-svg adds just a few bytes when gzip'd!
-  @mixin emoji-l $id
+@define-mixin emoji-lr $id, $size // duplicate inline-svg adds just a few bytes when gzip'd!
+  @mixin emoji-l $id, $size
     @mixin-content
-  @mixin emoji-r $id
+  @mixin emoji-r $id, $size
     @mixin-content
