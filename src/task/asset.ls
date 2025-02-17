@@ -19,6 +19,7 @@ module.exports =
       poison: \https://www.svgrepo.com/download/444563/poison.svg
       scroll: NOTO + \u1f4dc.svg
       seedling: NOTO + \u1f331.svg
+      send: \https://www.svgrepo.com/download/288357/send.svg
       skull_bones: NOTO + \u2620.svg
       warning: NOTO + \u26a0.svg
     for key, url of EMOJI then download-asset key, url, ODIR

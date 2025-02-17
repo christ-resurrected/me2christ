@@ -1,16 +1,24 @@
 button
+  background: inline-svg(emoji/send) no-repeat
+  background-position: calc(50% - 1.3rem)
+  background-size: 24px
   border: 0
   border-radius: 4px
   color: #333 #ccc
   font-size: 1rem
+  font-weight: normal
   height: 2.5rem
   position: relative
   width: 100%
+  // ensure text position is consistent across safari and android chrome...
+  padding-left: 50%
+  text-align: left
 
   @media (hover: hover)
     &:enabled:hover
       color: - #0f0
       cursor: pointer
+      font-weight: bold
 
 .spinner
   color: transparent
