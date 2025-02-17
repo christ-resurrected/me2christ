@@ -1,11 +1,12 @@
 @define-mixin emoji $id, $pos:before, $float:left, $size: 40px
-  .$(id)::$(pos)
-    background: inline-svg(emoji/$id) no-repeat
-    background-size: $size
-    content: ''
-    float: $float
-    size: $size
-    @mixin-content // must be last
+  @media (width > 280px) // show emoji if enough space
+    .$(id)::$(pos)
+      background: inline-svg(emoji/$id) no-repeat
+      background-size: $size
+      content: ''
+      float: $float
+      size: $size
+      @mixin-content // must be last
 
 @define-mixin emoji-l $id, $size
   @mixin emoji $id, before, left, $size
