@@ -15,7 +15,10 @@
 
 @define-mixin emoji-r $id
   @mixin emoji $id, after, right
+    @mixin-content
 
 @define-mixin emoji-lr $id // duplicate inline-svg adds just a few bytes when gzip'd!
   @mixin emoji-l $id
+    @mixin-content
   @mixin emoji-r $id
+    @mixin-content
