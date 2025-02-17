@@ -10,20 +10,20 @@ style .form-ui {display: none}
     #success.mt-8
     form(action=process.env.WORKER_URL)
       fieldset
-        // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
-        mixin field(tag, id, label, minlen, maxlen, desc = '')
-          - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
-          .field
-            .labels
-              label(for=id)= label
-              span(id=`${id}-count`).count
-            #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
-              block
         p My name is Andrew and I am based in Bradford, UK.
         p If you would like to better understand the gospel of Jesus Christ, or need healing, deliverance from demons, or baptism, or need training with street ministry / evangelism, or have any questions, please contact me and I will try to help.
         p Please note I do not charge nor ask for money, for Jesus said:
             +verse('Mat.10:8'): | #[q.jesus Freely you have received, freely give]
         .form-ui
+          // if this mixin sits at the root, pug ignores doctype and reflects bool attributes e.g. required="required"
+          mixin field(tag, id, label, minlen, maxlen, desc = '')
+            - const ph = `Your ${id}` + (desc.length ? ` ${desc}` : '')
+            .field
+              .labels
+                label(for=id)= label
+                span(id=`${id}-count`).count
+              #{tag}(id=id minlength=minlen maxlength=maxlen name=id oninput=`countText('${id}')` placeholder=ph required)&attributes(attributes)
+                block
           - const isTest = 0 // set to 1 to aid testing during development
           +field('input', 'name', 'Name', 2, 40)(type='text' value=`${isTest ? 'name' : ''}`)
           +field('input', 'email', 'Email', 2, 40, 'address')(type='email' value=`${isTest ? 'test@email.com' : ''}`)
