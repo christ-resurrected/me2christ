@@ -33,6 +33,10 @@ textarea
   @mixin input
   resize: vertical
 
+#contact
+  display: flex
+  justify-content: center
+
 #error:not(:empty)
   border: 0
   border-radius: 4px
@@ -49,10 +53,6 @@ textarea
 
   p:first-child::before
     @mixin glyph green-tick, ,80%
-
-.contact
-  display: flex
-  justify-content: center
 
 .count
   display: none
