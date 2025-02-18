@@ -24,10 +24,7 @@ append main
       -const beliefs = ['Atheism', 'Buddhism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
       each b in beliefs.sort()
         +belief(b)
-    .cards
-      .card
-        h1 False Gospel Tracts
-        p.warn: :link Beware of gospel tracts which misrepresent the true biblical gospel.
+    .cards: include deception.tract.pug
 
 append footer
   +footer('dark')
