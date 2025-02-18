@@ -34,8 +34,9 @@ textarea
   resize: vertical
 
 #contact
+  align-items: center // cross axis is horizontal
   display: flex
-  justify-content: center
+  flex-direction: column
 
 #error:not(:empty)
   border: 0
@@ -44,12 +45,16 @@ textarea
   font-size: 1rem
   padding: 0.75rem
 
-#success:not(:empty)
-  height: 10rem
-  text-align: center
-
-  ~ form
+#success
+  &:empty
     display: none
+
+  &:not(:empty)
+    height: 10rem
+    text-align: center
+
+    ~ form
+      display: none
 
   p:first-child::before
     @mixin glyph green-tick, ,80%
