@@ -19,7 +19,7 @@ Site     = require \./site
 process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejection:' promise
 process.on \uncaughtException (error) -> console.error 'Uncaught exception' error
 
-function restart then P.execSync "touch #{Dir.BUILD}/.restart-node"
+function restart then P.execSync "touch #{Dir.BUILD}/node-watch/restart"
 
 function show-help
   log "\n#{Chalk.cyan \p}roduction = #{Chalk.bold Flag.prod}\n"

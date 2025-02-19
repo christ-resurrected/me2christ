@@ -11,7 +11,8 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'node -e "global.log = console.log; require(\'./task/build\').all()"'
-  start: 'touch .restart-node && node --watch-path=.restart-node --watch-preserve-output task/repl.js'
+  # --watch-path must be a directory else Ctrl-C (SIGINT) is ignored. See node issue #51466
+  start: 'mkdir -p ./node-watch && node --watch-path=./node-watch --watch-preserve-output task/repl.js'
 engines:
   node: \22
   yarn: \1.22
