@@ -58,9 +58,11 @@ const TASKS = T.init const _TASKS =
 
 module.exports = me = (new Emitter!) with
   all: ->>
-    Fs.rmSync Dir.BUILD_SITE, {force:true, recursive:true}
-    Fs.rmSync Dir.BUILD_TASK, {force:true, recursive:true}
-    Fs.mkdirSync Dir.BUILD_SITE
+    function clean dir
+      Fs.rmSync dir, {force:true, recursive:true};
+      Fs.mkdirSync dir
+    clean Dir.BUILD_SITE
+    clean Dir.BUILD_TASK
     try
       for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
       me.emit \built-all
