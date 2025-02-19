@@ -1,12 +1,11 @@
-Fs      = require \fs
-Http    = require \https
-P       = require \child_process
-Path    = require \path
-Dir     = require \./constants .DIR
+Fs   = require \fs
+Http = require \https
+P    = require \path
+Dir  = require \./constants .DIR
 
 module.exports =
   download-emoji: ->
-    const ODIR = Path.resolve Dir.SRC_SITE_RESOURCE, \emoji
+    const ODIR = P.resolve Dir.SRC_SITE_RESOURCE, \emoji
     const NOTO = \https://raw.githubusercontent.com/googlefonts/noto-emoji/refs/heads/main/svg/emoji_
     const EMOJITWO = \https://raw.githubusercontent.com/EmojiTwo/emojitwo/refs/heads/master/svg/
     const SVGREPO = \https://www.svgrepo.com/download/
@@ -26,7 +25,7 @@ module.exports =
     for key, url of EMOJI then download-asset key, url, ODIR
 
   download-symbols: ->
-    const ODIR = Path.resolve Dir.SRC_SITE_RESOURCE, \symbol
+    const ODIR = P.resolve Dir.SRC_SITE_RESOURCE, \symbol
     const SYMBOLS =
       link_external: \https://www.iconbolt.com/iconsets/remix-icon-fill/external-link.svg
     for key, url of SYMBOLS then download-asset key, url, ODIR
@@ -38,6 +37,6 @@ function download-asset key, url, odir then Http.get url, (res) ->
   res.on \end ->
     try
       if !Fs.existsSync odir then Fs.mkdirSync odir
-      Fs.writeFileSync (opath = Path.resolve odir, "#key#{Path.extname url}"), data
+      Fs.writeFileSync (opath = P.resolve odir, "#key#{P.extname url}"), data
       log "wrote #{data.length} bytes to #opath"
     catch err then log err
