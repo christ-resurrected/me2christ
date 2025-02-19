@@ -1,5 +1,5 @@
 Chalk = require \chalk
-CP    = require \child_process
+Cp    = require \child_process
 Fs    = require \fs
 P     = require \path
 Dir   = require \./constants .DIR
@@ -12,7 +12,7 @@ module.exports = (t, ipath) ->
     run-cmd = ->>
       log Chalk.blue cmd = t.cmd.replace(\$IN ipath).replace(\$ODIR odir)
       cmd = (args = cmd.split ' ').splice 0 1 # splice alters args and returns the removed item
-      cp = CP.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
+      cp = Cp.spawn cmd.0, args, stdio:\inherit # use spawn rather than exec to preserve colors
       cp.on \close (code) -> if code is 0 then resolve! else reject!
 
     run-fn = ->>
