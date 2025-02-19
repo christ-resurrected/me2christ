@@ -12,4 +12,4 @@ module.exports =
       Cp.execSync log "magick -density 144 #idir/#f -strip #tdir/#ofile.png"
       Cp.execSync log "magick -density 288 #idir/#f -sample 25% -strip #tdir/#{ofile}-thumbnail.png"
     Cp.execSync "oxipng --opt 4 --strip all #tdir/*.png" # reduce file sizes for production
-    for png in Fs.readdirSync tdir then Fs.copyFileSync "#tdir/#png" "#{Dir.SRC_SITE_ASSET}/tract/#png"
+    for png in Fs.readdirSync tdir then Fs.copyFileSync "#tdir/#png" "#{Dir.SRC_SITE_ASSET_TRACT}/#png"
