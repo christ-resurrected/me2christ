@@ -27,19 +27,19 @@ function show-help
 
 const CHALKS = [Chalk.stripColor, Chalk.yellow, Chalk.red]
 const COMMANDS =
-  * cmd:'b ' level:0 desc:'build all'                 fn:restart
-  * cmd:'bd' level:0 desc:'build.debug'               fn:Build.debug
-  * cmd:'c ' level:0 desc:"check external links"      fn:Check.check-external-links
-  * cmd:'f ' level:0 desc:'generate favicon'          fn:Favicon
-  * cmd:'h ' level:0 desc:'help (show commands)'      fn:show-help
-  * cmd:'l ' level:0 desc:'lint all'                  fn:Lint.all
-  * cmd:'q ' level:0 desc:'QUIT'                      fn:process.exit
-  * cmd:'r ' level:0 desc:'live reload'               fn:LiveRld?notify
-  * cmd:'ae' level:1 desc:'asset.emoji.download'      fn:AssetEmo.download-emoji
-  * cmd:'af' level:1 desc:'asset.emoji.download-syms' fn:AssetEmo.download-symbols
-  * cmd:'at' level:1 desc:'asset.tract.ministry'      fn:AssetTra.ministry
-  * cmd:'au' level:1 desc:'asset.tract.jpg-->thumbs'  fn:AssetTra.generate-deception-thumbnails
-  * cmd:'rd' level:1 desc:'resource.download-kjv'     fn:ResKjv.download
+  * cmd:'b ' level:0 desc:'build all'                   fn:restart
+  * cmd:'bd' level:0 desc:'build.debug'                 fn:Build.debug
+  * cmd:'c ' level:0 desc:"check external links"        fn:Check.check-external-links
+  * cmd:'f ' level:0 desc:'generate favicon'            fn:Favicon
+  * cmd:'h ' level:0 desc:'help (show commands)'        fn:show-help
+  * cmd:'l ' level:0 desc:'lint all'                    fn:Lint.all
+  * cmd:'q ' level:0 desc:'QUIT'                        fn:process.exit
+  * cmd:'r ' level:0 desc:'live reload'                 fn:LiveRld?notify
+  * cmd:'ae' level:1 desc:'asset.emoji.download-emoji'  fn:AssetEmo.download-emoji
+  * cmd:'af' level:1 desc:'asset.emoji.download-syms'   fn:AssetEmo.download-symbols
+  * cmd:'at' level:1 desc:'asset.tract.ministry'        fn:AssetTra.ministry
+  * cmd:'au' level:1 desc:'asset.tract.deception'       fn:AssetTra.deception
+  * cmd:'rd' level:1 desc:'resource.download-kjv'       fn:ResKjv.download
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
   ..setPrompt "#{Consts.APPNAME} >"
