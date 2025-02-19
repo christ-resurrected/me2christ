@@ -1,8 +1,9 @@
 style: include:sss ministry.tract.sss
 
 mixin tract-image(basename, alt)
-  - href = `asset/tract/ministry/raw/${basename}.png`
-  - thumb = `asset/tract/ministry/thumb/${basename}.png`
+  - const root = 'asset/tract/ministry'
+  - href = `${root}/raw/${basename}.png`
+  - thumb = `${root}/thumb/${basename}.png`
   a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 640w, ${href} 1250w`)
 .card.w-full
   h1 Gospel Tracts
