@@ -1,6 +1,6 @@
-Emitter = require \events .EventEmitter
-Dir     = require \./constants .DIR
-T       = require \./task
+E   = require \events
+Dir = require \./constants .DIR
+T   = require \./task
 
 const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"
 
@@ -22,6 +22,6 @@ const TASKS = T.init const _TASKS =
     dir: Dir.SRC_SITE
     pat: \**/*.sss
 
-module.exports = me = (new Emitter!) with
+module.exports = me = (new E.EventEmitter!) with
   all: ->> try await T.run-tasks TASKS catch err then log err finally me.emit \done
   start: -> for _, t of TASKS then T.start-watching \lint, me, t
