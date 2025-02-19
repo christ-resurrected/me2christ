@@ -1,9 +1,9 @@
-Emitter = require \events .EventEmitter
-C       = require \./constants
-Dir     = require \./constants .DIR
-Flag    = require \./flag
-T       = require \./task
-U       = require \./util
+E    = require \events
+C    = require \./constants
+Dir  = require \./constants .DIR
+Flag = require \./flag
+T    = require \./task
+U    = require \./util
 
 const TASKS = T.init const _TASKS =
   json_ls:
@@ -56,7 +56,7 @@ const TASKS = T.init const _TASKS =
     pat: \**/*.ls
     rsn: true # restart node
 
-module.exports = me = (new Emitter!) with
+module.exports = me = (new E.EventEmitter!) with
   all: ->>
     U.clean-dir Dir.BUILD_SITE
     U.clean-dir Dir.BUILD_TASK
