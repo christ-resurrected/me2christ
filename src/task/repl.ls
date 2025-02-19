@@ -37,6 +37,7 @@ const COMMANDS =
   * cmd:'r ' level:0 desc:'live reload'               fn:LiveRld?notify
   * cmd:'ae' level:1 desc:'asset.emoji.download'      fn:AssetEmo.download-emoji
   * cmd:'af' level:1 desc:'asset.emoji.download-syms' fn:AssetEmo.download-symbols
+  * cmd:'am' level:1 desc:'asset.tract.ministry'      fn:AssetTra.ministry
   * cmd:'at' level:1 desc:'asset.tract.pdf-->png'     fn:AssetTra.convert-pdfs-to-pngs
   * cmd:'au' level:1 desc:'asset.tract.jpg-->thumbs'  fn:AssetTra.generate-deception-thumbnails
   * cmd:'rd' level:1 desc:'resource.download-kjv'     fn:ResKjv.download
