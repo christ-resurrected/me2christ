@@ -53,11 +53,10 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.prompt!
 
 Build.on \built -> rl.prompt!; LiveRld?notify!
-Build.on \built-all -> show-help!; rl.prompt!
+Build.on \built-all -> show-help!; rl.prompt!; Build.start!
 Build.on \error -> rl.prompt!
 Build.on \restart restart
 Build.all!
-Build.start!
 
 Lint.on \built -> rl.prompt!
 Lint.on \done -> rl.prompt!
