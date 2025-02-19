@@ -7,9 +7,10 @@ U   = require \./util
 module.exports =
   deception: ->
     function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
-    const PDFDIR = get-dir \raw # from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
     const ODIR = get-dir \thumb
-    for f in Fs.readdirSync PDFDIR then Cp.execSync log "magick -density 288 #PDFDIR/#f -sample 25% -strip #ODIR/#f"
+    # raw input jpgs come from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
+    for f in Fs.readdirSync IDIR = get-dir \raw
+      Cp.execSync log "magick -density 288 #IDIR/#f -sample 25% -strip #ODIR/#f"
 
   ministry: -> # dependency: oxipng, to compress for production
     function generate type, im-settings, im-operators = ''
