@@ -61,7 +61,9 @@ module.exports = me = (new Emitter!) with
     Fs.rmSync Dir.BUILD_SITE, {force:true, recursive:true}
     Fs.rmSync Dir.BUILD_TASK, {force:true, recursive:true}
     Fs.mkdirSync Dir.BUILD_SITE
-    try for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
+    try
+      for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
+      me.emit \built-all
     catch err then log err; me.emit \error
   debug: -> for tid, t of TASKS then log tid, t
   start: -> for _, t of TASKS then T.start-watching \build, me, t
