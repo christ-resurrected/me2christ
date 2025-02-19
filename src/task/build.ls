@@ -1,9 +1,9 @@
 Emitter = require \events .EventEmitter
-Fs      = require \fs
 C       = require \./constants
 Dir     = require \./constants .DIR
 Flag    = require \./flag
 T       = require \./task
+U       = require \./util
 
 const TASKS = T.init const _TASKS =
   json_ls:
@@ -58,11 +58,8 @@ const TASKS = T.init const _TASKS =
 
 module.exports = me = (new Emitter!) with
   all: ->>
-    function clean dir
-      Fs.rmSync dir, {force:true, recursive:true};
-      Fs.mkdirSync dir
-    clean Dir.BUILD_SITE
-    clean Dir.BUILD_TASK
+    U.clean-dir Dir.BUILD_SITE
+    U.clean-dir Dir.BUILD_TASK
     try
       for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
       me.emit \built-all
