@@ -3,8 +3,8 @@ global.log = (...args) -> console.log(if args.length is 1 then args.0 else args)
 Chalk    = require \chalk
 P        = require \child_process
 Rl       = require \readline
-Asset    = require \./asset.emoji
-AssetT   = require \./asset.tract
+AssetEmo = require \./asset.emoji
+AssetTra = require \./asset.tract
 Build    = require \./build
 Check    = require \./check
 Consts   = require \./constants
@@ -35,9 +35,9 @@ const COMMANDS =
   * cmd:'l ' level:0 desc:'lint all'              fn:Lint.all
   * cmd:'q ' level:0 desc:'QUIT'                  fn:process.exit
   * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld?notify
-  * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji
-  * cmd:'as' level:1 desc:'asset.download-syms'   fn:Asset.download-symbols
-  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:AssetT.convert-tract-pdfs-to-pngs
+  * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:AssetEmo.download-emoji
+  * cmd:'as' level:1 desc:'asset.download-syms'   fn:AssetEmo.download-symbols
+  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:AssetTra.convert-tract-pdfs-to-pngs
   * cmd:'rd' level:1 desc:'resource.download-kjv' fn:ResKjv.download
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
