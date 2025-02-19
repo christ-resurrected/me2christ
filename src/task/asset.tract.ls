@@ -19,7 +19,9 @@ module.exports =
       const ODIR = "#{Dir.SRC_SITE_ASSET_TRACT_MINISTRY}/#type"
       U.clean-dir ODIR
       Cp.execSync "oxipng --opt 4 --strip all #TDIR/*.png"
-      for f in Fs.readdirSync TDIR then Fs.copyFileSync "#TDIR/#f" "#ODIR/#f"
+      for tfile in Fs.readdirSync TDIR
+        ofile = tfile.replace \tract_ ''
+        Fs.copyFileSync "#TDIR/#tfile" "#ODIR/#ofile"
 
     deploy \raw
     deploy \thumb
