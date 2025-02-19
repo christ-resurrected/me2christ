@@ -16,6 +16,6 @@ module.exports =
 
   generate-deception-thumbnails: ->
     function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
-    const IDIR = get-dir \raw # from MacOS photos -> file -> export -> export 1 photo
+    const IDIR = get-dir \raw # from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
     const ODIR = get-dir \thumb
     for f in Fs.readdirSync IDIR then Cp.execSync log "magick -density 288 #IDIR/#f -sample 25% -strip #ODIR/#f"
