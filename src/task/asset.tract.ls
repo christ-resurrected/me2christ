@@ -5,6 +5,12 @@ U   = require \./util
 
 # dependency: imagemagick
 module.exports =
+  deception: ->
+    function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
+    const PDFDIR = get-dir \raw # from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
+    const ODIR = get-dir \thumb
+    for f in Fs.readdirSync PDFDIR then Cp.execSync log "magick -density 288 #PDFDIR/#f -sample 25% -strip #ODIR/#f"
+
   ministry: -> # dependency: oxipng, to compress for production
     TMPDIR = \/tmp/tract
     U.clean-dir "#TMPDIR/raw"
@@ -25,9 +31,3 @@ module.exports =
 
     deploy \raw
     deploy \thumb
-
-  generate-deception-thumbnails: ->
-    function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
-    const PDFDIR = get-dir \raw # from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
-    const ODIR = get-dir \thumb
-    for f in Fs.readdirSync PDFDIR then Cp.execSync log "magick -density 288 #PDFDIR/#f -sample 25% -strip #ODIR/#f"
