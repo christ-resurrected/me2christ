@@ -4,6 +4,7 @@ Chalk    = require \chalk
 P        = require \child_process
 Rl       = require \readline
 Asset    = require \./asset
+AssetT   = require \./asset.tract
 Build    = require \./build
 Check    = require \./check
 Consts   = require \./constants
@@ -36,7 +37,7 @@ const COMMANDS =
   * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld?notify
   * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:Asset.download-emoji
   * cmd:'as' level:1 desc:'asset.download-syms'   fn:Asset.download-symbols
-  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:Asset.convert-tract-pdfs-to-pngs
+  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:AssetT.convert-tract-pdfs-to-pngs
   * cmd:'rd' level:1 desc:'resource.download-kjv' fn:ResKjv.download
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
