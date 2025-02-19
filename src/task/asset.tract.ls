@@ -14,15 +14,10 @@ module.exports =
 
   ministry: -> # dependency: oxipng, to compress for production
     function generate type, im-settings, im-operators = ''
-      U.clean-dir TDIR = "/tmp/tract/#type"
-      for f in Fs.readdirSync PDFDIR = process.env.M2C_TRACT_PDF_PATH when f.endsWith \.pdf
-        ofile = f.replace \.pdf \-%02d
-        Cp.execSync log "magick #im-settings #PDFDIR/#f #im-operators -strip #TDIR/#ofile.png"
-      Cp.execSync "oxipng --opt 4 --strip all #TDIR/*.png"
       U.clean-dir ODIR = "#{Dir.SRC_SITE_ASSET_TRACT_MINISTRY}/#type"
-      for tfile in Fs.readdirSync TDIR
-        ofile = tfile.replace \tract_ ''
-        Fs.copyFileSync "#TDIR/#tfile" "#ODIR/#ofile"
-
-    generate \raw, '-density 144'
-    generate \thumb, '-density 288', '-sample 25%'
+      for f in Fs.readdirSync PDFDIR = process.env.M2C_TRACT_PDF_PATH when f.endsWith \.pdf
+        ofile = f.replace(\.pdf \-%02d).replace \tract_ ''
+        Cp.execSync log "magick #im-settings #PDFDIR/#f #im-operators -strip #ODIR/#ofile.png"
+      Cp.execSync "oxipng --opt 4 --strip all #ODIR/*.png"
+    generate \raw '-density 144'
+    generate \thumb '-density 288' '-sample 25%'
