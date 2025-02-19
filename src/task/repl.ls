@@ -37,7 +37,7 @@ const COMMANDS =
   * cmd:'r ' level:0 desc:'live reload'           fn:LiveRld?notify
   * cmd:'ae' level:1 desc:'asset.download-emoji'  fn:AssetEmo.download-emoji
   * cmd:'as' level:1 desc:'asset.download-syms'   fn:AssetEmo.download-symbols
-  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:AssetTra.convert-tract-pdfs-to-pngs
+  * cmd:'at' level:1 desc:'asset.convert-tracts'  fn:AssetTra.convert-pdfs-to-pngs
   * cmd:'rd' level:1 desc:'resource.download-kjv' fn:ResKjv.download
 
 rl = Rl.createInterface input:process.stdin, output:process.stdout
