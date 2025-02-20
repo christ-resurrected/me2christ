@@ -6,10 +6,17 @@ U   = require \./util
 # dependency: imagemagick
 module.exports =
   deception: ->
+    # Manually create the raw input jpg by this pipeline...
+    #
+    # 1. MacOS photos: file -> export -> export 1 photo -> HEIC: large
+    #
+    # 2. GIMP: open HEIC, add layers with red boxes, then export as jpg
+    #
+    # 3. run this function, to create the thumbnails
+    #
     function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
-    const ODIR = get-dir \thumb
-    # raw input jpgs come from MacOS photos -> file -> export -> export 1 photo -> jpeg: high, large
-    for f in Fs.readdirSync IDIR = get-dir \raw
+    U.clean-dir ODIR = get-dir \thumb
+    for f in Fs.readdirSync IDIR = get-dir \raw when f.endsWith \.jpg
       Cp.execSync log "magick -density 288 #IDIR/#f -sample 25% -strip #ODIR/#f"
 
   ministry: -> # dependency: oxipng, to compress for production

@@ -15,7 +15,7 @@ const TASKS = T.init const _TASKS =
     cmd: "cp --target-directory $ODIR $IN"
     dir: Dir.SRC_SITE_ASSET
     ord: 2
-    pat: '**/*.{png,svg}'
+    pat: '**/*.{jpg,png,svg}'
   site_asset_favicon:
     cmd: "cp --target-directory #{Dir.BUILD_SITE} $IN"
     dir: Dir.SRC_SITE_ASSET_FAVICON

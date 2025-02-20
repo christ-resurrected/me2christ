@@ -1,3 +1,14 @@
-.card
+style: include:sss deception.tract.sss
+
+mixin tract-image(basename, alt)
+  - const root = 'asset/tract/deception'
+  - const href = `${root}/raw/${basename}.jpg`
+  - const thumb = `${root}/thumb/${basename}.jpg`
+  a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 640w, ${href} 1250w`)
+
+.card.w-full
   h1 False Gospel Tracts
   p.warn: :link Beware of gospel tracts which misrepresent the true biblical gospel.
+.card
+  +tract-image('IMG_0362', 'A false gospel tract').tract
+  p: :link This tract presents the false doctrines of [Penal Substitution Atonement](deception.html#psa) and the [Imputed Righteousness of Christ](deception.html#iroc).
