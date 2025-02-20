@@ -4,7 +4,7 @@ mixin tract-image(basename, alt)
   - const root = 'asset/tract/deception'
   - const href = `${root}/raw/${basename}.jpg`
   - const thumb = `${root}/thumb/${basename}.jpg`
-  a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 640w, ${href} 1250w`)
+  a(href=href): img(class=attributes.class alt=alt src=thumb srcset=`${thumb} 540w, ${href} 1280w`)
 
 .card.w-full
   h1 False Gospel Tracts
