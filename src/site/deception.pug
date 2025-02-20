@@ -7,6 +7,7 @@ append header
 append main
   style: include:sss deception.sss
   .dark
+    .cards: include deception.tract.pug
     .cards: include deception.intro.pug
     .cards.doctrines: include deception.protestant.pug
     .cards.calvinism: include deception.calvinism.pug
@@ -14,7 +15,7 @@ append main
       .card.w-full
         h1 Other False Doctrines
         p These false doctrines mis-interpret Bible scripture to justify themselves.
-      - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of faith / Prosperity Gospel']
+      - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of Faith / Prosperity Gospel']
       each o in others.sort()
         .card.doctrine: +preamble(o)
     .cards
