@@ -12,9 +12,7 @@ function initScrollbar(bgTop, bgBottom) {
     var height_total
 
     function refresh_scrollbar_bg() {
-      var scroll_pos = Math.round(D.scrollTop || B.scrollTop)
-      var pos = scroll_pos / height_total
-      B.style.backgroundColor = (pos < 0.5) ? bgTop : bgBottom
+      B.style.backgroundColor = (W.scrollY / height_total < 0.5) ? bgTop : bgBottom
     }
 
     function refresh_height() {
@@ -22,9 +20,9 @@ function initScrollbar(bgTop, bgBottom) {
     }
 
     // event handlers
-    window.addEventListener('orientationchange', refresh_height)
-    window.addEventListener('resize', refresh_height)
-    window.addEventListener('scroll', refresh_scrollbar_bg)
+    W.addEventListener('orientationchange', refresh_height)
+    W.addEventListener('resize', refresh_height)
+    W.addEventListener('scroll', refresh_scrollbar_bg)
 
     // init
     refresh_height()
