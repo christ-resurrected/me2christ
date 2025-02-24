@@ -15,18 +15,17 @@
 @mixin background #181818, #222, #282828, #222, #181818
 @mixin glyph-warn
 
-h2:only-child
-  margin: 0
+h2
+  &:only-child
+    margin: 0
 
 .doctrine
-  overflow: hidden // fix for very narrow viewport
-
   div + div
     margin-top: 1rem
 
 .doctrines li
   margin-bottom: 0.5rem
-  list-style: none  // bullet points
+  list-style: none // bullet points
 
 .danger
   @mixin tip-anchor
