@@ -23,8 +23,8 @@ function jumpPrev() {
 
 // show/hide prev FAB depending on scroll location
 addEventListener("DOMContentLoaded", () => {
-  const obsCallback = (entries) => {
-    document.body.classList.toggle('scrolljump-top', entries[0].isIntersecting)
+  const obsCallback = ([entry]) => {
+    document.body.classList.toggle('scrolljump-top', entry.isIntersecting)
   }
   new IntersectionObserver(obsCallback).observe(getH1s()[0])
 })
