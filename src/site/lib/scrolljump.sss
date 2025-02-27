@@ -1,11 +1,31 @@
 .scrolljump
+  backdrop-filter: blur(5px)
+  border-radius: 50%
   position: fixed
-  right: 10px
-  color: #fff
+  right: 0
+  size: 3.5rem
   z-index: 100
 
+  @media (hover: hover)
+    &:hover
+      color: - #080
+      cursor: pointer
+
   &.next
-    bottom: 10px
+    bottom: 0
+    transform: rotate(45deg)
 
   &.prev
-    top: 10px
+    top: 0
+    transform: rotate(-135deg)
+
+.chevron
+  // create a 'L', rotated to form a chevron
+  border: solid #fff
+  border-width: 0 5px 5px 0
+  size: 1rem
+
+  // position in center of container
+  inset: 0 5px 5px 0
+  margin: auto
+  position: absolute
