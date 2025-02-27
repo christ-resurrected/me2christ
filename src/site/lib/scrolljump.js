@@ -13,10 +13,10 @@ function jumpTo(h1s, i) {
 
 function jumpNext() {
   const h1s = getH1s()
-  jumpTo(h1s, getYs(h1s).findIndex((y) => y > 0))
+  jumpTo(h1s, getYs(h1s).findIndex((y) => y > 10))
 }
 
 function jumpPrev() {
   const h1s = getH1s().reverse()
-  jumpTo(h1s, getYs(h1s).findIndex((y) => y < 0))
+  jumpTo(h1s, getYs(h1s).findIndex((y) => y < -10))
 }
