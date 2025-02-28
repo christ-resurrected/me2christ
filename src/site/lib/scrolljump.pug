@@ -1,6 +1,11 @@
 script: include scrolljump.js
 style: include:sss scrolljump.sss
 
+noscript
+  style: :sss
+    .scrolljump
+      display: none
+
 a.scrolljump.prev(onclick='jumpPrev()')
   .chevron
 

@@ -1,7 +1,6 @@
 .scrolljump
   backdrop-filter: blur(5px)
   border-radius: 50% // circle
-  display: none // toggled by IntersectionObserver, when javascript enabled
   position: fixed
   right: 0
   size: 3rem
@@ -20,13 +19,13 @@
     top: 0
     transform: rotate(-135deg)
 
-  &-next // toggled by IntersectionObserver
+  &-bottom // toggled by IntersectionObserver
     .next
-      display: block
+      display: none
 
-  &-prev // toggled by IntersectionObserver
+  &-top // toggled by IntersectionObserver
     .prev
-      display: block
+      display: none
 
 .chevron
   // create a 'L', rotated to form a chevron
