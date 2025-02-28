@@ -11,20 +11,20 @@
       color: - #080
       cursor: pointer
 
-  &.next
+  &.down
     bottom: 0
     transform: rotate(45deg)
 
-  &.prev
+  &.up
     top: 0
     transform: rotate(-135deg)
 
   &-bottom // toggled by IntersectionObserver
-    .next
+    .down
       display: none
 
   &-top // toggled by IntersectionObserver
-    .prev
+    .up
       display: none
 
 .chevron

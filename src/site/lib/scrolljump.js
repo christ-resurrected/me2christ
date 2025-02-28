@@ -6,17 +6,17 @@ function getYs(h1s) {
   return h1s.map((h1) => h1.getBoundingClientRect().y)
 }
 
+function jumpDown() {
+  const h1s = getH1s()
+  jumpTo(h1s, getYs(h1s).findIndex((y) => y > 10))
+}
+
 function jumpTo(h1s, i) {
   if (i < 0) return
   h1s[i].scrollIntoView({ behavior: 'smooth' })
 }
 
-function jumpNext() {
-  const h1s = getH1s()
-  jumpTo(h1s, getYs(h1s).findIndex((y) => y > 10))
-}
-
-function jumpPrev() {
+function jumpUp() {
   const h1s = getH1s().reverse()
   jumpTo(h1s, getYs(h1s).findIndex((y) => y < -10))
 }
