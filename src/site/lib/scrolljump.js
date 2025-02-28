@@ -6,19 +6,19 @@ function getYs(h1s) {
   return h1s.map((h1) => h1.getBoundingClientRect().y)
 }
 
-function jumpDown() {
-  const h1s = getH1s()
-  jumpTo(h1s, getYs(h1s).findIndex((y) => y > 10))
-}
-
-function jumpTo(h1s, i) {
+function jump(h1s, i) {
   if (i < 0) return
   h1s[i].scrollIntoView({ behavior: 'smooth' })
 }
 
+function jumpDown() {
+  const h1s = getH1s()
+  jump(h1s, getYs(h1s).findIndex((y) => y > 10))
+}
+
 function jumpUp() {
   const h1s = getH1s().reverse()
-  jumpTo(h1s, getYs(h1s).findIndex((y) => y < -10))
+  jump(h1s, getYs(h1s).findIndex((y) => y < -10))
 }
 
 // dynamically enable/disable prev/next buttons
