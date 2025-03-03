@@ -37,4 +37,9 @@ addEventListener("DOMContentLoaded", () => {
   }
   const obsOpts = { rootMargin: '-5px', threshold: 1.0 }
   new IntersectionObserver(obsCallbackBottom, obsOpts).observe(getH1s().at(-1))
+
+  // FIX/HACK: make :active pseudoclass work in iOS safari
+  // see https://stackoverflow.com/questions/6063308/touch-css-pseudo-class-or-something-similar
+  // Adding 'ontouchstart' attribute to body doesn't work because it gets removed by PostHtml optimisations
+  document.addEventListener('touchstart', function() { }, false);
 })
