@@ -1,0 +1,48 @@
+.cards.doctrines
+  .card.w-full
+    h1 Other False Doctrines
+    p These false doctrines mis-interpret Bible scripture to justify themselves.
+
+  .card.doctrine
+    +preamble('Original Sin (Augustinian)', 'Psa.51:5; Mat.26:41; John 3:6; Rom.5:12,19; Eph.2:3', 'Augustine (influenced by Gnosticism)')
+      | Everyone is born with a sinful nature inherited from Adam, with damnable guilt at birth.
+    +danger
+      li Implies we have a natural inability to obey God
+      li Allows sinners to blame God, not themselves, for their sins, therefore God is unjust to judge them
+      li Leads to the unbiblical practice of infant baptism
+    +refutation
+      +ri('1-Samuel 16:1 16:10-12') In #[+refs('Psa.51:5')] David's mother is in sin, not David. This might explain why Jesse left David in the field at such an important occasion
+      li God made us without sin, but we chose to sin by our freewill: #[+verse('Ecclesiastes 7:29'): :hi Truly, this only I have found: That God made man *upright*, But they have sought out many schemes.]
+      +ri('Deut.1:39; Mat.18:2-5 19:13-15; Luke 18:15-17; Rom.9:11') Little children are innocent, not sinners, in the eyes of God
+      +ri('Deut.24:16; Eze.18:20') God holds us accountable for our own sin, not Adam's nor anyone else's
+      +ri('Rom.2:14-15') We can choose to do good by our own freewill
+      +ri('Heb.2:17') Jesus was in #[em all things] made like us yet without sin
+      li Gnostics taught that all flesh is evil, so mis-interpreted #[+refs('Eph.2:3')] as concerning damnation by nature rather than personal sins
+        span: :link (see [The Foundation of Augustinian-Calvinism](https://www.google.com/search?q=The+foundation+of+Augustinian+Calvinism+Ken+Wilson) by Ken Wilson)
+
+  .card.doctrine
+    mixin fear
+      +tip('<em>fear</em>') Greek phobos (φόβος) or phobeo (φοβέω) from which we get our word #[em phobia], meaning fear, dread or terror.
+    mixin fear-hebrew
+      +tip('<em>fear</em>') Hebrew yir'â (יִרְאָה) meaning fear or terror.
+    +preamble('Eternal security', 'John 6:37 10:28-29; Rom.8:38-39; Php.1:6', '', 'Once Saved Always Saved') You cannot be lost once you're saved.
+    +danger
+      li Lures believers into a false sense of safety, neglecting the #[+fear] of the Lord
+      // li Denies freewill by teaching the indewlling Holy Spirit will not let a believer fall away
+      li Opens the door to sin without consequence
+    +refutation
+      +ri('John 15:1-10; Rom.11:20-22', 'broken, cast, cut off, taketh away').warn God removes unfruitful branches from the vine and casts them into the fire
+      +ri('Mat.25:8 25:10-12', 'door').warn The foolish virgins run out of oil and are denied access
+      +ri('Mat.25:30').warn In the parable of the talents, the Lord casts his unprofitable servant into outer darkness
+      +ri('Rev.2:5 3:14-16', 'remove, spue').warn Jesus threatens to remove the Ephesian church's lampstand and vomit the lukewarm Laodicean church out of His mouth
+      +ri('Heb.6:4-6 10:26-31; 2-Pet.2:20-22').warn Scripture warns born again believers the danger of falling away from the faith and going back to a life of sin
+      +ri('Mat.13:6 13:21; Mark 4:6 4:17; Luke 8:6 8:13', 'fall, offend, wither').warn In the parable of the sower, Jesus warns it is possible for a believer to endure for a time and then fall away
+      +ri('Mat.7:14 7:21-23; Luke 13:24-28; Acts 9:31; 1-Cor.10:6-11; Php.2:12; Heb.4:1,11; 1-Pet.1:17', 'depart, fear, Strive').warn Scripture exhorts us to strive and be diligent to enter in with #[+fear] and trembling
+      +ri('Mat.10:22 24:13; Mark 13:13', 'endure') After becoming born again, we must endure to the end to be (finally) saved
+      +ri('Is.59:2') Sin separates us from God
+      li: +verse('Proverbs 9:10')(seeAlso='Prv.1:7 14:27 15:33 16:6 19:23') The #[+fear-hebrew] of the LORD is the beginning of wisdom, And the knowledge of the Holy One is understanding.
+
+.cards
+  - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of Faith / Prosperity Gospel']
+  each o in others.sort()
+    .card.doctrine: +preamble(o)

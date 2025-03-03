@@ -11,13 +11,7 @@ append main
     .cards: include deception.intro.pug
     .cards.doctrines: include deception.protestant.pug
     .cards.calvinism: include deception.calvinism.pug
-    .cards
-      .card.w-full
-        h1 Other False Doctrines
-        p These false doctrines mis-interpret Bible scripture to justify themselves.
-      - const others = ['Annihilationism', 'Arianism', 'Black Hebrew Israelites', 'Cessationism', 'Dispensationalism', 'Gnosticism', 'Hebrew Roots', 'Jehovah Witnesses', 'Modalism', 'Mormonism', 'Roman Catholicism', 'Seventh Day Adventism', 'Theistic Evolution', 'Universalism', 'Word of Faith / Prosperity Gospel']
-      each o in others.sort()
-        .card.doctrine: +preamble(o)
+    include deception.other.pug
     .cards
       .card.w-full
         h1 False Belief Systems
