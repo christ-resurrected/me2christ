@@ -5,8 +5,9 @@ append header
   +header('dark')
 
 append main
-  include lib/scrolljump.pug
+  script: include deception.js
   style: include:sss deception.sss
+  include lib/scrolljump.pug
   .dark
     .cards: include deception.intro.pug
     .cards.doctrines: include deception.protestant.pug
