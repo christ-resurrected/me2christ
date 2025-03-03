@@ -23,14 +23,17 @@ function jumpUp() {
 
 // dynamically enable/disable prev/next buttons
 addEventListener("DOMContentLoaded", () => {
+  const jumpDown = document.getElementsByClassName('jump-down')[0]
+  const jumpUp = document.getElementsByClassName('jump-up')[0]
+
   const obsCallbackTop = ([entry]) => {
-    document.body.classList.toggle('scrolljump-top', entry.isIntersecting)
+    jumpUp.classList.toggle('jump-active', !entry.isIntersecting)
   }
   new IntersectionObserver(obsCallbackTop).observe(getH1s()[0])
 
   const obsCallbackBottom = ([entry]) => {
     const isAtOrBelowLastH1 = entry.boundingClientRect.top <= 5 && !entry.isIntersecting
-    document.body.classList.toggle('scrolljump-bottom', isAtOrBelowLastH1)
+    jumpDown.classList.toggle('jump-active', !isAtOrBelowLastH1)
   }
   const obsOpts = { rootMargin: '-5px', threshold: 1.0 }
   new IntersectionObserver(obsCallbackBottom, obsOpts).observe(getH1s().at(-1))

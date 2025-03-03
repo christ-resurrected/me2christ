@@ -1,7 +1,3 @@
-@define-mixin hover
-  color: - #080
-  cursor: pointer
-
 .chevron
   // create a 'L', rotated to form a chevron
   border: solid #fff
@@ -13,6 +9,26 @@
   margin: auto
   position: absolute
 
+@media (hover: hover)
+  .jump-active:hover
+    color: - #080
+    cursor: pointer
+
+.jump-down
+  bottom: 0
+  transform: rotate(45deg)
+
+  &:not(.jump-active) // toggled by IntersectionObserver
+    .chevron
+      border-color: #666
+
+.jump-up
+  top: 0
+  transform: rotate(-135deg)
+
+  &:not(.jump-active) // toggled by IntersectionObserver
+    display: none
+
 .scrolljump
   backdrop-filter: blur(5px)
   border-radius: 50% // circle
@@ -20,28 +36,3 @@
   right: 0
   size: 3rem
   z-index: 100 // over everything
-
-  &.down
-    bottom: 0
-    transform: rotate(45deg)
-
-  &.up
-    top: 0
-    transform: rotate(-135deg)
-
-  &-bottom // toggled by IntersectionObserver
-    .down // don't hide, to prevent accidental click on tract
-      .chevron
-        border-color: #666
-
-  &-top // toggled by IntersectionObserver
-    .up
-      display: none
-
-@media (hover: hover)
-  :not(.scrolljump-bottom)
-    .scrolljump.down:hover
-      @mixin hover
-
-  .scrolljump.up:hover
-    @mixin hover
