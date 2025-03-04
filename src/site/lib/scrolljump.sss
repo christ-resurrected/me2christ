@@ -9,22 +9,22 @@
   margin: auto
   position: absolute
 
-/// .jump-active is toggled by IntersectionObserver
+/// .jump-enabled is toggled by IntersectionObserver
 
 @media (hover: hover)
-  .jump-active:hover
+  .jump-enabled:hover
     color: - #888
     cursor: pointer
 
 @media (hover: none)
-  .jump-active:active
+  .jump-enabled:active
     color: - #888
 
 .jump-down
   bottom: 0
   transform: rotate(45deg)
 
-  &:not(.jump-active)
+  &:not(.jump-enabled)
     .chevron
       border-color: #666
 
@@ -32,7 +32,7 @@
   top: 0
   transform: rotate(-135deg)
 
-  &:not(.jump-active)
+  &:not(.jump-enabled)
     display: none
 
 .scrolljump

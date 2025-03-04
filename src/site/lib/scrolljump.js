@@ -25,23 +25,23 @@ function jumpUp() {
   jump(h1s, getYs(h1s).findIndex((y) => y < -10))
 }
 
-function setActiveJump(sel, active) {
-  document.querySelector(sel).classList.toggle('jump-active', active)
+function toggleJump(sel, enable) {
+  document.querySelector(sel).classList.toggle('jump-enabled', enable)
 }
 
-function setActiveJumpDown(active) {
-  setActiveJump('.jump-down', active)
+function toggleJumpDown(enable) {
+  toggleJump('.jump-down', enable)
 }
 
-// dynamically enable/disable prev/next buttons
+// dynamically enable/disable jump up/down buttons
 addEventListener('DOMContentLoaded', () => {
   const obsCallbackTop = ([entry]) => {
-    setActiveJump('.jump-up', !entry.isIntersecting)
+    toggleJump('.jump-up', !entry.isIntersecting)
   }
   new IntersectionObserver(obsCallbackTop).observe(document.querySelector('h1'))
 
   const obsCallbackBottom = ([entry]) => {
-    setActiveJumpDown(entry.boundingClientRect.top > 5 || entry.isIntersecting)
+    toggleJumpDown(entry.boundingClientRect.top > 5 || entry.isIntersecting)
   }
   new IntersectionObserver(obsCallbackBottom, { rootMargin: '-5px', threshold: 1.0 }).observe(getLastH1())
 
@@ -55,7 +55,7 @@ addEventListener('DOMContentLoaded', () => {
 addEventListener('load', () => {
   function onScroll() {
     window.removeEventListener('scroll', onScroll)
-    setActiveJumpDown(getLastH1().getBoundingClientRect().top > 5)
+    toggleJumpDown(getLastH1().getBoundingClientRect().top > 5)
   }
 
   window.addEventListener('scroll', onScroll)
