@@ -2,6 +2,14 @@ function getH1s() {
   return Array.from(document.getElementsByTagName('h1'))
 }
 
+function getFirstH1() {
+  return document.querySelector('h1')
+}
+
+function getLastH1() {
+  return document.querySelector('.cards:last-of-type h1')
+}
+
 function getYs(h1s) {
   return h1s.map((h1) => h1.getBoundingClientRect().y)
 }
@@ -38,14 +46,12 @@ addEventListener("DOMContentLoaded", () => {
   const obsCallbackTop = ([entry]) => {
     setActiveJumpUp(!entry.isIntersecting)
   }
-  new IntersectionObserver(obsCallbackTop).observe(getH1s()[0])
+  new IntersectionObserver(obsCallbackTop).observe(getFirstH1())
 
   const obsCallbackBottom = ([entry]) => {
-    const isAtOrBelowLastH1 = entry.boundingClientRect.top <= 5 && !entry.isIntersecting
-    setActiveJumpDown(!isAtOrBelowLastH1)
+    setActiveJumpDown(entry.boundingClientRect.top > 5 || entry.isIntersecting)
   }
-  const obsOpts = { rootMargin: '-5px', threshold: 1.0 }
-  new IntersectionObserver(obsCallbackBottom, obsOpts).observe(getH1s().at(-1))
+  new IntersectionObserver(obsCallbackBottom, { rootMargin: '-5px', threshold: 1.0 }).observe(getLastH1())
 
   // FIX/HACK: make :active pseudoclass work in iOS safari
   // see https://stackoverflow.com/questions/6063308/touch-css-pseudo-class-or-something-similar
@@ -55,11 +61,9 @@ addEventListener("DOMContentLoaded", () => {
 
 // ensure jump-down button remains disabled if page is refreshed at bottom of page
 addEventListener('load', () => {
-  const lastH1 = getH1s().at(-1)
   function onScroll() {
     window.removeEventListener('scroll', onScroll)
-    isAtOrBelowLastH1 = lastH1.getBoundingClientRect().top <= 5
-    setActiveJumpDown(!isAtOrBelowLastH1)
+    setActiveJumpDown(getLastH1().getBoundingClientRect().top > 5)
   }
 
   window.addEventListener('scroll', onScroll)
