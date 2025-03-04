@@ -1,13 +1,13 @@
-function getH1s() {
-  return Array.from(document.getElementsByTagName('h1'))
-}
-
 function getFirstH1() {
   return document.querySelector('h1')
 }
 
 function getLastH1() {
   return document.querySelector('.cards:last-of-type h1')
+}
+
+function getH1s() {
+  return Array.from(document.getElementsByTagName('h1'))
 }
 
 function getYs(h1s) {
