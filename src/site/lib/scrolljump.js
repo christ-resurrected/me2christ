@@ -42,7 +42,7 @@ function setActiveJumpUp(active) {
 }
 
 // dynamically enable/disable prev/next buttons
-addEventListener("DOMContentLoaded", () => {
+addEventListener('DOMContentLoaded', () => {
   const obsCallbackTop = ([entry]) => {
     setActiveJumpUp(!entry.isIntersecting)
   }
