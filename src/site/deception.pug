@@ -14,13 +14,7 @@ append main
     .cards.calvinism: include deception.calvinism.pug
     .cards.doctrines: include deception.other.pug
     .cards: include deception.other.list.pug
-    .cards
-      .card.w-full
-        h1 False Belief Systems
-        p These false belief systems deny the truth of Jesus Christ and the New Testament scriptures.
-      -const beliefs = ['Atheism', 'Buddhism', 'Islam', 'Judaism', 'Freemasonry', 'New Age', 'Hinduism', 'Satanism']
-      each b in beliefs.sort()
-        +belief(b)
+    .cards: include deception.belief-systems.pug
     .cards: include deception.tract.pug
 
 append footer
