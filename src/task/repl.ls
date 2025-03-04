@@ -54,7 +54,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
     rl.prompt!
 
 Build.on \built -> rl.prompt!; LiveRld?notify!
-Build.on \built-all -> Build.start!; show-help!; rl.prompt!
+Build.on \built-all -> Build.watch!; show-help!; rl.prompt!
 Build.on \error -> rl.prompt!
 Build.on \restart restart
 Build.all!
@@ -62,7 +62,7 @@ Build.all!
 Lint.on \built -> rl.prompt!
 Lint.on \done -> rl.prompt!
 Lint.on \error -> rl.prompt!
-Lint.start!
+Lint.watch!
 
 <- Site.start!
 LiveRld.start!
