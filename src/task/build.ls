@@ -65,4 +65,4 @@ module.exports = me = (new E.EventEmitter!) with
       me.emit \built-all
     catch err then log err; me.emit \error
   debug: -> for tid, t of TASKS then log tid, t
-  watch: -> for _, t of TASKS then T.start-watching \build, me, t
+  watch: -> for _, t of TASKS then T.watch \build, me, t

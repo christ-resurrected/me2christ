@@ -24,4 +24,4 @@ const TASKS = T.init const _TASKS =
 
 module.exports = me = (new E.EventEmitter!) with
   all: ->> try await T.run-tasks TASKS catch err then log err finally me.emit \done
-  watch: -> for _, t of TASKS then T.start-watching \lint, me, t
+  watch: -> for _, t of TASKS then T.watch \lint, me, t

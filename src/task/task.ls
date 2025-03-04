@@ -19,8 +19,8 @@ module.exports = me =
     await Promise.all p = [Run t, f for _, t of tasks for f in Fs.globSync t.glob].flat!flat!
     log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t0).toFixed 0}ms"
 
-  start-watching: (group, emitter, t) ->
-    log "start watching #group #{t.tid}: #{t.dir}/#{t.pat}"
+  watch: (group, emitter, t) ->
+    log "watch #group #{t.tid}: #{t.dir}/#{t.pat}"
     function watch-once
       w = Fs.watch t.dir, recursive:true, (_, path) ->>
         return unless P.matchesGlob path, t.pat
