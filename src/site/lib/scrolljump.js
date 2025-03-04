@@ -1,7 +1,3 @@
-function getFirstH1() {
-  return document.querySelector('h1')
-}
-
 function getLastH1() {
   return document.querySelector('.cards:last-of-type h1')
 }
@@ -37,16 +33,12 @@ function setActiveJumpDown(active) {
   setActiveJump('.jump-down', active)
 }
 
-function setActiveJumpUp(active) {
-  setActiveJump('.jump-up', active)
-}
-
 // dynamically enable/disable prev/next buttons
 addEventListener('DOMContentLoaded', () => {
   const obsCallbackTop = ([entry]) => {
-    setActiveJumpUp(!entry.isIntersecting)
+    setActiveJump('.jump-up', !entry.isIntersecting)
   }
-  new IntersectionObserver(obsCallbackTop).observe(getFirstH1())
+  new IntersectionObserver(obsCallbackTop).observe(document.querySelector('h1'))
 
   const obsCallbackBottom = ([entry]) => {
     setActiveJumpDown(entry.boundingClientRect.top > 5 || entry.isIntersecting)
