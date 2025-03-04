@@ -43,3 +43,16 @@ addEventListener("DOMContentLoaded", () => {
   // Adding 'ontouchstart' attribute to body doesn't work because it gets removed by PostHtml optimisations
   document.addEventListener('touchstart', function() { }, false);
 })
+
+// ensure jump-down button remains disabled if page is refreshed at bottom of page
+addEventListener('load', () => {
+  const lastH1 = getH1s().at(-1)
+  function onScroll() {
+    window.removeEventListener('scroll', onScroll)
+    isAtOrBelowLastH1 = lastH1.getBoundingClientRect().top <= 5
+    const jumpDown = document.getElementsByClassName('jump-down')[0]
+    jumpDown.classList.toggle('jump-active', !isAtOrBelowLastH1)
+  }
+
+  window.addEventListener('scroll', onScroll)
+})
