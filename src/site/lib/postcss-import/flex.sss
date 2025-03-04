@@ -4,7 +4,7 @@
 @define-mixin flex-full
   flex: 0 1 100%
 
-@define-mixin flex-wrap
+@define-mixin flex-wrap $row-gap:1rem
   display: flex
   flex-wrap: wrap
-  gap: 1rem
+  gap: $row-gap 1rem
