@@ -16,17 +16,16 @@ const OPTS =
       tmp = it.replace /\*\*(.+?)\*\*/g \<strong>$1</strong>
       tmp.replace /\*(.+?)\*/g \<em>$1</em>
     link: ->
-      for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.push m.1
+      for m in [...it.matchAll /\((http.+?)\)/g] then me.external-links.add m.1
       it.replace /\[(.+?)\]\((.+?)\)/g '<a href="$2">$1</a>'
     sss: -> InlnSvg Postcss it
   VERSES: JSON.parse(KJV.replaceAll '#' '')
 
 module.exports = me =
-  external-links: []
+  external-links: new Set()
 
   render: (ipath, opath) ->>
     t0 = Perf.now!
-    me.external-links = []
     html = await Posthtml Pug.renderFile ipath, OPTS
     Fs.writeFileSync opath, html
     len = html.length.toLocaleString!

@@ -4,7 +4,7 @@ Tpug  = require \./task-pug
 
 module.exports =
   check-external-links: ->>
-    n = (xlinks = Tpug.external-links).length
+    n = (xlinks = [...Tpug.external-links]).length
     return log "Run build first" if n is 0
     log Chalk.yellow "Check #n external links..."
     await res = Promise.allSettled [check-url url for url in xlinks]
