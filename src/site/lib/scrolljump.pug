@@ -6,8 +6,8 @@ noscript
     .scrolljump
       display: none
 
-a.scrolljump.jump-down(aria-label='Next major heading' href='#' onclick='jumpDown()')
+a.scrolljump.jump-down(aria-label='Next major heading' href='#' onclick='jumpDown(); return false')
   .chevron
 
-a.scrolljump.jump-up(aria-label='Previous major heading' href='#' onclick='jumpUp()')
+a.scrolljump.jump-up(aria-label='Previous major heading' href='#' onclick='jumpUp(); return false')
   .chevron
