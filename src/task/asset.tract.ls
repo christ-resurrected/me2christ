@@ -27,4 +27,4 @@ module.exports =
         Cp.execSync log "magick #im-settings #PDFDIR/#f #im-operators -strip #ODIR/#ofile.png"
       Cp.execSync "oxipng --opt 4 --strip all #ODIR/*.png"
     generate \raw '-density 144'
-    generate \thumb '-density 288' '-sample 25%'
+    generate \thumb '-density 144' '-sample 50%'
