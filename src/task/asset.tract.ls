@@ -17,7 +17,7 @@ module.exports =
     function get-dir then "#{Dir.SRC_SITE_ASSET_TRACT_DECEPTION}/#it"
     U.clean-dir ODIR = get-dir \thumb
     for f in Fs.readdirSync IDIR = get-dir \raw when f.endsWith \.jpg
-      Cp.execSync log "magick -density 288 #IDIR/#f -sample 50% -strip #ODIR/#f"
+      Cp.execSync log "magick -density 144 #IDIR/#f -sample 50% -strip #ODIR/#f"
 
   ministry: -> # dependency: oxipng, to compress for production
     function generate type, im-settings, im-operators = ''
