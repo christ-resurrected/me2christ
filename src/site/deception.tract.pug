@@ -8,7 +8,7 @@ mixin tract-image(basename, alt)
     alt=alt
     class=attributes.class
     src=href_raw
-    srcset=`${href_thumb} 1280w, ${href} 9999w`
+    srcset=`${href_thumb} 1280w, ${href_raw} 9999w`
   )
 
 .card.w-full
