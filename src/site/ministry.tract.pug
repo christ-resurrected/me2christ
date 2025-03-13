@@ -1,9 +1,11 @@
 style: include:sss ministry.tract.sss
 
-mixin img(basename, alt, img_class, w_thumb, vw_size)
+mixin img(basename, alt, img_class, factor)
   - const root = 'asset/tract/ministry'
   - const href_raw = `${root}/raw/${basename}.png`
   - const href_thumb = `${root}/thumb/${basename}.png`
+  - const vw_size = 25 * factor // percentile width in viewport
+  - const w_thumb = 630 * factor // physical pixel width of thumbnail (= logical px width * device-pixel-ratio)
   a(href=href_raw): img(
     alt=alt
     class=img_class
@@ -13,10 +15,10 @@ mixin img(basename, alt, img_class, w_thumb, vw_size)
   )
 
 mixin img-a6(id, alt)
-  +img(`A6_2s-${id}`, alt, attributes.class, 630, 25)
+  +img(`A6_2s-${id}`, alt, attributes.class, 1)
 
 mixin img-trifold(id, alt)
-  +img(`pocket_trifold-${id}`, alt, attributes.class, 1260, 50)
+  +img(`pocket_trifold-${id}`, alt, attributes.class, 2)
 
 .card.w-full
   h1 Gospel Tracts
