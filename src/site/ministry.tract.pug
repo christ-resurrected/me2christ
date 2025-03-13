@@ -1,24 +1,24 @@
 style: include:sss ministry.tract.sss
 
-mixin img(basename, alt, img_class, factor)
+mixin img(basename, alt_text, factor)
   - const root = 'asset/tract/ministry'
   - const href_raw = `${root}/raw/${basename}.png`
   - const href_thumb = `${root}/thumb/${basename}.png`
   - const vw_size = 25 * factor // percentile width in viewport
   - const w_thumb = 630 * factor // physical pixel width of thumbnail (= logical px width * device-pixel-ratio)
   a(href=href_raw): img(
-    alt=alt
-    class=img_class
+    alt=alt_text
+    class=attributes.class
     src=href_raw
     srcset=`${href_thumb} ${w_thumb}w, ${href_raw} ${w_thumb * 2}w`
     sizes=`(max-width: 550px) ${vw_size * 2}vw, ${vw_size}vw`
   )
 
-mixin img-a6(id, alt)
-  +img(`A6_2s-${id}`, alt, attributes.class, 1)
+mixin img-a6(id, alt_text)
+  +img(`A6_2s-${id}`, alt_text, 1).a6
 
-mixin img-trifold(id, alt)
-  +img(`pocket_trifold-${id}`, alt, attributes.class, 2)
+mixin img-trifold(id, alt_text)
+  +img(`pocket_trifold-${id}`, alt_text, 2).trifold
 
 .card.w-full
   h1 Gospel Tracts
@@ -30,8 +30,8 @@ mixin img-trifold(id, alt)
 .card
   h2 A6 2-sided
   p: :link Inspired by [Gospel Tract #1](https://abideintheword.com/evangelism) by Adam at [AbideInTheWord.com](https://abideintheword.com).
-  +img-a6('00', 'Side 1 of A6 tract showing warning Scripture').a6
-  +img-a6('01', 'Side 2 of A6 tract declaring the gospel message').a6
+  +img-a6('00', 'Side 1 of A6 tract showing warning Scripture')
+  +img-a6('01', 'Side 2 of A6 tract declaring the gospel message')
   p: :link For printing [this 2-page PDF](https://github.com/christ-resurrected/gospel-tracts/blob/master/pdf/tract_A6_2s.pdf) in the UK I recommend [Mixam Leaflets &amp; Flyers](https://mixam.co.uk/flyers) with the following options:
   ul
     li Orientation: portrait
@@ -45,6 +45,6 @@ mixin img-trifold(id, alt)
 .card
   h2 Pocket Trifold
   p: :link Inspired by the [Poland Gospel Tract](https://docs.google.com/document/d/1nw98_2VB3hayzH0XHPzGlwBWH2TvXYnWT5TD-7Ep8bc) by Thomas Albin Holmes.
-  +img-trifold('00', 'Side 1 of pocket trifold tract, showing warning Scripture').trifold
-  +img-trifold('01', 'Side 2 of pocket trifold tract, declaring the gospel message').trifold
+  +img-trifold('00', 'Side 1 of pocket trifold tract, showing warning Scripture')
+  +img-trifold('01', 'Side 2 of pocket trifold tract, declaring the gospel message')
   p This tract folds into a compact 72mm x 140mm.
