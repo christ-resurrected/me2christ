@@ -12,11 +12,11 @@ mixin img(basename, alt, img_class, w_thumb, vw_size)
     sizes=`(max-width: 550px) ${vw_size * 2}vw, ${vw_size}vw`
   )
 
-mixin img-a6(basename, alt)
-  +img(basename, alt, attributes.class, 630, 25)
+mixin img-a6(id, alt)
+  +img(`A6_2s-${id}`, alt, attributes.class, 630, 25)
 
-mixin img-trifold(basename, alt)
-  +img(basename, alt, attributes.class, 1260, 50)
+mixin img-trifold(id, alt)
+  +img(`pocket_trifold-${id}`, alt, attributes.class, 1260, 50)
 
 .card.w-full
   h1 Gospel Tracts
@@ -28,8 +28,8 @@ mixin img-trifold(basename, alt)
 .card
   h2 A6 2-sided
   p: :link Inspired by [Gospel Tract #1](https://abideintheword.com/evangelism) by Adam at [AbideInTheWord.com](https://abideintheword.com).
-  +img-a6('A6_2s-00', 'Side 1 of A6 tract showing warning Scripture').a6
-  +img-a6('A6_2s-01', 'Side 2 of A6 tract declaring the gospel message').a6
+  +img-a6('00', 'Side 1 of A6 tract showing warning Scripture').a6
+  +img-a6('01', 'Side 2 of A6 tract declaring the gospel message').a6
   p: :link For printing [this 2-page PDF](https://github.com/christ-resurrected/gospel-tracts/blob/master/pdf/tract_A6_2s.pdf) in the UK I recommend [Mixam Leaflets &amp; Flyers](https://mixam.co.uk/flyers) with the following options:
   ul
     li Orientation: portrait
@@ -43,6 +43,6 @@ mixin img-trifold(basename, alt)
 .card
   h2 Pocket Trifold
   p: :link Inspired by the [Poland Gospel Tract](https://docs.google.com/document/d/1nw98_2VB3hayzH0XHPzGlwBWH2TvXYnWT5TD-7Ep8bc) by Thomas Albin Holmes.
-  +img-trifold('pocket_trifold-00', 'Side 1 of pocket trifold tract, showing warning Scripture').trifold
-  +img-trifold('pocket_trifold-01', 'Side 2 of pocket trifold tract, declaring the gospel message').trifold
+  +img-trifold('00', 'Side 1 of pocket trifold tract, showing warning Scripture').trifold
+  +img-trifold('01', 'Side 2 of pocket trifold tract, declaring the gospel message').trifold
   p This tract folds into a compact 72mm x 140mm.
