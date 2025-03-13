@@ -1,11 +1,11 @@
 style: include:sss deception.tract.sss
 
-mixin img(basename, alt)
+mixin img(basename, alt_text)
   - const root = 'asset/tract/deception'
   - const href_raw = `${root}/raw/${basename}.jpg`
   - const href_thumb = `${root}/thumb/${basename}.jpg`
   a(href=href_raw): img(
-    alt=alt
+    alt=alt_text
     class='tract'
     src=href_raw
     srcset=`${href_thumb} 640w, ${href_raw} 1280w`
