@@ -2,9 +2,14 @@ style: include:sss deception.tract.sss
 
 mixin tract-image(basename, alt)
   - const root = 'asset/tract/deception'
-  - const href = `${root}/raw/${basename}.jpg`
-  - const thumb = `${root}/thumb/${basename}.jpg`
-  a(href=href): img(class=attributes.class alt=alt src=href srcset=`${thumb} 1280w, ${href} 9999w`)
+  - const href_raw = `${root}/raw/${basename}.jpg`
+  - const href_thumb = `${root}/thumb/${basename}.jpg`
+  a(href=href_raw): img(
+    alt=alt
+    class=attributes.class
+    src=href_raw
+    srcset=`${href_thumb} 1280w, ${href} 9999w`
+  )
 
 .card.w-full
   h1 False Gospel Tracts
