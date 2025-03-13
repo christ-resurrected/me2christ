@@ -1,6 +1,6 @@
 style: include:sss deception.tract.sss
 
-mixin tract-image(basename, alt)
+mixin img(basename, alt)
   - const root = 'asset/tract/deception'
   - const href_raw = `${root}/raw/${basename}.jpg`
   - const href_thumb = `${root}/thumb/${basename}.jpg`
@@ -16,11 +16,11 @@ mixin tract-image(basename, alt)
   h1 False Gospel Tracts
   p.warn: :link Beware of gospel tracts which misrepresent the true biblical gospel. Some examples are shown below.
 .card
-  +tract-image('IMG_0362', 'A false gospel tract').tract
+  +img('IMG_0362', 'A false gospel tract').tract
   p: :link This tract presents the false doctrines of [Penal Substitution Atonement](#psa) (red highlights) and the [Imputed Righteousness of Christ](#irc) (purple highlight).
 .card
-  +tract-image('IMG_0370', 'A false gospel tract').tract
+  +img('IMG_0370', 'A false gospel tract').tract
   p: :link This tract presents the false doctrines of [Penal Substitution Atonement](#psa) (red highlights) and the [Imputed Righteousness of Christ](#irc) (purple highlight).
 .card
-  +tract-image('IMG_0379', 'A false gospel tract').tract
+  +img('IMG_0379', 'A false gospel tract').tract
   p: :link These tracts present the false doctrines of [Justification by Faith Alone](#jfa) (orange highlight) and the Prosperity Gospel (brown highlights).
