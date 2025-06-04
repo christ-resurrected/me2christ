@@ -6,19 +6,19 @@ const CONFIG_DIR = "#{Dir.SRC_TASK}/lint-config"
 
 const TASKS = T.init const _TASKS =
   html:
-    cmd: "yarn --silent html-validate -c #CONFIG_DIR/htmlvalidate.json $IN"
+    cmd: "bun --silent html-validate -c #CONFIG_DIR/htmlvalidate.json $IN"
     dir: Dir.BUILD_SITE
     pat: \*.html
   js:
-    cmd: "yarn --silent eslint -c #CONFIG_DIR/eslintrc.json $IN"
+    cmd: "bun --silent eslint -c #CONFIG_DIR/eslintrc.json $IN"
     dir: Dir.SRC_SITE
     pat: \**/*.js
   ls:
-    cmd: "yarn --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
+    cmd: "bun --silent ls-lint --config #CONFIG_DIR/lint-ls.lson $IN"
     dir: Dir.SRC_TASK
     pat: \**/*.ls
   sss:
-    cmd: "yarn --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
+    cmd: "bun --silent stylelint -c #CONFIG_DIR/stylelint.yml $IN"
     dir: Dir.SRC_SITE
     pat: \**/*.sss
 

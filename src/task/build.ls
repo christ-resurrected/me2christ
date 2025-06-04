@@ -7,7 +7,7 @@ U    = require \./util
 
 const TASKS = T.init const _TASKS =
   json_ls:
-    cmd: "yarn --silent lsc --output $ODIR $IN"
+    cmd: "bun --silent lsc --output $ODIR $IN"
     dir: Dir.SRC
     ord: 1 # run first to avoid "Unexpected end of JSON input" error
     pat: \*.json.ls
@@ -50,7 +50,7 @@ const TASKS = T.init const _TASKS =
     pat: '**/*.svg'
     pid: \site_pug
   task_ls:
-    cmd: "yarn --silent lsc --output $ODIR $IN"
+    cmd: "bun --silent lsc --output $ODIR $IN"
     dir: Dir.SRC_TASK
     ord: 2
     pat: \**/*.ls
