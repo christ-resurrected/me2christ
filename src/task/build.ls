@@ -62,7 +62,7 @@ module.exports = me = (new E.EventEmitter!) with
     U.clean-dir Dir.BUILD_TASK
     try
       for ord in [1,2] then await T.run-tasks {[tid, t] for tid, t of TASKS when t.ord is ord}
-      me.emit \built-all
     catch err then log err; me.emit \error
+    me.emit \built-all
   debug: -> for tid, t of TASKS then log tid, t
   watch: -> for _, t of TASKS then T.watch \build, me, t
