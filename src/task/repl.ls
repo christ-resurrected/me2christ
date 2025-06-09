@@ -19,9 +19,7 @@ Site     = require \./site
 process.on \unhandledRejection (_, promise) -> console.error 'Unhandled rejection:' promise
 process.on \uncaughtException (error) -> console.error 'Uncaught exception' error
 
-function restart
-  P.spawn(process.argv[0], process.argv.slice(1), {detached:true, stdio:\inherit}).unref()
-  process.exit()
+function restart then P.exec 'bunx --bun pm2 restart repl'
 
 function show-help
   log "\n#{Chalk.cyan \p}roduction = #{Chalk.bold Flag.prod}\n"
@@ -35,7 +33,6 @@ const COMMANDS =
   * cmd:'f ' level:0 desc:'generate favicon'            fn:Favicon
   * cmd:'h ' level:0 desc:'help (show commands)'        fn:show-help
   * cmd:'l ' level:0 desc:'lint all'                    fn:Lint.all
-  * cmd:'q ' level:0 desc:'QUIT'                        fn:process.exit
   * cmd:'r ' level:0 desc:'live reload'                 fn:LiveRld?notify
   * cmd:'ae' level:1 desc:'asset.emoji.download-emoji'  fn:AssetEmo.download-emoji
   * cmd:'af' level:1 desc:'asset.emoji.download-syms'   fn:AssetEmo.download-symbols

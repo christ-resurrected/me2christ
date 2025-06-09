@@ -11,7 +11,7 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'bun -e "global.log = console.log; require(\'./task/build\').all()"'
-  start: 'bun task/repl.js'
+  start: 'bunx --bun pm2 delete repl; bunx --bun pm2 start ./task/repl.js -- --color && bunx --bun pm2 attach 0'
 engines:
   node: \22
   yarn: \1.22
