@@ -11,7 +11,7 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'bun -e "global.log = console.log; require(\'./task/build\').all()"'
-  start: 'bunx --bun pm2 delete repl; bunx --bun pm2 start ./task/repl.js -- --color && bunx --bun pm2 attach 0'
+  start: 'bunx --bun pm2 delete all >/dev/null 2>/dev/null; bunx --bun pm2 start ./task/repl.js -- --color && bunx --bun pm2 attach 0'
 dependencies:
   chalk     : \~0.4.0
   livescript: \~1.6.0
