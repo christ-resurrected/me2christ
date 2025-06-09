@@ -12,9 +12,6 @@ repository:
 scripts:
   build: 'bun -e "global.log = console.log; require(\'./task/build\').all()"'
   start: 'bunx --bun pm2 delete repl; bunx --bun pm2 start ./task/repl.js -- --color && bunx --bun pm2 attach 0'
-engines:
-  node: \22
-  yarn: \1.22
 dependencies:
   chalk     : \~0.4.0
   livescript: \~1.6.0
