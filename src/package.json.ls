@@ -11,10 +11,7 @@ repository:
   url : \https://github.com/christ-resurrected/me2christ
 scripts:
   build: 'bun -e "global.log = console.log; require(\'./task/build\').all()"'
-  # --watch-path must be a directory else Ctrl-C (SIGINT) is ignored. See node issue #51466.
-  # Seems this does not fix the issue, CTRL-C is still ignored sometimes!?
-  # start: 'mkdir -p ./node-watch && node --watch-path=./node-watch --watch-preserve-output task/repl.js'
-  start: 'mkdir -p ./node-watch && bun task/repl.js'
+  start: 'bun task/repl.js'
 engines:
   node: \22
   yarn: \1.22
