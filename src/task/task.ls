@@ -1,5 +1,5 @@
 Chalk = require \chalk
-Fg    = require \fast-glob
+Fg    = require \fast-glob # TODO refactor away when bun glob can ignore
 Fs    = require \fs
 P     = require \path
 Perf  = require \perf_hooks .performance
