@@ -31,8 +31,7 @@ const TASKS = T.init const _TASKS =
     ord: 2
     oxt: \html
     pat: '*.pug'
-    pax: '(*.*).pug'
-
+    pax: '(*.*).pug' # ignore children e.g. deception.intro.pug
   site_pugchild:
     dir: Dir.SRC_SITE
     pat: '{*.*,*/*}.pug'
