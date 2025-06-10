@@ -13,9 +13,10 @@ scripts:
   build: 'bun -e "global.log = console.log; require(\'./task/build\').all()"'
   start: 'bunx --bun pm2 delete all >/dev/null 2>/dev/null; bunx --bun pm2 start ./task/repl.js -- --color && bunx --bun pm2 attach 0'
 dependencies:
-  chalk     : \~0.4.0
-  livescript: \~1.6.0
-  pug       : \~3.0.3
+  chalk      : \~0.4.0
+  livescript : \~1.6.0
+  'fast-glob': \~3.3.3
+  pug        : \~3.0.3
 # css generation
   postcss               : \~8.4.49
   'postcss-calc'        : \~10.1.0

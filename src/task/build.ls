@@ -30,8 +30,10 @@ const TASKS = T.init const _TASKS =
     fun: require \./task-pug .render
     ord: 2
     oxt: \html
-    pat: '!(*.)*.pug'
-  site_pug_child:
+    pat: '*.pug'
+    pax: '(*.*).pug'
+
+  site_pugchild:
     dir: Dir.SRC_SITE
     pat: '{*.*,*/*}.pug'
     pid: \site_pug
