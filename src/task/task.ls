@@ -25,15 +25,14 @@ module.exports = me =
     log "watch #group #{t.tid}: #{t.dir}/#{t.pat}"
     function watch-once
       w = Fs.watch t.dir, recursive:true, (_, path) ->>
-        log path, t.pat
-        return unless P.matchesGlob path, t.pat
+        return unless (Fg.globSync t.glob, ignore:t.globIgnore).includes P.resolve(t.dir, path)
         try
           w.close!
           await Sleep 0 # allow multi async file ops to be discarded before proceeding
           ipath = P.resolve t.dir, path
           if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
             ixt = P.extname t.ptask.pat
-            pfiles = [f for f in Fg.globSync t.ptask.glob, ignore:t.globIgnore when ipath.startsWith f.replace ixt, '']
+            pfiles = [f for f in Fg.globSync t.ptask.glob, ignore:t.ptask.globIgnore when ipath.startsWith f.replace ixt, '']
             await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
           else await Run t, ipath
           emitter.emit if t.rsn then \restart else \built
