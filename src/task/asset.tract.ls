@@ -22,8 +22,9 @@ module.exports =
   ministry: -> # dependency: oxipng, to compress for production
     function generate type, im-settings, im-operators = ''
       U.clean-dir ODIR = "#{Dir.SRC_SITE_ASSET_TRACT_MINISTRY}/#type"
-      for f in Fs.readdirSync PDFDIR = process.env.M2C_TRACT_PDF_PATH when f.endsWith \.pdf
+      for f in Fs.readdirSync PDFDIR = process.env.M2C_TRACT_PDF_PATH when /^tract_.*.pdf$/.test f
         ofile = f.replace(\.pdf \-%02d).replace \tract_ ''
+        log f, ofile
         Cp.execSync log "magick #im-settings #PDFDIR/#f #im-operators -strip #ODIR/#ofile.png"
       Cp.execSync "oxipng --opt 4 --strip all #ODIR/*.png"
     generate \raw '-density 144'
