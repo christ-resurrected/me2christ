@@ -30,7 +30,7 @@ const TASKS = T.init const _TASKS =
     fun: require \./task-pug .render
     ord: 2
     oxt: \html
-    pat: '*.pug'
+    pat: '*.pug' # pat: '!(*.)*.pug' not works in node but not bun
     pax: '(*.*).pug' # ignore children e.g. deception.intro.pug
   site_pugchild:
     dir: Dir.SRC_SITE
