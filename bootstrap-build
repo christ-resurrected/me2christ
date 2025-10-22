@@ -3,4 +3,5 @@
 bun add livescript &&
   bun lsc -o . -c ../src/*.ls &&
   bun lsc -o ./task -c ../src/task/*.ls &&
-  bun lsc -o ./task/pug-filter -c ../src/task/pug-filter/*.ls
+  bun lsc -o ./task/pug-filter -c ../src/task/pug-filter/*.ls &&
+  cp -f ../src/task/*.js ./task

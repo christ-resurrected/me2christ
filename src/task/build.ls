@@ -50,6 +50,12 @@ const TASKS = T.init const _TASKS =
     dir: Dir.SRC_SITE_RESOURCE
     pat: '**/*.svg'
     pid: \site_pug
+  task_js:
+    cmd: "cp --target-directory $ODIR $IN"
+    dir: Dir.SRC_TASK
+    ord: 2
+    pat: '**/*.js'
+    rsn: true # restart node
   task_ls:
     cmd: "bun --silent lsc --output $ODIR $IN"
     dir: Dir.SRC_TASK
