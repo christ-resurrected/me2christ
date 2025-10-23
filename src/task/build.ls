@@ -34,7 +34,11 @@ const TASKS = T.init const _TASKS =
     pex: '*.*.pug' # exclude children e.g. deception.intro.pug
   site_pugchild:
     dir: Dir.SRC_SITE
-    pat: '{*.*,*/*}.pug'
+    pat: '*.*.pug'
+    pid: \site_pug
+  site_puglib:
+    dir: Dir.SRC_SITE
+    pat: 'lib/*.pug'
     pid: \site_pug
   site_resource_favicon:
     dir: "#{Dir.SRC_SITE_RESOURCE}/favicon"
