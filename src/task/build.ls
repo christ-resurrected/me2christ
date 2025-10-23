@@ -32,11 +32,11 @@ const TASKS = T.init const _TASKS =
     oxt: \html
     pat: '*.pug'
     pex: '*.*.pug' # exclude children e.g. deception.intro.pug
-  site_pugchild:
+  site_pug_child:
     dir: Dir.SRC_SITE
     pat: '*.*.pug' # https://github.com/oven-sh/bun/issues/24000
     pid: \site_pug
-  site_puglib:
+  site_pug_lib:
     dir: Dir.SRC_SITE
     pat: 'lib/*.pug' # https://github.com/oven-sh/bun/issues/24000
     pid: \site_pug
