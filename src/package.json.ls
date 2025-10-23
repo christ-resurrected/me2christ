@@ -15,7 +15,6 @@ scripts:
 dependencies:
   chalk      : \~0.4.0
   livescript : \~1.6.0
-  'fast-glob': \~3.3.3
   pug        : \~3.0.3
 # css generation
   postcss               : \~8.4.49
