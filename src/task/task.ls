@@ -30,7 +30,7 @@ module.exports = me =
           w.close!
           await Sleep 0 # allow multi async file ops to be discarded before proceeding
           ipath = P.resolve t.dir, path
-          if t.ptask # process parent only, if found by filename e.g. contact-button.sss --> contact.pug
+          if t.ptask # process parent only, if found by filename e.g. ministry.contact-button.sss --> ministry.pug
             ixt = P.extname t.ptask.pat
             pfiles = [f for f in Fg.globSync t.ptask.glob, ignore:t.ptask.globIgnore when ipath.startsWith f.replace ixt, '']
             await if pfiles.length is 1 then Run t.ptask, pfiles.0 else me.run-tasks [t.ptask]
