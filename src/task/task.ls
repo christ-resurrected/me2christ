@@ -21,7 +21,7 @@ module.exports = me =
     log Chalk.green "Processed #{p.length} files in #{(Perf.now! - t0).toFixed 0}ms"
 
   watch: (group, emitter, t) ->
-    log "watch #group #{t.tid}: #{t.dir}/#{t.pat}"
+    log "watch #group #{t.tid}: #{t.glob}"
     function watch-once
       w = Fs.watch t.dir, recursive:true, (_, path) ->>
         return unless (Fs.globSync t.glob, exclude:t.globIgnore).includes P.resolve(t.dir, path)
