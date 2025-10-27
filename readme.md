@@ -1,5 +1,7 @@
 # me2christ
 
+[![Build Status](https://github.com/christ-resurrected/me2christ/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/christ-resurrected/me2christ/actions/workflows/ci.yml)
+
 Source code for [me2christ.com](https://me2christ.com)
 
 ## to build and run locally
